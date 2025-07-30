@@ -97,4 +97,55 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-.apdisk 
+.apdisk
+
+# Xcode Derived Data and Build Products
+DerivedData/
+build/
+*.xcarchive
+*.app.dSYM.zip
+
+# Swift Package Manager
+Packages/
+Package.resolved
+.swiftpm/
+
+# Xcode Workspace and Project
+*.xcworkspace/
+!VoiceInk.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+# Build and Distribution
+*.ipa
+*.pkg
+*.dmg
+
+# Localization tool backups and logs
+localization-tools/backups/
+localization-tools/logs/
+localization-tools/__pycache__/
+*.pyc
+*.pyo
+
+# Whisper.cpp build artifacts
+whisper.cpp/build/
+whisper.cpp/whisper
+whisper.cpp/libwhisper.a
+whisper.cpp/libwhisper.dylib
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
