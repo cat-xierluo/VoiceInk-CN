@@ -119,9 +119,7 @@ Package.resolved
 *.pkg
 *.dmg
 
-# Localization tool backups and logs
-localization-tools/backups/
-localization-tools/logs/
+# Localization tool __pycache__ (keep backups and logs)
 localization-tools/__pycache__/
 *.pyc
 *.pyo
