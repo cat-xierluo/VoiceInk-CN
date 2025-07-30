@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>VoiceInk Releases</title>
+        <item>
+            <title>1.42</title>
+            <pubDate>Sat, 25 June 2025 12:20:00 +0545</pubDate>
+            <sparkle:version>142</sparkle:version>
+            <sparkle:shortVersionString>1.42</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h3>What's New in Version 1.42 🚀⚡</h3>
+                            <ul>
+                                <li>Improvements with repeating words for longer recordings</li>
+                                <li>Added copy last transcript in menu bar</li>
+                                <li>Add Cerebras Integration for AI enhancement(Insanely fast)</li>
+                                <li>Increased Anthropic Output token limit</li>
+                                <li>Export transcript data in CSV format</li>
+                                <li>Remove think tags from reasoning models during enhancement</li>
+                                <li>Fix bug with mute/unmute during recording</li>
+                             </ul> 
+            ]]></description>
+           <enclosure url="https://github.com/Beingpax/VoiceInk/releases/download/v1.42/VoiceInk.dmg" length="8511483" type="application/octet-stream" sparkle:edSignature="uRh39a+5oUlzzNAfPSuqk/trCIllKbhbWVFmjS5MLrhZEEpNmTEyB6B9998YP7A0P0naF4iZYbyaj6uhBI4oCA=="/>
+        </item>
+    </channel>
+</rss>
