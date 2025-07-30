@@ -39,7 +39,7 @@ struct AudioInputSettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-                Text("Audio Input")
+                Text(NSLocalizedString("Audio Input", comment: NSLocalizedString("Audio Input", comment: "Audio Input")))
                     .font(.system(size: 28, weight: .bold))
                 Text("Configure your microphone preferences")
                     .font(.system(size: 15))
@@ -52,7 +52,7 @@ struct AudioInputSettingsView: View {
     
     private var inputModeSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Input Mode")
+            Text(NSLocalizedString("Input Mode", comment: "Input mode"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -71,7 +71,7 @@ struct AudioInputSettingsView: View {
     private var customDeviceSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("Available Devices")
+                Text(NSLocalizedString("Available Devices", comment: "Available devices"))
                     .font(.title2)
                     .fontWeight(.semibold)
                 
@@ -142,7 +142,7 @@ struct AudioInputSettingsView: View {
     
     private var availableDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Available Devices")
+            Text(NSLocalizedString("Available Devices", comment: "Available devices"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -158,7 +158,7 @@ struct AudioInputSettingsView: View {
                 .foregroundStyle(.secondary)
             
             VStack(spacing: 8) {
-                Text("No Audio Devices")
+                Text(NSLocalizedString("No Audio Devices", comment: "No audio devices"))
                     .font(.headline)
                 Text("Connect an audio input device to get started")
                     .font(.subheadline)
@@ -318,7 +318,7 @@ struct DeviceSelectionCard: View {
                 Spacer()
                 
                 if isActive {
-                    Label("Active", systemImage: "wave.3.right")
+                    Label(NSLocalizedString("Active", comment: "Active status"), systemImage: "wave.3.right")
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)
@@ -373,7 +373,7 @@ struct DevicePriorityCard: View {
             HStack(spacing: 12) {
                 // Active status
                 if isActive {
-                    Label("Active", systemImage: "wave.3.right")
+                    Label(NSLocalizedString("Active", comment: "Active status"), systemImage: "wave.3.right")
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)

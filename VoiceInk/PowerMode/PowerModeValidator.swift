@@ -21,15 +21,23 @@ enum PowerModeValidationError: Error, Identifiable {
     var localizedDescription: String {
         switch self {
         case .emptyName:
-            return "Power mode name cannot be empty."
+            return NSLocalizedString("Power mode name cannot be empty.", comment: "Error message when power mode name is empty")
         case .duplicateName(let name):
-            return "A power mode with the name '\(name)' already exists."
+            let prefix = NSLocalizedString("A power mode with the name", comment: "Error message prefix for duplicate name")
+            let suffix = NSLocalizedString("already exists.", comment: "Error message suffix for duplicate name")
+            return "\(prefix) \(name) \(suffix)"
         case .noTriggers:
-            return "You must add at least one application or website."
+            return NSLocalizedString("You must add at least one application or website.", comment: "Error message when no triggers are added")
         case .duplicateAppTrigger(let appName, let powerModeName):
-            return "The app '\(appName)' is already configured in the '\(powerModeName)' power mode."
+            let prefix = NSLocalizedString("The app", comment: "Error message prefix for duplicate app")
+            let middle = NSLocalizedString("is already configured in the", comment: "Error message middle for duplicate app")
+            let suffix = NSLocalizedString("power mode.", comment: "Error message suffix for duplicate app")
+            return "\(prefix) \(appName) \(middle) \(powerModeName) \(suffix)"
         case .duplicateWebsiteTrigger(let website, let powerModeName):
-            return "The website '\(website)' is already configured in the '\(powerModeName)' power mode."
+            let prefix = NSLocalizedString("The website", comment: "Error message prefix for duplicate website")
+            let middle = NSLocalizedString("is already configured in the", comment: "Error message middle for duplicate website")
+            let suffix = NSLocalizedString("power mode.", comment: "Error message suffix for duplicate website")
+            return "\(prefix) \(website) \(middle) \(powerModeName) \(suffix)"
         }
     }
 }

@@ -200,9 +200,9 @@ struct PermissionsView: View {
                             .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
                     
                     VStack(spacing: 8) {
-                        Text("App Permissions")
+                        Text(NSLocalizedString("App Permissions", comment: "App permissions title"))
                             .font(.system(size: 28, weight: .bold))
-                        Text("VoiceInk requires the following permissions to function properly")
+                        Text(NSLocalizedString("VoiceInk requires the following permissions to function properly", comment: "App permissions description"))
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
@@ -215,10 +215,10 @@ struct PermissionsView: View {
                     // Keyboard Shortcut Permission
                     PermissionCard(
                         icon: "keyboard",
-                        title: "Keyboard Shortcut",
-                        description: "Set up a keyboard shortcut to use VoiceInk anywhere",
+                        title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard shortcut permission title"),
+                        description: NSLocalizedString("Set up a keyboard shortcut to use VoiceInk anywhere", comment: "Keyboard shortcut permission description"),
                         isGranted: hotkeyManager.selectedHotkey1 != .none,
-                        buttonTitle: "Configure Shortcut",
+                        buttonTitle: NSLocalizedString("Configure Shortcut", comment: "Configure shortcut button"),
                         buttonAction: {
                             NotificationCenter.default.post(
                                 name: .navigateToDestination,
@@ -232,8 +232,8 @@ struct PermissionsView: View {
                     // Audio Permission
                     PermissionCard(
                         icon: "mic",
-                        title: "Microphone Access",
-                        description: "Allow VoiceInk to record your voice for transcription",
+                        title: NSLocalizedString("Microphone Access", comment: "Microphone access"),
+                        description: NSLocalizedString("Allow VoiceInk to record your voice for transcription", comment: "Microphone permission description"),
                         isGranted: permissionManager.audioPermissionStatus == .authorized,
                         buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? "Request Permission" : "Open System Settings",
                         buttonAction: {
@@ -251,8 +251,8 @@ struct PermissionsView: View {
                     // Accessibility Permission
                     PermissionCard(
                         icon: "hand.raised",
-                        title: "Accessibility Access",
-                        description: "Allow VoiceInk to paste transcribed text directly at your cursor position",
+                        title: NSLocalizedString("Accessibility Access", comment: "Accessibility access"),
+                        description: NSLocalizedString("Allow VoiceInk to paste transcribed text directly at your cursor position", comment: "Accessibility permission description"),
                         isGranted: permissionManager.isAccessibilityEnabled,
                         buttonTitle: "Open System Settings",
                         buttonAction: {
@@ -266,8 +266,8 @@ struct PermissionsView: View {
                     // Screen Recording Permission
                     PermissionCard(
                         icon: "rectangle.on.rectangle",
-                        title: "Screen Recording Access",
-                        description: "Allow VoiceInk to understand context from your screen for transcript Enhancement",
+                        title: NSLocalizedString("Screen Recording Access", comment: "Screen recording access"),
+                        description: NSLocalizedString("Allow VoiceInk to understand context from your screen for transcript Enhancement", comment: "Screen recording permission description"),
                         isGranted: permissionManager.isScreenRecordingEnabled,
                         buttonTitle: "Request Permission",
                         buttonAction: {

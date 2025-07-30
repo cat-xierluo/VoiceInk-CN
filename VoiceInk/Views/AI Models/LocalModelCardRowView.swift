@@ -51,7 +51,7 @@ struct LocalModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(NSLocalizedString("Default", comment: "Default"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -84,7 +84,7 @@ struct LocalModelCardView: View {
             
             // Speed
             HStack(spacing: 3) {
-                Text("Speed")
+                Text(NSLocalizedString("Speed", comment: "Speed"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.speed * 10)
@@ -94,7 +94,7 @@ struct LocalModelCardView: View {
             
             // Accuracy
             HStack(spacing: 3) {
-                Text("Accuracy")
+                Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -130,7 +130,7 @@ struct LocalModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(NSLocalizedString("Default Model", comment: "Default model"))
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isDownloaded {
@@ -143,7 +143,7 @@ struct LocalModelCardView: View {
             } else {
                 Button(action: downloadAction) {
                     HStack(spacing: 4) {
-                        Text(isDownloading ? "Downloading..." : "Download")
+                        Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "Download button"))
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "arrow.down.circle")
                             .font(.system(size: 12, weight: .medium))

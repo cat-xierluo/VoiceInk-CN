@@ -44,7 +44,7 @@ struct AddCustomModelCardView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "plus")
                             .font(.system(size: 14, weight: .medium))
-                        Text(editingModel != nil ? "Edit Model" : "Add Model")
+                        Text(editingModel != nil ? "Edit Model" : NSLocalizedString("Add Model", comment: "Add model button"))
                             .font(.system(size: 14, weight: .semibold))
                     }
                     .foregroundColor(.white)
@@ -62,7 +62,7 @@ struct AddCustomModelCardView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Header
                     HStack {
-                        Text(editingModel != nil ? "Edit Custom Model" : "Add Custom Model")
+                        Text(editingModel != nil ? "Edit Custom Model" : NSLocalizedString("Add Custom Model", comment: "Add custom model"))
                             .font(.headline)
                             .foregroundColor(.primary)
                         
@@ -97,10 +97,10 @@ struct AddCustomModelCardView: View {
                     
                     // Form fields
                     VStack(alignment: .leading, spacing: 16) {
-                        FormField(title: "Display Name", text: $displayName, placeholder: "My Custom Model")
-                        FormField(title: "API Endpoint", text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
-                        FormField(title: "API Key", text: $apiKey, placeholder: "your-api-key", isSecure: true)
-                        FormField(title: "Model Name", text: $modelName, placeholder: "whisper-1")
+                        FormField(title: NSLocalizedString("Display Name", comment: "Display name"), text: $displayName, placeholder: "My Custom Model")
+                        FormField(title: NSLocalizedString("API Endpoint", comment: "API endpoint"), text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
+                        FormField(title: NSLocalizedString("API Key", comment: "API key"), text: $apiKey, placeholder: "your-api-key", isSecure: true)
+                        FormField(title: NSLocalizedString("Model Name", comment: "Model name"), text: $modelName, placeholder: "whisper-1")
                         
                         Toggle("Multilingual Model", isOn: $isMultilingual)
                     }
@@ -113,7 +113,7 @@ struct AddCustomModelCardView: View {
                                 clearForm()
                             }
                         }) {
-                            Text("Cancel")
+                            Text(NSLocalizedString("Cancel", comment: "Cancel button"))
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
                                 .frame(maxWidth: .infinity)
@@ -135,7 +135,7 @@ struct AddCustomModelCardView: View {
                                     Image(systemName: editingModel != nil ? "checkmark.circle.fill" : "plus.circle.fill")
                                         .font(.system(size: 14))
                                 }
-                                Text(editingModel != nil ? "Update Model" : "Add Model")
+                                Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comment: "Add model button"))
                                     .font(.system(size: 13, weight: .medium))
                             }
                             .foregroundColor(.white)

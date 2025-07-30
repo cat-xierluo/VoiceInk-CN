@@ -80,8 +80,8 @@ struct AudioCleanupSettingsView: View {
                 .buttonStyle(.bordered)
                 .controlSize(.large)
                 .disabled(isPerformingCleanup)
-                .alert("Audio Cleanup", isPresented: $isShowingConfirmation) {
-                    Button("Cancel", role: .cancel) { }
+                .alert(NSLocalizedString("Audio Cleanup", comment: "Audio cleanup"), isPresented: $isShowingConfirmation) {
+                    Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) { }
                     
                     if cleanupInfo.fileCount > 0 {
                         Button("Delete \(cleanupInfo.fileCount) Files", role: .destructive) {

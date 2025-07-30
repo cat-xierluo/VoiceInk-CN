@@ -28,7 +28,7 @@ struct MetricsView: View {
                         NotificationCenter.default.post(
                             name: .navigateToDestination,
                             object: nil,
-                            userInfo: ["destination": "VoiceInk Pro"]
+                            userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro"))]
                         )
                     }
                 )
@@ -42,7 +42,7 @@ struct MetricsView: View {
                         NotificationCenter.default.post(
                             name: .navigateToDestination,
                             object: nil,
-                            userInfo: ["destination": "VoiceInk Pro"]
+                            userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro"))]
                         )
                     }
                 )

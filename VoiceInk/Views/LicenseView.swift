@@ -5,7 +5,7 @@ struct LicenseView: View {
     
     var body: some View {
         VStack(spacing: 15) {
-            Text("License Management")
+            Text(NSLocalizedString("License Management", comment: "License management"))
                 .font(.headline)
             
             if case .licensed = licenseViewModel.licenseState {
@@ -32,7 +32,7 @@ struct LicenseView: View {
                     if licenseViewModel.isValidating {
                         ProgressView()
                     } else {
-                        Text("Activate License")
+                        Text(NSLocalizedString("Activate License", comment: "Activate license button"))
                     }
                 }
                 .disabled(licenseViewModel.isValidating)

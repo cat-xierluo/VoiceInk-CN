@@ -1,0 +1,718 @@
+/* 主界面导航 */
+"Dashboard" = "Dashboard";
+"Transcribe Audio" = "Transcribe Audio";
+"History" = "History";
+"AI Models" = "AI Models";
+"Enhancement" = "Enhancement";
+"Power Mode" = "Power Mode";
+"Permissions" = "Permissions";
+"Audio Input" = "Audio Input";
+"Dictionary" = "Dictionary";
+"Settings" = "Settings";
+"VoiceInk Pro" = "VoiceInk Pro";
+
+/* MenuBarView */
+"Toggle Mini Recorder" = "Toggle Mini Recorder";
+"AI Enhancement" = "AI Enhancement";
+"Prompt: %@" = "Prompt: %@";
+"AI Provider: %@" = "AI Provider: %@";
+"Model: %@" = "Model: %@";
+"Use Clipboard Context" = "Use Clipboard Context";
+"Use Screen Context" = "Use Screen Context";
+"Additional" = "Additional";
+"Auto-copy to Clipboard" = "Auto-copy to Clipboard";
+"Sound Feedback" = "Sound Feedback";
+"Mute System Audio During Recording" = "Mute System Audio During Recording";
+"Copy Last Transcription" = "Copy Last Transcription";
+"Show Dock Icon" = "Show Dock Icon";
+"Hide Dock Icon" = "Hide Dock Icon";
+"Launch at Login" = "Launch at Login";
+"Check for Updates" = "Check for Updates";
+"Help and Support" = "Help and Support";
+"Quit VoiceInk" = "Quit VoiceInk";
+
+/* Settings */
+"Configure your microphone preferences" = "Configure your microphone preferences";
+
+/* 录音相关 */
+"Recording" = "Recording";
+"Start Recording" = "Start Recording";
+"Stop Recording" = "Stop Recording";
+"Pause Recording" = "Pause Recording";
+"Resume Recording" = "Resume Recording";
+
+/* 转录相关 */
+"Transcription" = "Transcription";
+"Transcribing..." = "Transcribing...";
+"Transcription completed" = "Transcription completed";
+"Transcription failed" = "Transcription failed";
+"Transcription Failed" = "Transcription Failed";
+"Retranscribe this audio" = "Retranscribe this audio";
+"Retranscription successful" = "Retranscription successful";
+"Retranscription failed" = "Retranscription failed";
+"No transcription available" = "No transcription available";
+
+/* 模型相关 */
+"No AI Model Selected" = "No AI Model Selected";
+"Local" = "Local";
+"Groq" = "Groq";
+"ElevenLabs" = "ElevenLabs";
+"Deepgram" = "Deepgram";
+"Mistral" = "Mistral";
+"Custom" = "Custom";
+"Native Apple" = "Native Apple";
+"Apple Speech" = "Apple Speech";
+"Tiny" = "Tiny";
+"Base" = "Base";
+"Multilingual" = "Multilingual";
+"English-only" = "English-only";
+
+/* 按钮和操作 */
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Edit" = "Edit";
+"Close" = "Close";
+"Open" = "Open";
+"Refresh" = "Refresh";
+"Retry" = "Retry";
+"Continue" = "Continue";
+"Back" = "Back";
+"Next" = "Next";
+"Done" = "Done";
+"Copy" = "Copy";
+"Paste" = "Paste";
+"Share" = "Share";
+"Export" = "Export";
+"Import" = "Import";
+
+/* 菜单栏 */
+"Toggle Mini Recorder" = "Toggle Mini Recorder";
+"AI Enhancement" = "AI Enhancement";
+"Prompt:" = "Prompt:";
+"None" = "None";
+"Check for Updates..." = "Check for Updates...";
+"Preferences..." = "Preferences...";
+"Quit VoiceInk" = "Quit VoiceInk";
+
+/* 错误和提示 */
+"Error" = "Error";
+"Warning" = "Warning";
+
+/* Prompt Editor */
+"Edit Trigger Words" = "Edit Trigger Words";
+"New Prompt" = "New Prompt";
+"Edit Prompt" = "Edit Prompt";
+"Title" = "Title";
+"Icon" = "Icon";
+"Description" = "Description";
+"Prompt Instructions" = "Prompt Instructions";
+"Trigger Words" = "Trigger Words";
+"Add" = "Add";
+"Communication" = "Communication";
+"Professional" = "Professional";
+"Technical" = "Technical";
+"Content" = "Content";
+"Remove word" = "Remove word";
+
+/* Audio Transcribe */
+"Transcription Result" = "Transcription Result";
+"Enhanced" = "Enhanced";
+"Original" = "Original";
+"No audio file selected" = "No audio file selected";
+"Select Audio File" = "Select Audio File";
+"Start Transcription" = "Start Transcription";
+"Choose Different File" = "Choose Different File";
+"Drop audio or video file here" = "Drop audio or video file here";
+"Choose File" = "Choose File";
+"Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV" = "Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV";
+"Processing audio..." = "Processing audio...";
+"Converting to text..." = "Converting to text...";
+
+/* License */
+"License Management" = "License Management";
+"Premium Features Activated" = "Premium Features Activated";
+"Trial Active" = "Trial Active";
+"Trial Expired" = "Trial Expired";
+"Free Version" = "Free Version";
+"Enter License Key" = "Enter License Key";
+"Buy License" = "Buy License";
+"Start Trial" = "Start Trial";
+"License Key" = "License Key";
+"Activate" = "Activate";
+"Remove License" = "Remove License";
+"Activate License" = "Activate License";
+"Success" = "Success";
+"Info" = "Info";
+"Please select a model" = "Please select a model";
+"Please check your API key" = "Please check your API key";
+"Network error" = "Network error";
+"Invalid file format" = "Invalid file format";
+"File not found" = "File not found";
+"Permission denied" = "Permission denied";
+
+/* 设置相关 */
+"General" = "General";
+"Audio" = "Audio";
+"Hotkeys" = "Hotkeys";
+"Appearance" = "Appearance";
+"Advanced" = "Advanced";
+"About" = "About";
+"Version" = "Version";
+"Build" = "Build";
+"Contact" = "Contact";
+"Support" = "Support";
+"Documentation" = "Documentation";
+
+/* 状态信息 */
+"Ready" = "Ready";
+"Loading" = "Loading";
+"Processing" = "Processing";
+"Idle" = "Idle";
+"Connected" = "Connected";
+"Disconnected" = "Disconnected";
+"Available" = "Available";
+"Unavailable" = "Unavailable";
+
+/* 时间相关 */
+"Just now" = "Just now";
+"Minutes ago" = "Minutes ago";
+"Hours ago" = "Hours ago";
+"Days ago" = "Days ago";
+"Weeks ago" = "Weeks ago";
+"Months ago" = "Months ago";
+"Years ago" = "Years ago";
+
+/* 文件操作 */
+"Select File" = "Select File";
+"Select Folder" = "Select Folder";
+"Drag and drop files here" = "Drag and drop files here";
+"Supported formats" = "Supported formats";
+"File size" = "File size";
+"Duration" = "Duration";
+
+/* 音频设备 */
+"Microphone" = "Microphone";
+"Speaker" = "Speaker";
+"System Audio" = "System Audio";
+"Input Device" = "Input Device";
+"Output Device" = "Output Device";
+"Volume" = "Volume";
+"Sample Rate" = "Sample Rate";
+"Channels" = "Channels";
+
+/* 快捷键 */
+"Record Shortcut" = "Record Shortcut";
+"Clear Shortcut" = "Clear Shortcut";
+"Shortcut already in use" = "Shortcut already in use";
+"Invalid shortcut" = "Invalid shortcut";
+
+/* 许可证 */
+"Upgrade to Pro" = "Upgrade to Pro";
+"Pro Features" = "Pro Features";
+"Already purchased?" = "Already purchased?";
+"Restore Purchase" = "Restore Purchase";
+"Purchase successful" = "Purchase successful";
+"Purchase failed" = "Purchase failed";
+
+/* 其他 */
+"Search" = "Search";
+"Filter" = "Filter";
+"Sort by" = "Sort by";
+"Name" = "Name";
+"Date" = "Date";
+"Size" = "Size";
+"Type" = "Type";
+"Ascending" = "Ascending";
+"Descending" = "Descending";
+"Select All" = "Select All";
+"Deselect All" = "Deselect All";
+"Invert Selection" = "Invert Selection";
+"Clear" = "Clear";
+"Reset" = "Reset";
+"Apply" = "Apply";
+"OK" = "OK";
+"Yes" = "Yes";
+"No" = "No";
+"Confirm" = "Confirm";
+"Are you sure?" = "Are you sure?";
+"This action cannot be undone" = "This action cannot be undone";
+
+/* 权限页面 */
+"App Permissions" = "App Permissions";
+"VoiceInk requires the following permissions to function properly" = "VoiceInk requires the following permissions to function properly";
+"Keyboard Shortcut" = "Keyboard Shortcut";
+"Set up a keyboard shortcut to use VoiceInk anywhere" = "Set up a keyboard shortcut to use VoiceInk anywhere";
+"Configure Shortcut" = "Configure Shortcut";
+"Microphone Access" = "Microphone Access";
+"Allow VoiceInk to record your voice for transcription" = "Allow VoiceInk to record your voice for transcription";
+"Request Permission" = "Request Permission";
+"Open System Settings" = "Open System Settings";
+"Accessibility Access" = "Accessibility Access";
+"Allow VoiceInk to paste transcribed text directly at your cursor position" = "Allow VoiceInk to paste transcribed text directly at your cursor position";
+"Screen Recording Access" = "Screen Recording Access";
+"Allow VoiceInk to understand context from your screen for transcript Enhancement" = "Allow VoiceInk to understand context from your screen for transcript Enhancement";
+
+/* Prompt Editor */
+"You can only customize the trigger words for system prompts." = "You can only customize the trigger words for system prompts.";
+"Enter a short, descriptive title" = "Enter a short, descriptive title";
+"Add a brief description of what this prompt does" = "Add a brief description of what this prompt does";
+"Enter a description" = "Enter a description";
+"Define how AI should enhance your transcriptions" = "Define how AI should enhance your transcriptions";
+"Start with a Predefined Template" = "Start with a Predefined Template";
+"Add multiple words that can activate this prompt" = "Add multiple words that can activate this prompt";
+"Add trigger word" = "Add trigger word";
+"Media & Creative" = "Media & Creative";
+"Document & Text" = "Document & Text";
+"New Power Mode" = "New Power Mode";
+"Name your power mode" = "Name your power mode";
+"When to Trigger" = "When to Trigger";
+"Applications" = "Applications";
+"Add App" = "Add App";
+"No applications added" = "No applications added";
+"Websites" = "Websites";
+"Enter website URL (e.g., google.com)" = "Enter website URL (e.g., google.com)";
+"No websites added" = "No websites added";
+"No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab." = "No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab.";
+"Model" = "Model";
+"Language" = "Language";
+"Enable AI Enhancement" = "Enable AI Enhancement";
+"AI Provider" = "AI Provider";
+"No providers connected" = "No providers connected";
+"AI Model" = "AI Model";
+"No models loaded" = "No models loaded";
+"No models available" = "No models available";
+"Enhancement Prompt" = "Enhancement Prompt";
+"Context Awareness" = "Context Awareness";
+"Auto Send" = "Auto Send";
+"Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text" = "Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text";
+"Add New Power Mode" = "Add New Power Mode";
+"Save Changes" = "Save Changes";
+"VoiceInk Shortcut" = "VoiceInk Shortcut";
+"Choose how you want to trigger VoiceInk" = "Choose how you want to trigger VoiceInk";
+"Hotkey 1" = "Hotkey 1";
+"Hotkey 2" = "Hotkey 2";
+"Add another hotkey" = "Add another hotkey";
+"Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording)." = "Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording).";
+"Override default double-tap Escape cancellation" = "Override default double-tap Escape cancellation";
+"Custom Cancel Shortcut" = "Custom Cancel Shortcut";
+"By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users)." = "By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users).";
+"Recording Feedback" = "Recording Feedback";
+"Customize app & system feedback" = "Customize app & system feedback";
+"Auto-copy to clipboard" = "Auto-copy to clipboard";
+"Sound feedback" = "Sound feedback";
+"Mute system audio during recording" = "Mute system audio during recording";
+"Automatically mute system audio when recording starts and restore when recording stops" = "Automatically mute system audio when recording starts and restore when recording stops";
+"Pause media during recording" = "Pause media during recording";
+"Automatically pause active media playback when recording starts and resume when recording stops" = "Automatically pause active media playback when recording starts and resume when recording stops";
+"Recorder Style" = "Recorder Style";
+"Choose your preferred recorder interface" = "Choose your preferred recorder interface";
+"Select how you want the recorder to appear on your screen." = "Select how you want the recorder to appear on your screen.";
+"Notch Recorder" = "Notch Recorder";
+"Mini Recorder" = "Mini Recorder";
+"Paste Method" = "Paste Method";
+"Choose how text is pasted" = "Choose how text is pasted";
+"Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout." = "Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.";
+"Use AppleScript Paste Method" = "Use AppleScript Paste Method";
+"App Appearance" = "App Appearance";
+"Dock and Menu Bar options" = "Dock and Menu Bar options";
+"Choose how VoiceInk appears in your system." = "Choose how VoiceInk appears in your system.";
+"Hide Dock Icon (Menu Bar Only)" = "Hide Dock Icon (Menu Bar Only)";
+"Audio Cleanup" = "Audio Cleanup";
+"Manage recording storage" = "Manage recording storage";
+"Startup" = "Startup";
+"Launch options" = "Launch options";
+"Choose whether VoiceInk should start automatically when you log in." = "Choose whether VoiceInk should start automatically when you log in.";
+"Updates" = "Updates";
+"Keep VoiceInk up to date" = "Keep VoiceInk up to date";
+"VoiceInk automatically checks for updates on launch and every other day." = "VoiceInk automatically checks for updates on launch and every other day.";
+"Check for Updates Now" = "Check for Updates Now";
+"Reset the onboarding process to view the app introduction again." = "Reset the onboarding process to view the app introduction again.";
+"Reset Onboarding" = "Reset Onboarding";
+"Data Management" = "Data Management";
+"Import or export your settings" = "Import or export your settings";
+"Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export." = "Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export.";
+"Import Settings..." = "Import Settings...";
+"Export Settings..." = "Export Settings...";
+"Word Replacements" = "Word Replacements";
+"Correct Spellings" = "Correct Spellings";
+"Train VoiceInk to recognize industry terms, names, and technical words" = "Train VoiceInk to recognize industry terms, names, and technical words";
+"Automatically replace specific words/phrases with custom formatted text" = "Automatically replace specific words/phrases with custom formatted text";
+"Dictionary Settings" = "Dictionary Settings";
+"Enhance VoiceInk's transcription accuracy by teaching it your vocabulary" = "Enhance VoiceInk's transcription accuracy by teaching it your vocabulary";
+"Select Section" = "Select Section";
+"Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement." = "Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement.";
+"Add word to dictionary" = "Add word to dictionary";
+"Add word" = "Add word";
+"Dictionary Items (%d)" = "Dictionary Items (%d)";
+"Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance." = "Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance.";
+"'%@' is already in the dictionary" = "'%@' is already in the dictionary";
+"Disable word" = "Disable word";
+"Enable word" = "Enable word";
+"Audio Duration" = "Audio Duration";
+"Transcription Model" = "Transcription Model";
+"Enhancement Model" = "Enhancement Model";
+
+/* Enhancement Settings */
+"Enable Enhancement" = "Enable Enhancement";
+"AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc." = "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.";
+"Turn on AI-powered enhancement features" = "Turn on AI-powered enhancement features";
+"Clipboard Context" = "Clipboard Context";
+"Use text from clipboard to understand the context" = "Use text from clipboard to understand the context";
+"Learn what is on the screen to understand the context" = "Learn what is on the screen to understand the context";
+"AI Provider Integration" = "AI Provider Integration";
+"Editing: %@" = "Editing: %@";
+
+/* 模型相关 */
+"Download" = "Download";
+"Copy Enhanced" = "Copy Enhanced";
+"Copy Original" = "Copy Original";
+"Show in Finder" = "Show in Finder";
+
+/* Import/Export */
+"Export VoiceInk Settings" = "Export VoiceInk Settings";
+"Choose a location to save your settings." = "Choose a location to save your settings.";
+
+/* Onboarding */
+"Welcome to the Future of Typing" = "Welcome to the Future of Typing";
+"A New Way to Type" = "A New Way to Type";
+"Get Started" = "Get Started";
+"Skip Tour" = "Skip Tour";
+"Your Writing Assistant" = "Your Writing Assistant";
+"Your Vibe-Coding Assistant" = "Your Vibe-Coding Assistant";
+"Works Everywhere on Mac with a click" = "Works Everywhere on Mac with a click";
+"100% offline & private" = "100% offline & private";
+
+/* Audio Input Settings */
+"Input Mode" = "Input Mode";
+"Available Devices" = "Available Devices";
+"Note: Selecting a device here will override your Mac's system-wide default microphone." = "Note: Selecting a device here will override your Mac's system-wide default microphone.";
+"Prioritized Devices" = "Prioritized Devices";
+"Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used." = "Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used.";
+"Warning: Using a prioritized device will override your Mac's system-wide default microphone if it becomes active." = "Warning: Using a prioritized device will override your Mac's system-wide default microphone if it becomes active.";
+"No prioritized devices" = "No prioritized devices";
+"No Audio Devices" = "No Audio Devices";
+"Connect an audio input device to get started" = "Connect an audio input device to get started";
+"Export Successful" = "Export Successful";
+"Your settings have been successfully exported to %@." = "Your settings have been successfully exported to %@.";
+"Export Error" = "Export Error";
+"Could not save settings to file: %@" = "Could not save settings to file: %@";
+"Export Canceled" = "Export Canceled";
+"The settings export operation was canceled." = "The settings export operation was canceled.";
+"Could not encode settings to JSON: %@" = "Could not encode settings to JSON: %@";
+"Import VoiceInk Settings" = "Import VoiceInk Settings";
+"Choose a settings file to import. This will overwrite ALL settings (prompts, power modes, dictionary, general app settings)." = "Choose a settings file to import. This will overwrite ALL settings (prompts, power modes, dictionary, general app settings).";
+"Import Error" = "Import Error";
+"Could not get the file URL from the open panel." = "Could not get the file URL from the open panel.";
+"Version Mismatch" = "Version Mismatch";
+"The imported settings file (version %@) is from a different version than your application (version %@). Proceeding with import, but be aware of potential incompatibilities." = "The imported settings file (version %@) is from a different version than your application (version %@). Proceeding with import, but be aware of potential incompatibilities.";
+"Import Successful" = "Import Successful";
+"Settings imported successfully from %@. All settings (including general app settings) have been applied." = "Settings imported successfully from %@. All settings (including general app settings) have been applied.";
+"Error importing settings: %@. The file might be corrupted or not in the correct format." = "Error importing settings: %@. The file might be corrupted or not in the correct format.";
+"Import Canceled" = "Import Canceled";
+"The settings import operation was canceled." = "The settings import operation was canceled.";
+"Configure API Keys" = "Configure API Keys";
+
+/* 设置相关 */
+"Output Format" = "Output Format";
+
+/* License */
+"Output Format Guide" = "Output Format Guide";
+"Automatic text formatting" = "Automatic text formatting";
+"Automatic Text Formatting" = "Automatic Text Formatting";
+"Voice Activity Detection" = "Voice Activity Detection";
+
+/* 图标名称 */
+"Document" = "Document";
+"Textbox" = "Textbox";
+"Sealed" = "Sealed";
+"Chat" = "Chat";
+"Message" = "Message";
+"Email" = "Email";
+"Meeting" = "Meeting";
+"Presentation" = "Presentation";
+"Briefcase" = "Briefcase";
+"Code" = "Code";
+"Terminal" = "Terminal";
+"Blog" = "Blog";
+"Notes" = "Notes";
+"Book" = "Book";
+"Bookmark" = "Bookmark";
+"Video" = "Video";
+"Music" = "Music";
+"Photo" = "Photo";
+"Design" = "Design";
+"Add New" = "Add New";
+"Transcription Time" = "Transcription Time";
+"Enhancement Time" = "Enhancement Time";
+
+/* 错误和状态消息 */
+"Recording failed to start" = "Recording failed to start";
+"AI enhancement failed" = "AI enhancement failed";
+"No transcription model selected" = "No transcription model selected";
+"Please enter a license key" = "Please enter a license key";
+"Invalid license key" = "Invalid license key";
+
+/* 预设模板 */
+"System Default" = "System Default";
+"Default" = "Default";
+"Default mode to improved clarity and accuracy of the transcription" = "Default mode to improved clarity and accuracy of the transcription";
+"Assistant" = "Assistant";
+"AI assistant that provides direct answers to queries" = "AI assistant that provides direct answers to queries";
+"Task List" = "Task List";
+"Template for converting voice notes into markdown task lists" = "Template for converting voice notes into markdown task lists";
+"Quick Notes" = "Quick Notes";
+"Tweet" = "Tweet";
+"Template for crafting engaging tweets and replies with personality" = "Template for crafting engaging tweets and replies with personality";
+"Daily Journal" = "Daily Journal";
+"Template for converting voice notes into structured daily journal entries" = "Template for converting voice notes into structured daily journal entries";
+"Meeting Notes" = "Meeting Notes";
+"Template for structuring meeting notes and action items" = "Template for structuring meeting notes and action items";
+
+/* 语言相关 */
+"Auto-detect" = "Auto-detect";
+"English" = "English";
+"Chinese" = "Chinese";
+"Spanish" = "Spanish";
+"French" = "French";
+"German" = "German";
+"Japanese" = "Japanese";
+"Korean" = "Korean";
+"Portuguese" = "Portuguese";
+"Arabic" = "Arabic";
+"Russian" = "Russian";
+"Italian" = "Italian";
+"Afrikaans" = "Afrikaans";
+"Amharic" = "Amharic";
+"Assamese" = "Assamese";
+"Azerbaijani" = "Azerbaijani";
+"Bashkir" = "Bashkir";
+"Belarusian" = "Belarusian";
+"Bulgarian" = "Bulgarian";
+"Bengali" = "Bengali";
+"Hindi" = "Hindi";
+"Dutch" = "Dutch";
+"Thai" = "Thai";
+"Vietnamese" = "Vietnamese";
+"Turkish" = "Turkish";
+"Swedish" = "Swedish";
+"Polish" = "Polish";
+"Norwegian" = "Norwegian";
+"Danish" = "Danish";
+"Finnish" = "Finnish";
+"Czech" = "Czech";
+"Hungarian" = "Hungarian";
+"Romanian" = "Romanian";
+"Croatian" = "Croatian";
+"Slovak" = "Slovak";
+"Ukrainian" = "Ukrainian";
+"Greek" = "Greek";
+"Hebrew" = "Hebrew";
+"Farsi" = "Farsi";
+"Urdu" = "Urdu";
+"Indonesian" = "Indonesian";
+"Malay" = "Malay";
+"Tagalog" = "Tagalog";
+"Cantonese" = "Cantonese";
+
+/* 欢迎设置页面 */
+"Welcome to VoiceInk" = "Welcome to VoiceInk";
+"Complete the setup to get started" = "Complete the setup to get started";
+"Set Keyboard Shortcut" = "Set Keyboard Shortcut";
+"Use VoiceInk anywhere with a shortcut." = "Use VoiceInk anywhere with a shortcut.";
+"Enable Accessibility" = "Enable Accessibility";
+"Paste transcribed text at your cursor." = "Paste transcribed text at your cursor.";
+"Enable Screen Recording" = "Enable Screen Recording";
+"Get better transcriptions with screen context." = "Get better transcriptions with screen context.";
+"Download Model" = "Download Model";
+"Choose an AI model to start transcribing." = "Choose an AI model to start transcribing.";
+"Need help? Check the Help menu for support options" = "Need help? Check the Help menu for support options";
+"Active" = "Active";
+"Custom Device" = "Custom Device";
+"Prioritized" = "Prioritized";
+"Use system's default input device" = "Use system's default input device";
+"Select a specific input device" = "Select a specific input device";
+"Set up device priority order" = "Set up device priority order";
+
+/* 词汇替换页面 */
+"Define word replacements to automatically replace specific words or phrases" = "Define word replacements to automatically replace specific words or phrases";
+"Enable automatic word replacement after transcription" = "Enable automatic word replacement after transcription";
+"No Replacements" = "No Replacements";
+"Add word replacements to automatically replace text during AI enhancement." = "Add word replacements to automatically replace text during AI enhancement.";
+"Add Replacement" = "Add Replacement";
+"Enable" = "Enable";
+
+/* 模型下载页面 */
+"Download AI Model" = "Download AI Model";
+"We'll download the optimized model to get you started." = "We'll download the optimized model to get you started.";
+"Downloading..." = "Downloading...";
+"Set as Default" = "Set as Default";
+"Add Power Mode" = "Add Power Mode";
+"Edit Default Power Mode" = "Edit Default Power Mode";
+"Edit Power Mode" = "Edit Power Mode";
+"Default Power Mode" = "Default Power Mode";
+"Custom Power Modes" = "Custom Power Modes";
+"No custom power modes" = "No custom power modes";
+"Create a new mode for specific apps/websites" = "Create a new mode for specific apps/websites";
+"Power Mode is disabled" = "Power Mode is disabled";
+"Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website." = "Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website.";
+"Enable Power Mode" = "Enable Power Mode";
+"No Power Modes" = "No Power Modes";
+"Add customized power modes for different contexts" = "Add customized power modes for different contexts";
+"Fallback power mode" = "Fallback power mode";
+"Select Power Mode" = "Select Power Mode";
+
+/* 历史记录页面 */
+"No transcriptions found" = "No transcriptions found";
+"Your history will appear here" = "Your history will appear here";
+"Create custom modes that automatically apply when using specific apps/websites." = "Create custom modes that automatically apply when using specific apps/websites.";
+"Cannot Save Power Mode" = "Cannot Save Power Mode";
+
+/* 专业模式验证错误 */
+"Power mode name cannot be empty." = "Power mode name cannot be empty.";
+"A power mode with the name" = "A power mode with the name";
+"already exists." = "already exists.";
+"You must add at least one application or website." = "You must add at least one application or website.";
+"The app" = "The app";
+"is already configured in the" = "is already configured in the";
+"power mode." = "power mode.";
+"The website" = "The website";
+"The file might be corrupted or not in the correct format." = "The file might be corrupted or not in the correct format.";
+"Your settings have been successfully exported to" = "Your settings have been successfully exported to";
+"Could not save settings to file:" = "Could not save settings to file:";
+"Could not encode settings to JSON:" = "Could not encode settings to JSON:";
+"Error importing settings:" = "Error importing settings:";
+
+/* 其他界面文本 */
+"Define a word or phrase to be automatically replaced during AI enhancement." = "Define a word or phrase to be automatically replaced during AI enhancement.";
+"VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts." = "VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts.";
+"API key for this service is missing. Please configure it in the settings." = "API key for this service is missing. Please configure it in the settings.";
+
+/* VoiceInk Pro页面 */
+"Thank you for supporting VoiceInk" = "Thank you for supporting VoiceInk";
+"Changelog" = "Changelog";
+"Discord" = "Discord";
+"Email Support" = "Email Support";
+"Docs" = "Docs";
+"Roadmap" = "Roadmap";
+"License Active" = "License Active";
+"You can use VoiceInk Pro on all your personal devices" = "You can use VoiceInk Pro on all your personal devices";
+"Transcribe what you say to text instantly with AI" = "Transcribe what you say to text instantly with AI";
+"Manage license and billing" = "Manage license and billing";
+"Deactivate License" = "Deactivate License";
+
+/* AI模型页面 */
+"Default Model" = "Default Model";
+"Transcription Language" = "Transcription Language";
+"Select Language" = "Select Language";
+"Current model:" = "Current model:";
+"This model supports multiple languages. Select a specific language or auto-detect(if available)" = "This model supports multiple languages. Select a specific language or auto-detect(if available)";
+"Recommended" = "Recommended";
+"Cloud" = "Cloud";
+"Speed" = "Speed";
+"Accuracy" = "Accuracy";
+"Base model optimized for English, good balance between speed and accuracy" = "Base model optimized for English, good balance between speed and accuracy";
+"Quantized version of Large v3 Turbo, faster with slightly lower accuracy" = "Quantized version of Large v3 Turbo, faster with slightly lower accuracy";
+"Large model v3 Turbo, faster than v3 with similar accuracy" = "Large model v3 Turbo, faster than v3 with similar accuracy";
+"Setup Required" = "Setup Required";
+"Configure" = "Configure";
+"Enhance your transcriptions with AI" = "Enhance your transcriptions with AI";
+"Enter your API Key" = "Enter your API Key";
+"Verify and Save" = "Verify and Save";
+"Free" = "Free";
+"Get API Key" = "Get API Key";
+"Right-click on prompts to edit or delete" = "Right-click on prompts to edit or delete";
+
+/* 缺失的翻译 */
+"PRO" = "PRO";
+
+/* Word Replacement Settings */
+"Enter word or phrase to replace" = "Enter word or phrase to replace";
+"Replacement:" = "Replacement:";
+"Original:" = "Original:";
+"Add Word Replacement" = "Add Word Replacement";
+"Replacement Text" = "Replacement Text";
+"Remove replacement" = "Remove replacement";
+"Not Set" = "Not Set";
+"Space" = "Space";
+"Enter" = "Enter";
+"Unknown" = "Unknown";
+"All Languages" = "All Languages";
+"or" = "or";
+"Language: English" = "Language: English";
+"Whisper Large v3 Turbo model with Groq's lightning-speed inference" = "Whisper Large v3 Turbo model with Groq's lightning-speed inference";
+"Cloud Model" = "Cloud Model";
+"Default system prompt for improving clarity and accuracy of transcriptions" = "Default system prompt for improving clarity and accuracy of transcriptions";
+"Casual chat-style formatting" = "Casual chat-style formatting";
+"Template for converting casual messages into professional email format" = "Template for converting casual messages into professional email format";
+"Template for converting voice notes into quick, organized notes" = "Template for converting voice notes into quick, organized notes";
+"Enable automatic audio cleanup" = "Enable automatic audio cleanup";
+"Retention Period" = "Retention Period";
+"Keep audio files for" = "Keep audio files for";
+"7 days" = "7 days";
+"Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact." = "Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.";
+"Run Cleanup Now" = "Run Cleanup Now";
+"Analyzing..." = "Analyzing...";
+"Launch at login" = "Launch at login";
+
+/* 音频保留期 */
+"1 day" = "1 day";
+"3 days" = "3 days";
+"14 days" = "14 days";
+"30 days" = "30 days";
+"Manage AI Providers" = "Manage AI Providers";
+"AI Provider:" = "AI Provider:";
+"Manage Models" = "Manage Models";
+"Model:" = "Model:";
+
+/* 语言和自动检测 */
+"Language:" = "Language:";
+
+/* 提示编辑对话框 */
+"Editing:" = "Editing:";
+
+/* 专业模式配置 */
+"Default Configuration" = "Default Configuration";
+"View the introduction again" = "View the introduction again";
+
+/* 专业模式详细描述 */
+"Automatically apply custom configurations based on the app/website you are using" = "Automatically apply custom configurations based on the app/website you are using";
+
+/* 自定义模型对话框 */
+"Add Custom Model" = "Add Custom Model";
+"Edit Custom Model" = "Edit Custom Model";
+"Only OpenAI-compatible transcription APIs are supported" = "Only OpenAI-compatible transcription APIs are supported";
+"Display Name" = "Display Name";
+"API Endpoint" = "API Endpoint";
+"API Key" = "API Key";
+"Model Name" = "Model Name";
+"My Custom Model" = "My Custom Model";
+"your-api-key" = "your-api-key";
+"whisper-1" = "whisper-1";
+"large-v3-turbo" = "large-v3-turbo";
+"Multilingual Model" = "Multilingual Model";
+"Add Model" = "Add Model";
+"Edit Model" = "Edit Model";
+"Update Model" = "Update Model";
+
+/* Voice Activity Detection */
+"Voice Activity Detection (VAD)" = "Voice Activity Detection (VAD)";
+
+/* 模型描述 - 保持一致性 */
+"Built-in" = "Built-in";
+"Uses the native Apple Speech framework for transcription. Requires macOS 26." = "Uses the native Apple Speech framework for transcription. Requires macOS 26.";
+"Tiny model, fastest, least accurate" = "Tiny model, fastest, least accurate";
+"Tiny model optimized for English, fastest, least accurate" = "Tiny model optimized for English, fastest, least accurate";
+"Base model, good balance between speed and accuracy, supports multiple languages" = "Base model, good balance between speed and accuracy, supports multiple languages";
+"ElevenLabs' Scribe model for fast and accurate transcription." = "ElevenLabs' Scribe model for fast and accurate transcription.";
+"Deepgram's Nova model for fast, accurate, and cost-effective transcription." = "Deepgram's Nova model for fast, accurate, and cost-effective transcription.";
+"Mistral's latest SOTA transcription model." = "Mistral's latest SOTA transcription model.";
+
+/* 遗漏的模型描述 */
+"Large model v2, slower than Medium but more accurate" = "Large model v2, slower than Medium but more accurate";
+"Large model v3, very slow but most accurate" = "Large model v3, very slow but most accurate";
+
+/* 新增的本地化键 */
+"API Endpoint URL" = "API Endpoint URL";
+"API Key Configuration" = "API Key Configuration";
+"Performance Analysis" = "Performance Analysis";

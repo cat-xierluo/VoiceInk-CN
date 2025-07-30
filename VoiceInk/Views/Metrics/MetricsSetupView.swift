@@ -168,7 +168,7 @@ struct MetricsSetupView: View {
     
     private func getActionButtonTitle() -> String {
         if hotkeyManager.selectedHotkey1 == .none {
-            return "Configure Shortcut"
+            return NSLocalizedString("Configure Shortcut", comment: "Configure shortcut button")
         } else if !AXIsProcessTrusted() {
             return "Enable Accessibility"
         } else if !CGPreflightScreenCaptureAccess() {
@@ -176,7 +176,7 @@ struct MetricsSetupView: View {
         } else if whisperState.currentTranscriptionModel == nil {
             return "Download Model"
         }
-        return "Get Started"
+        return NSLocalizedString("Get Started", comment: "Get started")
     }
     
     private var helpText: some View {
@@ -195,7 +195,7 @@ struct MetricsSetupView: View {
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
-            userInfo: ["destination": "Settings"]
+            userInfo: ["destination": NSLocalizedString("Settings", comment: NSLocalizedString("Settings", comment: "Settings"))]
         )
     }
     
@@ -203,7 +203,7 @@ struct MetricsSetupView: View {
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
-            userInfo: ["destination": "AI Models"]
+            userInfo: ["destination": NSLocalizedString("AI Models", comment: NSLocalizedString("AI Models", comment: "AI Models"))]
         )
     }
 }

@@ -4,17 +4,33 @@ import KeyboardShortcuts
 
 // ViewType enum with all cases
 enum ViewType: String, CaseIterable {
-    case metrics = "Dashboard"
-    case transcribeAudio = "Transcribe Audio"
-    case history = "History"
-    case models = "AI Models"
-    case enhancement = "Enhancement"
-    case powerMode = "Power Mode"
-    case permissions = "Permissions"
-    case audioInput = "Audio Input"
-    case dictionary = "Dictionary"
-    case settings = "Settings"
-    case license = "VoiceInk Pro"
+    case metrics = "dashboard"
+    case transcribeAudio = "transcribeAudio"
+    case history = "history"
+    case models = "models"
+    case enhancement = "enhancement"
+    case powerMode = "powerMode"
+    case permissions = "permissions"
+    case audioInput = "audioInput"
+    case dictionary = "dictionary"
+    case settings = "settings"
+    case license = "license"
+    
+    var displayName: String {
+        switch self {
+        case .metrics: return NSLocalizedString("Dashboard", comment: "Dashboard tab title")
+        case .transcribeAudio: return NSLocalizedString("Transcribe Audio", comment: "Transcribe Audio tab title")
+        case .history: return NSLocalizedString("History", comment: "History tab title")
+        case .models: return NSLocalizedString("AI Models", comment: "AI Models tab title")
+        case .enhancement: return NSLocalizedString("Enhancement", comment: "Enhancement tab title")
+        case .powerMode: return NSLocalizedString("Power Mode", comment: "Power Mode tab title")
+        case .permissions: return NSLocalizedString("Permissions", comment: "Permissions tab title")
+        case .audioInput: return NSLocalizedString("Audio Input", comment: "Audio Input tab title")
+        case .dictionary: return NSLocalizedString("Dictionary", comment: "Dictionary tab title")
+        case .settings: return NSLocalizedString("Settings", comment: "Settings tab title")
+        case .license: return NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro tab title")
+        }
+    }
     
     var icon: String {
         switch self {
@@ -74,7 +90,7 @@ struct DynamicSidebar: View {
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
-                    Text("PRO")
+                    Text(NSLocalizedString("PRO", comment: "Pro"))
                         .font(.system(size: 9, weight: .heavy))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 4)
@@ -91,7 +107,7 @@ struct DynamicSidebar: View {
             // Navigation Items
             ForEach(ViewType.allCases, id: \.self) { viewType in
                 DynamicSidebarButton(
-                    title: viewType.rawValue,
+                    title: viewType.displayName,
                     systemImage: viewType.icon,
                     isSelected: selectedView == viewType,
                     isHovered: hoveredView == viewType,
@@ -197,22 +213,22 @@ struct ContentView: View {
             if let destination = notification.userInfo?["destination"] as? String {
                 print("ContentView: Destination received: \(destination)")
                 switch destination {
-                case "Settings":
+                case NSLocalizedString("Settings", comment: NSLocalizedString("Settings", comment: "Settings")):
                     print("ContentView: Navigating to Settings")
                     selectedView = .settings
-                case "AI Models":
+                case NSLocalizedString("AI Models", comment: NSLocalizedString("AI Models", comment: "AI Models")):
                     print("ContentView: Navigating to AI Models")
                     selectedView = .models
-                case "VoiceInk Pro":
+                case NSLocalizedString("VoiceInk Pro", comment: NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro")):
                     print("ContentView: Navigating to VoiceInk Pro")
                     selectedView = .license
-                case "History":
+                case NSLocalizedString("History", comment: NSLocalizedString("History", comment: "History")):
                     print("ContentView: Navigating to History")
                     selectedView = .history
-                case "Permissions":
+                case NSLocalizedString("Permissions", comment: NSLocalizedString("Permissions", comment: "Permissions")):
                     print("ContentView: Navigating to Permissions")
                     selectedView = .permissions
-                case "Enhancement":
+                case NSLocalizedString("Enhancement", comment: NSLocalizedString("Enhancement", comment: "Enhancement")):
                     print("ContentView: Navigating to Enhancement")
                     selectedView = .enhancement
                 default:

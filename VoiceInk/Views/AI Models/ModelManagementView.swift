@@ -2,11 +2,21 @@ import SwiftUI
 import SwiftData
 
 enum ModelFilter: String, CaseIterable, Identifiable {
-    case recommended = "Recommended"
-    case local = "Local"
-    case cloud = "Cloud"
-    case custom = "Custom"
+    case recommended = "recommended"
+    case local = "local"
+    case cloud = "cloud" 
+    case custom = "custom"
+    
     var id: String { self.rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .recommended: return NSLocalizedString("Recommended", comment: "Recommended")
+        case .local: return NSLocalizedString("Local", comment: "Local")
+        case .cloud: return NSLocalizedString("Cloud", comment: "Cloud")
+        case .custom: return NSLocalizedString("Custom", comment: "Custom")
+        }
+    }
 }
 
 struct ModelManagementView: View {
@@ -42,7 +52,7 @@ struct ModelManagementView: View {
             Alert(
                 title: Text(alertTitle),
                 message: Text(alertMessage),
-                primaryButton: .destructive(Text("Delete"), action: deleteActionClosure),
+                primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "Delete button")), action: deleteActionClosure),
                 secondaryButton: .cancel()
             )
         }
@@ -50,7 +60,7 @@ struct ModelManagementView: View {
     
     private var defaultModelSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Default Model")
+            Text(NSLocalizedString("Default Model", comment: "Default model"))
                 .font(.headline)
                 .foregroundColor(.secondary)
             Text(whisperState.currentTranscriptionModel?.displayName ?? "No model selected")
@@ -79,7 +89,7 @@ struct ModelManagementView: View {
                                 isShowingSettings = false
                             }
                         }) {
-                            Text(filter.rawValue)
+                            Text(filter.displayName)
                                 .font(.system(size: 14, weight: selectedFilter == filter ? .semibold : .medium))
                                 .foregroundColor(selectedFilter == filter ? .primary : .primary.opacity(0.7))
                                 .padding(.horizontal, 16)

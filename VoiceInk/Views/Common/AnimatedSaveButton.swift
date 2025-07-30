@@ -20,7 +20,7 @@ struct AnimatedSaveButton: View {
                 Image(systemName: isSaved ? "checkmark" : "square.and.arrow.down")
                     .font(.system(size: 12, weight: isSaved ? .bold : .regular))
                     .foregroundColor(.white)
-                Text(isSaved ? "Saved" : "Save")
+                Text(isSaved ? "Saved" : NSLocalizedString("Save", comment: "Save button"))
                     .font(.system(size: 12, weight: isSaved ? .medium : .regular))
                     .foregroundColor(.white)
             }

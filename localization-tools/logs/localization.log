@@ -1,0 +1,219 @@
+2025-07-30 21:59:59,033 - INFO - 🚀 开始智能本地化处理
+2025-07-30 21:59:59,034 - INFO - 📁 找到 63 个目标文件
+2025-07-30 21:59:59,062 - INFO - 📝 处理前发现 391 个可本地化字符串
+2025-07-30 21:59:59,111 - INFO - ✅ VoiceInk/Models/CustomPrompt.swift: 2 处修改
+2025-07-30 21:59:59,133 - INFO - ⏭️  VoiceInk/Models/PredefinedPrompts.swift: 无需修改
+2025-07-30 21:59:59,167 - INFO - ✅ VoiceInk/PowerMode/EmojiPickerView.swift: 2 处修改
+2025-07-30 21:59:59,191 - INFO - ⏭️  VoiceInk/PowerMode/PowerModeValidator.swift: 无需修改
+2025-07-30 21:59:59,245 - INFO - ✅ VoiceInk/PowerMode/PowerModeViewComponents.swift: 1 处修改
+2025-07-30 21:59:59,331 - INFO - ⏭️  VoiceInk/Views/AI Models/APIKeyManagementView.swift: 无需修改
+2025-07-30 21:59:59,378 - INFO - ⏭️  VoiceInk/Views/AI Models/AddCustomModelView.swift: 无需修改
+2025-07-30 21:59:59,422 - INFO - ⏭️  VoiceInk/Views/AI Models/CloudModelCardRowView.swift: 无需修改
+2025-07-30 21:59:59,439 - INFO - ⏭️  VoiceInk/Views/AI Models/CustomModelCardRowView.swift: 无需修改
+2025-07-30 21:59:59,466 - INFO - ⏭️  VoiceInk/Views/AI Models/LanguageSelectionView.swift: 无需修改
+2025-07-30 21:59:59,495 - INFO - ⏭️  VoiceInk/Views/AI Models/LocalModelCardRowView.swift: 无需修改
+2025-07-30 21:59:59,504 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelCardRowView.swift: 无需修改
+2025-07-30 21:59:59,540 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelManagementView.swift: 无需修改
+2025-07-30 21:59:59,555 - INFO - ⏭️  VoiceInk/Views/AI Models/NativeModelCardRowView.swift: 无需修改
+2025-07-30 21:59:59,619 - INFO - ⏭️  VoiceInk/Views/AudioPlayerView.swift: 无需修改
+2025-07-30 21:59:59,685 - INFO - ⏭️  VoiceInk/Views/AudioTranscribeView.swift: 无需修改
+2025-07-30 21:59:59,692 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedCopyButton.swift: 无需修改
+2025-07-30 21:59:59,709 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedSaveButton.swift: 无需修改
+2025-07-30 21:59:59,712 - INFO - ⏭️  VoiceInk/Views/Common/AppIconView.swift: 无需修改
+2025-07-30 21:59:59,725 - INFO - ⏭️  VoiceInk/Views/Common/CardBackground.swift: 无需修改
+2025-07-30 21:59:59,738 - INFO - ⏭️  VoiceInk/Views/Common/TranscriptionFallbackView.swift: 无需修改
+2025-07-30 21:59:59,746 - INFO - ⏭️  VoiceInk/Views/Components/InfoTip.swift: 无需修改
+2025-07-30 21:59:59,749 - INFO - ⏭️  VoiceInk/Views/Components/ProBadge.swift: 无需修改
+2025-07-30 21:59:59,765 - INFO - ⏭️  VoiceInk/Views/Components/PromptSelectionGrid.swift: 无需修改
+2025-07-30 21:59:59,774 - INFO - ⏭️  VoiceInk/Views/Components/TrialMessageView.swift: 无需修改
+2025-07-30 21:59:59,815 - INFO - ⏭️  VoiceInk/Views/ContentView.swift: 无需修改
+2025-07-30 21:59:59,833 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionarySettingsView.swift: 无需修改
+2025-07-30 21:59:59,864 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionaryView.swift: 无需修改
+2025-07-30 21:59:59,913 - INFO - ⏭️  VoiceInk/Views/Dictionary/WordReplacementView.swift: 无需修改
+2025-07-30 21:59:59,936 - INFO - ⏭️  VoiceInk/Views/EnhancementSettingsView.swift: 无需修改
+2025-07-30 21:59:59,967 - INFO - ⏭️  VoiceInk/Views/KeyboardShortcutView.swift: 无需修改
+2025-07-30 22:00:00,011 - INFO - ⏭️  VoiceInk/Views/LicenseManagementView.swift: 无需修改
+2025-07-30 22:00:00,021 - INFO - ⏭️  VoiceInk/Views/LicenseView.swift: 无需修改
+2025-07-30 22:00:00,058 - INFO - ⏭️  VoiceInk/Views/MenuBarView.swift: 无需修改
+2025-07-30 22:00:00,064 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricCard.swift: 无需修改
+2025-07-30 22:00:00,086 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsContent.swift: 无需修改
+2025-07-30 22:00:00,117 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsSetupView.swift: 无需修改
+2025-07-30 22:00:00,172 - INFO - ⏭️  VoiceInk/Views/Metrics/PerformanceAnalysisView.swift: 无需修改
+2025-07-30 22:00:00,201 - INFO - ⏭️  VoiceInk/Views/Metrics/TimeEfficiencyView.swift: 无需修改
+2025-07-30 22:00:00,213 - INFO - ⏭️  VoiceInk/Views/MetricsView.swift: 无需修改
+2025-07-30 22:00:00,230 - INFO - ⏭️  VoiceInk/Views/ModelSettingsView.swift: 无需修改
+2025-07-30 22:00:00,268 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingModelDownloadView.swift: 无需修改
+2025-07-30 22:00:00,353 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingPermissionsView.swift: 无需修改
+2025-07-30 22:00:00,391 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingTutorialView.swift: 无需修改
+2025-07-30 22:00:00,447 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingView.swift: 无需修改
+2025-07-30 22:00:00,494 - INFO - ⏭️  VoiceInk/Views/PermissionsView.swift: 无需修改
+2025-07-30 22:00:00,573 - INFO - ⏭️  VoiceInk/Views/PromptEditorView.swift: 无需修改
+2025-07-30 22:00:00,589 - INFO - ⏭️  VoiceInk/Views/Recorder/AudioVisualizerView.swift: 无需修改
+2025-07-30 22:00:00,603 - INFO - ⏭️  VoiceInk/Views/Recorder/EnhancementPromptPopover.swift: 无需修改
+2025-07-30 22:00:00,610 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderPanel.swift: 无需修改
+2025-07-30 22:00:00,626 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderView.swift: 无需修改
+2025-07-30 22:00:00,636 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniWindowManager.swift: 无需修改
+2025-07-30 22:00:00,665 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderPanel.swift: 无需修改
+2025-07-30 22:00:00,683 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderView.swift: 无需修改
+2025-07-30 22:00:00,691 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchShape.swift: 无需修改
+2025-07-30 22:00:00,701 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchWindowManager.swift: 无需修改
+2025-07-30 22:00:00,718 - INFO - ⏭️  VoiceInk/Views/Recorder/RecorderComponents.swift: 无需修改
+2025-07-30 22:00:00,759 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupManager.swift: 无需修改
+2025-07-30 22:00:00,783 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupSettingsView.swift: 无需修改
+2025-07-30 22:00:00,842 - INFO - ⏭️  VoiceInk/Views/Settings/AudioInputSettingsView.swift: 无需修改
+2025-07-30 22:00:00,917 - INFO - ⏭️  VoiceInk/Views/Settings/SettingsView.swift: 无需修改
+2025-07-30 22:00:00,946 - INFO - ⏭️  VoiceInk/Views/TranscriptionCard.swift: 无需修改
+2025-07-30 22:00:01,011 - INFO - ⏭️  VoiceInk/Views/TranscriptionHistoryView.swift: 无需修改
+2025-07-30 22:00:01,031 - INFO - 🎉 本地化处理完成！
+2025-07-30 22:00:01,031 - INFO -    ⏱️  耗时: 2.00秒
+2025-07-30 22:00:01,031 - INFO -    📁 处理了 63 个文件
+2025-07-30 22:00:01,031 - INFO -    ✏️  修改了 3 个文件
+2025-07-30 22:00:01,031 - INFO -    🔄 总共 5 处修改
+2025-07-30 22:00:01,031 - INFO -    📉 剩余 388 个未处理字符串
+2025-07-30 22:00:01,031 - INFO -    🔑 新增 0 个本地化键
+2025-07-30 22:08:50,100 - INFO - 🚀 开始智能本地化处理
+2025-07-30 22:08:50,103 - INFO - 📁 找到 63 个目标文件
+2025-07-30 22:08:50,131 - INFO - 📝 处理前发现 388 个可本地化字符串
+2025-07-30 22:08:50,185 - INFO - ⏭️  VoiceInk/Models/CustomPrompt.swift: 无需修改
+2025-07-30 22:08:50,207 - INFO - ⏭️  VoiceInk/Models/PredefinedPrompts.swift: 无需修改
+2025-07-30 22:08:50,243 - INFO - ⏭️  VoiceInk/PowerMode/EmojiPickerView.swift: 无需修改
+2025-07-30 22:08:50,267 - INFO - ⏭️  VoiceInk/PowerMode/PowerModeValidator.swift: 无需修改
+2025-07-30 22:08:50,327 - INFO - ⏭️  VoiceInk/PowerMode/PowerModeViewComponents.swift: 无需修改
+2025-07-30 22:08:50,419 - INFO - ⏭️  VoiceInk/Views/AI Models/APIKeyManagementView.swift: 无需修改
+2025-07-30 22:08:50,469 - INFO - ⏭️  VoiceInk/Views/AI Models/AddCustomModelView.swift: 无需修改
+2025-07-30 22:08:50,516 - INFO - ⏭️  VoiceInk/Views/AI Models/CloudModelCardRowView.swift: 无需修改
+2025-07-30 22:08:50,552 - INFO - ⏭️  VoiceInk/Views/AI Models/CustomModelCardRowView.swift: 无需修改
+2025-07-30 22:08:50,580 - INFO - ⏭️  VoiceInk/Views/AI Models/LanguageSelectionView.swift: 无需修改
+2025-07-30 22:08:50,609 - INFO - ⏭️  VoiceInk/Views/AI Models/LocalModelCardRowView.swift: 无需修改
+2025-07-30 22:08:50,618 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelCardRowView.swift: 无需修改
+2025-07-30 22:08:50,654 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelManagementView.swift: 无需修改
+2025-07-30 22:08:50,669 - INFO - ⏭️  VoiceInk/Views/AI Models/NativeModelCardRowView.swift: 无需修改
+2025-07-30 22:08:50,732 - INFO - ⏭️  VoiceInk/Views/AudioPlayerView.swift: 无需修改
+2025-07-30 22:08:50,797 - INFO - ⏭️  VoiceInk/Views/AudioTranscribeView.swift: 无需修改
+2025-07-30 22:08:50,803 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedCopyButton.swift: 无需修改
+2025-07-30 22:08:50,820 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedSaveButton.swift: 无需修改
+2025-07-30 22:08:50,823 - INFO - ⏭️  VoiceInk/Views/Common/AppIconView.swift: 无需修改
+2025-07-30 22:08:50,837 - INFO - ⏭️  VoiceInk/Views/Common/CardBackground.swift: 无需修改
+2025-07-30 22:08:50,850 - INFO - ⏭️  VoiceInk/Views/Common/TranscriptionFallbackView.swift: 无需修改
+2025-07-30 22:08:50,857 - INFO - ⏭️  VoiceInk/Views/Components/InfoTip.swift: 无需修改
+2025-07-30 22:08:50,859 - INFO - ⏭️  VoiceInk/Views/Components/ProBadge.swift: 无需修改
+2025-07-30 22:08:50,875 - INFO - ⏭️  VoiceInk/Views/Components/PromptSelectionGrid.swift: 无需修改
+2025-07-30 22:08:50,884 - INFO - ⏭️  VoiceInk/Views/Components/TrialMessageView.swift: 无需修改
+2025-07-30 22:08:50,926 - INFO - ⏭️  VoiceInk/Views/ContentView.swift: 无需修改
+2025-07-30 22:08:50,944 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionarySettingsView.swift: 无需修改
+2025-07-30 22:08:50,975 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionaryView.swift: 无需修改
+2025-07-30 22:08:51,022 - INFO - ⏭️  VoiceInk/Views/Dictionary/WordReplacementView.swift: 无需修改
+2025-07-30 22:08:51,045 - INFO - ⏭️  VoiceInk/Views/EnhancementSettingsView.swift: 无需修改
+2025-07-30 22:08:51,074 - INFO - ⏭️  VoiceInk/Views/KeyboardShortcutView.swift: 无需修改
+2025-07-30 22:08:51,114 - INFO - ⏭️  VoiceInk/Views/LicenseManagementView.swift: 无需修改
+2025-07-30 22:08:51,122 - INFO - ⏭️  VoiceInk/Views/LicenseView.swift: 无需修改
+2025-07-30 22:08:51,155 - INFO - ⏭️  VoiceInk/Views/MenuBarView.swift: 无需修改
+2025-07-30 22:08:51,160 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricCard.swift: 无需修改
+2025-07-30 22:08:51,180 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsContent.swift: 无需修改
+2025-07-30 22:08:51,209 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsSetupView.swift: 无需修改
+2025-07-30 22:08:51,259 - INFO - ⏭️  VoiceInk/Views/Metrics/PerformanceAnalysisView.swift: 无需修改
+2025-07-30 22:08:51,284 - INFO - ⏭️  VoiceInk/Views/Metrics/TimeEfficiencyView.swift: 无需修改
+2025-07-30 22:08:51,295 - INFO - ⏭️  VoiceInk/Views/MetricsView.swift: 无需修改
+2025-07-30 22:08:51,311 - INFO - ⏭️  VoiceInk/Views/ModelSettingsView.swift: 无需修改
+2025-07-30 22:08:51,347 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingModelDownloadView.swift: 无需修改
+2025-07-30 22:08:51,428 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingPermissionsView.swift: 无需修改
+2025-07-30 22:08:51,466 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingTutorialView.swift: 无需修改
+2025-07-30 22:08:51,522 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingView.swift: 无需修改
+2025-07-30 22:08:51,573 - INFO - ⏭️  VoiceInk/Views/PermissionsView.swift: 无需修改
+2025-07-30 22:08:51,649 - INFO - ⏭️  VoiceInk/Views/PromptEditorView.swift: 无需修改
+2025-07-30 22:08:51,664 - INFO - ⏭️  VoiceInk/Views/Recorder/AudioVisualizerView.swift: 无需修改
+2025-07-30 22:08:51,678 - INFO - ⏭️  VoiceInk/Views/Recorder/EnhancementPromptPopover.swift: 无需修改
+2025-07-30 22:08:51,686 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderPanel.swift: 无需修改
+2025-07-30 22:08:51,703 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderView.swift: 无需修改
+2025-07-30 22:08:51,713 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniWindowManager.swift: 无需修改
+2025-07-30 22:08:51,744 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderPanel.swift: 无需修改
+2025-07-30 22:08:51,762 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderView.swift: 无需修改
+2025-07-30 22:08:51,770 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchShape.swift: 无需修改
+2025-07-30 22:08:51,780 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchWindowManager.swift: 无需修改
+2025-07-30 22:08:51,797 - INFO - ⏭️  VoiceInk/Views/Recorder/RecorderComponents.swift: 无需修改
+2025-07-30 22:08:51,837 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupManager.swift: 无需修改
+2025-07-30 22:08:51,862 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupSettingsView.swift: 无需修改
+2025-07-30 22:08:51,921 - INFO - ⏭️  VoiceInk/Views/Settings/AudioInputSettingsView.swift: 无需修改
+2025-07-30 22:08:51,998 - INFO - ⏭️  VoiceInk/Views/Settings/SettingsView.swift: 无需修改
+2025-07-30 22:08:52,032 - INFO - ⏭️  VoiceInk/Views/TranscriptionCard.swift: 无需修改
+2025-07-30 22:08:52,102 - INFO - ⏭️  VoiceInk/Views/TranscriptionHistoryView.swift: 无需修改
+2025-07-30 22:08:52,124 - INFO - 🎉 本地化处理完成！
+2025-07-30 22:08:52,124 - INFO -    ⏱️  耗时: 2.02秒
+2025-07-30 22:08:52,124 - INFO -    📁 处理了 63 个文件
+2025-07-30 22:08:52,124 - INFO -    ✏️  修改了 0 个文件
+2025-07-30 22:08:52,125 - INFO -    🔄 总共 0 处修改
+2025-07-30 22:08:52,125 - INFO -    📉 剩余 388 个未处理字符串
+2025-07-30 22:08:52,125 - INFO -    🔑 新增 0 个本地化键
+2025-07-30 22:19:17,743 - INFO - 🚀 开始智能本地化处理
+2025-07-30 22:19:17,746 - INFO - 📁 找到 63 个目标文件
+2025-07-30 22:19:17,786 - INFO - 📝 处理前发现 388 个可本地化字符串
+2025-07-30 22:19:17,840 - INFO - ⏭️  VoiceInk/Models/CustomPrompt.swift: 无需修改
+2025-07-30 22:19:17,862 - INFO - ⏭️  VoiceInk/Models/PredefinedPrompts.swift: 无需修改
+2025-07-30 22:19:17,907 - INFO - ⏭️  VoiceInk/PowerMode/EmojiPickerView.swift: 无需修改
+2025-07-30 22:19:17,931 - INFO - ⏭️  VoiceInk/PowerMode/PowerModeValidator.swift: 无需修改
+2025-07-30 22:19:17,990 - INFO - ⏭️  VoiceInk/PowerMode/PowerModeViewComponents.swift: 无需修改
+2025-07-30 22:19:18,078 - INFO - ⏭️  VoiceInk/Views/AI Models/APIKeyManagementView.swift: 无需修改
+2025-07-30 22:19:18,131 - INFO - ⏭️  VoiceInk/Views/AI Models/AddCustomModelView.swift: 无需修改
+2025-07-30 22:19:18,184 - INFO - ⏭️  VoiceInk/Views/AI Models/CloudModelCardRowView.swift: 无需修改
+2025-07-30 22:19:18,203 - INFO - ⏭️  VoiceInk/Views/AI Models/CustomModelCardRowView.swift: 无需修改
+2025-07-30 22:19:18,235 - INFO - ⏭️  VoiceInk/Views/AI Models/LanguageSelectionView.swift: 无需修改
+2025-07-30 22:19:18,270 - INFO - ⏭️  VoiceInk/Views/AI Models/LocalModelCardRowView.swift: 无需修改
+2025-07-30 22:19:18,280 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelCardRowView.swift: 无需修改
+2025-07-30 22:19:18,320 - INFO - ⏭️  VoiceInk/Views/AI Models/ModelManagementView.swift: 无需修改
+2025-07-30 22:19:18,336 - INFO - ⏭️  VoiceInk/Views/AI Models/NativeModelCardRowView.swift: 无需修改
+2025-07-30 22:19:18,409 - INFO - ⏭️  VoiceInk/Views/AudioPlayerView.swift: 无需修改
+2025-07-30 22:19:18,481 - INFO - ⏭️  VoiceInk/Views/AudioTranscribeView.swift: 无需修改
+2025-07-30 22:19:18,490 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedCopyButton.swift: 无需修改
+2025-07-30 22:19:18,508 - INFO - ⏭️  VoiceInk/Views/Common/AnimatedSaveButton.swift: 无需修改
+2025-07-30 22:19:18,512 - INFO - ⏭️  VoiceInk/Views/Common/AppIconView.swift: 无需修改
+2025-07-30 22:19:18,527 - INFO - ⏭️  VoiceInk/Views/Common/CardBackground.swift: 无需修改
+2025-07-30 22:19:18,542 - INFO - ⏭️  VoiceInk/Views/Common/TranscriptionFallbackView.swift: 无需修改
+2025-07-30 22:19:18,552 - INFO - ⏭️  VoiceInk/Views/Components/InfoTip.swift: 无需修改
+2025-07-30 22:19:18,554 - INFO - ⏭️  VoiceInk/Views/Components/ProBadge.swift: 无需修改
+2025-07-30 22:19:18,573 - INFO - ⏭️  VoiceInk/Views/Components/PromptSelectionGrid.swift: 无需修改
+2025-07-30 22:19:18,584 - INFO - ⏭️  VoiceInk/Views/Components/TrialMessageView.swift: 无需修改
+2025-07-30 22:19:18,632 - INFO - ⏭️  VoiceInk/Views/ContentView.swift: 无需修改
+2025-07-30 22:19:18,650 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionarySettingsView.swift: 无需修改
+2025-07-30 22:19:18,684 - INFO - ⏭️  VoiceInk/Views/Dictionary/DictionaryView.swift: 无需修改
+2025-07-30 22:19:18,739 - INFO - ⏭️  VoiceInk/Views/Dictionary/WordReplacementView.swift: 无需修改
+2025-07-30 22:19:18,763 - INFO - ⏭️  VoiceInk/Views/EnhancementSettingsView.swift: 无需修改
+2025-07-30 22:19:18,795 - INFO - ⏭️  VoiceInk/Views/KeyboardShortcutView.swift: 无需修改
+2025-07-30 22:19:18,836 - INFO - ⏭️  VoiceInk/Views/LicenseManagementView.swift: 无需修改
+2025-07-30 22:19:18,845 - INFO - ⏭️  VoiceInk/Views/LicenseView.swift: 无需修改
+2025-07-30 22:19:18,880 - INFO - ⏭️  VoiceInk/Views/MenuBarView.swift: 无需修改
+2025-07-30 22:19:18,885 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricCard.swift: 无需修改
+2025-07-30 22:19:18,909 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsContent.swift: 无需修改
+2025-07-30 22:19:18,940 - INFO - ⏭️  VoiceInk/Views/Metrics/MetricsSetupView.swift: 无需修改
+2025-07-30 22:19:18,993 - INFO - ⏭️  VoiceInk/Views/Metrics/PerformanceAnalysisView.swift: 无需修改
+2025-07-30 22:19:19,019 - INFO - ⏭️  VoiceInk/Views/Metrics/TimeEfficiencyView.swift: 无需修改
+2025-07-30 22:19:19,031 - INFO - ⏭️  VoiceInk/Views/MetricsView.swift: 无需修改
+2025-07-30 22:19:19,048 - INFO - ⏭️  VoiceInk/Views/ModelSettingsView.swift: 无需修改
+2025-07-30 22:19:19,084 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingModelDownloadView.swift: 无需修改
+2025-07-30 22:19:19,166 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingPermissionsView.swift: 无需修改
+2025-07-30 22:19:19,203 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingTutorialView.swift: 无需修改
+2025-07-30 22:19:19,255 - INFO - ⏭️  VoiceInk/Views/Onboarding/OnboardingView.swift: 无需修改
+2025-07-30 22:19:19,301 - INFO - ⏭️  VoiceInk/Views/PermissionsView.swift: 无需修改
+2025-07-30 22:19:19,378 - INFO - ⏭️  VoiceInk/Views/PromptEditorView.swift: 无需修改
+2025-07-30 22:19:19,393 - INFO - ⏭️  VoiceInk/Views/Recorder/AudioVisualizerView.swift: 无需修改
+2025-07-30 22:19:19,407 - INFO - ⏭️  VoiceInk/Views/Recorder/EnhancementPromptPopover.swift: 无需修改
+2025-07-30 22:19:19,415 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderPanel.swift: 无需修改
+2025-07-30 22:19:19,432 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniRecorderView.swift: 无需修改
+2025-07-30 22:19:19,441 - INFO - ⏭️  VoiceInk/Views/Recorder/MiniWindowManager.swift: 无需修改
+2025-07-30 22:19:19,471 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderPanel.swift: 无需修改
+2025-07-30 22:19:19,488 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchRecorderView.swift: 无需修改
+2025-07-30 22:19:19,497 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchShape.swift: 无需修改
+2025-07-30 22:19:19,507 - INFO - ⏭️  VoiceInk/Views/Recorder/NotchWindowManager.swift: 无需修改
+2025-07-30 22:19:19,525 - INFO - ⏭️  VoiceInk/Views/Recorder/RecorderComponents.swift: 无需修改
+2025-07-30 22:19:19,567 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupManager.swift: 无需修改
+2025-07-30 22:19:19,592 - INFO - ⏭️  VoiceInk/Views/Settings/AudioCleanupSettingsView.swift: 无需修改
+2025-07-30 22:19:19,651 - INFO - ⏭️  VoiceInk/Views/Settings/AudioInputSettingsView.swift: 无需修改
+2025-07-30 22:19:19,728 - INFO - ⏭️  VoiceInk/Views/Settings/SettingsView.swift: 无需修改
+2025-07-30 22:19:19,756 - INFO - ⏭️  VoiceInk/Views/TranscriptionCard.swift: 无需修改
+2025-07-30 22:19:19,826 - INFO - ⏭️  VoiceInk/Views/TranscriptionHistoryView.swift: 无需修改
+2025-07-30 22:19:19,849 - INFO - 🎉 本地化处理完成！
+2025-07-30 22:19:19,849 - INFO -    ⏱️  耗时: 2.11秒
+2025-07-30 22:19:19,849 - INFO -    📁 处理了 63 个文件
+2025-07-30 22:19:19,849 - INFO -    ✏️  修改了 0 个文件
+2025-07-30 22:19:19,849 - INFO -    🔄 总共 0 处修改
+2025-07-30 22:19:19,849 - INFO -    📉 剩余 388 个未处理字符串
+2025-07-30 22:19:19,849 - INFO -    🔑 新增 0 个本地化键

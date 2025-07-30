@@ -1,0 +1,239 @@
+/* 主界面导航 */
+"Dashboard" = "Dashboard";
+"Transcribe Audio" = "Transcribe Audio";
+"History" = "History";
+"AI Models" = "AI Models";
+"Enhancement" = "Enhancement";
+"Power Mode" = "Power Mode";
+"Permissions" = "Permissions";
+"Audio Input" = "Audio Input";
+"Dictionary" = "Dictionary";
+"Settings" = "Settings";
+"VoiceInk Pro" = "VoiceInk Pro";
+
+/* MenuBarView */
+"Toggle Mini Recorder" = "Toggle Mini Recorder";
+"AI Enhancement" = "AI Enhancement";
+"Prompt: %@" = "Prompt: %@";
+"AI Provider: %@" = "AI Provider: %@";
+"Model: %@" = "Model: %@";
+"Use Clipboard Context" = "Use Clipboard Context";
+"Use Screen Context" = "Use Screen Context";
+"Additional" = "Additional";
+"Auto-copy to Clipboard" = "Auto-copy to Clipboard";
+"Sound Feedback" = "Sound Feedback";
+"Mute System Audio During Recording" = "Mute System Audio During Recording";
+"Copy Last Transcription" = "Copy Last Transcription";
+"Show Dock Icon" = "Show Dock Icon";
+"Hide Dock Icon" = "Hide Dock Icon";
+"Launch at Login" = "Launch at Login";
+"Check for Updates" = "Check for Updates";
+"Help and Support" = "Help and Support";
+"Quit VoiceInk" = "Quit VoiceInk";
+
+/* Settings */
+"Configure your microphone preferences" = "Configure your microphone preferences";
+
+/* 录音相关 */
+"Recording" = "Recording";
+"Start Recording" = "Start Recording";
+"Stop Recording" = "Stop Recording";
+"Pause Recording" = "Pause Recording";
+"Resume Recording" = "Resume Recording";
+
+/* 转录相关 */
+"Transcription" = "Transcription";
+"Transcribing..." = "Transcribing...";
+"Transcription completed" = "Transcription completed";
+"Transcription failed" = "Transcription failed";
+"Transcription Failed" = "Transcription Failed";
+"Retranscribe this audio" = "Retranscribe this audio";
+"Retranscription successful" = "Retranscription successful";
+"Retranscription failed" = "Retranscription failed";
+"No transcription available" = "No transcription available";
+
+/* 模型相关 */
+"No AI Model Selected" = "No AI Model Selected";
+"Local" = "Local";
+"Groq" = "Groq";
+"ElevenLabs" = "ElevenLabs";
+"Deepgram" = "Deepgram";
+"Mistral" = "Mistral";
+"Custom" = "Custom";
+"Native Apple" = "Native Apple";
+"Apple Speech" = "Apple Speech";
+"Tiny" = "Tiny";
+"Base" = "Base";
+"Multilingual" = "Multilingual";
+"English-only" = "English-only";
+
+/* 按钮和操作 */
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Edit" = "Edit";
+"Close" = "Close";
+"Open" = "Open";
+"Refresh" = "Refresh";
+"Retry" = "Retry";
+"Continue" = "Continue";
+"Back" = "Back";
+"Next" = "Next";
+"Done" = "Done";
+"Copy" = "Copy";
+"Paste" = "Paste";
+"Share" = "Share";
+"Export" = "Export";
+"Import" = "Import";
+
+/* 菜单栏 */
+"Toggle Mini Recorder" = "Toggle Mini Recorder";
+"AI Enhancement" = "AI Enhancement";
+"Prompt:" = "Prompt:";
+"None" = "None";
+"Check for Updates..." = "Check for Updates...";
+"Preferences..." = "Preferences...";
+"Quit VoiceInk" = "Quit VoiceInk";
+
+/* 错误和提示 */
+"Error" = "Error";
+"Warning" = "Warning";
+
+/* Prompt Editor */
+"Edit Trigger Words" = "Edit Trigger Words";
+"New Prompt" = "New Prompt";
+"Edit Prompt" = "Edit Prompt";
+"Title" = "Title";
+"Icon" = "Icon";
+"Description" = "Description";
+"Prompt Instructions" = "Prompt Instructions";
+"Trigger Words" = "Trigger Words";
+"Add" = "Add";
+"Communication" = "Communication";
+"Professional" = "Professional";
+"Technical" = "Technical";
+"Content" = "Content";
+"Remove word" = "Remove word";
+
+/* Audio Transcribe */
+"Transcription Result" = "Transcription Result";
+"Enhanced" = "Enhanced";
+"Original" = "Original";
+"No audio file selected" = "No audio file selected";
+"Select Audio File" = "Select Audio File";
+"Start Transcription" = "Start Transcription";
+"Choose Different File" = "Choose Different File";
+"Drop audio or video file here" = "Drop audio or video file here";
+"Choose File" = "Choose File";
+"Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV" = "Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV";
+"Processing audio..." = "Processing audio...";
+"Converting to text..." = "Converting to text...";
+
+/* License */
+"License Management" = "License Management";
+"Premium Features Activated" = "Premium Features Activated";
+"Trial Active" = "Trial Active";
+"Trial Expired" = "Trial Expired";
+"Free Version" = "Free Version";
+"Enter License Key" = "Enter License Key";
+"Buy License" = "Buy License";
+"Start Trial" = "Start Trial";
+"License Key" = "License Key";
+"Activate" = "Activate";
+"Remove License" = "Remove License";
+"Activate License" = "Activate License";
+"Success" = "Success";
+"Info" = "Info";
+"Please select a model" = "Please select a model";
+"Please check your API key" = "Please check your API key";
+"Network error" = "Network error";
+"Invalid file format" = "Invalid file format";
+"File not found" = "File not found";
+"Permission denied" = "Permission denied";
+
+/* 设置相关 */
+"General" = "General";
+"Audio" = "Audio";
+"Hotkeys" = "Hotkeys";
+"Appearance" = "Appearance";
+"Advanced" = "Advanced";
+"About" = "About";
+"Version" = "Version";
+"Build" = "Build";
+"Contact" = "Contact";
+"Support" = "Support";
+"Documentation" = "Documentation";
+
+/* 状态信息 */
+"Ready" = "Ready";
+"Loading" = "Loading";
+"Processing" = "Processing";
+"Idle" = "Idle";
+"Connected" = "Connected";
+"Disconnected" = "Disconnected";
+"Available" = "Available";
+"Unavailable" = "Unavailable";
+
+/* 时间相关 */
+"Just now" = "Just now";
+"Minutes ago" = "Minutes ago";
+"Hours ago" = "Hours ago";
+"Days ago" = "Days ago";
+"Weeks ago" = "Weeks ago";
+"Months ago" = "Months ago";
+"Years ago" = "Years ago";
+
+/* 文件操作 */
+"Select File" = "Select File";
+"Select Folder" = "Select Folder";
+"Drag and drop files here" = "Drag and drop files here";
+"Supported formats" = "Supported formats";
+"File size" = "File size";
+"Duration" = "Duration";
+
+/* 音频设备 */
+"Microphone" = "Microphone";
+"Speaker" = "Speaker";
+"System Audio" = "System Audio";
+"Input Device" = "Input Device";
+"Output Device" = "Output Device";
+"Volume" = "Volume";
+"Sample Rate" = "Sample Rate";
+"Channels" = "Channels";
+
+/* 快捷键 */
+"Record Shortcut" = "Record Shortcut";
+"Clear Shortcut" = "Clear Shortcut";
+"Shortcut already in use" = "Shortcut already in use";
+"Invalid shortcut" = "Invalid shortcut";
+
+/* 许可证 */
+"Upgrade to Pro" = "Upgrade to Pro";
+"Pro Features" = "Pro Features";
+"Already purchased?" = "Already purchased?";
+"Restore Purchase" = "Restore Purchase";
+"Purchase successful" = "Purchase successful";
+"Purchase failed" = "Purchase failed";
+
+/* 其他 */
+"Search" = "Search";
+"Filter" = "Filter";
+"Sort by" = "Sort by";
+"Name" = "Name";
+"Date" = "Date";
+"Size" = "Size";
+"Type" = "Type";
+"Ascending" = "Ascending";
+"Descending" = "Descending";
+"Select All" = "Select All";
+"Deselect All" = "Deselect All";
+"Invert Selection" = "Invert Selection";
+"Clear" = "Clear";
+"Reset" = "Reset";
+"Apply" = "Apply";
+"OK" = "OK";
+"Yes" = "Yes";
+"No" = "No";
+"Confirm" = "Confirm";
+"Are you sure?" = "Are you sure?";
+"This action cannot be undone" = "This action cannot be undone";

@@ -252,7 +252,7 @@ struct AudioPlayerView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "waveform")
                         .foregroundStyle(Color.accentColor)
-                    Text("Recording")
+                    Text(NSLocalizedString("Recording", comment: NSLocalizedString("Recording", comment: "Recording")))
                         .font(.system(size: 14, weight: .medium))
                 }
                 .foregroundColor(.secondary)

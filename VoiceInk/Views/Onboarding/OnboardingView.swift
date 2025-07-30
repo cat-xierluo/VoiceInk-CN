@@ -34,7 +34,7 @@ struct OnboardingView: View {
                                         .multilineTextAlignment(.center)
                                         .padding(.horizontal)
                                     
-                                    Text("A New Way to Type")
+                                    Text(NSLocalizedString("A New Way to Type", comment: "Onboarding title"))
                                         .font(.system(size: min(geometry.size.width * 0.032, 24), weight: .medium, design: .rounded))
                                         .foregroundColor(.white.opacity(0.7))
                                         .opacity(textOpacity)
@@ -61,7 +61,7 @@ struct OnboardingView: View {
                                             showPermissions = true
                                         }
                                     }) {
-                                        Text("Get Started")
+                                        Text(NSLocalizedString("Get Started", comment: "Get started"))
                                             .font(.system(size: 18, weight: .semibold))
                                             .foregroundColor(.black)
                                             .frame(width: min(geometry.size.width * 0.3, 200), height: 50)

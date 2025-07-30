@@ -20,7 +20,7 @@ struct EnhancementSettingsView: View {
                                         .font(.headline)
                                     
                                     InfoTip(
-                                        title: "AI Enhancement",
+                                        title: NSLocalizedString("AI Enhancement", comment: "AI enhancement feature"),
                                         message: "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.",
                                         learnMoreURL: "https://www.youtube.com/@tryvoiceink/videos"
                                     )
@@ -64,7 +64,7 @@ struct EnhancementSettingsView: View {
                     
                     // 1. AI Provider Integration Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("AI Provider Integration")
+                        Text(NSLocalizedString("AI Provider Integration", comment: "AI provider integration"))
                             .font(.headline)
                         
                         APIKeyManagementView()
@@ -76,7 +76,7 @@ struct EnhancementSettingsView: View {
                     
                     // 3. Enhancement Modes & Assistant Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Enhancement Prompt")
+                        Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement prompt"))
                             .font(.headline)
                         
                         // Prompts Section

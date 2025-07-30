@@ -153,7 +153,7 @@ struct DictionaryView: View {
             }
         }
         .padding()
-        .alert("Dictionary", isPresented: $showAlert) {
+        .alert(NSLocalizedString("Dictionary", comment: NSLocalizedString("Dictionary", comment: "Dictionary")), isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         } message: {
             Text(alertMessage)

@@ -42,7 +42,7 @@ struct OnboardingModelDownloadView: View {
                         
                         // Title and description
                         VStack(spacing: 12) {
-                            Text("Download AI Model")
+                            Text(NSLocalizedString("Download AI Model", comment: "Download AI model"))
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -75,8 +75,8 @@ struct OnboardingModelDownloadView: View {
                         
                         // Performance indicators in a more compact layout
                         HStack(spacing: 20) {
-                            performanceIndicator(label: "Speed", value: turboModel.speed)
-                            performanceIndicator(label: "Accuracy", value: turboModel.accuracy)
+                            performanceIndicator(label: NSLocalizedString("Speed", comment: "Speed"), value: turboModel.speed)
+                            performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), value: turboModel.accuracy)
                             ramUsageLabel(gb: turboModel.ramUsage)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -187,7 +187,7 @@ struct OnboardingModelDownloadView: View {
     
     private func getButtonTitle() -> String {
         if isModelSet {
-            return "Continue"
+            return NSLocalizedString("Continue", comment: "Continue button")
         } else if isDownloading {
             return "Downloading..."
         } else if whisperState.availableModels.contains(where: { $0.name == turboModel.name }) {

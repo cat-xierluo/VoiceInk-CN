@@ -49,14 +49,14 @@ struct SettingsView: View {
                             )
                         }
 
-                        // "Add another hotkey" button
+                        // NSLocalizedString("Add another hotkey", comment: "Add another hotkey") button
                         if hotkeyManager.selectedHotkey1 != .none && hotkeyManager.selectedHotkey2 == .none {
                             HStack {
                                 Spacer()
                                 Button(action: {
                                     withAnimation { hotkeyManager.selectedHotkey2 = .rightOption }
                                 }) {
-                                    Label("Add another hotkey", systemImage: "plus.circle.fill")
+                                    Label(NSLocalizedString("Add another hotkey", comment: "Add another hotkey"), systemImage: "plus.circle.fill")
                                 }
                                 .buttonStyle(.plain)
                                 .foregroundColor(.accentColor)
@@ -108,7 +108,7 @@ struct SettingsView: View {
                 // Recording Feedback Section
                 SettingsSection(
                     icon: "speaker.wave.2.bubble.left.fill",
-                    title: "Recording Feedback",
+                    title: NSLocalizedString("Recording Feedback", comment: "Recording feedback"),
                     subtitle: "Customize app & system feedback"
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
@@ -142,14 +142,14 @@ struct SettingsView: View {
                 // Recorder Preference Section
                 SettingsSection(
                     icon: "rectangle.on.rectangle",
-                    title: "Recorder Style",
+                    title: NSLocalizedString("Recorder Style", comment: "Recorder style"),
                     subtitle: "Choose your preferred recorder interface"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Select how you want the recorder to appear on your screen.")
                             .settingsDescription()
                         
-                        Picker("Recorder Style", selection: $whisperState.recorderType) {
+                        Picker(NSLocalizedString("Recorder Style", comment: "Recorder style"), selection: $whisperState.recorderType) {
                             Text("Notch Recorder").tag("notch")
                             Text("Mini Recorder").tag("mini")
                         }
@@ -179,7 +179,7 @@ struct SettingsView: View {
                 // App Appearance Section
                 SettingsSection(
                     icon: "dock.rectangle",
-                    title: "App Appearance",
+                    title: NSLocalizedString("App Appearance", comment: "App appearance"),
                     subtitle: "Dock and Menu Bar options"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
@@ -194,7 +194,7 @@ struct SettingsView: View {
                 // Audio Cleanup Section
                 SettingsSection(
                     icon: "trash.circle",
-                    title: "Audio Cleanup",
+                    title: NSLocalizedString("Audio Cleanup", comment: "Audio cleanup"),
                     subtitle: "Manage recording storage"
                 ) {
                     AudioCleanupSettingsView()
@@ -218,14 +218,14 @@ struct SettingsView: View {
                 // Updates Section
                 SettingsSection(
                     icon: "arrow.triangle.2.circlepath",
-                    title: "Updates",
+                    title: NSLocalizedString("Updates", comment: "Updates"),
                     subtitle: "Keep VoiceInk up to date"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("VoiceInk automatically checks for updates on launch and every other day.")
                             .settingsDescription()
                         
-                        Button("Check for Updates Now") {
+                        Button(NSLocalizedString("Check for Updates Now", comment: "Check for updates now")) {
                             updaterViewModel.checkForUpdates()
                         }
                         .buttonStyle(.bordered)
@@ -255,7 +255,7 @@ struct SettingsView: View {
                 // Data Management Section
                 SettingsSection(
                     icon: "arrow.up.arrow.down.circle",
-                    title: "Data Management",
+                    title: NSLocalizedString("Data Management", comment: "Data management"),
                     subtitle: "Import or export your settings"
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
@@ -309,7 +309,7 @@ struct SettingsView: View {
             isCustomCancelEnabled = KeyboardShortcuts.getShortcut(for: .cancelRecorder) != nil
         }
         .alert("Reset Onboarding", isPresented: $showResetOnboardingAlert) {
-            Button("Cancel", role: .cancel) { }
+            Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) { }
             Button("Reset", role: .destructive) {
                 // Defer state change to avoid layout issues while alert dismisses
                 DispatchQueue.main.async {

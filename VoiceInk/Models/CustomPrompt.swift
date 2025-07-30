@@ -63,7 +63,7 @@ enum PromptIcon: String, Codable, CaseIterable {
         case .notesFill: return "Notes"
         case .bookFill: return "Book"
         case .bookmarkFill: return "Bookmark"
-        case .pencilFill: return "Edit"
+        case .pencilFill: return NSLocalizedString("Edit", comment: "Edit button")
             
         // Media & Creative
         case .videoFill: return "Video"
@@ -241,7 +241,7 @@ extension CustomPrompt {
                     Button {
                         onEdit(self)
                     } label: {
-                        Label("Edit", systemImage: "pencil")
+                        Label(NSLocalizedString("Edit", comment: "Edit button"), systemImage: "pencil")
                     }
                 }
                 
@@ -249,7 +249,7 @@ extension CustomPrompt {
                     Button(role: .destructive) {
                         onDelete(self)
                     } label: {
-                        Label("Delete", systemImage: "trash")
+                        Label(NSLocalizedString("Delete", comment: "Delete button"), systemImage: "trash")
                     }
                 }
             }

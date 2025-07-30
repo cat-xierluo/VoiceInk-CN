@@ -33,7 +33,7 @@ struct ModelSettingsView: View {
                         isEditing = true
                     }
                 }) {
-                    Text(isEditing ? "Save" : "Edit")
+                    Text(isEditing ? NSLocalizedString("Save", comment: "Save button") : NSLocalizedString("Edit", comment: "Edit button"))
                         .font(.caption)
                 }
             }
@@ -73,7 +73,7 @@ struct ModelSettingsView: View {
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Automatic Text Formatting",
+                    title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic text formatting"),
                     message: "Apply intelligent text formatting to break large block of text into paragraphs."
                 )
             }
@@ -85,7 +85,7 @@ struct ModelSettingsView: View {
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Voice Activity Detection",
+                    title: NSLocalizedString("Voice Activity Detection", comment: "Voice activity detection"),
                     message: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models."
                 )
             }

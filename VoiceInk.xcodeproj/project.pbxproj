@@ -652,7 +652,7 @@
 		};
 		E1F5FA782DA6CBF900B1FD8A /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip?tab=readme-ov-file";
+			repositoryURL = "https://github.com/marmelroy/Zip";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.1.2;

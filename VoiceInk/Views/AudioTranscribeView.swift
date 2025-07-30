@@ -70,7 +70,7 @@ struct AudioTranscribeView: View {
                             } else {
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Transcription")
+                                        Text(NSLocalizedString("Transcription", comment: NSLocalizedString("Transcription", comment: "Transcription")))
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                         Spacer()
@@ -126,7 +126,7 @@ struct AudioTranscribeView: View {
                         VStack(spacing: 16) {
                             // AI Enhancement and Prompt in the same row
                             HStack(spacing: 16) {
-                                Toggle("AI Enhancement", isOn: $isEnhancementEnabled)
+                                Toggle(NSLocalizedString("AI Enhancement", comment: "AI enhancement feature"), isOn: $isEnhancementEnabled)
                                     .toggleStyle(.switch)
                                     .onChange(of: isEnhancementEnabled) { oldValue, newValue in
                                         enhancementService.isEnhancementEnabled = newValue
@@ -191,7 +191,7 @@ struct AudioTranscribeView: View {
                     
                     // Action Buttons in a row
                     HStack(spacing: 12) {
-                        Button("Start Transcription") {
+                        Button(NSLocalizedString("Start Transcription", comment: "Start transcription button")) {
                             if let url = selectedAudioURL {
                                 transcriptionManager.startProcessing(
                                     url: url,
@@ -230,13 +230,13 @@ struct AudioTranscribeView: View {
                             .font(.system(size: 32))
                             .foregroundColor(isDropTargeted ? .blue : .gray)
                         
-                        Text("Drop audio or video file here")
+                        Text(NSLocalizedString("Drop audio or video file here", comment: "File drop instruction"))
                             .font(.headline)
                         
                         Text("or")
                             .foregroundColor(.secondary)
                         
-                        Button("Choose File") {
+                        Button(NSLocalizedString("Choose File", comment: "Choose file button")) {
                             selectFile()
                         }
                         .buttonStyle(.bordered)

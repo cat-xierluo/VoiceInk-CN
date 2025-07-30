@@ -51,7 +51,7 @@ struct WordReplacementView: View {
                     
                     Spacer()
                     
-                    Toggle("Enable", isOn: $manager.isEnabled)
+                    Toggle(NSLocalizedString("Enable", comment: "Enable"), isOn: $manager.isEnabled)
                         .toggleStyle(.switch)
                         .labelsHidden()
                         .help("Enable automatic word replacement after transcription")
@@ -61,7 +61,7 @@ struct WordReplacementView: View {
             VStack(spacing: 0) {
                 // Header with action button
                 HStack {
-                    Text("Word Replacements")
+                    Text(NSLocalizedString("Word Replacements", comment: "Word replacements"))
                         .font(.headline)
                     
                     Spacer()
@@ -127,7 +127,7 @@ struct EmptyStateView: View {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 250)
             
-            Button("Add Replacement") {
+            Button(NSLocalizedString("Add Replacement", comment: "Add replacement button")) {
                 showAddModal = true
             }
             .buttonStyle(.borderedProminent)
@@ -149,7 +149,7 @@ struct AddReplacementSheet: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Button("Cancel", role: .cancel) {
+                Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) {
                     dismiss()
                 }
                 .buttonStyle(.borderless)
@@ -157,12 +157,12 @@ struct AddReplacementSheet: View {
                 
                 Spacer()
                 
-                Text("Add Word Replacement")
+                Text(NSLocalizedString("Add Word Replacement", comment: "Add word replacement"))
                     .font(.headline)
                 
                 Spacer()
                 
-                Button("Add") {
+                Button(NSLocalizedString("Add", comment: "Add button")) {
                     addReplacement()
                 }
                 .buttonStyle(.borderedProminent)

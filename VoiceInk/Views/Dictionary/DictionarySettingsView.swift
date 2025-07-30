@@ -5,8 +5,15 @@ struct DictionarySettingsView: View {
     let whisperPrompt: WhisperPrompt
     
     enum DictionarySection: String, CaseIterable {
-        case replacements = "Word Replacements"
-        case spellings = "Correct Spellings"
+        case replacements = "replacements"
+        case spellings = "spellings"
+        
+        var displayName: String {
+            switch self {
+            case .replacements: return NSLocalizedString("Word Replacements", comment: "Word replacements")
+            case .spellings: return NSLocalizedString("Correct Spellings", comment: "Correct spellings")
+            }
+        }
         
         var description: String {
             switch self {
@@ -118,7 +125,7 @@ struct SectionCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(section.rawValue)
+                                            Text(section.displayName)
                         .font(.headline)
                     
                     Text(section.description)

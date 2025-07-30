@@ -138,10 +138,10 @@ struct TranscriptionHistoryView: View {
             }
         }
         .alert("Delete Selected Items?", isPresented: $showDeleteConfirmation) {
-            Button("Delete", role: .destructive) {
+            Button(NSLocalizedString("Delete", comment: "Delete button"), role: .destructive) {
                 deleteSelectedTranscriptions()
             }
-            Button("Cancel", role: .cancel) {}
+            Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) {}
         } message: {
             Text("This action cannot be undone. Are you sure you want to delete \(selectedTranscriptions.count) item\(selectedTranscriptions.count == 1 ? "" : "s")?")
         }
@@ -252,7 +252,7 @@ struct TranscriptionHistoryView: View {
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "trash")
-                    Text("Delete")
+                    Text(NSLocalizedString("Delete", comment: "Delete button"))
                 }
             }
             .buttonStyle(.borderless)

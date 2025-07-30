@@ -71,7 +71,7 @@ struct PowerModeConfigurationsGrid: View {
                     Button(action: { 
                         onEditConfig(config)
                     }) {
-                        Label("Edit", systemImage: "pencil")
+                        Label(NSLocalizedString("Edit", comment: "Edit button"), systemImage: "pencil")
                     }
                     Button(role: .destructive, action: {
                         powerModeManager.removeConfiguration(with: config.id)

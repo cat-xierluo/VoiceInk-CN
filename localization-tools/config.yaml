@@ -1,0 +1,116 @@
+# VoiceInk 本地化配置文件
+# 定义哪些文件需要处理，哪些需要排除
+
+# 需要本地化的文件路径（相对于项目根目录）
+include_paths:
+  # 用户界面相关的View文件
+  - "VoiceInk/Views/**/*.swift"
+  # Models中需要本地化的部分
+  - "VoiceInk/Models/PredefinedPrompts.swift"
+  - "VoiceInk/Models/CustomPrompt.swift"
+  # PowerMode相关的用户界面
+  - "VoiceInk/PowerMode/PowerModeValidator.swift"
+  - "VoiceInk/PowerMode/PowerModeViewComponents.swift"
+  - "VoiceInk/PowerMode/EmojiPickerView.swift"
+
+# 需要排除的文件（即使在include_paths中也会被排除）
+exclude_files:
+  # 测试文件
+  - "**/Tests/**"
+  - "**/*Test.swift"
+  - "**/*Tests.swift"
+  # 系统文件
+  - "**/AppDelegate.swift"
+  - "**/SceneDelegate.swift"
+  # 纯逻辑文件（不包含用户界面）
+  - "**/Services/**"
+  - "**/Networking/**"
+  - "**/Database/**"
+  # 配置文件
+  - "**/Config/**"
+  - "**/Constants.swift"
+
+# 需要排除的字符串模式（不应该被本地化的内容）
+exclude_string_patterns:
+  # 系统标识符
+  - "^[a-z][a-zA-Z]*\\.[a-z][a-zA-Z]*"  # 如: systemName.iconName
+  - "^[A-Z][A-Za-z]*Bundle"              # 如: CFBundleShortVersionString
+  - "^UserDefaults"                      # UserDefaults相关
+  - "^NotificationCenter"                # 通知中心相关
+  # 技术术语（保持英文）
+  - "^API\\s"
+  - "^HTTP"
+  - "^JSON"
+  - "^XML"
+  - "^URL"
+  # 调试和日志
+  - "^Error"
+  - "^Debug"
+  - "^Log"
+  - "^Print"
+
+# 不应该本地化的函数调用上下文
+exclude_contexts:
+  # 导航相关（代码逻辑标识符）
+  - "openMainWindowAndNavigate\\(to:"
+  - "userInfo:\\s*\\[.*\"destination\""
+  - "navigateToDestination"
+  # 数据存储键名
+  - "forKey:"
+  - "setValue.*forKey:"
+  - "string\\(forKey:"
+  # 系统回调和通知名称
+  - "Notification\\.Name"
+  - "NotificationCenter.*name:"
+
+# 本地化字符串映射（通用的UI元素）
+common_localizations:
+  # 基础操作
+  "Save": ["Save", "Save button"]
+  "Cancel": ["Cancel", "Cancel button"]
+  "Delete": ["Delete", "Delete button"]
+  "Edit": ["Edit", "Edit button"]
+  "Add": ["Add", "Add button"]
+  "Done": ["Done", "Done button"]
+  "Close": ["Close", "Close button"]
+  "Back": ["Back", "Back button"]
+  "Next": ["Next", "Next button"]
+  "Continue": ["Continue", "Continue button"]
+  "Copy": ["Copy", "Copy button"]
+  "Paste": ["Paste", "Paste button"]
+  "Settings": ["Settings", "Settings"]
+  
+  # 状态
+  "Active": ["Active", "Active status"]
+  "Inactive": ["Inactive", "Inactive status"]
+  "Loading": ["Loading", "Loading status"]
+  "Processing": ["Processing", "Processing status"]
+  "Ready": ["Ready", "Ready status"]
+  "Unknown": ["Unknown", "Unknown status"]
+  "None": ["None", "None selected"]
+  
+  # VoiceInk特定
+  "VoiceInk Pro": ["VoiceInk Pro", "VoiceInk Pro"]
+  "Transcription": ["Transcription", "Transcription"]
+  "Recording": ["Recording", "Recording"]
+  "Enhancement": ["Enhancement", "Enhancement"]
+  "AI Models": ["AI Models", "AI Models"]
+  "Power Mode": ["Power Mode", "Power Mode"]
+  "Dictionary": ["Dictionary", "Dictionary"]
+  "History": ["History", "History"]
+  "Audio Input": ["Audio Input", "Audio Input"]
+  "Permissions": ["Permissions", "Permissions"]
+
+# 输出配置
+output:
+  # 本地化文件路径（正确的项目内路径）
+  en_strings_file: "VoiceInk/en.lproj/Localizable.strings"
+  zh_strings_file: "VoiceInk/zh-Hans.lproj/Localizable.strings"
+  # 主要维护的本地化文件（中文）
+  master_strings_file: "VoiceInk/zh-Hans.lproj/Localizable.strings"
+  # 备份文件后缀
+  backup_suffix: ".backup"
+  # 日志文件
+  log_file: "localization-tools/logs/localization.log"
+  # 本地化工具备份路径
+  tool_backup_path: "localization-tools/backups/master-strings/"

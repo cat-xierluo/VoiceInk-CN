@@ -43,7 +43,7 @@ struct APIKeyManagementView: View {
             }
             
             // Provider Selection
-            Picker("AI Provider", selection: $aiService.selectedProvider) {
+            Picker(NSLocalizedString("AI Provider", comment: "AI provider"), selection: $aiService.selectedProvider) {
                 ForEach(AIProvider.allCases.filter { $0 != .elevenLabs && $0 != .deepgram }, id: \.self) { provider in
                     Text(provider.rawValue).tag(provider)
                 }
@@ -62,7 +62,7 @@ struct APIKeyManagementView: View {
                         Text("No models loaded")
                             .foregroundColor(.secondary)
                     } else {
-                        Picker("Model", selection: Binding(
+                        Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                             get: { aiService.currentModel },
                             set: { aiService.selectModel($0) }
                         )) {
@@ -88,7 +88,7 @@ struct APIKeyManagementView: View {
                         aiService.selectedProvider != .ollama && 
                         aiService.selectedProvider != .custom {
                 HStack {
-                    Picker("Model", selection: Binding(
+                    Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                         get: { aiService.currentModel },
                         set: { aiService.selectModel($0) }
                     )) {
@@ -135,7 +135,7 @@ struct APIKeyManagementView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: 200)
                             
-                            Button("Save") {
+                            Button(NSLocalizedString("Save", comment: "Save button")) {
                                 aiService.updateOllamaBaseURL(ollamaBaseURL)
                                 checkOllamaConnection()
                                 isEditingURL = false
@@ -168,7 +168,7 @@ struct APIKeyManagementView: View {
                     
                     // Model selection and refresh
                     HStack {
-                        Label("Model", systemImage: "cpu")
+                        Label(NSLocalizedString("Model", comment: "Model"), systemImage: "cpu")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
@@ -178,7 +178,7 @@ struct APIKeyManagementView: View {
                             HStack(spacing: 8) {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundColor(.orange)
-                                Text("No models available")
+                                Text(NSLocalizedString("No models available", comment: "No models available"))
                                     .foregroundColor(.secondary)
                                     .italic()
                             }
@@ -257,13 +257,13 @@ struct APIKeyManagementView: View {
                                 .textFieldStyle(.roundedBorder)
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("API Endpoint URL")
+                                Text(NSLocalizedString("API Endpoint URL", comment: "API endpoint URL"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customBaseURL)
                                     .font(.system(.body, design: .monospaced))
                                 
-                                Text("Model")
+                                Text(NSLocalizedString("Model", comment: "Model"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customModel)
@@ -272,7 +272,7 @@ struct APIKeyManagementView: View {
                         }
                         
                         if aiService.isAPIKeyValid {
-                            Text("API Key")
+                            Text(NSLocalizedString("API Key", comment: "API key"))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
@@ -295,7 +295,7 @@ struct APIKeyManagementView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
-                            SecureField("API Key", text: $apiKey)
+                            SecureField(NSLocalizedString("API Key", comment: "API key"), text: $apiKey)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.system(.body, design: .monospaced))
                             
@@ -336,7 +336,7 @@ struct APIKeyManagementView: View {
                 // API Key Display for other providers if valid
                 if aiService.isAPIKeyValid {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("API Key")
+                        Text(NSLocalizedString("API Key", comment: "API key"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
@@ -362,7 +362,7 @@ struct APIKeyManagementView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
-                        SecureField("API Key", text: $apiKey)
+                        SecureField(NSLocalizedString("API Key", comment: "API key"), text: $apiKey)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .font(.system(.body, design: .monospaced))
                         
@@ -393,7 +393,7 @@ struct APIKeyManagementView: View {
                             Spacer()
                             
                             HStack(spacing: 8) {
-                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? "Free" : "Paid")
+                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? NSLocalizedString("Free", comment: "Free") : "Paid")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .padding(.horizontal, 6)
@@ -428,7 +428,7 @@ struct APIKeyManagementView: View {
                                         NSWorkspace.shared.open(url)
                                     } label: {
                                         HStack(spacing: 4) {
-                                            Text("Get API Key")
+                                            Text(NSLocalizedString("Get API Key", comment: "Get API key"))
                                                 .foregroundColor(.accentColor)
                                             Image(systemName: "arrow.up.right")
                                                 .font(.caption)

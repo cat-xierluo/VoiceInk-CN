@@ -56,12 +56,12 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : "Edit Prompt"))
+                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? NSLocalizedString("New Prompt", comment: "New prompt") : "Edit Prompt"))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
                 HStack(spacing: 12) {
-                    Button("Cancel") {
+                    Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
                         dismiss()
                     }
                     .buttonStyle(.plain)
@@ -71,7 +71,7 @@ struct PromptEditorView: View {
                         save()
                         dismiss()
                     } label: {
-                        Text("Save")
+                        Text(NSLocalizedString("Save", comment: "Save button"))
                             .fontWeight(.medium)
                     }
                     .buttonStyle(.borderedProminent)
@@ -387,7 +387,7 @@ struct TriggerWordsEditor: View {
                         addTriggerWord()
                     }
                 
-                Button("Add") {
+                Button(NSLocalizedString("Add", comment: "Add button")) {
                     addTriggerWord()
                 }
                 .disabled(newTriggerWord.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -414,12 +414,12 @@ struct IconMenuContent: View {
     
     var body: some View {
         Group {
-            IconMenuSection(title: "Document & Text", icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Communication", icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Professional", icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Technical", icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Content", icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Media & Creative", icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Document & Text", comment: "Document and text"), icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Communication", comment: "Communication"), icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Professional", comment: "Professional"), icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Technical", comment: "Technical"), icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Content", comment: "Content"), icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: NSLocalizedString("Media & Creative", comment: "Media and creative"), icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
         }
     }
 }
@@ -440,7 +440,7 @@ struct IconMenuSection: View {
                     Label(icon.title, systemImage: icon.rawValue)
                 }
             }
-            if title != "Media & Creative" {
+            if title != NSLocalizedString("Media & Creative", comment: "Media and creative") {
                 Divider()
             }
         }
