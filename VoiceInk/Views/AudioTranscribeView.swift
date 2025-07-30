@@ -32,13 +32,13 @@ struct AudioTranscribeView: View {
                 if let transcription = transcriptionManager.currentTranscription {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Transcription Result")
+Text(NSLocalizedString("Transcription Result", comment: "Transcription Result"))
                                 .font(.headline)
                             
                             if let enhancedText = transcription.enhancedText {
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Enhanced")
+Text(NSLocalizedString("Enhanced", comment: "Enhanced"))
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                         Spacer()
@@ -55,7 +55,7 @@ struct AudioTranscribeView: View {
                                 
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Original")
+Text(NSLocalizedString("Original", comment: "Original"))
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                         Spacer()
@@ -70,7 +70,7 @@ struct AudioTranscribeView: View {
                             } else {
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text(NSLocalizedString("Transcription", comment: NSLocalizedString("Transcription", comment: "Transcription")))
+                                        Text(NSLocalizedString("Transcription", comment: "Transcription"))
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                         Spacer()
@@ -103,7 +103,7 @@ struct AudioTranscribeView: View {
             }
             return false
         }
-        .alert("Error", isPresented: .constant(transcriptionManager.errorMessage != nil)) {
+.alert(NSLocalizedString("Error", comment: "Error"), isPresented: .constant(transcriptionManager.errorMessage != nil)) {
             Button("OK", role: .cancel) {
                 transcriptionManager.errorMessage = nil
             }
@@ -126,7 +126,7 @@ struct AudioTranscribeView: View {
                         VStack(spacing: 16) {
                             // AI Enhancement and Prompt in the same row
                             HStack(spacing: 16) {
-                                Toggle(NSLocalizedString("AI Enhancement", comment: "AI enhancement feature"), isOn: $isEnhancementEnabled)
+Toggle(NSLocalizedString("AI Enhancement", comment: "AI Enhancement"), isOn: $isEnhancementEnabled)
                                     .toggleStyle(.switch)
                                     .onChange(of: isEnhancementEnabled) { oldValue, newValue in
                                         enhancementService.isEnhancementEnabled = newValue
@@ -138,7 +138,7 @@ struct AudioTranscribeView: View {
                                     
                                     // Prompt Selection
                                     HStack(spacing: 8) {
-                                        Text("Prompt:")
+Text(NSLocalizedString("Prompt:", comment: "Prompt:"))
                                             .font(.subheadline)
                                         
                                         Menu {
@@ -191,7 +191,7 @@ struct AudioTranscribeView: View {
                     
                     // Action Buttons in a row
                     HStack(spacing: 12) {
-                        Button(NSLocalizedString("Start Transcription", comment: "Start transcription button")) {
+Button(NSLocalizedString("Start Transcription", comment: "Start Transcription")) {
                             if let url = selectedAudioURL {
                                 transcriptionManager.startProcessing(
                                     url: url,
@@ -202,7 +202,7 @@ struct AudioTranscribeView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         
-                        Button("Choose Different File") {
+Button(NSLocalizedString("Choose Different File", comment: "Choose Different File")) {
                             selectedAudioURL = nil
                             isAudioFileSelected = false
                         }
@@ -230,13 +230,13 @@ struct AudioTranscribeView: View {
                             .font(.system(size: 32))
                             .foregroundColor(isDropTargeted ? .blue : .gray)
                         
-                        Text(NSLocalizedString("Drop audio or video file here", comment: "File drop instruction"))
+Text(NSLocalizedString("Drop audio or video file here", comment: "Drop audio or video file here"))
                             .font(.headline)
                         
-                        Text("or")
+Text(NSLocalizedString("or", comment: "or"))
                             .foregroundColor(.secondary)
                         
-                        Button(NSLocalizedString("Choose File", comment: "Choose file button")) {
+Button(NSLocalizedString("Choose File", comment: "Choose File")) {
                             selectFile()
                         }
                         .buttonStyle(.bordered)
@@ -247,7 +247,7 @@ struct AudioTranscribeView: View {
                 .padding(.horizontal)
             }
             
-            Text("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV")
+Text(NSLocalizedString("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV", comment: "Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV"))
                 .font(.caption)
                 .foregroundColor(.secondary)
         }

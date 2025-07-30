@@ -7,7 +7,7 @@ struct PowerModePopover: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Select Power Mode")
+Text(NSLocalizedString("Select Power Mode", comment: "Select Power Mode"))
                 .font(.headline)
                 .foregroundColor(.white.opacity(0.9))
                 .padding(.horizontal)

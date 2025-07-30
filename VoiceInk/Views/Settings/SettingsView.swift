@@ -49,21 +49,21 @@ struct SettingsView: View {
                             )
                         }
 
-                        // NSLocalizedString("Add another hotkey", comment: "Add another hotkey") button
+                        // "Add another hotkey" button
                         if hotkeyManager.selectedHotkey1 != .none && hotkeyManager.selectedHotkey2 == .none {
                             HStack {
                                 Spacer()
                                 Button(action: {
                                     withAnimation { hotkeyManager.selectedHotkey2 = .rightOption }
                                 }) {
-                                    Label(NSLocalizedString("Add another hotkey", comment: "Add another hotkey"), systemImage: "plus.circle.fill")
+Label(NSLocalizedString("Add another hotkey", comment: "Add another hotkey"), systemImage: "plus.circle.fill")
                                 }
                                 .buttonStyle(.plain)
                                 .foregroundColor(.accentColor)
                             }
                         }
 
-                        Text("Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording).")
+Text(NSLocalizedString("Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording).", comment: "Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording)."))
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -72,7 +72,7 @@ struct SettingsView: View {
 
                         // Cancel Recording Override Toggle
                         Toggle(isOn: $isCustomCancelEnabled) {
-                            Text("Override default double-tap Escape cancellation")
+Text(NSLocalizedString("Override default double-tap Escape cancellation", comment: "Override default double-tap Escape cancellation"))
                         }
                         .toggleStyle(.switch)
                         .onChange(of: isCustomCancelEnabled) { _, newValue in
@@ -84,7 +84,7 @@ struct SettingsView: View {
                         // Show shortcut recorder only when override is enabled
                         if isCustomCancelEnabled {
                             HStack(spacing: 12) {
-                                Text("Custom Cancel Shortcut")
+Text(NSLocalizedString("Custom Cancel Shortcut", comment: "Custom Cancel Shortcut"))
                                     .font(.system(size: 13, weight: .medium))
                                     .foregroundColor(.secondary)
                                 
@@ -97,7 +97,7 @@ struct SettingsView: View {
                             .transition(.opacity.combined(with: .move(edge: .top)))
                         }
 
-                        Text("By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users).")
+Text(NSLocalizedString("By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users).", comment: "By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users)."))
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -108,12 +108,12 @@ struct SettingsView: View {
                 // Recording Feedback Section
                 SettingsSection(
                     icon: "speaker.wave.2.bubble.left.fill",
-                    title: NSLocalizedString("Recording Feedback", comment: "Recording feedback"),
+                    title: "Recording Feedback",
                     subtitle: "Customize app & system feedback"
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
                         Toggle(isOn: $whisperState.isAutoCopyEnabled) {
-                            Text("Auto-copy to clipboard")
+Text(NSLocalizedString("Auto-copy to clipboard", comment: "Auto-copy to clipboard"))
                         }
                         .toggleStyle(.switch)
 
@@ -121,18 +121,18 @@ struct SettingsView: View {
                             get: { SoundManager.shared.isEnabled },
                             set: { SoundManager.shared.isEnabled = $0 }
                         )) {
-                            Text("Sound feedback")
+Text(NSLocalizedString("Sound feedback", comment: "Sound feedback"))
                         }
                         .toggleStyle(.switch)
 
                         Toggle(isOn: $mediaController.isSystemMuteEnabled) {
-                            Text("Mute system audio during recording")
+Text(NSLocalizedString("Mute system audio during recording", comment: "Mute system audio during recording"))
                         }
                         .toggleStyle(.switch)
                         .help("Automatically mute system audio when recording starts and restore when recording stops")
 
                         Toggle(isOn: $playbackController.isPauseMediaEnabled) {
-                            Text("Pause media during recording")
+Text(NSLocalizedString("Pause media during recording", comment: "Pause media during recording"))
                         }
                         .toggleStyle(.switch)
                         .help("Automatically pause active media playback when recording starts and resume when recording stops")
@@ -142,16 +142,16 @@ struct SettingsView: View {
                 // Recorder Preference Section
                 SettingsSection(
                     icon: "rectangle.on.rectangle",
-                    title: NSLocalizedString("Recorder Style", comment: "Recorder style"),
+                    title: "Recorder Style",
                     subtitle: "Choose your preferred recorder interface"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Select how you want the recorder to appear on your screen.")
+Text(NSLocalizedString("Select how you want the recorder to appear on your screen.", comment: "Select how you want the recorder to appear on your screen."))
                             .settingsDescription()
                         
-                        Picker(NSLocalizedString("Recorder Style", comment: "Recorder style"), selection: $whisperState.recorderType) {
-                            Text("Notch Recorder").tag("notch")
-                            Text("Mini Recorder").tag("mini")
+Picker(NSLocalizedString("Recorder Style", comment: "Recorder Style"), selection: $whisperState.recorderType) {
+Text(NSLocalizedString("Notch Recorder", comment: "Notch Recorder")).tag("notch")
+Text(NSLocalizedString("Mini Recorder", comment: "Mini Recorder")).tag("mini")
                         }
                         .pickerStyle(.radioGroup)
                         .padding(.vertical, 4)
@@ -165,10 +165,10 @@ struct SettingsView: View {
                     subtitle: "Choose how text is pasted"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.")
+Text(NSLocalizedString("Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.", comment: "Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout."))
                             .settingsDescription()
                         
-                        Toggle("Use AppleScript Paste Method", isOn: Binding(
+Toggle(NSLocalizedString("Use AppleScript Paste Method", comment: "Use AppleScript Paste Method"), isOn: Binding(
                             get: { UserDefaults.standard.bool(forKey: "UseAppleScriptPaste") },
                             set: { UserDefaults.standard.set($0, forKey: "UseAppleScriptPaste") }
                         ))
@@ -179,14 +179,14 @@ struct SettingsView: View {
                 // App Appearance Section
                 SettingsSection(
                     icon: "dock.rectangle",
-                    title: NSLocalizedString("App Appearance", comment: "App appearance"),
+                    title: "App Appearance",
                     subtitle: "Dock and Menu Bar options"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Choose how VoiceInk appears in your system.")
+Text(NSLocalizedString("Choose how VoiceInk appears in your system.", comment: "Choose how VoiceInk appears in your system."))
                             .settingsDescription()
                         
-                        Toggle("Hide Dock Icon (Menu Bar Only)", isOn: $menuBarManager.isMenuBarOnly)
+Toggle(NSLocalizedString("Hide Dock Icon (Menu Bar Only)", comment: "Hide Dock Icon (Menu Bar Only)"), isOn: $menuBarManager.isMenuBarOnly)
                             .toggleStyle(.switch)
                     }
                 }
@@ -194,7 +194,7 @@ struct SettingsView: View {
                 // Audio Cleanup Section
                 SettingsSection(
                     icon: "trash.circle",
-                    title: NSLocalizedString("Audio Cleanup", comment: "Audio cleanup"),
+                    title: "Audio Cleanup",
                     subtitle: "Manage recording storage"
                 ) {
                     AudioCleanupSettingsView()
@@ -207,7 +207,7 @@ struct SettingsView: View {
                     subtitle: "Launch options"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Choose whether VoiceInk should start automatically when you log in.")
+Text(NSLocalizedString("Choose whether VoiceInk should start automatically when you log in.", comment: "Choose whether VoiceInk should start automatically when you log in."))
                             .settingsDescription()
                         
                         LaunchAtLogin.Toggle()
@@ -218,14 +218,14 @@ struct SettingsView: View {
                 // Updates Section
                 SettingsSection(
                     icon: "arrow.triangle.2.circlepath",
-                    title: NSLocalizedString("Updates", comment: "Updates"),
+                    title: "Updates",
                     subtitle: "Keep VoiceInk up to date"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("VoiceInk automatically checks for updates on launch and every other day.")
+Text(NSLocalizedString("VoiceInk automatically checks for updates on launch and every other day.", comment: "VoiceInk automatically checks for updates on launch and every other day."))
                             .settingsDescription()
                         
-                        Button(NSLocalizedString("Check for Updates Now", comment: "Check for updates now")) {
+Button(NSLocalizedString("Check for Updates Now", comment: "Check for Updates Now")) {
                             updaterViewModel.checkForUpdates()
                         }
                         .buttonStyle(.bordered)
@@ -241,10 +241,10 @@ struct SettingsView: View {
                     subtitle: "View the introduction again"
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Reset the onboarding process to view the app introduction again.")
+Text(NSLocalizedString("Reset the onboarding process to view the app introduction again.", comment: "Reset the onboarding process to view the app introduction again."))
                             .settingsDescription()
                         
-                        Button("Reset Onboarding") {
+Button(NSLocalizedString("Reset Onboarding", comment: "Reset Onboarding")) {
                             showResetOnboardingAlert = true
                         }
                         .buttonStyle(.bordered)
@@ -255,11 +255,11 @@ struct SettingsView: View {
                 // Data Management Section
                 SettingsSection(
                     icon: "arrow.up.arrow.down.circle",
-                    title: NSLocalizedString("Data Management", comment: "Data management"),
+                    title: "Data Management",
                     subtitle: "Import or export your settings"
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export.")
+Text(NSLocalizedString("Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export.", comment: "Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export."))
                             .settingsDescription()
 
                         HStack(spacing: 12) {
@@ -275,7 +275,7 @@ struct SettingsView: View {
                                     whisperState: whisperState
                                 )
                             } label: {
-                                Label("Import Settings...", systemImage: "arrow.down.doc")
+Label(NSLocalizedString("Import Settings...", comment: "Import Settings..."), systemImage: "arrow.down.doc")
                                     .frame(maxWidth: .infinity)
                             }
                             .controlSize(.large)
@@ -292,7 +292,7 @@ struct SettingsView: View {
                                     whisperState: whisperState
                                 )
                             } label: {
-                                Label("Export Settings...", systemImage: "arrow.up.doc")
+Label(NSLocalizedString("Export Settings...", comment: "Export Settings..."), systemImage: "arrow.up.doc")
                                     .frame(maxWidth: .infinity)
                             }
                             .controlSize(.large)
@@ -308,9 +308,9 @@ struct SettingsView: View {
             // Initialize custom cancel shortcut state from stored preferences
             isCustomCancelEnabled = KeyboardShortcuts.getShortcut(for: .cancelRecorder) != nil
         }
-        .alert("Reset Onboarding", isPresented: $showResetOnboardingAlert) {
+.alert(NSLocalizedString("Reset Onboarding", comment: "Reset Onboarding"), isPresented: $showResetOnboardingAlert) {
             Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) { }
-            Button("Reset", role: .destructive) {
+Button(NSLocalizedString("Reset", comment: "Reset"), role: .destructive) {
                 // Defer state change to avoid layout issues while alert dismisses
                 DispatchQueue.main.async {
                     hasCompletedOnboarding = false

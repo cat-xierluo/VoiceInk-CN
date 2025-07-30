@@ -2,21 +2,11 @@ import SwiftUI
 import SwiftData
 
 enum ModelFilter: String, CaseIterable, Identifiable {
-    case recommended = "recommended"
-    case local = "local"
-    case cloud = "cloud" 
-    case custom = "custom"
-    
+    case recommended = "Recommended"
+    case local = "Local"
+    case cloud = "Cloud"
+    case custom = "Custom"
     var id: String { self.rawValue }
-    
-    var displayName: String {
-        switch self {
-        case .recommended: return NSLocalizedString("Recommended", comment: "Recommended")
-        case .local: return NSLocalizedString("Local", comment: "Local")
-        case .cloud: return NSLocalizedString("Cloud", comment: "Cloud")
-        case .custom: return NSLocalizedString("Custom", comment: "Custom")
-        }
-    }
 }
 
 struct ModelManagementView: View {
@@ -60,7 +50,7 @@ struct ModelManagementView: View {
     
     private var defaultModelSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(NSLocalizedString("Default Model", comment: "Default model"))
+Text(NSLocalizedString("Default Model", comment: "Default Model"))
                 .font(.headline)
                 .foregroundColor(.secondary)
             Text(whisperState.currentTranscriptionModel?.displayName ?? "No model selected")
@@ -89,7 +79,7 @@ struct ModelManagementView: View {
                                 isShowingSettings = false
                             }
                         }) {
-                            Text(filter.displayName)
+                            Text(filter.rawValue)
                                 .font(.system(size: 14, weight: selectedFilter == filter ? .semibold : .medium))
                                 .foregroundColor(selectedFilter == filter ? .primary : .primary.opacity(0.7))
                                 .padding(.horizontal, 16)

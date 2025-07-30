@@ -42,12 +42,12 @@ struct OnboardingModelDownloadView: View {
                         
                         // Title and description
                         VStack(spacing: 12) {
-                            Text(NSLocalizedString("Download AI Model", comment: "Download AI model"))
+Text(NSLocalizedString("Download AI Model", comment: "Download AI Model"))
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                             
-                            Text("We'll download the optimized model to get you started.")
+Text(NSLocalizedString("We'll download the optimized model to get you started.", comment: "We'll download the optimized model to get you started."))
                                 .font(.body)
                                 .foregroundColor(.white.opacity(0.7))
                                 .multilineTextAlignment(.center)
@@ -75,8 +75,8 @@ struct OnboardingModelDownloadView: View {
                         
                         // Performance indicators in a more compact layout
                         HStack(spacing: 20) {
-                            performanceIndicator(label: NSLocalizedString("Speed", comment: "Speed"), value: turboModel.speed)
-                            performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), value: turboModel.accuracy)
+                            performanceIndicator(label: "Speed", value: turboModel.speed)
+                            performanceIndicator(label: "Accuracy", value: turboModel.accuracy)
                             ramUsageLabel(gb: turboModel.ramUsage)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -187,7 +187,7 @@ struct OnboardingModelDownloadView: View {
     
     private func getButtonTitle() -> String {
         if isModelSet {
-            return NSLocalizedString("Continue", comment: "Continue button")
+            return "Continue"
         } else if isDownloading {
             return "Downloading..."
         } else if whisperState.availableModels.contains(where: { $0.name == turboModel.name }) {

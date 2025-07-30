@@ -53,7 +53,7 @@ class AIEnhancementService: ObservableObject {
     
     private let aiService: AIService
     private let screenCaptureService: ScreenCaptureService
-    private let baseTimeout: TimeInterval = 10
+    private let baseTimeout: TimeInterval = 30
     private let rateLimitInterval: TimeInterval = 1.0
     private var lastRequestTime: Date?
     private let modelContext: ModelContext

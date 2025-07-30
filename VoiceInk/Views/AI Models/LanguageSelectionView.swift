@@ -35,14 +35,14 @@ struct LanguageSelectionView: View {
     // Function to get current model's supported languages
     private func getCurrentModelLanguages() -> [String: String] {
         guard let currentModel = whisperState.currentTranscriptionModel else {
-            return ["en": NSLocalizedString("English", comment: "English")] // Default to English if no model found
+            return ["en": "English"] // Default to English if no model found
         }
         return currentModel.supportedLanguages
     }
 
     // Get the display name of the current language
     private func currentLanguageDisplayName() -> String {
-        return getCurrentModelLanguages()[selectedLanguage] ?? NSLocalizedString("Unknown", comment: "Unknown status")
+        return getCurrentModelLanguages()[selectedLanguage] ?? "Unknown"
     }
 
     var body: some View {
@@ -63,14 +63,14 @@ struct LanguageSelectionView: View {
     
     private var languageSelectionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(NSLocalizedString("Transcription Language", comment: "Transcription language"))
+Text(NSLocalizedString("Transcription Language", comment: "Transcription Language"))
                 .font(.headline)
 
             if let currentModel = whisperState.currentTranscriptionModel
             {
                 if isMultilingualModel() {
                     VStack(alignment: .leading, spacing: 8) {
-                        Picker(NSLocalizedString("Select Language", comment: "Select language"), selection: $selectedLanguage) {
+Picker(NSLocalizedString("Select Language", comment: "Select Language"), selection: $selectedLanguage) {
                             ForEach(
                                 currentModel.supportedLanguages.sorted(by: {
                                     if $0.key == "auto" { return true }
@@ -99,7 +99,7 @@ struct LanguageSelectionView: View {
                 } else {
                     // For English-only models, force set language to English
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Language: English")
+Text(NSLocalizedString("Language: English", comment: "Language: English"))
                             .font(.subheadline)
                             .foregroundColor(.primary)
 

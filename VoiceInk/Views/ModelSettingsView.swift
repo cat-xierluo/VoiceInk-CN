@@ -11,7 +11,7 @@ struct ModelSettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Output Format")
+Text(NSLocalizedString("Output Format", comment: "Output Format"))
                     .font(.headline)
                 
                 InfoTip(
@@ -33,7 +33,7 @@ struct ModelSettingsView: View {
                         isEditing = true
                     }
                 }) {
-                    Text(isEditing ? NSLocalizedString("Save", comment: "Save button") : NSLocalizedString("Edit", comment: "Edit button"))
+                    Text(isEditing ? "Save" : "Edit")
                         .font(.caption)
                 }
             }
@@ -68,24 +68,24 @@ struct ModelSettingsView: View {
 
             HStack {
                 Toggle(isOn: $isTextFormattingEnabled) {
-                    Text("Automatic text formatting")
+Text(NSLocalizedString("Automatic text formatting", comment: "Automatic text formatting"))
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic text formatting"),
+                    title: "Automatic Text Formatting",
                     message: "Apply intelligent text formatting to break large block of text into paragraphs."
                 )
             }
 
             HStack {
                 Toggle(isOn: $isVADEnabled) {
-                    Text("Voice Activity Detection (VAD)")
+Text(NSLocalizedString("Voice Activity Detection (VAD)", comment: "Voice Activity Detection (VAD)"))
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: NSLocalizedString("Voice Activity Detection", comment: "Voice activity detection"),
+                    title: "Voice Activity Detection",
                     message: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models."
                 )
             }

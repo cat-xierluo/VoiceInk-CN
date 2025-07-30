@@ -12,7 +12,7 @@ struct AnimatedCopyButton: View {
                 Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
                     .font(.system(size: 12, weight: isCopied ? .bold : .regular))
                     .foregroundColor(.white)
-                Text(isCopied ? "Copied" : NSLocalizedString("Copy", comment: "Copy button"))
+                Text(isCopied ? "Copied" : "Copy")
                     .font(.system(size: 12, weight: isCopied ? .medium : .regular))
                     .foregroundColor(.white)
             }

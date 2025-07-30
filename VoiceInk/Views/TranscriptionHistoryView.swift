@@ -208,9 +208,9 @@ struct TranscriptionHistoryView: View {
             Image(systemName: "doc.text.magnifyingglass")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            Text("No transcriptions found")
+Text(NSLocalizedString("No transcriptions found", comment: "No transcriptions found"))
                 .font(.system(size: 24, weight: .semibold, design: .default))
-            Text("Your history will appear here")
+Text(NSLocalizedString("Your history will appear here", comment: "Your history will appear here"))
                 .font(.system(size: 18, weight: .regular, design: .default))
                 .foregroundColor(.secondary)
         }
@@ -242,7 +242,7 @@ struct TranscriptionHistoryView: View {
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "square.and.arrow.up")
-                    Text("Export")
+Text(NSLocalizedString("Export", comment: "Export"))
                 }
             }
             .buttonStyle(.borderless)
@@ -258,14 +258,14 @@ struct TranscriptionHistoryView: View {
             .buttonStyle(.borderless)
             
             if selectedTranscriptions.count < displayedTranscriptions.count {
-                Button("Select All") {
+Button(NSLocalizedString("Select All", comment: "Select All")) {
                     Task {
                         await selectAllTranscriptions()
                     }
                 }
                 .buttonStyle(.borderless)
             } else {
-                Button("Deselect All") {
+Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
                     selectedTranscriptions.removeAll()
                 }
                 .buttonStyle(.borderless)

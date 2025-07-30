@@ -123,7 +123,7 @@ struct ConfigurationView: View {
                 Spacer()
                 
                 if case .edit(let config) = mode {
-                    Button("Delete") {
+Button(NSLocalizedString("Delete", comment: "Delete")) {
                         powerModeManager.removeConfiguration(with: config.id)
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -131,7 +131,7 @@ struct ConfigurationView: View {
                     .padding(.trailing, 8)
                 }
                 
-                Button("Cancel") {
+Button(NSLocalizedString("Cancel", comment: "Cancel")) {
                     presentationMode.wrappedValue.dismiss()
                 }
                 .keyboardShortcut(.escape, modifiers: [])
@@ -168,7 +168,7 @@ struct ConfigurationView: View {
                             )
                         }
                         
-                        TextField("Name your power mode", text: $configName)
+TextField(NSLocalizedString("Name your power mode", comment: "Name your power mode"), text: $configName)
                             .font(.system(size: 18, weight: .bold))
                             .textFieldStyle(.plain)
                             .foregroundColor(.primary)
@@ -204,7 +204,7 @@ struct ConfigurationView: View {
                             // Applications Subsection
                             VStack(alignment: .leading, spacing: 12) {
                                 HStack {
-                                    Text("Applications")
+Text(NSLocalizedString("Applications", comment: "Applications"))
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
@@ -214,7 +214,7 @@ struct ConfigurationView: View {
                                         loadInstalledApps()
                                         isShowingAppPicker = true
                                     }) {
-                                        Label("Add App", systemImage: "plus.circle.fill")
+Label(NSLocalizedString("Add App", comment: "Add App"), systemImage: "plus.circle.fill")
                                             .font(.subheadline)
                                     }
                                     .buttonStyle(.plain)
@@ -223,7 +223,7 @@ struct ConfigurationView: View {
                                 if selectedAppConfigs.isEmpty {
                                     HStack {
                                         Spacer()
-                                        Text("No applications added")
+Text(NSLocalizedString("No applications added", comment: "No applications added"))
                                             .foregroundColor(.secondary)
                                             .font(.subheadline)
                                         Spacer()
@@ -275,13 +275,13 @@ struct ConfigurationView: View {
                             
                             // Websites Subsection
                             VStack(alignment: .leading, spacing: 12) {
-                                Text("Websites")
+Text(NSLocalizedString("Websites", comment: "Websites"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                     
                                 // Add URL Field
                                 HStack {
-                                    TextField("Enter website URL (e.g., google.com)", text: $newWebsiteURL)
+TextField(NSLocalizedString("Enter website URL (e.g., google.com)", comment: "Enter website URL (e.g., google.com)"), text: $newWebsiteURL)
                                     .textFieldStyle(.roundedBorder)
                                         .onSubmit {
                                             addWebsite()
@@ -299,7 +299,7 @@ struct ConfigurationView: View {
                                 if websiteConfigs.isEmpty {
                                     HStack {
                                         Spacer()
-                                        Text("No websites added")
+Text(NSLocalizedString("No websites added", comment: "No websites added"))
                                             .foregroundColor(.secondary)
                                             .font(.subheadline)
                                         Spacer()
@@ -352,7 +352,7 @@ struct ConfigurationView: View {
                         
                         // Whisper Model Selection Subsection
                         if whisperState.usableModels.isEmpty {
-                            Text("No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab.")
+Text(NSLocalizedString("No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab.", comment: "No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab."))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding()
@@ -368,7 +368,7 @@ struct ConfigurationView: View {
                             )
                             
                             HStack {
-                                Text("Model")
+Text(NSLocalizedString("Model", comment: "Model"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -397,7 +397,7 @@ struct ConfigurationView: View {
                             )
                             
                             HStack {
-                                Text("Language")
+Text(NSLocalizedString("Language", comment: "Language"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -430,7 +430,7 @@ struct ConfigurationView: View {
                         // Section Header
                         SectionHeader(title: "AI Enhancement")
 
-                        Toggle("Enable AI Enhancement", isOn: $isAIEnhancementEnabled)
+Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancement"), isOn: $isAIEnhancementEnabled)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onChange(of: isAIEnhancementEnabled) { oldValue, newValue in
                                 if newValue {
@@ -470,12 +470,12 @@ struct ConfigurationView: View {
                         if isAIEnhancementEnabled {
                             
                             HStack {
-                                Text("AI Provider")
+Text(NSLocalizedString("AI Provider", comment: "AI Provider"))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
                                 if aiService.connectedProviders.isEmpty {
-                                    Text("No providers connected")
+Text(NSLocalizedString("No providers connected", comment: "No providers connected"))
                                         .foregroundColor(.secondary)
                                         .italic()
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -503,7 +503,7 @@ struct ConfigurationView: View {
                                provider != .custom {
                                 
                                 HStack {
-                                    Text("AI Model")
+Text(NSLocalizedString("AI Model", comment: "AI Model"))
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
@@ -558,7 +558,7 @@ struct ConfigurationView: View {
                             
                             // Enhancement Prompts Section (reused from EnhancementSettingsView)
                             VStack(alignment: .leading, spacing: 12) {
-                                Text("Enhancement Prompt")
+Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"))
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
@@ -583,7 +583,7 @@ struct ConfigurationView: View {
                             Divider()
                             
                            
-                            Toggle("Context Awareness", isOn: $useScreenCapture)
+Toggle(NSLocalizedString("Context Awareness", comment: "Context Awareness"), isOn: $useScreenCapture)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
                             
@@ -598,7 +598,7 @@ struct ConfigurationView: View {
                         SectionHeader(title: "Advanced")
 
                         HStack {
-                            Toggle("Auto Send", isOn: $isAutoSendEnabled)
+Toggle(NSLocalizedString("Auto Send", comment: "Auto Send"), isOn: $isAutoSendEnabled)
                             
                             InfoTip(
                                 title: "Auto Send",

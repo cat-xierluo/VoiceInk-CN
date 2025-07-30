@@ -33,11 +33,11 @@ struct PowerModeEmptyStateView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.secondary)
             
-            Text("No Power Modes")
+Text(NSLocalizedString("No Power Modes", comment: "No Power Modes"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
-            Text("Add customized power modes for different contexts")
+Text(NSLocalizedString("Add customized power modes for different contexts", comment: "Add customized power modes for different contexts"))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             
@@ -175,7 +175,7 @@ struct ConfigurationRow: View {
                                 .font(.system(size: 15, weight: .semibold))
                             
                             if isDefault {
-                                Text("Default")
+Text(NSLocalizedString("Default", comment: "Default"))
                                     .font(.system(size: 10, weight: .medium))
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 2)
@@ -185,7 +185,7 @@ struct ConfigurationRow: View {
                         }
                         
                         if isDefault {
-                            Text("Fallback power mode")
+Text(NSLocalizedString("Fallback power mode", comment: "Fallback power mode"))
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
@@ -296,7 +296,7 @@ struct ConfigurationRow: View {
                                 HStack(spacing: 4) {
                                     Image(systemName: "camera.viewfinder")
                                         .font(.system(size: 10))
-                                    Text("Context Awareness")
+Text(NSLocalizedString("Context Awareness", comment: "Context Awareness"))
                                         .font(.caption)
                                 }
                                 .padding(.horizontal, 8)

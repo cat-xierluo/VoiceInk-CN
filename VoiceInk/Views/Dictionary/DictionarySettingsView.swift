@@ -5,15 +5,8 @@ struct DictionarySettingsView: View {
     let whisperPrompt: WhisperPrompt
     
     enum DictionarySection: String, CaseIterable {
-        case replacements = "replacements"
-        case spellings = "spellings"
-        
-        var displayName: String {
-            switch self {
-            case .replacements: return NSLocalizedString("Word Replacements", comment: "Word replacements")
-            case .spellings: return NSLocalizedString("Correct Spellings", comment: "Correct spellings")
-            }
-        }
+        case replacements = "Word Replacements"
+        case spellings = "Correct Spellings"
         
         var description: String {
             switch self {
@@ -56,9 +49,9 @@ struct DictionarySettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-                Text("Dictionary Settings")
+Text(NSLocalizedString("Dictionary Settings", comment: "Dictionary Settings"))
                     .font(.system(size: 28, weight: .bold))
-                Text("Enhance VoiceInk's transcription accuracy by teaching it your vocabulary")
+Text(NSLocalizedString("Enhance VoiceInk's transcription accuracy by teaching it your vocabulary", comment: "Enhance VoiceInk's transcription accuracy by teaching it your vocabulary"))
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -81,7 +74,7 @@ struct DictionarySettingsView: View {
     
     private var sectionSelector: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Select Section")
+Text(NSLocalizedString("Select Section", comment: "Select Section"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -125,7 +118,7 @@ struct SectionCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                                            Text(section.displayName)
+                    Text(section.rawValue)
                         .font(.headline)
                     
                     Text(section.description)

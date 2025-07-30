@@ -39,7 +39,7 @@ struct WordReplacementView: View {
             GroupBox {
                 HStack {
                     Label {
-                        Text("Define word replacements to automatically replace specific words or phrases")
+Text(NSLocalizedString("Define word replacements to automatically replace specific words or phrases", comment: "Define word replacements to automatically replace specific words or phrases"))
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -51,7 +51,7 @@ struct WordReplacementView: View {
                     
                     Spacer()
                     
-                    Toggle(NSLocalizedString("Enable", comment: "Enable"), isOn: $manager.isEnabled)
+Toggle(NSLocalizedString("Enable", comment: "Enable"), isOn: $manager.isEnabled)
                         .toggleStyle(.switch)
                         .labelsHidden()
                         .help("Enable automatic word replacement after transcription")
@@ -61,7 +61,7 @@ struct WordReplacementView: View {
             VStack(spacing: 0) {
                 // Header with action button
                 HStack {
-                    Text(NSLocalizedString("Word Replacements", comment: "Word replacements"))
+Text(NSLocalizedString("Word Replacements", comment: "Word Replacements"))
                         .font(.headline)
                     
                     Spacer()
@@ -118,16 +118,16 @@ struct EmptyStateView: View {
                 .font(.system(size: 32))
                 .foregroundColor(.secondary)
             
-            Text("No Replacements")
+Text(NSLocalizedString("No Replacements", comment: "No Replacements"))
                 .font(.headline)
             
-            Text("Add word replacements to automatically replace text during AI enhancement.")
+Text(NSLocalizedString("Add word replacements to automatically replace text during AI enhancement.", comment: "Add word replacements to automatically replace text during AI enhancement."))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 250)
             
-            Button(NSLocalizedString("Add Replacement", comment: "Add replacement button")) {
+Button(NSLocalizedString("Add Replacement", comment: "Add Replacement")) {
                 showAddModal = true
             }
             .buttonStyle(.borderedProminent)
@@ -157,7 +157,7 @@ struct AddReplacementSheet: View {
                 
                 Spacer()
                 
-                Text(NSLocalizedString("Add Word Replacement", comment: "Add word replacement"))
+Text(NSLocalizedString("Add Word Replacement", comment: "Add Word Replacement"))
                     .font(.headline)
                 
                 Spacer()
@@ -179,7 +179,7 @@ struct AddReplacementSheet: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Description
-                    Text("Define a word or phrase to be automatically replaced during AI enhancement.")
+Text(NSLocalizedString("Define a word or phrase to be automatically replaced during AI enhancement.", comment: "Define a word or phrase to be automatically replaced during AI enhancement."))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -200,7 +200,7 @@ struct AddReplacementSheet: View {
                                     .foregroundColor(.secondary)
                             }
                             
-                            TextField("Enter word or phrase to replace", text: $originalWord)
+TextField(NSLocalizedString("Enter word or phrase to replace", comment: "Enter word or phrase to replace"), text: $originalWord)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.body)
                         }
@@ -209,7 +209,7 @@ struct AddReplacementSheet: View {
                         // Replacement Text Section
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
-                                Text("Replacement Text")
+Text(NSLocalizedString("Replacement Text", comment: "Replacement Text"))
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
@@ -240,7 +240,7 @@ struct AddReplacementSheet: View {
                         
                         HStack(spacing: 12) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Original:")
+Text(NSLocalizedString("Original:", comment: "Original:"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                 Text("my website link")
@@ -252,7 +252,7 @@ struct AddReplacementSheet: View {
                                 .foregroundColor(.secondary)
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Replacement:")
+Text(NSLocalizedString("Replacement:", comment: "Replacement:"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                 Text("https://tryvoiceink.com")

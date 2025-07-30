@@ -14,13 +14,13 @@ struct MenuBarView: View {
     
     var body: some View {
         VStack {
-            Button(NSLocalizedString("Toggle Mini Recorder", comment: "Menu bar button to toggle mini recorder")) {
+Button(NSLocalizedString("Toggle Mini Recorder", comment: "Toggle Mini Recorder")) {
                 Task {
                     await whisperState.toggleMiniRecorder()
                 }
             }
             
-            Toggle(NSLocalizedString("AI Enhancement", comment: "Toggle for AI enhancement feature"), isOn: $enhancementService.isEnhancementEnabled)
+Toggle(NSLocalizedString("AI Enhancement", comment: "AI Enhancement"), isOn: $enhancementService.isEnhancementEnabled)
             
             Menu {
                 ForEach(enhancementService.allPrompts) { prompt in
@@ -40,7 +40,7 @@ struct MenuBarView: View {
                 }
             } label: {
                 HStack {
-                    Text(String(format: NSLocalizedString("Prompt: %@", comment: "Current prompt display format"), enhancementService.activePrompt?.title ?? NSLocalizedString("None", comment: "No prompt selected")))
+                    Text("Prompt: \(enhancementService.activePrompt?.title ?? "None")")
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -62,13 +62,13 @@ struct MenuBarView: View {
                 }
                 
                 if aiService.connectedProviders.isEmpty {
-                    Text(NSLocalizedString("No providers connected", comment: "No AI providers connected message"))
+Text(NSLocalizedString("No providers connected", comment: "No providers connected"))
                         .foregroundColor(.secondary)
                 }
                 
                 Divider()
                 
-                Button(NSLocalizedString("Manage AI Providers", comment: "Button to manage AI providers")) {
+Button(NSLocalizedString("Manage AI Providers", comment: "Manage AI Providers")) {
                     menuBarManager.openMainWindowAndNavigate(to: "Enhancement")
                 }
             } label: {
@@ -97,12 +97,12 @@ struct MenuBarView: View {
                 
                 Divider()
                 
-                Button(NSLocalizedString("Manage Models", comment: "Button to manage AI models")) {
+Button(NSLocalizedString("Manage Models", comment: "Manage Models")) {
                     menuBarManager.openMainWindowAndNavigate(to: "AI Models")
                 }
             } label: {
                 HStack {
-                    Text("Model: \(whisperState.currentTranscriptionModel?.displayName ?? NSLocalizedString("None", comment: "None selected"))")
+                    Text("Model: \(whisperState.currentTranscriptionModel?.displayName ?? "None")")
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -110,18 +110,18 @@ struct MenuBarView: View {
             
             LanguageSelectionView(whisperState: whisperState, displayMode: .menuItem, whisperPrompt: whisperState.whisperPrompt)
             
-            Toggle(NSLocalizedString("Use Clipboard Context", comment: "Toggle for clipboard context"), isOn: $enhancementService.useClipboardContext)
+Toggle(NSLocalizedString("Use Clipboard Context", comment: "Use Clipboard Context"), isOn: $enhancementService.useClipboardContext)
                 .disabled(!enhancementService.isEnhancementEnabled)
             
-            Toggle(NSLocalizedString("Use Screen Context", comment: "Toggle for screen context"), isOn: $enhancementService.useScreenCaptureContext)
+Toggle(NSLocalizedString("Use Screen Context", comment: "Use Screen Context"), isOn: $enhancementService.useScreenCaptureContext)
                 .disabled(!enhancementService.isEnhancementEnabled)
             
-            Menu(NSLocalizedString("Additional", comment: "Additional menu options")) {
+Menu(NSLocalizedString("Additional", comment: "Additional")) {
                 Button {
                     whisperState.isAutoCopyEnabled.toggle()
                 } label: {
                     HStack {
-                        Text(NSLocalizedString("Auto-copy to Clipboard", comment: "Auto-copy toggle"))
+Text(NSLocalizedString("Auto-copy to Clipboard", comment: "Auto-copy to Clipboard"))
                         Spacer()
                         if whisperState.isAutoCopyEnabled {
                             Image(systemName: "checkmark")
@@ -134,7 +134,7 @@ struct MenuBarView: View {
                     menuRefreshTrigger.toggle()
                 } label: {
                     HStack {
-                        Text(NSLocalizedString("Sound Feedback", comment: "Sound feedback toggle"))
+Text(NSLocalizedString("Sound Feedback", comment: "Sound Feedback"))
                         Spacer()
                         if SoundManager.shared.isEnabled {
                             Image(systemName: "checkmark")
@@ -147,7 +147,7 @@ struct MenuBarView: View {
                     menuRefreshTrigger.toggle()
                 } label: {
                     HStack {
-                        Text(NSLocalizedString("Mute System Audio During Recording", comment: "Mute audio toggle"))
+Text(NSLocalizedString("Mute System Audio During Recording", comment: "Mute System Audio During Recording"))
                         Spacer()
                         if MediaController.shared.isSystemMuteEnabled {
                             Image(systemName: "checkmark")
@@ -159,41 +159,41 @@ struct MenuBarView: View {
             
             Divider()
             
-            Button(NSLocalizedString("Copy Last Transcription", comment: "Copy last transcription button")) {
+Button(NSLocalizedString("Copy Last Transcription", comment: "Copy Last Transcription")) {
                 LastTranscriptionService.copyLastTranscription(from: whisperState.modelContext)
             }
             
-            Button(NSLocalizedString("History", comment: "History button")) {
-                menuBarManager.openMainWindowAndNavigate(to: "History")
+            Button(NSLocalizedString("History", comment: "History")) {
+                menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("History", comment: "History"))
             }
             
-            Button(NSLocalizedString("Settings", comment: "Settings button")) {
-                menuBarManager.openMainWindowAndNavigate(to: "Settings")
+            Button(NSLocalizedString("Settings", comment: "Settings")) {
+                menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("Settings", comment: "Settings"))
             }
             
-            Button(menuBarManager.isMenuBarOnly ? NSLocalizedString("Show Dock Icon", comment: "Show dock icon button") : NSLocalizedString("Hide Dock Icon", comment: "Hide dock icon button")) {
+            Button(menuBarManager.isMenuBarOnly ? "Show Dock Icon" : "Hide Dock Icon") {
                 menuBarManager.toggleMenuBarOnly()
             }
             
-            Toggle(NSLocalizedString("Launch at Login", comment: "Launch at login toggle"), isOn: $launchAtLoginEnabled)
+Toggle(NSLocalizedString("Launch at Login", comment: "Launch at Login"), isOn: $launchAtLoginEnabled)
                 .onChange(of: launchAtLoginEnabled) { oldValue, newValue in
                     LaunchAtLogin.isEnabled = newValue
                 }
             
             Divider()
             
-            Button(NSLocalizedString("Check for Updates", comment: "Check for updates button")) {
+Button(NSLocalizedString("Check for Updates", comment: "Check for Updates")) {
                 updaterViewModel.checkForUpdates()
             }
             .disabled(!updaterViewModel.canCheckForUpdates)
             
-            Button(NSLocalizedString("Help and Support", comment: "Help and support button")) {
+Button(NSLocalizedString("Help and Support", comment: "Help and Support")) {
                 EmailSupport.openSupportEmail()
             }
             
             Divider()
             
-            Button(NSLocalizedString("Quit VoiceInk", comment: "Quit application button")) {
+Button(NSLocalizedString("Quit VoiceInk", comment: "Quit VoiceInk")) {
                 NSApplication.shared.terminate(nil)
             }
         }

@@ -99,7 +99,7 @@ struct PromptSelectionGrid: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                     
-                    Text("Right-click on prompts to edit or delete")
+Text(NSLocalizedString("Right-click on prompts to edit or delete", comment: "Right-click on prompts to edit or delete"))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

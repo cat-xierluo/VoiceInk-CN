@@ -90,7 +90,7 @@ struct PowerModeView: View {
                     // Header Section
                     VStack(alignment: .leading, spacing: 8) {
                         HStack(alignment: .center) {
-                            Text("Power Mode")
+Text(NSLocalizedString("Power Mode", comment: "Power Mode"))
                                 .font(.system(size: 22, weight: .bold))
                             
                             InfoTip(
@@ -110,7 +110,7 @@ struct PowerModeView: View {
                                 }
                         }
                         
-                        Text("Automatically apply custom configurations based on the app/website you are using")
+Text(NSLocalizedString("Automatically apply custom configurations based on the app/website you are using", comment: "Automatically apply custom configurations based on the app/website you are using"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -122,7 +122,7 @@ struct PowerModeView: View {
                         VStack(spacing: 0) {
                             // Default Configuration Section
                             VStack(alignment: .leading, spacing: 16) {
-                                Text("Default Power Mode")
+Text(NSLocalizedString("Default Power Mode", comment: "Default Power Mode"))
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                     .padding(.horizontal)
@@ -146,7 +146,7 @@ struct PowerModeView: View {
                             
                             // Custom Configurations Section
                             VStack(alignment: .leading, spacing: 16) {
-                                Text("Custom Power Modes")
+Text(NSLocalizedString("Custom Power Modes", comment: "Custom Power Modes"))
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                     .padding(.horizontal)
@@ -157,11 +157,11 @@ struct PowerModeView: View {
                                             .font(.system(size: 36))
                                             .foregroundColor(.secondary)
                                         
-                                        Text("No custom power modes")
+Text(NSLocalizedString("No custom power modes", comment: "No custom power modes"))
                                             .font(.title3)
                                             .fontWeight(.medium)
                                         
-                                        Text("Create a new mode for specific apps/websites")
+Text(NSLocalizedString("Create a new mode for specific apps/websites", comment: "Create a new mode for specific apps/websites"))
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                             .multilineTextAlignment(.center)
@@ -211,11 +211,11 @@ struct PowerModeView: View {
                                 .font(.system(size: 56))
                                 .foregroundColor(.secondary)
                             
-                            Text("Power Mode is disabled")
+Text(NSLocalizedString("Power Mode is disabled", comment: "Power Mode is disabled"))
                                 .font(.title2)
                                 .fontWeight(.semibold)
                             
-                            Text("Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website.")
+Text(NSLocalizedString("Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website.", comment: "Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website."))
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: 400)

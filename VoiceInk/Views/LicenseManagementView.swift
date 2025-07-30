@@ -3,7 +3,7 @@ import SwiftUI
 struct LicenseManagementView: View {
     @StateObject private var licenseViewModel = LicenseViewModel()
     @Environment(\.colorScheme) private var colorScheme
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? NSLocalizedString("Unknown", comment: "Unknown status")
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     
     var body: some View {
         ScrollView {
@@ -38,7 +38,7 @@ struct LicenseManagementView: View {
                         .foregroundStyle(.blue)
                     
                     HStack(alignment: .lastTextBaseline, spacing: 8) { 
-                        Text(licenseViewModel.licenseState == .licensed ? NSLocalizedString("VoiceInk Pro", comment: NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro")) : "Upgrade to Pro")
+                        Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : "Upgrade to Pro")
                             .font(.system(size: 32, weight: .bold))
                         
                         Text("v\(appVersion)")
@@ -50,7 +50,7 @@ struct LicenseManagementView: View {
                 
                 Text(licenseViewModel.licenseState == .licensed ? 
                      "Thank you for supporting VoiceInk" :
-                     NSLocalizedString("Transcribe what you say to text instantly with AI", comment: "App description"))
+                     "Transcribe what you say to text instantly with AI")
                     .font(.title3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -168,7 +168,7 @@ struct LicenseManagementView: View {
                             ProgressView()
                                 .controlSize(.small)
                         } else {
-                            Text(NSLocalizedString("Activate", comment: "Activate button"))
+Text(NSLocalizedString("Activate", comment: "Activate"))
                                 .frame(width: 80)
                         }
                     }
@@ -196,7 +196,7 @@ struct LicenseManagementView: View {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 24))
                         .foregroundStyle(.green)
-                    Text("License Active")
+Text(NSLocalizedString("License Active", comment: "License Active"))
                         .font(.headline)
                     Spacer()
                     Text(NSLocalizedString("Active", comment: "Active status"))
@@ -214,7 +214,7 @@ struct LicenseManagementView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 } else {
-                    Text(NSLocalizedString("You can use VoiceInk Pro on all your personal devices", comment: "Pro license description"))
+Text(NSLocalizedString("You can use VoiceInk Pro on all your personal devices", comment: "You can use VoiceInk Pro on all your personal devices"))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -225,13 +225,13 @@ struct LicenseManagementView: View {
             
             // Deactivation Card
             VStack(alignment: .leading, spacing: 16) {
-                Text(NSLocalizedString("License Management", comment: "License management"))
+Text(NSLocalizedString("License Management", comment: "License Management"))
                     .font(.headline)
                 
                 Button(role: .destructive, action: {
                     licenseViewModel.removeLicense()
                 }) {
-                    Label("Deactivate License", systemImage: "xmark.circle.fill")
+Label(NSLocalizedString("Deactivate License", comment: "Deactivate License"), systemImage: "xmark.circle.fill")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
                 }

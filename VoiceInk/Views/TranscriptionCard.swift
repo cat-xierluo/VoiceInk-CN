@@ -44,7 +44,7 @@ struct TranscriptionCard: View {
                     
                     if isExpanded {
                         HStack {
-                            Text("Original")
+Text(NSLocalizedString("Original", comment: "Original"))
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.secondary)
                             Spacer()
@@ -67,7 +67,7 @@ struct TranscriptionCard: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "sparkles")
                                     .foregroundColor(.blue)
-                                Text("Enhanced")
+Text(NSLocalizedString("Enhanced", comment: "Enhanced"))
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.blue)
                             }
@@ -92,18 +92,18 @@ struct TranscriptionCard: View {
                         .padding(.vertical, 8)
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        metadataRow(icon: "hourglass", label: NSLocalizedString("Audio Duration", comment: "Audio duration"), value: formatTiming(transcription.duration))
+                        metadataRow(icon: "hourglass", label: "Audio Duration", value: formatTiming(transcription.duration))
                         if let modelName = transcription.transcriptionModelName {
-                            metadataRow(icon: "cpu.fill", label: NSLocalizedString("Transcription Model", comment: "Transcription model"), value: modelName)
+                            metadataRow(icon: "cpu.fill", label: "Transcription Model", value: modelName)
                         }
                         if let aiModel = transcription.aiEnhancementModelName {
-                            metadataRow(icon: "sparkles", label: NSLocalizedString("Enhancement Model", comment: "Enhancement model"), value: aiModel)
+                            metadataRow(icon: "sparkles", label: "Enhancement Model", value: aiModel)
                         }
                         if let duration = transcription.transcriptionDuration {
-                            metadataRow(icon: "clock.fill", label: NSLocalizedString("Transcription Time", comment: "Transcription time"), value: formatTiming(duration))
+                            metadataRow(icon: "clock.fill", label: "Transcription Time", value: formatTiming(duration))
                         }
                         if let duration = transcription.enhancementDuration {
-                            metadataRow(icon: "clock.fill", label: NSLocalizedString("Enhancement Time", comment: "Enhancement time"), value: formatTiming(duration))
+                            metadataRow(icon: "clock.fill", label: "Enhancement Time", value: formatTiming(duration))
                         }
                     }
                 }
@@ -118,14 +118,14 @@ struct TranscriptionCard: View {
                 Button {
                     let _ = ClipboardManager.copyToClipboard(enhancedText)
                 } label: {
-                    Label("Copy Enhanced", systemImage: "doc.on.doc")
+Label(NSLocalizedString("Copy Enhanced", comment: "Copy Enhanced"), systemImage: "doc.on.doc")
                 }
             }
             
             Button {
                 let _ = ClipboardManager.copyToClipboard(transcription.text)
             } label: {
-                Label("Copy Original", systemImage: "doc.on.doc")
+Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage: "doc.on.doc")
             }
             
             Button(role: .destructive) {

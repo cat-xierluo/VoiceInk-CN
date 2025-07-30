@@ -37,7 +37,7 @@ struct KeyboardShortcutView: View {
     
     private func keyToString(_ key: KeyboardShortcuts.Key) -> String {
         switch key {
-        case .space: return NSLocalizedString("Space", comment: "Space key")
+        case .space: return "Space"
         case .return: return "↩"
         case .escape: return "⎋"
         case .tab: return "⇥"

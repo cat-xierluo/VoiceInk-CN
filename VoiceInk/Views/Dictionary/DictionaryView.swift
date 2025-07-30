@@ -91,7 +91,7 @@ struct DictionaryView: View {
             // Information Section
             GroupBox {
                 Label {
-                    Text("Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement.")
+Text(NSLocalizedString("Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement.", comment: "Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement."))
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -103,7 +103,7 @@ struct DictionaryView: View {
             
             // Input Section
             HStack(spacing: 8) {
-                TextField("Add word to dictionary", text: $newWord)
+TextField(NSLocalizedString("Add word to dictionary", comment: "Add word to dictionary"), text: $newWord)
                     .textFieldStyle(.roundedBorder)
                     .font(.system(size: 13))
                     .onSubmit { addWord() }
@@ -126,7 +126,7 @@ struct DictionaryView: View {
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
                     
-                    Text("Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance.")
+Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance.", comment: "Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance."))
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
                         .padding(.bottom, 4)
@@ -153,7 +153,7 @@ struct DictionaryView: View {
             }
         }
         .padding()
-        .alert(NSLocalizedString("Dictionary", comment: NSLocalizedString("Dictionary", comment: "Dictionary")), isPresented: $showAlert) {
+.alert(NSLocalizedString("Dictionary", comment: "Dictionary"), isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
         } message: {
             Text(alertMessage)

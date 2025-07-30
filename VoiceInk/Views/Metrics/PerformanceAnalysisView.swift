@@ -40,7 +40,7 @@ struct PerformanceAnalysisView: View {
 
     private var header: some View {
         HStack {
-            Text(NSLocalizedString("Performance Analysis", comment: "Performance analysis"))
+Text(NSLocalizedString("Performance Analysis", comment: "Performance Analysis"))
                 .font(.title2)
                 .fontWeight(.bold)
             Spacer()
@@ -181,7 +181,7 @@ struct PerformanceAnalysisView: View {
         }
         
         let groupedByModel = Dictionary(grouping: relevantTranscriptions) {
-            $0[keyPath: modelNameKeyPath] ?? NSLocalizedString("Unknown", comment: "Unknown status")
+            $0[keyPath: modelNameKeyPath] ?? "Unknown"
         }
         
         return groupedByModel.map { modelName, items in

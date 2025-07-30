@@ -16,30 +16,30 @@ struct AudioCleanupSettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts.")
+Text(NSLocalizedString("VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts.", comment: "VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts."))
                 .font(.system(size: 13))
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             
-            Toggle("Enable automatic audio cleanup", isOn: $isAudioCleanupEnabled)
+Toggle(NSLocalizedString("Enable automatic audio cleanup", comment: "Enable automatic audio cleanup"), isOn: $isAudioCleanupEnabled)
                 .toggleStyle(.switch)
                 .padding(.vertical, 4)
             
             if isAudioCleanupEnabled {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Retention Period")
+Text(NSLocalizedString("Retention Period", comment: "Retention Period"))
                         .font(.system(size: 14, weight: .medium))
                     
-                    Picker("Keep audio files for", selection: $audioRetentionPeriod) {
-                        Text("1 day").tag(1)
-                        Text("3 days").tag(3)
-                        Text("7 days").tag(7)
-                        Text("14 days").tag(14)
-                        Text("30 days").tag(30)
+Picker(NSLocalizedString("Keep audio files for", comment: "Keep audio files for"), selection: $audioRetentionPeriod) {
+Text(NSLocalizedString("1 day", comment: "1 day")).tag(1)
+Text(NSLocalizedString("3 days", comment: "3 days")).tag(3)
+Text(NSLocalizedString("7 days", comment: "7 days")).tag(7)
+Text(NSLocalizedString("14 days", comment: "14 days")).tag(14)
+Text(NSLocalizedString("30 days", comment: "30 days")).tag(30)
                     }
                     .pickerStyle(.menu)
                     
-                    Text("Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.")
+Text(NSLocalizedString("Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.", comment: "Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact."))
                         .font(.system(size: 13))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -80,7 +80,7 @@ struct AudioCleanupSettingsView: View {
                 .buttonStyle(.bordered)
                 .controlSize(.large)
                 .disabled(isPerformingCleanup)
-                .alert(NSLocalizedString("Audio Cleanup", comment: "Audio cleanup"), isPresented: $isShowingConfirmation) {
+.alert(NSLocalizedString("Audio Cleanup", comment: "Audio Cleanup"), isPresented: $isShowingConfirmation) {
                     Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) { }
                     
                     if cleanupInfo.fileCount > 0 {

@@ -39,9 +39,9 @@ struct AudioInputSettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-                Text(NSLocalizedString("Audio Input", comment: NSLocalizedString("Audio Input", comment: "Audio Input")))
+                Text(NSLocalizedString("Audio Input", comment: "Audio Input"))
                     .font(.system(size: 28, weight: .bold))
-                Text("Configure your microphone preferences")
+Text(NSLocalizedString("Configure your microphone preferences", comment: "Configure your microphone preferences"))
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
             }
@@ -52,7 +52,7 @@ struct AudioInputSettingsView: View {
     
     private var inputModeSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text(NSLocalizedString("Input Mode", comment: "Input mode"))
+Text(NSLocalizedString("Input Mode", comment: "Input Mode"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -71,14 +71,14 @@ struct AudioInputSettingsView: View {
     private var customDeviceSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text(NSLocalizedString("Available Devices", comment: "Available devices"))
+Text(NSLocalizedString("Available Devices", comment: "Available Devices"))
                     .font(.title2)
                     .fontWeight(.semibold)
                 
                 Spacer()
                 
                 Button(action: { audioDeviceManager.loadAvailableDevices() }) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
+Label(NSLocalizedString("Refresh", comment: "Refresh"), systemImage: "arrow.clockwise")
                 }
                 .buttonStyle(.borderless)
             }
@@ -117,10 +117,10 @@ struct AudioInputSettingsView: View {
     private var prioritizedDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Prioritized Devices")
+Text(NSLocalizedString("Prioritized Devices", comment: "Prioritized Devices"))
                     .font(.title2)
                     .fontWeight(.semibold)
-                Text("Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used.")
+Text(NSLocalizedString("Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used.", comment: "Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used."))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -131,7 +131,7 @@ struct AudioInputSettingsView: View {
             }
             
             if audioDeviceManager.prioritizedDevices.isEmpty {
-                Text("No prioritized devices")
+Text(NSLocalizedString("No prioritized devices", comment: "No prioritized devices"))
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -142,7 +142,7 @@ struct AudioInputSettingsView: View {
     
     private var availableDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(NSLocalizedString("Available Devices", comment: "Available devices"))
+Text(NSLocalizedString("Available Devices", comment: "Available Devices"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -158,9 +158,9 @@ struct AudioInputSettingsView: View {
                 .foregroundStyle(.secondary)
             
             VStack(spacing: 8) {
-                Text(NSLocalizedString("No Audio Devices", comment: "No audio devices"))
+Text(NSLocalizedString("No Audio Devices", comment: "No Audio Devices"))
                     .font(.headline)
-                Text("Connect an audio input device to get started")
+Text(NSLocalizedString("Connect an audio input device to get started", comment: "Connect an audio input device to get started"))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -281,7 +281,7 @@ struct InputModeCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(mode.rawValue)
+                                            Text(mode.displayName)
                         .font(.headline)
                     
                     Text(description)
@@ -383,7 +383,7 @@ struct DevicePriorityCard: View {
                                 .fill(.green.opacity(0.1))
                         )
                 } else if !isAvailable && isPrioritized {
-                    Label("Unavailable", systemImage: "exclamationmark.triangle")
+Label(NSLocalizedString("Unavailable", comment: "Unavailable"), systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 10)

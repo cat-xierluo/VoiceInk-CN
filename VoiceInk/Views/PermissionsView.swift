@@ -200,9 +200,9 @@ struct PermissionsView: View {
                             .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
                     
                     VStack(spacing: 8) {
-                        Text(NSLocalizedString("App Permissions", comment: "App permissions title"))
+                        Text(NSLocalizedString("App Permissions", comment: "App Permissions"))
                             .font(.system(size: 28, weight: .bold))
-                        Text(NSLocalizedString("VoiceInk requires the following permissions to function properly", comment: "App permissions description"))
+                        Text(NSLocalizedString("VoiceInk requires the following permissions to function properly", comment: "VoiceInk requires the following permissions to function properly"))
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
@@ -215,10 +215,10 @@ struct PermissionsView: View {
                     // Keyboard Shortcut Permission
                     PermissionCard(
                         icon: "keyboard",
-                        title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard shortcut permission title"),
-                        description: NSLocalizedString("Set up a keyboard shortcut to use VoiceInk anywhere", comment: "Keyboard shortcut permission description"),
+                        title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
+                        description: NSLocalizedString("Set up a keyboard shortcut to use VoiceInk anywhere", comment: "Set up a keyboard shortcut to use VoiceInk anywhere"),
                         isGranted: hotkeyManager.selectedHotkey1 != .none,
-                        buttonTitle: NSLocalizedString("Configure Shortcut", comment: "Configure shortcut button"),
+                        buttonTitle: NSLocalizedString("Configure Shortcut", comment: "Configure Shortcut"),
                         buttonAction: {
                             NotificationCenter.default.post(
                                 name: .navigateToDestination,
@@ -232,10 +232,10 @@ struct PermissionsView: View {
                     // Audio Permission
                     PermissionCard(
                         icon: "mic",
-                        title: NSLocalizedString("Microphone Access", comment: "Microphone access"),
-                        description: NSLocalizedString("Allow VoiceInk to record your voice for transcription", comment: "Microphone permission description"),
+                        title: NSLocalizedString("Microphone Access", comment: "Microphone Access"),
+                        description: NSLocalizedString("Allow VoiceInk to record your voice for transcription", comment: "Allow VoiceInk to record your voice for transcription"),
                         isGranted: permissionManager.audioPermissionStatus == .authorized,
-                        buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? "Request Permission" : "Open System Settings",
+                        buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? NSLocalizedString("Request Permission", comment: "Request Permission") : NSLocalizedString("Open System Settings", comment: "Open System Settings"),
                         buttonAction: {
                             if permissionManager.audioPermissionStatus == .notDetermined {
                                 permissionManager.requestAudioPermission()
@@ -251,10 +251,10 @@ struct PermissionsView: View {
                     // Accessibility Permission
                     PermissionCard(
                         icon: "hand.raised",
-                        title: NSLocalizedString("Accessibility Access", comment: "Accessibility access"),
-                        description: NSLocalizedString("Allow VoiceInk to paste transcribed text directly at your cursor position", comment: "Accessibility permission description"),
+                        title: NSLocalizedString("Accessibility Access", comment: "Accessibility Access"),
+                        description: NSLocalizedString("Allow VoiceInk to paste transcribed text directly at your cursor position", comment: "Allow VoiceInk to paste transcribed text directly at your cursor position"),
                         isGranted: permissionManager.isAccessibilityEnabled,
-                        buttonTitle: "Open System Settings",
+                        buttonTitle: NSLocalizedString("Open System Settings", comment: "Open System Settings"),
                         buttonAction: {
                             if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
                                 NSWorkspace.shared.open(url)
@@ -266,10 +266,10 @@ struct PermissionsView: View {
                     // Screen Recording Permission
                     PermissionCard(
                         icon: "rectangle.on.rectangle",
-                        title: NSLocalizedString("Screen Recording Access", comment: "Screen recording access"),
-                        description: NSLocalizedString("Allow VoiceInk to understand context from your screen for transcript Enhancement", comment: "Screen recording permission description"),
+                        title: NSLocalizedString("Screen Recording Access", comment: "Screen Recording Access"),
+                        description: NSLocalizedString("Allow VoiceInk to understand context from your screen for transcript Enhancement", comment: "Allow VoiceInk to understand context from your screen for transcript Enhancement"),
                         isGranted: permissionManager.isScreenRecordingEnabled,
-                        buttonTitle: "Request Permission",
+                        buttonTitle: NSLocalizedString("Request Permission", comment: "Request Permission"),
                         buttonAction: {
                             permissionManager.requestScreenRecordingPermission()
                             // After requesting, open system preferences as fallback

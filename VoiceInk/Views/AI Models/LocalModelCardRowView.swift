@@ -51,7 +51,7 @@ struct LocalModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text(NSLocalizedString("Default", comment: "Default"))
+Text(NSLocalizedString("Default", comment: "Default"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -84,7 +84,7 @@ struct LocalModelCardView: View {
             
             // Speed
             HStack(spacing: 3) {
-                Text(NSLocalizedString("Speed", comment: "Speed"))
+Text(NSLocalizedString("Speed", comment: "Speed"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.speed * 10)
@@ -94,7 +94,7 @@ struct LocalModelCardView: View {
             
             // Accuracy
             HStack(spacing: 3) {
-                Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
+Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -130,12 +130,12 @@ struct LocalModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text(NSLocalizedString("Default Model", comment: "Default model"))
+Text(NSLocalizedString("Default Model", comment: "Default Model"))
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isDownloaded {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -143,7 +143,7 @@ struct LocalModelCardView: View {
             } else {
                 Button(action: downloadAction) {
                     HStack(spacing: 4) {
-                        Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "Download button"))
+                        Text(isDownloading ? "Downloading..." : "Download")
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "arrow.down.circle")
                             .font(.system(size: 12, weight: .medium))
@@ -172,7 +172,7 @@ struct LocalModelCardView: View {
                             NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
                         }
                     } label: {
-                        Label("Show in Finder", systemImage: "folder")
+Label(NSLocalizedString("Show in Finder", comment: "Show in Finder"), systemImage: "folder")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")

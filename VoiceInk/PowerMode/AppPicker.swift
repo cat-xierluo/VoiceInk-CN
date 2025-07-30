@@ -16,7 +16,7 @@ struct AppPickerSheet: View {
                 
                 Spacer()
                 
-                Button("Done") {
+Button(NSLocalizedString("Done", comment: "Done")) {
                     onDismiss()
                 }
                 .keyboardShortcut(.return, modifiers: [])

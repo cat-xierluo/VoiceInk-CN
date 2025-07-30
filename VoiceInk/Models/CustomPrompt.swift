@@ -325,7 +325,7 @@ extension CustomPrompt {
             
             // Text label with matching styling
             VStack(spacing: 2) {
-                Text("Add New")
+Text(NSLocalizedString("Add New", comment: "Add New"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(.secondary)
                     .lineLimit(1)

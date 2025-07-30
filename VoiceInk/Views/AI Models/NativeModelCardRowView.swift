@@ -39,14 +39,14 @@ struct NativeAppleModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text(NSLocalizedString("Default", comment: "Default"))
+Text(NSLocalizedString("Default", comment: "Default"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else {
-                Text(NSLocalizedString("Built-in", comment: "Built-in"))
+Text(NSLocalizedString("Built-in", comment: "Built-in"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -59,7 +59,7 @@ struct NativeAppleModelCardView: View {
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Native Apple
-            Label("Native Apple", systemImage: "apple.logo")
+Label(NSLocalizedString("Native Apple", comment: "Native Apple"), systemImage: "apple.logo")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -97,12 +97,12 @@ struct NativeAppleModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text(NSLocalizedString("Default Model", comment: "Default model"))
+Text(NSLocalizedString("Default Model", comment: "Default Model"))
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)

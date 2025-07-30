@@ -27,14 +27,14 @@ struct OnboardingView: View {
                                 
                                 // Title and subtitle
                                 VStack(spacing: 16) {
-                                    Text("Welcome to the Future of Typing")
+Text(NSLocalizedString("Welcome to the Future of Typing", comment: "Welcome to the Future of Typing"))
                                         .font(.system(size: min(geometry.size.width * 0.055, 42), weight: .bold, design: .rounded))
                                         .foregroundColor(.white)
                                         .opacity(textOpacity)
                                         .multilineTextAlignment(.center)
                                         .padding(.horizontal)
                                     
-                                    Text(NSLocalizedString("A New Way to Type", comment: "Onboarding title"))
+Text(NSLocalizedString("A New Way to Type", comment: "A New Way to Type"))
                                         .font(.system(size: min(geometry.size.width * 0.032, 24), weight: .medium, design: .rounded))
                                         .foregroundColor(.white.opacity(0.7))
                                         .opacity(textOpacity)
@@ -61,7 +61,7 @@ struct OnboardingView: View {
                                             showPermissions = true
                                         }
                                     }) {
-                                        Text(NSLocalizedString("Get Started", comment: "Get started"))
+Text(NSLocalizedString("Get Started", comment: "Get Started"))
                                             .font(.system(size: 18, weight: .semibold))
                                             .foregroundColor(.black)
                                             .frame(width: min(geometry.size.width * 0.3, 200), height: 50)

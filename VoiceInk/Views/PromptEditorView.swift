@@ -56,7 +56,7 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? NSLocalizedString("New Prompt", comment: "New prompt") : "Edit Prompt"))
+                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : "Edit Prompt"))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -97,7 +97,7 @@ struct PromptEditorView: View {
                                 .padding(.horizontal)
                                 .padding(.top, 8)
                             
-                            Text("You can only customize the trigger words for system prompts.")
+Text(NSLocalizedString("You can only customize the trigger words for system prompts.", comment: "You can only customize the trigger words for system prompts."))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding(.horizontal)
@@ -114,10 +114,10 @@ struct PromptEditorView: View {
                         HStack(spacing: 20) {
                             // Title Field
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Title")
+Text(NSLocalizedString("Title", comment: "Title"))
                                     .font(.headline)
                                     .foregroundColor(.secondary)
-                                TextField("Enter a short, descriptive title", text: $title)
+TextField(NSLocalizedString("Enter a short, descriptive title", comment: "Enter a short, descriptive title"), text: $title)
                                     .textFieldStyle(.roundedBorder)
                                     .font(.body)
                             }
@@ -125,7 +125,7 @@ struct PromptEditorView: View {
                             
                             // Icon Selector with preview
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Icon")
+Text(NSLocalizedString("Icon", comment: "Icon"))
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 
@@ -159,15 +159,15 @@ struct PromptEditorView: View {
                         
                         // Description Field
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
+Text(NSLocalizedString("Description", comment: "Description"))
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                             
-                            Text("Add a brief description of what this prompt does")
+Text(NSLocalizedString("Add a brief description of what this prompt does", comment: "Add a brief description of what this prompt does"))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
-                            TextField("Enter a description", text: $description)
+TextField(NSLocalizedString("Enter a description", comment: "Enter a description"), text: $description)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.body)
                         }
@@ -175,11 +175,11 @@ struct PromptEditorView: View {
                         
                         // Prompt Text Section with improved styling
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Prompt Instructions")
+Text(NSLocalizedString("Prompt Instructions", comment: "Prompt Instructions"))
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                             
-                            Text("Define how AI should enhance your transcriptions")
+Text(NSLocalizedString("Define how AI should enhance your transcriptions", comment: "Define how AI should enhance your transcriptions"))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
@@ -205,7 +205,7 @@ struct PromptEditorView: View {
                         if case .add = mode {
                             // Templates Section with modern styling
                             VStack(alignment: .leading, spacing: 16) {
-                                Text("Start with a Predefined Template")
+Text(NSLocalizedString("Start with a Predefined Template", comment: "Start with a Predefined Template"))
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -359,11 +359,11 @@ struct TriggerWordsEditor: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Trigger Words")
+Text(NSLocalizedString("Trigger Words", comment: "Trigger Words"))
                 .font(.headline)
                 .foregroundColor(.secondary)
             
-            Text("Add multiple words that can activate this prompt")
+Text(NSLocalizedString("Add multiple words that can activate this prompt", comment: "Add multiple words that can activate this prompt"))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
@@ -380,7 +380,7 @@ struct TriggerWordsEditor: View {
             
             // Input for new trigger word
             HStack {
-                TextField("Add trigger word", text: $newTriggerWord)
+TextField(NSLocalizedString("Add trigger word", comment: "Add trigger word"), text: $newTriggerWord)
                     .textFieldStyle(.roundedBorder)
                     .font(.body)
                     .onSubmit {
@@ -414,12 +414,12 @@ struct IconMenuContent: View {
     
     var body: some View {
         Group {
-            IconMenuSection(title: NSLocalizedString("Document & Text", comment: "Document and text"), icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: NSLocalizedString("Communication", comment: "Communication"), icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: NSLocalizedString("Professional", comment: "Professional"), icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: NSLocalizedString("Technical", comment: "Technical"), icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: NSLocalizedString("Content", comment: "Content"), icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: NSLocalizedString("Media & Creative", comment: "Media and creative"), icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Document & Text", icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Communication", icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Professional", icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Technical", icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Content", icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
+            IconMenuSection(title: "Media & Creative", icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
         }
     }
 }
@@ -440,7 +440,7 @@ struct IconMenuSection: View {
                     Label(icon.title, systemImage: icon.rawValue)
                 }
             }
-            if title != NSLocalizedString("Media & Creative", comment: "Media and creative") {
+            if title != "Media & Creative" {
                 Divider()
             }
         }

@@ -42,7 +42,7 @@ struct OnboardingPermissionsView: View {
     
     private let permissions: [OnboardingPermission] = [
         OnboardingPermission(
-            title: NSLocalizedString("Microphone Access", comment: "Microphone access"),
+            title: "Microphone Access",
             description: "Enable your microphone to start speaking and converting your voice to text instantly.",
             icon: "waveform",
             type: .microphone
@@ -54,7 +54,7 @@ struct OnboardingPermissionsView: View {
             type: .audioDeviceSelection
         ),
         OnboardingPermission(
-            title: NSLocalizedString("Accessibility Access", comment: "Accessibility access"),
+            title: "Accessibility Access",
             description: "Allow VoiceInk to help you type anywhere in your Mac.",
             icon: "accessibility",
             type: .accessibility
@@ -66,7 +66,7 @@ struct OnboardingPermissionsView: View {
             type: .screenRecording
         ),
         OnboardingPermission(
-            title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard shortcut"),
+            title: "Keyboard Shortcut",
             description: "Set up a keyboard shortcut to quickly access VoiceInk from anywhere.",
             icon: "keyboard",
             type: .keyboardShortcut
@@ -391,11 +391,11 @@ struct OnboardingPermissionsView: View {
     private func getButtonTitle() -> String {
         switch permissions[currentPermissionIndex].type {
         case .keyboardShortcut:
-            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue button") : "Set Shortcut"
+            return permissionStates[currentPermissionIndex] ? "Continue" : "Set Shortcut"
         case .audioDeviceSelection:
-            return NSLocalizedString("Continue", comment: "Continue button")
+            return "Continue"
         default:
-            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue button") : "Enable Access"
+            return permissionStates[currentPermissionIndex] ? "Continue" : "Enable Access"
         }
     }
 

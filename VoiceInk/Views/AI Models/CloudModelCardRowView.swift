@@ -31,7 +31,7 @@ struct CloudModelCardView: View {
         case .groq:
             return "GROQ"
         case .elevenLabs:
-            return NSLocalizedString("ElevenLabs", comment: "ElevenLabs")
+            return "ElevenLabs"
         case .deepgram:
             return "Deepgram"
         case .mistral:
@@ -87,7 +87,7 @@ struct CloudModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text(NSLocalizedString("Default", comment: "Default"))
+Text(NSLocalizedString("Default", comment: "Default"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -101,7 +101,7 @@ struct CloudModelCardView: View {
                     .background(Capsule().fill(Color(.systemGreen).opacity(0.2)))
                     .foregroundColor(Color(.systemGreen))
             } else {
-                Text(NSLocalizedString("Setup Required", comment: "Setup required"))
+Text(NSLocalizedString("Setup Required", comment: "Setup Required"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -125,14 +125,14 @@ struct CloudModelCardView: View {
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
-            Label(NSLocalizedString("Cloud Model", comment: "Cloud model"), systemImage: "icloud")
+Label(NSLocalizedString("Cloud Model", comment: "Cloud Model"), systemImage: "icloud")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Accuracy
             HStack(spacing: 3) {
-                Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
+Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -155,12 +155,12 @@ struct CloudModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text(NSLocalizedString("Default Model", comment: "Default model"))
+Text(NSLocalizedString("Default Model", comment: "Default Model"))
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isConfiguredState {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -172,7 +172,7 @@ struct CloudModelCardView: View {
                     }
                 }) {
                     HStack(spacing: 4) {
-                        Text(NSLocalizedString("Configure", comment: "Configure button"))
+Text(NSLocalizedString("Configure", comment: "Configure"))
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "gear")
                             .font(.system(size: 12, weight: .medium))
@@ -209,7 +209,7 @@ struct CloudModelCardView: View {
     
     private var configurationSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(NSLocalizedString("API Key Configuration", comment: "API key configuration"))
+Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"))
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(Color(.labelColor))
             

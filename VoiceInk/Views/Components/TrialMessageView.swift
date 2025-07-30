@@ -41,7 +41,7 @@ struct TrialMessageView: View {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text("Buy License")
+Text(NSLocalizedString("Buy License", comment: "Buy License"))
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.borderedProminent)

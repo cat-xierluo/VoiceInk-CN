@@ -28,7 +28,7 @@ enum PromptTemplates {
         [
             TemplatePrompt(
                 id: UUID(),
-                title: "System Default",
+                title: NSLocalizedString("System Default", comment: "System Default"),
                 promptText: """
                 You are tasked with cleaning up transcribed text in the <TRANSCRIPT> tag. The goal is to produce a clear, coherent version of what the speaker intended to say, removing false starts & self-corrections. Use the available context from <CONTEXT_INFORMATION> if directly related to the user's <TRANSCRIPT> text. 
                 Primary Rules:

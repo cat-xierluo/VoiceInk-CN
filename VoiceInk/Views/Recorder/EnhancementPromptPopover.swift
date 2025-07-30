@@ -9,7 +9,7 @@ struct EnhancementPromptPopover: View {
         VStack(alignment: .leading, spacing: 8) {
             // Enhancement Toggle at the top
             HStack(spacing: 8) {
-                Toggle(NSLocalizedString("Enhancement Prompt", comment: "Enhancement prompt"), isOn: $enhancementService.isEnhancementEnabled)
+Toggle(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"), isOn: $enhancementService.isEnhancementEnabled)
                     .foregroundColor(.white.opacity(0.9))
                     .font(.headline)
                     .lineLimit(1)

@@ -252,7 +252,7 @@ struct AudioPlayerView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "waveform")
                         .foregroundStyle(Color.accentColor)
-                    Text(NSLocalizedString("Recording", comment: NSLocalizedString("Recording", comment: "Recording")))
+                    Text(NSLocalizedString("Recording", comment: "Recording"))
                         .font(.system(size: 14, weight: .medium))
                 }
                 .foregroundColor(.secondary)
@@ -356,7 +356,7 @@ struct AudioPlayerView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
-                        Text("Retranscription successful")
+Text(NSLocalizedString("Retranscription successful", comment: "Retranscription successful"))
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)

@@ -16,17 +16,17 @@ struct EnhancementSettingsView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
-                                    Text("Enable Enhancement")
+Text(NSLocalizedString("Enable Enhancement", comment: "Enable Enhancement"))
                                         .font(.headline)
                                     
                                     InfoTip(
-                                        title: NSLocalizedString("AI Enhancement", comment: "AI enhancement feature"),
+                                        title: "AI Enhancement",
                                         message: "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.",
                                         learnMoreURL: "https://www.youtube.com/@tryvoiceink/videos"
                                     )
                                 }
                                 
-                                Text("Turn on AI-powered enhancement features")
+Text(NSLocalizedString("Turn on AI-powered enhancement features", comment: "Turn on AI-powered enhancement features"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -41,19 +41,19 @@ struct EnhancementSettingsView: View {
                         
                         HStack(spacing: 20) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Toggle("Clipboard Context", isOn: $enhancementService.useClipboardContext)
+Toggle(NSLocalizedString("Clipboard Context", comment: "Clipboard Context"), isOn: $enhancementService.useClipboardContext)
                                     .toggleStyle(.switch)
                                     .disabled(!enhancementService.isEnhancementEnabled)
-                                Text("Use text from clipboard to understand the context")
+Text(NSLocalizedString("Use text from clipboard to understand the context", comment: "Use text from clipboard to understand the context"))
                                     .font(.caption)
                                     .foregroundColor(enhancementService.isEnhancementEnabled ? .secondary : .secondary.opacity(0.5))
                             }
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Toggle("Context Awareness", isOn: $enhancementService.useScreenCaptureContext)
+Toggle(NSLocalizedString("Context Awareness", comment: "Context Awareness"), isOn: $enhancementService.useScreenCaptureContext)
                                     .toggleStyle(.switch)
                                     .disabled(!enhancementService.isEnhancementEnabled)
-                                Text("Learn what is on the screen to understand the context")
+Text(NSLocalizedString("Learn what is on the screen to understand the context", comment: "Learn what is on the screen to understand the context"))
                                     .font(.caption)
                                     .foregroundColor(enhancementService.isEnhancementEnabled ? .secondary : .secondary.opacity(0.5))
                             }
@@ -64,7 +64,7 @@ struct EnhancementSettingsView: View {
                     
                     // 1. AI Provider Integration Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text(NSLocalizedString("AI Provider Integration", comment: "AI provider integration"))
+Text(NSLocalizedString("AI Provider Integration", comment: "AI Provider Integration"))
                             .font(.headline)
                         
                         APIKeyManagementView()
@@ -76,7 +76,7 @@ struct EnhancementSettingsView: View {
                     
                     // 3. Enhancement Modes & Assistant Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement prompt"))
+Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"))
                             .font(.headline)
                         
                         // Prompts Section

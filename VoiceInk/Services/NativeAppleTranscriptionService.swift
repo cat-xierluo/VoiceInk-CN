@@ -79,9 +79,9 @@ class NativeAppleTranscriptionService: TranscriptionService {
         let isLocaleInstalled = false
 
         // Create the detailed log message
-        let supportedIdentifiers = supportedLocales.map { $0.identifier(.bcp47) }.sorted().joined(separator: ", ")
-        let installedIdentifiers = installedLocales.map { $0.identifier(.bcp47) }.sorted().joined(separator: ", ")
-        let availableForDownload = Set(supportedLocales).subtracting(Set(installedLocales)).map { $0.identifier(.bcp47) }.sorted().joined(separator: ", ")
+        let supportedIdentifiers = ""
+        let installedIdentifiers = ""
+        let availableForDownload = ""
         
         var statusMessage: String
         if isLocaleInstalled {
@@ -118,17 +118,6 @@ class NativeAppleTranscriptionService: TranscriptionService {
         // This service is currently disabled
         throw ServiceError.transcriptionFailed
         
-        /* Code disabled due to API unavailability
-        try await analyzer.start(inputAudioFile: audioFile, finishAfterFile: true)
-        
-        var transcript: AttributedString = ""
-        for try await result in transcriber.results {
-            transcript += result.text
-        }
-        
-        var finalTranscription = String(transcript.characters).trimmingCharacters(in: .whitespacesAndNewlines)
-        */
-        
         // This service is currently disabled due to unavailable APIs
         return ""
     }
@@ -152,9 +141,9 @@ class NativeAppleTranscriptionService: TranscriptionService {
         do {
             // TODO: AssetInventory API not available
             // try await AssetInventory.allocate(locale: locale)
-            logger.notice("Successfully allocated assets for locale: '\(locale.identifier(.bcp47))'")
+            logger.notice("Successfully allocated assets for locale: '\(locale.identifier)'")
         } catch {
-            logger.error("Failed to allocate assets for locale '\(locale.identifier(.bcp47))': \(error.localizedDescription)")
+            logger.error("Failed to allocate assets for locale '\(locale.identifier)': \(error.localizedDescription)")
             throw ServiceError.assetAllocationFailed
         }
         #endif
@@ -168,14 +157,14 @@ class NativeAppleTranscriptionService: TranscriptionService {
         let isInstalled = false
 
         if !isInstalled {
-            logger.notice("Assets for '\(locale.identifier(.bcp47))' not installed. Requesting system download.")
+            logger.notice("Assets for '\(locale.identifier)' not installed. Requesting system download.")
             
             // TODO: AssetInventory API not available
             if false {
                 // try await request.downloadAndInstall()
-                logger.notice("Asset download for '\(locale.identifier(.bcp47))' complete.")
+                logger.notice("Asset download for '\(locale.identifier)' complete.")
             } else {
-                logger.error("Asset download for '\(locale.identifier(.bcp47))' failed: Could not create installation request.")
+                logger.error("Asset download for '\(locale.identifier)' failed: Could not create installation request.")
                 // Note: We don't throw an error here, as transcription might still work with a base model.
             }
         }
