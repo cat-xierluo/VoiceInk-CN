@@ -11,7 +11,7 @@ struct DictionarySettingsView: View {
         var description: String {
             switch self {
             case .spellings:
-                return "Train VoiceInk to recognize industry terms, names, and technical words"
+return NSLocalizedString("Train VoiceInk to recognize industry terms, names, and technical words", comment: "Train VoiceInk to recognize industry terms, names, and technical words")
             case .replacements:
                 return "Automatically replace specific words/phrases with custom formatted text "
             }

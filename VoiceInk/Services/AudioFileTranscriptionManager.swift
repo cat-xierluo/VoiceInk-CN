@@ -192,7 +192,7 @@ enum TranscriptionError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noModelSelected:
-            return "No transcription model selected"
+return NSLocalizedString("No transcription model selected", comment: "No transcription model selected")
         case .transcriptionCancelled:
             return "Transcription was cancelled"
         }

@@ -16,7 +16,7 @@ enum CloudTranscriptionError: Error, LocalizedError {
         case .unsupportedProvider:
             return "The model provider is not supported by this service."
         case .missingAPIKey:
-            return "API key for this service is missing. Please configure it in the settings."
+return NSLocalizedString("API key for this service is missing. Please configure it in the settings.", comment: "API key for this service is missing. Please configure it in the settings.")
         case .invalidAPIKey:
             return "The provided API key is invalid."
         case .audioFileNotFound:

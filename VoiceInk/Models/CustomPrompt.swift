@@ -39,38 +39,38 @@ enum PromptIcon: String, Codable, CaseIterable {
     var title: String {
         switch self {
         // Document & Text
-        case .documentFill: return "Document"
-        case .textbox: return "Textbox"
-        case .sealedFill: return "Sealed"
+case .documentFill: return NSLocalizedString("Document", comment: "Document")
+case .textbox: return NSLocalizedString("Textbox", comment: "Textbox")
+case .sealedFill: return NSLocalizedString("Sealed", comment: "Sealed")
             
         // Communication
-        case .chatFill: return "Chat"
-        case .messageFill: return "Message"
-        case .emailFill: return "Email"
+case .chatFill: return NSLocalizedString("Chat", comment: "Chat")
+case .messageFill: return NSLocalizedString("Message", comment: "Message")
+case .emailFill: return NSLocalizedString("Email", comment: "Email")
             
         // Professional
-        case .meetingFill: return "Meeting"
-        case .presentationFill: return "Presentation"
-        case .briefcaseFill: return "Briefcase"
+case .meetingFill: return NSLocalizedString("Meeting", comment: "Meeting")
+case .presentationFill: return NSLocalizedString("Presentation", comment: "Presentation")
+case .briefcaseFill: return NSLocalizedString("Briefcase", comment: "Briefcase")
             
         // Technical
-        case .codeFill: return "Code"
-        case .terminalFill: return "Terminal"
-        case .gearFill: return "Settings"
+case .codeFill: return NSLocalizedString("Code", comment: "Code")
+case .terminalFill: return NSLocalizedString("Terminal", comment: "Terminal")
+case .gearFill: return NSLocalizedString("Settings", comment: "Settings")
             
         // Content
-        case .blogFill: return "Blog"
-        case .notesFill: return "Notes"
-        case .bookFill: return "Book"
-        case .bookmarkFill: return "Bookmark"
+case .blogFill: return NSLocalizedString("Blog", comment: "Blog")
+case .notesFill: return NSLocalizedString("Notes", comment: "Notes")
+case .bookFill: return NSLocalizedString("Book", comment: "Book")
+case .bookmarkFill: return NSLocalizedString("Bookmark", comment: "Bookmark")
         case .pencilFill: return NSLocalizedString("Edit", comment: "Edit button")
             
         // Media & Creative
-        case .videoFill: return "Video"
-        case .micFill: return "Audio"
-        case .musicFill: return "Music"
-        case .photoFill: return "Photo"
-        case .brushFill: return "Design"
+case .videoFill: return NSLocalizedString("Video", comment: "Video")
+case .micFill: return NSLocalizedString("Audio", comment: "Audio")
+case .musicFill: return NSLocalizedString("Music", comment: "Music")
+case .photoFill: return NSLocalizedString("Photo", comment: "Photo")
+case .brushFill: return NSLocalizedString("Design", comment: "Design")
         }
     }
 }

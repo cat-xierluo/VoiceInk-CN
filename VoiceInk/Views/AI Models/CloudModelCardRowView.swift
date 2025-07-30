@@ -31,11 +31,11 @@ struct CloudModelCardView: View {
         case .groq:
             return "GROQ"
         case .elevenLabs:
-            return "ElevenLabs"
+return NSLocalizedString("ElevenLabs", comment: "ElevenLabs")
         case .deepgram:
-            return "Deepgram"
+return NSLocalizedString("Deepgram", comment: "Deepgram")
         case .mistral:
-            return "Mistral"
+return NSLocalizedString("Mistral", comment: "Mistral")
         default:
             return model.provider.rawValue
         }

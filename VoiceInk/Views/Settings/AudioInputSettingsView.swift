@@ -266,9 +266,9 @@ struct InputModeCard: View {
     
     private var description: String {
         switch mode {
-        case .systemDefault: return "Use system's default input device"
-        case .custom: return "Select a specific input device"
-        case .prioritized: return "Set up device priority order"
+case .systemDefault: return NSLocalizedString("Use system's default input device", comment: "Use system's default input device")
+case .custom: return NSLocalizedString("Select a specific input device", comment: "Select a specific input device")
+case .prioritized: return NSLocalizedString("Set up device priority order", comment: "Set up device priority order")
         }
     }
     

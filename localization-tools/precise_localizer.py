@@ -58,6 +58,47 @@ class PreciseLocalizer:
             # 条件语句中的字符串
             r'\?\s*"([^"]+)"\s*:',  # 三元运算符中的字符串
             r':\s*"([^"]+)"',  # 三元运算符的另一部分
+            
+            # 新增模式 - 基于最近发现的硬编码字符串
+            # 函数返回值
+            r'return\s+"([^"]+)"',  # 函数返回字符串
+            r'return\s+NSLocalizedString\s*\(\s*"([^"]+)"[^:]*:\s*"([^"]+)"[^:]*:\s*"([^"]+)"',  # 已本地化的返回值（跳过）
+            # Alert按钮
+            r'\.addButton\s*\(\s*withTitle:\s*"([^"]+)"',  # Alert按钮标题
+            r'Button\s*\(\s*NSLocalizedString\s*\(\s*"([^"]+)"[^)]*\)\s*[,\)]',  # 已本地化的按钮（跳过）
+            # 各种UI组件的参数
+            r'Label\s*\(\s*NSLocalizedString\s*\(\s*"([^"]+)"[^)]*\)',  # 已本地化的Label（跳过）
+            r'Text\s*\(\s*NSLocalizedString\s*\(\s*"([^"]+)"[^)]*\)',  # 已本地化的Text（跳过）
+            # 更多通用模式
+            r'withTitle:\s*"([^"]+)"',  # withTitle参数
+            r'role:\s*\.([^,)]*),.*"([^"]+)"',  # Button role和标题组合
+            # 条件表达式中的字符串
+            r'isEditing\s*\?\s*"([^"]+)"\s*:',  # 编辑状态相关
+            r'isSaved\s*\?\s*"([^"]+)"\s*:',  # 保存状态相关
+            r'isDownloading\s*\?\s*"([^"]+)"\s*:',  # 下载状态相关
+            # 状态相关的字符串
+            r'else\s*{\s*return\s*"([^"]+)"',  # else块中的返回值
+            r'else\s*if[^{]*{\s*return\s*"([^"]+)"',  # else if块中的返回值
+            # 更多SwiftUI模式
+            r'\.destructive\s*\(\s*Text\s*\(\s*"([^"]+)"\s*\)',  # destructive按钮
+            r'\.cancel\s*\(\s*Text\s*\(\s*"([^"]+)"\s*\)',  # cancel按钮
+            r'\.default\s*\(\s*Text\s*\(\s*"([^"]+)"\s*\)',  # default按钮
+            # SecureField
+            r'SecureField\s*\(\s*"([^"]+)"\s*[,\)]',  # SecureField占位符
+            # 搜索相关
+            r'\.searchable\s*\([^)]*prompt:\s*"([^"]+)"',  # 搜索提示
+            # 工具栏项目
+            r'ToolbarItem\s*\{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',  # 工具栏文本
+            # 菜单项目
+            r'MenuItem\s*\(\s*"([^"]+)"\s*[,\)]',  # 菜单项
+            # 上下文菜单
+            r'\.contextMenu\s*\{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',  # 上下文菜单文本
+            # Tab相关
+            r'\.tabItem\s*\{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',  # Tab标题
+            # NavigationLink
+            r'NavigationLink\s*\(\s*"([^"]+)"\s*[,\)]',  # NavigationLink标题
+            # 更多状态检查
+            r'contains\s*\(\s*where:\s*\{[^}]*name\s*==\s*"([^"]+)"',  # 集合查找
         ]
         
         # 需要避免的模式（代码逻辑相关）
@@ -84,6 +125,58 @@ class PreciseLocalizer:
             r'#\w+',
             r'//.*',
             r'/\*.*\*/',
+            
+            # 新增避免模式
+            # 已经本地化的内容
+            r'NSLocalizedString\s*\(',  # 已经本地化的字符串
+            r'String\s*\(\s*localized:',  # Swift 5.7+ 本地化语法
+            # 代码标识符和常量
+            r'\.rawValue',  # 枚举原始值
+            r'\.identifier',  # 标识符
+            r'\.id\s*=',  # ID赋值
+            r'\.name\s*=',  # 名称赋值（通常是变量名）
+            r'\.key\s*=',  # 键赋值
+            r'\.type\s*=',  # 类型赋值
+            # 技术相关字符串
+            r'\.swift',  # Swift文件名
+            r'\.m\b',  # Objective-C文件名
+            r'\.h\b',  # 头文件名
+            r'\.json',  # JSON文件
+            r'\.xml',  # XML文件
+            r'\.yaml',  # YAML文件
+            r'\.yml',  # YAML文件
+            r'http[s]?://',  # URL
+            r'[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',  # 域名
+            # API相关
+            r'Content-Type',  # HTTP头
+            r'Authorization',  # HTTP头
+            r'application/',  # MIME类型
+            r'audio/',  # MIME类型
+            r'video/',  # MIME类型
+            r'image/',  # MIME类型
+            # 系统相关
+            r'com\.',  # Bundle ID前缀
+            r'macOS',  # 系统名称
+            r'iOS',  # 系统名称
+            r'tvOS',  # 系统名称
+            r'watchOS',  # 系统名称
+            # 编程关键字
+            r'\bpublic\b',
+            r'\bprivate\b',
+            r'\binternal\b',
+            r'\bstatic\b',
+            r'\bfinal\b',
+            r'\boverride\b',
+            # 数据类型
+            r'\bString\b',
+            r'\bInt\b',
+            r'\bDouble\b',
+            r'\bFloat\b',
+            r'\bBool\b',
+            # 很短的字符串（通常是代码符号）
+            r'^"[a-zA-Z0-9]{1,2}"$',  # 1-2个字符的字符串
+            # 纯数字或符号
+            r'^"[0-9\s\-\+\.\,\%\$\#\@\!\?\&\*\(\)\[\]\{\}]*"$',  # 只包含数字和符号
         ]
 
     def load_localizable_strings(self, strings_file: str) -> Dict[str, str]:

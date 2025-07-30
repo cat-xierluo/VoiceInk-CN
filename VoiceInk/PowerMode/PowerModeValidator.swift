@@ -21,11 +21,11 @@ enum PowerModeValidationError: Error, Identifiable {
     var localizedDescription: String {
         switch self {
         case .emptyName:
-            return "Power mode name cannot be empty."
+return NSLocalizedString("Power mode name cannot be empty.", comment: "Power mode name cannot be empty.")
         case .duplicateName(let name):
             return "A power mode with the name '\(name)' already exists."
         case .noTriggers:
-            return "You must add at least one application or website."
+return NSLocalizedString("You must add at least one application or website.", comment: "You must add at least one application or website.")
         case .duplicateAppTrigger(let appName, let powerModeName):
             return "The app '\(appName)' is already configured in the '\(powerModeName)' power mode."
         case .duplicateWebsiteTrigger(let website, let powerModeName):

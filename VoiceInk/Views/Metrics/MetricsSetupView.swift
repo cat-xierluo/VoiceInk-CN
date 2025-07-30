@@ -168,15 +168,15 @@ struct MetricsSetupView: View {
     
     private func getActionButtonTitle() -> String {
         if hotkeyManager.selectedHotkey1 == .none {
-            return "Configure Shortcut"
+return NSLocalizedString("Configure Shortcut", comment: "Configure Shortcut")
         } else if !AXIsProcessTrusted() {
-            return "Enable Accessibility"
+return NSLocalizedString("Enable Accessibility", comment: "Enable Accessibility")
         } else if !CGPreflightScreenCaptureAccess() {
-            return "Enable Screen Recording"
+return NSLocalizedString("Enable Screen Recording", comment: "Enable Screen Recording")
         } else if whisperState.currentTranscriptionModel == nil {
-            return "Download Model"
+return NSLocalizedString("Download Model", comment: "Download Model")
         }
-        return "Get Started"
+return NSLocalizedString("Get Started", comment: "Get Started")
     }
     
     private var helpText: some View {

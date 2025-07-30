@@ -31,9 +31,9 @@ enum ConfigurationMode: Hashable {
     
     var title: String {
         switch self {
-        case .add: return "Add Power Mode"
-        case .editDefault: return "Edit Default Power Mode"
-        case .edit: return "Edit Power Mode"
+case .add: return NSLocalizedString("Add Power Mode", comment: "Add Power Mode")
+case .editDefault: return NSLocalizedString("Edit Default Power Mode", comment: "Edit Default Power Mode")
+case .edit: return NSLocalizedString("Edit Power Mode", comment: "Edit Power Mode")
         }
     }
     

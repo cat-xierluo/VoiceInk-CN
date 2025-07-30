@@ -108,13 +108,13 @@ struct ConfigurationRow: View {
            let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }) {
             return model.displayName
         }
-        return "Default"
+return NSLocalizedString("Default", comment: "Default")
     }
     
     private var selectedLanguage: String? {
         if let langCode = config.selectedLanguage {
             if langCode == "auto" { return "Auto" }
-            if langCode == "en" { return "English" }
+if langCode == "en" { return NSLocalizedString("English", comment: "English") }
             
             if let modelName = config.selectedTranscriptionModelName,
                let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }),
@@ -123,7 +123,7 @@ struct ConfigurationRow: View {
             }
             return langCode.uppercased()
         }
-        return "Default"
+return NSLocalizedString("Default", comment: "Default")
     }
     
     private var appCount: Int { return config.appConfigs?.count ?? 0 }

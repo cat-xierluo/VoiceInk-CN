@@ -71,8 +71,8 @@ Text(NSLocalizedString("Buy License", comment: "Buy License"))
     private var title: String {
         switch type {
         case .warning: return "Trial Ending Soon"
-        case .expired: return "Trial Expired"
-        case .info: return "Trial Active"
+case .expired: return NSLocalizedString("Trial Expired", comment: "Trial Expired")
+case .info: return NSLocalizedString("Trial Active", comment: "Trial Active")
         }
     }
     

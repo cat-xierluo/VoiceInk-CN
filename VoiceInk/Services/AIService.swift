@@ -59,7 +59,7 @@ enum AIProvider: String, CaseIterable {
         case .elevenLabs:
             return "scribe_v1"
         case .deepgram:
-            return "whisper-1"
+return NSLocalizedString("whisper-1", comment: "whisper-1")
         case .ollama:
             return UserDefaults.standard.string(forKey: "ollamaSelectedModel") ?? "mistral"
         case .custom:

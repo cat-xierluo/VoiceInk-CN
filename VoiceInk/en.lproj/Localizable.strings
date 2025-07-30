@@ -288,6 +288,7 @@
 "Email Support" = "Email Support";
 "Enable" = "Enable";
 "Enable AI Enhancement" = "Enable AI Enhancement";
+"Enable Access" = "Enable Access";
 "Enable Accessibility" = "Enable Accessibility";
 "Enable Enhancement" = "Enable Enhancement";
 "Enable Power Mode" = "Enable Power Mode";
@@ -473,6 +474,7 @@
 "Ready" = "Ready";
 "Recommended" = "Recommended";
 "Refresh" = "Refresh";
+"Remove" = "Remove";
 "Remove License" = "Remove License";
 "Remove replacement" = "Remove replacement";
 "Remove word" = "Remove word";
@@ -494,6 +496,7 @@
 "Russian" = "Russian";
 "Sample Rate" = "Sample Rate";
 "Save Changes" = "Save Changes";
+"Saved" = "Saved";
 "Sealed" = "Sealed";
 "Search" = "Search";
 "Select All" = "Select All";
@@ -507,6 +510,7 @@
 "Select how you want the recorder to appear on your screen." = "Select how you want the recorder to appear on your screen.";
 "Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout." = "Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.";
 "Set Keyboard Shortcut" = "Set Keyboard Shortcut";
+"Set Shortcut" = "Set Shortcut";
 "Set as Default" = "Set as Default";
 "Set up a keyboard shortcut to use VoiceInk anywhere" = "Set up a keyboard shortcut to use VoiceInk anywhere";
 "Set up device priority order" = "Set up device priority order";
