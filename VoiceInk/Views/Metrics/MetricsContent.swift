@@ -73,13 +73,13 @@ struct MetricsContent: View {
             Chart {
                 ForEach(dailyTranscriptionCounts, id: \.date) { item in
                     LineMark(
-                        x: .value("Date", item.date),
+x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
                         y: .value("Sessions", item.count)
                     )
                     .interpolationMethod(.catmullRom)
                     
                     AreaMark(
-                        x: .value("Date", item.date),
+x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
                         y: .value("Sessions", item.count)
                     )
                     .foregroundStyle(LinearGradient(colors: [.blue.opacity(0.3), .blue.opacity(0.1)], startPoint: .top, endPoint: .bottom))

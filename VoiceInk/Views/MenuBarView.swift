@@ -40,7 +40,7 @@ Toggle(NSLocalizedString("AI Enhancement", comment: "AI Enhancement"), isOn: $en
                 }
             } label: {
                 HStack {
-                    Text("Prompt: \(enhancementService.activePrompt?.title ?? "None")")
+Text("Prompt: \(enhancementService.activePrompt?.title ?? NSLocalizedString("None", comment: "None"))")
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -69,7 +69,7 @@ Text(NSLocalizedString("No providers connected", comment: "No providers connecte
                 Divider()
                 
 Button(NSLocalizedString("Manage AI Providers", comment: "Manage AI Providers")) {
-                    menuBarManager.openMainWindowAndNavigate(to: "Enhancement")
+menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("Enhancement", comment: "Enhancement"))
                 }
             } label: {
                 HStack {
@@ -98,11 +98,11 @@ Button(NSLocalizedString("Manage AI Providers", comment: "Manage AI Providers"))
                 Divider()
                 
 Button(NSLocalizedString("Manage Models", comment: "Manage Models")) {
-                    menuBarManager.openMainWindowAndNavigate(to: "AI Models")
+menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("AI Models", comment: "AI Models"))
                 }
             } label: {
                 HStack {
-                    Text("Model: \(whisperState.currentTranscriptionModel?.displayName ?? "None")")
+Text("Model: \(whisperState.currentTranscriptionModel?.displayName ?? NSLocalizedString("None", comment: "None"))")
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -171,7 +171,7 @@ Button(NSLocalizedString("Copy Last Transcription", comment: "Copy Last Transcri
                 menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("Settings", comment: "Settings"))
             }
             
-            Button(menuBarManager.isMenuBarOnly ? "Show Dock Icon" : "Hide Dock Icon") {
+Button(menuBarManager.isMenuBarOnly ? "Show Dock Icon" : NSLocalizedString("Hide Dock Icon", comment: "Hide Dock Icon")) {
                 menuBarManager.toggleMenuBarOnly()
             }
             

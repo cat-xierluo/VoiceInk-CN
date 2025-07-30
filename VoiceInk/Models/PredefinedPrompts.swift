@@ -17,7 +17,7 @@ enum PredefinedPrompts {
         [
             CustomPrompt(
                 id: defaultPromptId,
-                title: "Default",
+title: NSLocalizedString("Default", comment: "Default"),
                 promptText: """
                 You are tasked with cleaning up transcribed text in the <TRANSCRIPT> tag. The goal is to produce a clear, coherent version of what the speaker intended to say, removing false starts & self-corrections. Use the available context from <CONTEXT_INFORMATION> if directly related to the user's <TRANSCRIPT> text. 
                 Primary Rules:
@@ -71,17 +71,17 @@ enum PredefinedPrompts {
 
                 """,
                 icon: .sealedFill,
-                description: "Default mode to improved clarity and accuracy of the transcription",
+description: NSLocalizedString("Default mode to improved clarity and accuracy of the transcription", comment: "Default mode to improved clarity and accuracy of the transcription"),
                 isPredefined: true
             ),
             
             CustomPrompt(
                 id: assistantPromptId,
-                title: "Assistant",
+title: NSLocalizedString("Assistant", comment: "Assistant"),
                 // Combine assistant mode prompt with context instructions
                 promptText: AIPrompts.assistantMode + "\n\n" + AIPrompts.contextInstructions,
                 icon: .chatFill,
-                description: "AI assistant that provides direct answers to queries",
+description: NSLocalizedString("AI assistant that provides direct answers to queries", comment: "AI assistant that provides direct answers to queries"),
                 isPredefined: true
             )
         ]

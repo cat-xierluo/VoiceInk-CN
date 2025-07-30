@@ -38,7 +38,7 @@ struct LicenseManagementView: View {
                         .foregroundStyle(.blue)
                     
                     HStack(alignment: .lastTextBaseline, spacing: 8) { 
-                        Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : "Upgrade to Pro")
+Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : NSLocalizedString("Upgrade to Pro", comment: "Upgrade to Pro"))
                             .font(.system(size: 32, weight: .bold))
                         
                         Text("v\(appVersion)")
@@ -50,7 +50,7 @@ struct LicenseManagementView: View {
                 
                 Text(licenseViewModel.licenseState == .licensed ? 
                      "Thank you for supporting VoiceInk" :
-                     "Transcribe what you say to text instantly with AI")
+NSLocalizedString("Transcribe what you say to text instantly with AI", comment: "Transcribe what you say to text instantly with AI"))
                     .font(.title3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -62,7 +62,7 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "list.bullet.clipboard.fill", title: "Changelog", color: .blue)
+featureItem(icon: "list.bullet.clipboard.fill", title: NSLocalizedString("Changelog", comment: "Changelog"), color: .blue)
                         }
                         .buttonStyle(.plain)
                         
@@ -71,14 +71,14 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Discord", color: .purple)
+featureItem(icon: "bubble.left.and.bubble.right.fill", title: NSLocalizedString("Discord", comment: "Discord"), color: .purple)
                         }
                         .buttonStyle(.plain)
                         
                         Button {
                             EmailSupport.openSupportEmail()
                         } label: {
-                            featureItem(icon: "envelope.fill", title: "Email Support", color: .orange)
+featureItem(icon: "envelope.fill", title: NSLocalizedString("Email Support", comment: "Email Support"), color: .orange)
                         }
                         .buttonStyle(.plain)
                         
@@ -87,7 +87,7 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "book.fill", title: "Docs", color: .indigo)
+featureItem(icon: "book.fill", title: NSLocalizedString("Docs", comment: "Docs"), color: .indigo)
                         }
                         .buttonStyle(.plain)
                         
@@ -96,7 +96,7 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "map.fill", title: "Roadmap", color: .green)
+featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Roadmap"), color: .green)
                         }
                         .buttonStyle(.plain)
                     }

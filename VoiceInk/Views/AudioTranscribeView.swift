@@ -104,7 +104,7 @@ Text(NSLocalizedString("Original", comment: "Original"))
             return false
         }
 .alert(NSLocalizedString("Error", comment: "Error"), isPresented: .constant(transcriptionManager.errorMessage != nil)) {
-            Button("OK", role: .cancel) {
+            Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) {
                 transcriptionManager.errorMessage = nil
             }
         } message: {

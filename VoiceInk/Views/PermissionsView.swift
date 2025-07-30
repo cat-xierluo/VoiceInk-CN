@@ -223,7 +223,7 @@ struct PermissionsView: View {
                             NotificationCenter.default.post(
                                 name: .navigateToDestination,
                                 object: nil,
-                                userInfo: ["destination": "Settings"]
+userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
                             )
                         },
                         checkPermission: { permissionManager.checkKeyboardShortcut() }

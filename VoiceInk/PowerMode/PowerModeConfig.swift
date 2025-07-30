@@ -153,7 +153,7 @@ class PowerModeManager: ObservableObject {
             
             defaultConfig = PowerModeConfig(
                 id: UUID(),
-                name: "Default Configuration",
+name: NSLocalizedString("Default Configuration", comment: "Default Configuration"),
                 emoji: "⚙️",
                 isAIEnhancementEnabled: false,
                 selectedPrompt: nil,

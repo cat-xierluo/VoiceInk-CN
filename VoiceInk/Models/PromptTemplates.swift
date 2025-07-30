@@ -81,11 +81,11 @@ enum PromptTemplates {
                 After cleaning the text, return only the cleaned version without any additional text, explanations, or tags. The output should be ready for direct use without further editing.
                 """,
                 icon: .sealedFill,
-                description: "Default system prompt for improving clarity and accuracy of transcriptions"
+description: NSLocalizedString("Default system prompt for improving clarity and accuracy of transcriptions", comment: "Default system prompt for improving clarity and accuracy of transcriptions")
             ),
             TemplatePrompt(
                 id: UUID(),
-                title: "Chat",
+title: NSLocalizedString("Chat", comment: "Chat"),
                 promptText: """
                 Primary Rules:
                 We are in a causual chat conversation.
@@ -131,12 +131,12 @@ enum PromptTemplates {
                 Wish I took a picture! 📸"
                 """,
                 icon: .chatFill,
-                description: "Casual chat-style formatting"
+description: NSLocalizedString("Casual chat-style formatting", comment: "Casual chat-style formatting")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Email",
+title: NSLocalizedString("Email", comment: "Email"),
                 promptText: """
                 Primary Rules:
                 1. Preserve the speaker's original tone and personality
@@ -182,12 +182,12 @@ enum PromptTemplates {
                 [Your Name]"
                 """,
                 icon: .emailFill,
-                description: "Template for converting casual messages into professional email format"
+description: NSLocalizedString("Template for converting casual messages into professional email format", comment: "Template for converting casual messages into professional email format")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Meeting Notes",
+title: NSLocalizedString("Meeting Notes", comment: "Meeting Notes"),
                 promptText: """
                 Primary Rules:
                 1. Preserve speaker's original tone and communication style
@@ -233,12 +233,12 @@ enum PromptTemplates {
                 • Begin testing after"
                 """,
                 icon: .meetingFill,
-                description: "Template for structuring meeting notes and action items"
+description: NSLocalizedString("Template for structuring meeting notes and action items", comment: "Template for structuring meeting notes and action items")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Tweet",
+title: NSLocalizedString("Tweet", comment: "Tweet"),
                 promptText: """
                 Primary Rules:
                 1. Keep it casual and conversational
@@ -277,12 +277,12 @@ enum PromptTemplates {
                 Absolute liquid gold ✨ #ColdBrew"
                 """,
                 icon: .chatFill,
-                description: "Template for crafting engaging tweets and replies with personality"
+description: NSLocalizedString("Template for crafting engaging tweets and replies with personality", comment: "Template for crafting engaging tweets and replies with personality")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Daily Journal",
+title: NSLocalizedString("Daily Journal", comment: "Daily Journal"),
                 promptText: """
                 Primary Rules:
                 1. Preserve personal voice and emotional expression
@@ -306,12 +306,12 @@ enum PromptTemplates {
                 Summary:: Key events, mood, highlights, learnings(Add it here)
                 """,
                 icon: .bookFill,
-                description: "Template for converting voice notes into structured daily journal entries"
+description: NSLocalizedString("Template for converting voice notes into structured daily journal entries", comment: "Template for converting voice notes into structured daily journal entries")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Task List",
+title: NSLocalizedString("Task List", comment: "Task List"),
                 promptText: """
                 Primary Rules:
                 1. Preserve speaker's task organization style
@@ -333,12 +333,12 @@ enum PromptTemplates {
                 - [ ] Follow-up item 2
                 """,
                 icon: .pencilFill,
-                description: "Template for converting voice notes into markdown task lists"
+description: NSLocalizedString("Template for converting voice notes into markdown task lists", comment: "Template for converting voice notes into markdown task lists")
             ),
             
             TemplatePrompt(
                 id: UUID(),
-                title: "Quick Notes",
+title: NSLocalizedString("Quick Notes", comment: "Quick Notes"),
                 promptText: """
                 Primary Rules:
                 1. Preserve speaker's thought process and emphasis
@@ -358,7 +358,7 @@ enum PromptTemplates {
                   - Related informations
                 """,
                 icon: .micFill,
-                description: "Template for converting voice notes into quick, organized notes"
+description: NSLocalizedString("Template for converting voice notes into quick, organized notes", comment: "Template for converting voice notes into quick, organized notes")
             )
         ]
     }

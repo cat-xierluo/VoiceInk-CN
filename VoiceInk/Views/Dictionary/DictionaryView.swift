@@ -116,7 +116,7 @@ TextField(NSLocalizedString("Add word to dictionary", comment: "Add word to dict
                 }
                 .buttonStyle(.borderless)
                 .disabled(newWord.isEmpty)
-                .help("Add word")
+.help(NSLocalizedString("Add word", comment: "Add word"))
             }
             
             // Words List
@@ -154,7 +154,7 @@ Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unn
         }
         .padding()
 .alert(NSLocalizedString("Dictionary", comment: "Dictionary"), isPresented: $showAlert) {
-            Button("OK", role: .cancel) {}
+                            Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) {}
         } message: {
             Text(alertMessage)
         }
@@ -198,7 +198,7 @@ struct DictionaryItemView: View {
                         .contentTransition(.symbolEffect(.replace))
                 }
                 .buttonStyle(.borderless)
-                .help(item.isEnabled ? "Disable word" : "Enable word")
+.help(item.isEnabled ? "Disable word" : NSLocalizedString("Enable word", comment: "Enable word"))
                 
                 Button(action: onDelete) {
                     Image(systemName: "xmark.circle.fill")
@@ -207,7 +207,7 @@ struct DictionaryItemView: View {
                         .contentTransition(.symbolEffect(.replace))
                 }
                 .buttonStyle(.borderless)
-                .help("Remove word")
+.help(NSLocalizedString("Remove word", comment: "Remove word"))
             }
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {

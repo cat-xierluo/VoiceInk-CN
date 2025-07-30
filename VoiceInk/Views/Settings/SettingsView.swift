@@ -25,12 +25,12 @@ struct SettingsView: View {
                 // Hotkey Selection Section
                 SettingsSection(
                     icon: "command.circle",
-                    title: "VoiceInk Shortcut",
-                    subtitle: "Choose how you want to trigger VoiceInk"
+title: NSLocalizedString("VoiceInk Shortcut", comment: "VoiceInk Shortcut"),
+subtitle: NSLocalizedString("Choose how you want to trigger VoiceInk", comment: "Choose how you want to trigger VoiceInk")
                 ) {
                     VStack(alignment: .leading, spacing: 18) {
                         hotkeyView(
-                            title: "Hotkey 1",
+title: NSLocalizedString("Hotkey 1", comment: "Hotkey 1"),
                             binding: $hotkeyManager.selectedHotkey1,
                             shortcutName: .toggleMiniRecorder
                         )
@@ -39,7 +39,7 @@ struct SettingsView: View {
                         if hotkeyManager.selectedHotkey2 != .none {
                             Divider()
                             hotkeyView(
-                                title: "Hotkey 2",
+title: NSLocalizedString("Hotkey 2", comment: "Hotkey 2"),
                                 binding: $hotkeyManager.selectedHotkey2,
                                 shortcutName: .toggleMiniRecorder2,
                                 isRemovable: true,
@@ -108,8 +108,8 @@ Text(NSLocalizedString("By default, double-tap Escape to cancel recordings. Enab
                 // Recording Feedback Section
                 SettingsSection(
                     icon: "speaker.wave.2.bubble.left.fill",
-                    title: "Recording Feedback",
-                    subtitle: "Customize app & system feedback"
+title: NSLocalizedString("Recording Feedback", comment: "Recording Feedback"),
+subtitle: NSLocalizedString("Customize app & system feedback", comment: "Customize app & system feedback")
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
                         Toggle(isOn: $whisperState.isAutoCopyEnabled) {
@@ -129,21 +129,21 @@ Text(NSLocalizedString("Sound feedback", comment: "Sound feedback"))
 Text(NSLocalizedString("Mute system audio during recording", comment: "Mute system audio during recording"))
                         }
                         .toggleStyle(.switch)
-                        .help("Automatically mute system audio when recording starts and restore when recording stops")
+.help(NSLocalizedString("Automatically mute system audio when recording starts and restore when recording stops", comment: "Automatically mute system audio when recording starts and restore when recording stops"))
 
                         Toggle(isOn: $playbackController.isPauseMediaEnabled) {
 Text(NSLocalizedString("Pause media during recording", comment: "Pause media during recording"))
                         }
                         .toggleStyle(.switch)
-                        .help("Automatically pause active media playback when recording starts and resume when recording stops")
+.help(NSLocalizedString("Automatically pause active media playback when recording starts and resume when recording stops", comment: "Automatically pause active media playback when recording starts and resume when recording stops"))
                     }
                 }
 
                 // Recorder Preference Section
                 SettingsSection(
                     icon: "rectangle.on.rectangle",
-                    title: "Recorder Style",
-                    subtitle: "Choose your preferred recorder interface"
+title: NSLocalizedString("Recorder Style", comment: "Recorder Style"),
+subtitle: NSLocalizedString("Choose your preferred recorder interface", comment: "Choose your preferred recorder interface")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("Select how you want the recorder to appear on your screen.", comment: "Select how you want the recorder to appear on your screen."))
@@ -161,8 +161,8 @@ Text(NSLocalizedString("Mini Recorder", comment: "Mini Recorder")).tag("mini")
                 // Paste Method Section
                 SettingsSection(
                     icon: "doc.on.clipboard",
-                    title: "Paste Method",
-                    subtitle: "Choose how text is pasted"
+title: NSLocalizedString("Paste Method", comment: "Paste Method"),
+subtitle: NSLocalizedString("Choose how text is pasted", comment: "Choose how text is pasted")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.", comment: "Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout."))
@@ -179,8 +179,8 @@ Toggle(NSLocalizedString("Use AppleScript Paste Method", comment: "Use AppleScri
                 // App Appearance Section
                 SettingsSection(
                     icon: "dock.rectangle",
-                    title: "App Appearance",
-                    subtitle: "Dock and Menu Bar options"
+title: NSLocalizedString("App Appearance", comment: "App Appearance"),
+subtitle: NSLocalizedString("Dock and Menu Bar options", comment: "Dock and Menu Bar options")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("Choose how VoiceInk appears in your system.", comment: "Choose how VoiceInk appears in your system."))
@@ -194,8 +194,8 @@ Toggle(NSLocalizedString("Hide Dock Icon (Menu Bar Only)", comment: "Hide Dock I
                 // Audio Cleanup Section
                 SettingsSection(
                     icon: "trash.circle",
-                    title: "Audio Cleanup",
-                    subtitle: "Manage recording storage"
+title: NSLocalizedString("Audio Cleanup", comment: "Audio Cleanup"),
+subtitle: NSLocalizedString("Manage recording storage", comment: "Manage recording storage")
                 ) {
                     AudioCleanupSettingsView()
                 }
@@ -203,8 +203,8 @@ Toggle(NSLocalizedString("Hide Dock Icon (Menu Bar Only)", comment: "Hide Dock I
                 // Startup Section
                 SettingsSection(
                     icon: "power",
-                    title: "Startup",
-                    subtitle: "Launch options"
+title: NSLocalizedString("Startup", comment: "Startup"),
+subtitle: NSLocalizedString("Launch options", comment: "Launch options")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("Choose whether VoiceInk should start automatically when you log in.", comment: "Choose whether VoiceInk should start automatically when you log in."))
@@ -218,8 +218,8 @@ Text(NSLocalizedString("Choose whether VoiceInk should start automatically when 
                 // Updates Section
                 SettingsSection(
                     icon: "arrow.triangle.2.circlepath",
-                    title: "Updates",
-                    subtitle: "Keep VoiceInk up to date"
+title: NSLocalizedString("Updates", comment: "Updates"),
+subtitle: NSLocalizedString("Keep VoiceInk up to date", comment: "Keep VoiceInk up to date")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("VoiceInk automatically checks for updates on launch and every other day.", comment: "VoiceInk automatically checks for updates on launch and every other day."))
@@ -237,8 +237,8 @@ Button(NSLocalizedString("Check for Updates Now", comment: "Check for Updates No
                 // Reset Onboarding Section
                 SettingsSection(
                     icon: "arrow.counterclockwise",
-                    title: "Reset Onboarding",
-                    subtitle: "View the introduction again"
+title: NSLocalizedString("Reset Onboarding", comment: "Reset Onboarding"),
+subtitle: NSLocalizedString("View the introduction again", comment: "View the introduction again")
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("Reset the onboarding process to view the app introduction again.", comment: "Reset the onboarding process to view the app introduction again."))
@@ -255,8 +255,8 @@ Button(NSLocalizedString("Reset Onboarding", comment: "Reset Onboarding")) {
                 // Data Management Section
                 SettingsSection(
                     icon: "arrow.up.arrow.down.circle",
-                    title: "Data Management",
-                    subtitle: "Import or export your settings"
+title: NSLocalizedString("Data Management", comment: "Data Management"),
+subtitle: NSLocalizedString("Import or export your settings", comment: "Import or export your settings")
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
 Text(NSLocalizedString("Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export.", comment: "Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export."))

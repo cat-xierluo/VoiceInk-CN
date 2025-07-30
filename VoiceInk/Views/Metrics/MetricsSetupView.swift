@@ -195,7 +195,7 @@ Text(NSLocalizedString("Need help? Check the Help menu for support options", com
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
-            userInfo: ["destination": "Settings"]
+userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
         )
     }
     
@@ -203,7 +203,7 @@ Text(NSLocalizedString("Need help? Check the Help menu for support options", com
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
-            userInfo: ["destination": "AI Models"]
+userInfo: ["destination": NSLocalizedString("AI Models", comment: "AI Models")]
         )
     }
 }

@@ -54,7 +54,7 @@ Text(NSLocalizedString("Define word replacements to automatically replace specif
 Toggle(NSLocalizedString("Enable", comment: "Enable"), isOn: $manager.isEnabled)
                         .toggleStyle(.switch)
                         .labelsHidden()
-                        .help("Enable automatic word replacement after transcription")
+.help(NSLocalizedString("Enable automatic word replacement after transcription", comment: "Enable automatic word replacement after transcription"))
                 }
             }
             
@@ -329,7 +329,7 @@ struct ReplacementRow: View {
                     .font(.system(size: 16))
             }
             .buttonStyle(.borderless)
-            .help("Remove replacement")
+.help(NSLocalizedString("Remove replacement", comment: "Remove replacement"))
         }
         .padding(.horizontal)
         .padding(.vertical, 8)

@@ -42,7 +42,7 @@ struct OnboardingPermissionsView: View {
     
     private let permissions: [OnboardingPermission] = [
         OnboardingPermission(
-            title: "Microphone Access",
+title: NSLocalizedString("Microphone Access", comment: "Microphone Access"),
             description: "Enable your microphone to start speaking and converting your voice to text instantly.",
             icon: "waveform",
             type: .microphone
@@ -54,7 +54,7 @@ struct OnboardingPermissionsView: View {
             type: .audioDeviceSelection
         ),
         OnboardingPermission(
-            title: "Accessibility Access",
+title: NSLocalizedString("Accessibility Access", comment: "Accessibility Access"),
             description: "Allow VoiceInk to help you type anywhere in your Mac.",
             icon: "accessibility",
             type: .accessibility
@@ -66,7 +66,7 @@ struct OnboardingPermissionsView: View {
             type: .screenRecording
         ),
         OnboardingPermission(
-            title: "Keyboard Shortcut",
+title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
             description: "Set up a keyboard shortcut to quickly access VoiceInk from anywhere.",
             icon: "keyboard",
             type: .keyboardShortcut
@@ -391,11 +391,11 @@ struct OnboardingPermissionsView: View {
     private func getButtonTitle() -> String {
         switch permissions[currentPermissionIndex].type {
         case .keyboardShortcut:
-            return permissionStates[currentPermissionIndex] ? "Continue" : "Set Shortcut"
+            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : NSLocalizedString("Set Shortcut", comment: "Set Shortcut")
         case .audioDeviceSelection:
-            return "Continue"
+            return NSLocalizedString("Continue", comment: "Continue")
         default:
-            return permissionStates[currentPermissionIndex] ? "Continue" : "Enable Access"
+            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : NSLocalizedString("Enable Access", comment: "Enable Access")
         }
     }
 

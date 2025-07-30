@@ -31,7 +31,7 @@ extension TranscriptionModel {
     }
     
     var language: String {
-        isMultilingualModel ? "Multilingual" : "English-only"
+isMultilingualModel ? "Multilingual" : NSLocalizedString("English-only", comment: "English-only")
     }
 }
 

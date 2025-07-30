@@ -70,7 +70,7 @@ Text(NSLocalizedString("Get Started", comment: "Get Started"))
                                     }
                                     .buttonStyle(ScaleButtonStyle())
                                     
-                                    SkipButton(text: "Skip Tour") {
+SkipButton(text: NSLocalizedString("Skip Tour", comment: "Skip Tour")) {
                                         hasCompletedOnboarding = true
                                     }
                                 }
@@ -110,10 +110,10 @@ Text(NSLocalizedString("Get Started", comment: "Get Started"))
 // MARK: - Supporting Views
 struct TypewriterRoles: View {
     private let roles = [
-        "Your Writing Assistant",
-        "Your Vibe-Coding Assistant",
-        "Works Everywhere on Mac with a click",
-        "100% offline & private",
+NSLocalizedString("Your Writing Assistant", comment: "Your Writing Assistant"),
+NSLocalizedString("Your Vibe-Coding Assistant", comment: "Your Vibe-Coding Assistant"),
+NSLocalizedString("Works Everywhere on Mac with a click", comment: "Works Everywhere on Mac with a click"),
+NSLocalizedString("100% offline & private", comment: "100% offline & private"),
        
     ]
     

@@ -42,7 +42,7 @@ Text(NSLocalizedString("Add customized power modes for different contexts", comm
                 .multilineTextAlignment(.center)
             
             VoiceInkButton(
-                title: "Add New Power Mode",
+title: NSLocalizedString("Add New Power Mode", comment: "Add New Power Mode"),
                 action: action
             )
             .frame(maxWidth: 250)
@@ -76,7 +76,7 @@ struct PowerModeConfigurationsGrid: View {
                     Button(role: .destructive, action: {
                         powerModeManager.removeConfiguration(with: config.id)
                     }) {
-                        Label("Remove", systemImage: "trash")
+                        Label(NSLocalizedString("Remove", comment: "Remove"), systemImage: "trash")
                     }
                 }
             }

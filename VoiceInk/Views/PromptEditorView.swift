@@ -56,7 +56,7 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : "Edit Prompt"))
+Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : NSLocalizedString("Edit Prompt", comment: "Edit Prompt")))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -414,12 +414,12 @@ struct IconMenuContent: View {
     
     var body: some View {
         Group {
-            IconMenuSection(title: "Document & Text", icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Communication", icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Professional", icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Technical", icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Content", icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
-            IconMenuSection(title: "Media & Creative", icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Document & Text", comment: "Document & Text"), icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Communication", comment: "Communication"), icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Professional", comment: "Professional"), icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Technical", comment: "Technical"), icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Content", comment: "Content"), icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
+IconMenuSection(title: NSLocalizedString("Media & Creative", comment: "Media & Creative"), icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
         }
     }
 }
@@ -468,7 +468,7 @@ struct TriggerWordItemView: View {
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.borderless)
-            .help("Remove word")
+.help(NSLocalizedString("Remove word", comment: "Remove word"))
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isHovered = hover

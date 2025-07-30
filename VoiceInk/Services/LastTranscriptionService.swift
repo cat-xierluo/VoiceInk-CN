@@ -22,7 +22,7 @@ class LastTranscriptionService: ObservableObject {
         guard let lastTranscription = getLastTranscription(from: modelContext) else {
             Task { @MainActor in
                 NotificationManager.shared.showNotification(
-                    title: "No transcription available",
+title: NSLocalizedString("No transcription available", comment: "No transcription available"),
                     type: .error
                 )
             }

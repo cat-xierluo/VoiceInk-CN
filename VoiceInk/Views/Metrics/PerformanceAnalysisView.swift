@@ -70,7 +70,7 @@ Text(NSLocalizedString("Performance Analysis", comment: "Performance Analysis"))
             SummaryCard(
                 icon: "sparkles", 
                 value: "\(analysis.totalEnhancedFiles)", 
-                label: "Enhanced",
+label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 color: .mint
             )
         }

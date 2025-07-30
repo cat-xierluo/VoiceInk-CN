@@ -286,7 +286,7 @@ struct AudioPlayerView: View {
                             )
                     }
                     .buttonStyle(.plain)
-                    .help("Show in Finder")
+.help(NSLocalizedString("Show in Finder", comment: "Show in Finder"))
                     
                     Button(action: {
                         if playerManager.isPlaying {
@@ -336,7 +336,7 @@ struct AudioPlayerView: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(isRetranscribing)
-                    .help("Retranscribe this audio")
+.help(NSLocalizedString("Retranscribe this audio", comment: "Retranscribe this audio"))
                     
                     Text(formatTime(playerManager.currentTime))
                         .font(.system(size: 14, weight: .medium))
@@ -373,7 +373,7 @@ Text(NSLocalizedString("Retranscription successful", comment: "Retranscription s
                     HStack(spacing: 8) {
                         Image(systemName: "exclamationmark.circle.fill")
                             .foregroundColor(.red)
-                        Text(errorMessage.isEmpty ? "Retranscription failed" : errorMessage)
+Text(errorMessage.isEmpty ? NSLocalizedString("Retranscription failed", comment: "Retranscription failed") : errorMessage)
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)

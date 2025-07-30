@@ -20,8 +20,8 @@ Text(NSLocalizedString("Enable Enhancement", comment: "Enable Enhancement"))
                                         .font(.headline)
                                     
                                     InfoTip(
-                                        title: "AI Enhancement",
-                                        message: "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.",
+title: NSLocalizedString("AI Enhancement", comment: "AI Enhancement"),
+message: NSLocalizedString("AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.", comment: "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc."),
                                         learnMoreURL: "https://www.youtube.com/@tryvoiceink/videos"
                                     )
                                 }

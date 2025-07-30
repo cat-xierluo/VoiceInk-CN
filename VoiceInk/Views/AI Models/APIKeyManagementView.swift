@@ -112,7 +112,7 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                             Circle()
                                 .fill(isCheckingOllama ? Color.orange : (ollamaModels.isEmpty ? Color.red : Color.green))
                                 .frame(width: 8, height: 8)
-                            Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" : "Connected"))
+Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" : NSLocalizedString("Connected", comment: "Connected")))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -196,7 +196,7 @@ Text(NSLocalizedString("No models available", comment: "No models available"))
                         }
                         
                         Button(action: { checkOllamaConnection() }) {
-                            Label(isCheckingOllama ? "Refreshing..." : "Refresh", systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
+Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment: "Refresh"), systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
                                 .font(.caption)
                         }
                         .disabled(isCheckingOllama)
@@ -295,7 +295,7 @@ Text(NSLocalizedString("Enter your API Key", comment: "Enter your API Key"))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
-                            SecureField("API Key", text: $apiKey)
+SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.system(.body, design: .monospaced))
                             
@@ -362,7 +362,7 @@ Text(NSLocalizedString("Enter your API Key", comment: "Enter your API Key"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
-                        SecureField("API Key", text: $apiKey)
+SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .font(.system(.body, design: .monospaced))
                         
@@ -393,7 +393,7 @@ Text(NSLocalizedString("Verify and Save", comment: "Verify and Save"))
                             Spacer()
                             
                             HStack(spacing: 8) {
-                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? "Free" : "Paid")
+Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? NSLocalizedString("Free", comment: "Free") : "Paid")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .padding(.horizontal, 6)
@@ -445,7 +445,7 @@ Text(NSLocalizedString("Get API Key", comment: "Get API Key"))
         }
         .padding()
 .alert(NSLocalizedString("Error", comment: "Error"), isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
+                                Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) { }
         } message: {
             Text(alertMessage)
         }

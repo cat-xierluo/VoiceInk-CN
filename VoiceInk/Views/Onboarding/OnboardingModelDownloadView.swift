@@ -75,8 +75,8 @@ Text(NSLocalizedString("We'll download the optimized model to get you started.",
                         
                         // Performance indicators in a more compact layout
                         HStack(spacing: 20) {
-                            performanceIndicator(label: "Speed", value: turboModel.speed)
-                            performanceIndicator(label: "Accuracy", value: turboModel.accuracy)
+performanceIndicator(label: NSLocalizedString("Speed", comment: "Speed"), value: turboModel.speed)
+performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), value: turboModel.accuracy)
                             ramUsageLabel(gb: turboModel.ramUsage)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -187,13 +187,13 @@ Text(NSLocalizedString("We'll download the optimized model to get you started.",
     
     private func getButtonTitle() -> String {
         if isModelSet {
-            return "Continue"
+            return NSLocalizedString("Continue", comment: "Continue")
         } else if isDownloading {
-            return "Downloading..."
+            return NSLocalizedString("Downloading...", comment: "Downloading...")
         } else if whisperState.availableModels.contains(where: { $0.name == turboModel.name }) {
-            return "Set as Default"
+            return NSLocalizedString("Set as Default", comment: "Set as Default")
         } else {
-            return "Download Model"
+            return NSLocalizedString("Download Model", comment: "Download Model")
         }
     }
     
@@ -225,4 +225,3 @@ Text(NSLocalizedString("We'll download the optimized model to get you started.",
         }
     }
 }
-

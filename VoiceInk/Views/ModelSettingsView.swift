@@ -15,7 +15,7 @@ Text(NSLocalizedString("Output Format", comment: "Output Format"))
                     .font(.headline)
                 
                 InfoTip(
-                    title: "Output Format Guide",
+title: NSLocalizedString("Output Format Guide", comment: "Output Format Guide"),
                     message: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.",
                     learnMoreURL: "https://cookbook.openai.com/examples/whisper_prompting_guide#comparison-with-gpt-prompting"
                 )
@@ -33,7 +33,7 @@ Text(NSLocalizedString("Output Format", comment: "Output Format"))
                         isEditing = true
                     }
                 }) {
-                    Text(isEditing ? "Save" : "Edit")
+                Text(isEditing ? NSLocalizedString("Save", comment: "Save") : NSLocalizedString("Edit", comment: "Edit"))
                         .font(.caption)
                 }
             }
@@ -73,7 +73,7 @@ Text(NSLocalizedString("Automatic text formatting", comment: "Automatic text for
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Automatic Text Formatting",
+title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic Text Formatting"),
                     message: "Apply intelligent text formatting to break large block of text into paragraphs."
                 )
             }
@@ -85,7 +85,7 @@ Text(NSLocalizedString("Voice Activity Detection (VAD)", comment: "Voice Activit
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Voice Activity Detection",
+title: NSLocalizedString("Voice Activity Detection", comment: "Voice Activity Detection"),
                     message: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models."
                 )
             }

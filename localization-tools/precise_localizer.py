@@ -40,6 +40,24 @@ class PreciseLocalizer:
             # HStack/VStack中的直接文本
             r'HStack\s*{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',
             r'VStack\s*{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',
+            # 更多UI组件模式
+            r'title:\s*"([^"]+)"',  # 通用title参数
+            r'placeholder:\s*"([^"]+)"',  # placeholder参数
+            r'message:\s*"([^"]+)"',  # message参数
+            r'\.tag\s*\(\s*"([^"]+)"\s*\)',  # tag参数
+            r'\.accessibility\w*\s*\(\s*"([^"]+)"\s*\)',  # accessibility相关
+            r'\.help\s*\(\s*"([^"]+)"\s*\)',  # help文本
+            r'\.confirmationDialog\s*\(\s*"([^"]+)"\s*',  # 确认对话框
+            r'\.toolbar\s*{[^}]*Text\s*\(\s*"([^"]+)"\s*\)',  # toolbar中的文本
+            # 字符串插值和格式化
+            r'"([^"]*[A-Za-z]{3,}[^"]*)"(?=\s*\+|\s*,|\s*\))',  # 独立字符串
+            # 更复杂的UI模式
+            r'HStack\s*\([^)]*\)\s*{[^}]*"([^"]+)"',  # HStack中的字符串
+            r'VStack\s*\([^)]*\)\s*{[^}]*"([^"]+)"',  # VStack中的字符串
+            r'Group\s*{[^}]*"([^"]+)"',  # Group中的字符串
+            # 条件语句中的字符串
+            r'\?\s*"([^"]+)"\s*:',  # 三元运算符中的字符串
+            r':\s*"([^"]+)"',  # 三元运算符的另一部分
         ]
         
         # 需要避免的模式（代码逻辑相关）

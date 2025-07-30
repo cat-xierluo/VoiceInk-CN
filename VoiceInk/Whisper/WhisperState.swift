@@ -147,7 +147,7 @@ class WhisperState: NSObject, ObservableObject {
             guard currentTranscriptionModel != nil else {
                 await MainActor.run {
                     NotificationManager.shared.showNotification(
-                        title: "No AI Model Selected",
+title: NSLocalizedString("No AI Model Selected", comment: "No AI Model Selected"),
                         type: .error
                     )
                 }
@@ -190,7 +190,7 @@ class WhisperState: NSObject, ObservableObject {
         
                         } catch {
                             self.logger.error("❌ Failed to start recording: \(error.localizedDescription)")
-                            await NotificationManager.shared.showNotification(title: "Recording failed to start", type: .error)
+await NotificationManager.shared.showNotification(title: NSLocalizedString("Recording failed to start", comment: "Recording failed to start"), type: .error)
                             await self.dismissMiniRecorder()
                             // Do not remove the file on a failed start, to preserve all recordings.
                             self.recordedFile = nil
@@ -304,7 +304,7 @@ class WhisperState: NSObject, ObservableObject {
                     
                     await MainActor.run {
                         NotificationManager.shared.showNotification(
-                            title: "AI enhancement failed",
+title: NSLocalizedString("AI enhancement failed", comment: "AI enhancement failed"),
                             type: .error
                         )
                     }
@@ -385,7 +385,7 @@ class WhisperState: NSObject, ObservableObject {
             
             await MainActor.run {
                 NotificationManager.shared.showNotification(
-                    title: "Transcription Failed",
+title: NSLocalizedString("Transcription Failed", comment: "Transcription Failed"),
                     type: .error
                 )
             }

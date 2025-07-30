@@ -94,8 +94,8 @@ Text(NSLocalizedString("Power Mode", comment: "Power Mode"))
                                 .font(.system(size: 22, weight: .bold))
                             
                             InfoTip(
-                                title: "Power Mode",
-                                message: "Create custom modes that automatically apply when using specific apps/websites.",
+title: NSLocalizedString("Power Mode", comment: "Power Mode"),
+message: NSLocalizedString("Create custom modes that automatically apply when using specific apps/websites.", comment: "Create custom modes that automatically apply when using specific apps/websites."),
                                 learnMoreURL: "https://www.youtube.com/watch?v=cEepexxgf6Y&t=10s"
                             )
                             
@@ -184,7 +184,7 @@ Text(NSLocalizedString("Create a new mode for specific apps/websites", comment: 
                             // Add Configuration button at the bottom (centered)
                             HStack {
                                 VoiceInkButton(
-                                    title: "Add New Power Mode",
+title: NSLocalizedString("Add New Power Mode", comment: "Add New Power Mode"),
                                     action: {
                                         configurationMode = .add
                                         navigationPath.append(configurationMode!)
@@ -221,7 +221,7 @@ Text(NSLocalizedString("Enable Power Mode to create context-specific configurati
                                 .frame(maxWidth: 400)
                             
                             VoiceInkButton(
-                                title: "Enable Power Mode",
+title: NSLocalizedString("Enable Power Mode", comment: "Enable Power Mode"),
                                 action: {
                                     powerModeManager.isPowerModeEnabled = true
                                     powerModeManager.savePowerModeEnabled()

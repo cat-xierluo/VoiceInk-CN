@@ -199,7 +199,7 @@ TextField(NSLocalizedString("Name your power mode", comment: "Name your power mo
                     if !mode.isEditingDefault {
                         VStack(spacing: 16) {
                             // Section Header
-                            SectionHeader(title: "When to Trigger")
+SectionHeader(title: NSLocalizedString("When to Trigger", comment: "When to Trigger"))
                             
                             // Applications Subsection
                             VStack(alignment: .leading, spacing: 12) {
@@ -348,7 +348,7 @@ Text(NSLocalizedString("No websites added", comment: "No websites added"))
                     // SECTION 2: TRANSCRIPTION
                     VStack(spacing: 16) {
                         // Section Header
-                        SectionHeader(title: "Transcription")
+SectionHeader(title: NSLocalizedString("Transcription", comment: "Transcription"))
                         
                         // Whisper Model Selection Subsection
                         if whisperState.usableModels.isEmpty {
@@ -428,7 +428,7 @@ Text(NSLocalizedString("Language", comment: "Language"))
                     // SECTION 3: AI ENHANCEMENT
                     VStack(spacing: 16) {
                         // Section Header
-                        SectionHeader(title: "AI Enhancement")
+SectionHeader(title: NSLocalizedString("AI Enhancement", comment: "AI Enhancement"))
 
 Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancement"), isOn: $isAIEnhancementEnabled)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -508,7 +508,7 @@ Text(NSLocalizedString("AI Model", comment: "AI Model"))
                                         .foregroundColor(.secondary)
                                     
                                     if aiService.availableModels.isEmpty {
-                                        Text(provider == .openRouter ? "No models loaded" : "No models available")
+Text(provider == .openRouter ? "No models loaded" : NSLocalizedString("No models available", comment: "No models available"))
                                             .foregroundColor(.secondary)
                                             .italic()
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -595,14 +595,14 @@ Toggle(NSLocalizedString("Context Awareness", comment: "Context Awareness"), isO
                     
                     // SECTION 4: ADVANCED
                     VStack(spacing: 16) {
-                        SectionHeader(title: "Advanced")
+SectionHeader(title: NSLocalizedString("Advanced", comment: "Advanced"))
 
                         HStack {
 Toggle(NSLocalizedString("Auto Send", comment: "Auto Send"), isOn: $isAutoSendEnabled)
                             
                             InfoTip(
-                                title: "Auto Send",
-                                message: "Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text"
+title: NSLocalizedString("Auto Send", comment: "Auto Send"),
+message: NSLocalizedString("Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text", comment: "Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text")
                             )
                             
                             Spacer()
@@ -614,7 +614,7 @@ Toggle(NSLocalizedString("Auto Send", comment: "Auto Send"), isOn: $isAutoSendEn
                     
                     // Save Button
                     VoiceInkButton(
-                        title: mode.isAdding ? "Add New Power Mode" : "Save Changes",
+title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", comment: "Save Changes"),
                         action: saveConfiguration,
                         isDisabled: !canSave
                     )

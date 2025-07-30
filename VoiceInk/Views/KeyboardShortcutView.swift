@@ -13,7 +13,7 @@ struct KeyboardShortcutView: View {
                 }
             }
         } else {
-            KeyCapView(text: "Not Set")
+KeyCapView(text: NSLocalizedString("Not Set", comment: "Not Set"))
                 .foregroundColor(.secondary)
         }
     }

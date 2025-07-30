@@ -92,18 +92,18 @@ Text(NSLocalizedString("Enhanced", comment: "Enhanced"))
                         .padding(.vertical, 8)
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        metadataRow(icon: "hourglass", label: "Audio Duration", value: formatTiming(transcription.duration))
+metadataRow(icon: "hourglass", label: NSLocalizedString("Audio Duration", comment: "Audio Duration"), value: formatTiming(transcription.duration))
                         if let modelName = transcription.transcriptionModelName {
-                            metadataRow(icon: "cpu.fill", label: "Transcription Model", value: modelName)
+metadataRow(icon: "cpu.fill", label: NSLocalizedString("Transcription Model", comment: "Transcription Model"), value: modelName)
                         }
                         if let aiModel = transcription.aiEnhancementModelName {
-                            metadataRow(icon: "sparkles", label: "Enhancement Model", value: aiModel)
+metadataRow(icon: "sparkles", label: NSLocalizedString("Enhancement Model", comment: "Enhancement Model"), value: aiModel)
                         }
                         if let duration = transcription.transcriptionDuration {
-                            metadataRow(icon: "clock.fill", label: "Transcription Time", value: formatTiming(duration))
+metadataRow(icon: "clock.fill", label: NSLocalizedString("Transcription Time", comment: "Transcription Time"), value: formatTiming(duration))
                         }
                         if let duration = transcription.enhancementDuration {
-                            metadataRow(icon: "clock.fill", label: "Enhancement Time", value: formatTiming(duration))
+metadataRow(icon: "clock.fill", label: NSLocalizedString("Enhancement Time", comment: "Enhancement Time"), value: formatTiming(duration))
                         }
                     }
                 }

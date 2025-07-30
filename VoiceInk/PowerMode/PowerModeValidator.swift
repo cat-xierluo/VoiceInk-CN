@@ -117,7 +117,7 @@ extension View {
         isPresented: Binding<Bool>
     ) -> some View {
         self.alert(
-            "Cannot Save Power Mode", 
+NSLocalizedString("Cannot Save Power Mode", comment: "Cannot Save Power Mode"),
             isPresented: isPresented,
             actions: {
                 Button("OK", role: .cancel) {}

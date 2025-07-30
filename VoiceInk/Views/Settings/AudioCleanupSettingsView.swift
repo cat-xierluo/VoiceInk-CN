@@ -74,7 +74,7 @@ Text(NSLocalizedString("Audio files older than the selected period will be autom
                         } else {
                             Image(systemName: "arrow.clockwise")
                         }
-                        Text(isPerformingCleanup ? "Analyzing..." : "Run Cleanup Now")
+Text(isPerformingCleanup ? "Analyzing..." : NSLocalizedString("Run Cleanup Now", comment: "Run Cleanup Now"))
                     }
                 }
                 .buttonStyle(.bordered)
@@ -118,7 +118,7 @@ Text(NSLocalizedString("Audio files older than the selected period will be autom
                     }
                 }
                 .alert("Cleanup Complete", isPresented: $showResultAlert) {
-                    Button("OK", role: .cancel) { }
+                    Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) { }
                 } message: {
                     if cleanupResult.errorCount > 0 {
                         Text("Successfully deleted \(cleanupResult.deletedCount) audio files. Failed to delete \(cleanupResult.errorCount) files.")

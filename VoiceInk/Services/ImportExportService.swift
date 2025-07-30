@@ -127,17 +127,17 @@ class ImportExportService {
                     if let url = savePanel.url {
                         do {
                             try jsonData.write(to: url)
-                            self.showAlert(title: "Export Successful", message: "Your settings have been successfully exported to \(url.lastPathComponent).")
+self.showAlert(title: NSLocalizedString("Export Successful", comment: "Export Successful"), message: "Your settings have been successfully exported to \(url.lastPathComponent).")
                         } catch {
-                            self.showAlert(title: "Export Error", message: "Could not save settings to file: \(error.localizedDescription)")
+self.showAlert(title: NSLocalizedString("Export Error", comment: "Export Error"), message: "Could not save settings to file: \(error.localizedDescription)")
                         }
                     }
                 } else {
-                    self.showAlert(title: "Export Canceled", message: "The settings export operation was canceled.")
+self.showAlert(title: "Export Canceled", message: NSLocalizedString("The settings export operation was canceled.", comment: "The settings export operation was canceled."))
                 }
             }
         } catch {
-            self.showAlert(title: "Export Error", message: "Could not encode settings to JSON: \(error.localizedDescription)")
+self.showAlert(title: NSLocalizedString("Export Error", comment: "Export Error"), message: "Could not encode settings to JSON: \(error.localizedDescription)")
         }
     }
 
@@ -154,7 +154,7 @@ class ImportExportService {
         DispatchQueue.main.async {
             if openPanel.runModal() == .OK {
                 guard let url = openPanel.url else {
-                    self.showAlert(title: "Import Error", message: "Could not get the file URL from the open panel.")
+self.showAlert(title: "Import Error", message: NSLocalizedString("Could not get the file URL from the open panel.", comment: "Could not get the file URL from the open panel."))
                     return
                 }
 
@@ -164,7 +164,7 @@ class ImportExportService {
                     let importedSettings = try decoder.decode(VoiceInkExportedSettings.self, from: jsonData)
                     
                     if importedSettings.version != self.currentSettingsVersion {
-                        self.showAlert(title: "Version Mismatch", message: "The imported settings file (version \(importedSettings.version)) is from a different version than your application (version \(self.currentSettingsVersion)). Proceeding with import, but be aware of potential incompatibilities.")
+self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mismatch"), message: "The imported settings file (version \(importedSettings.version)) is from a different version than your application (version \(self.currentSettingsVersion)). Proceeding with import, but be aware of potential incompatibilities.")
                     }
 
                     let predefinedPrompts = enhancementService.customPrompts.filter { $0.isPredefined }
@@ -261,7 +261,7 @@ class ImportExportService {
                     self.showRestartAlert(message: "Settings imported successfully from \(url.lastPathComponent). All settings (including general app settings) have been applied.")
 
                 } catch {
-                    self.showAlert(title: "Import Error", message: "Error importing settings: \(error.localizedDescription). The file might be corrupted or not in the correct format.")
+self.showAlert(title: NSLocalizedString("Import Error", comment: "Import Error"), message: "Error importing settings: \(error.localizedDescription). The file might be corrupted or not in the correct format.")
                 }
             } else {
                 self.showAlert(title: "Import Canceled", message: "The settings import operation was canceled.")
@@ -275,7 +275,7 @@ class ImportExportService {
             alert.messageText = title
             alert.informativeText = message
             alert.alertStyle = .informational
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: NSLocalizedString("OK", comment: "OK"))
             alert.runModal()
         }
     }
@@ -286,15 +286,15 @@ class ImportExportService {
             alert.messageText = "Import Successful"
             alert.informativeText = message + "\n\nIMPORTANT: If you were using AI enhancement features, please make sure to reconfigure your API keys in the Enhancement section.\n\nIt is recommended to restart VoiceInk for all changes to take full effect."
             alert.alertStyle = .informational
-            alert.addButton(withTitle: "OK")
-            alert.addButton(withTitle: "Configure API Keys")
+            alert.addButton(withTitle: NSLocalizedString("OK", comment: "OK"))
+alert.addButton(withTitle: NSLocalizedString("Configure API Keys", comment: "Configure API Keys"))
             
             let response = alert.runModal()
             if response == .alertSecondButtonReturn {
                 NotificationCenter.default.post(
                     name: .navigateToDestination,
                     object: nil,
-                    userInfo: ["destination": "Enhancement"]
+userInfo: ["destination": NSLocalizedString("Enhancement", comment: "Enhancement")]
                 )
             }
         }

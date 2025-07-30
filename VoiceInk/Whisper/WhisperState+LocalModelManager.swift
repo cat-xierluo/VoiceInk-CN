@@ -165,8 +165,8 @@ extension WhisperState {
             alert.messageText = "Core ML Support for \(model.displayName) Model"
             alert.informativeText = "This Whisper model supports Core ML, which can improve performance by 2-4x on Apple Silicon devices.\n\nDuring the first run, it can take several minutes to optimize the model for your system. Subsequent runs will be much faster."
             alert.alertStyle = .informational
-            alert.addButton(withTitle: "Download")
-            alert.addButton(withTitle: "Cancel")
+alert.addButton(withTitle: NSLocalizedString("Download", comment: "Download"))
+alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel"))
             
             let response = alert.runModal()
             if response == .alertFirstButtonReturn {
