@@ -43,7 +43,7 @@
 "Copy Last Transcription" = "复制上次转录";
 "Show Dock Icon" = "显示Dock图标";
 "Hide Dock Icon" = "隐藏Dock图标";
-"Launch at Login" = "开机启动";
+"Launch at Login" = "登录时启动";
 "Check for Updates" = "检查更新";
 "Check for Updates..." = "检查更新...";
 "Preferences..." = "偏好设置...";
@@ -215,8 +215,8 @@
 "Custom" = "自定义";
 "Native Apple" = "原生Apple";
 "Apple Speech" = "Apple语音";
-"Tiny" = "微型";
-"Base" = "基础";
+"Tiny" = "Tiny";
+"Base" = "Base";
 "Multilingual" = "多语言";
 "English-only" = "仅英语";
 
@@ -636,7 +636,7 @@
 "Cloud" = "云端";
 "Custom" = "自定义";
 "Multilingual" = "多语言";
-"Launch at login" = "登录时启动";
+
 "Thank you for supporting VoiceInk" = "感谢您支持VoiceInk";
 
 /* Model Selection and Languages */
@@ -948,23 +948,23 @@
 "apple-speech" = "苹果语音";
 "ggml-tiny" = "ggml-tiny";
 "75 MiB" = "75 MiB";
-"Tiny (English)" = "微型（英语）";
+"Tiny (English)" = "Tiny（英语）";
 "ggml-base" = "ggml-base";
 "142 MiB" = "142 MiB";
-"Base (English)" = "基础（英语）";
+"Base (English)" = "Base（英语）";
 "ggml-large-v2" = "ggml-large-v2";
-"Large v2" = "大型v2";
+"Large v2" = "Large v2";
 "2.9 GiB" = "2.9 GiB";
 "ggml-large-v3" = "ggml-large-v3";
-"Large v3" = "大型v3";
+"Large v3" = "Large v3";
 "ggml-large-v3-turbo" = "ggml-large-v3-turbo";
-"Large v3 Turbo" = "大型v3 Turbo";
+"Large v3 Turbo" = "Large v3 Turbo";
 "1.5 GiB" = "1.5 GiB";
 "ggml-large-v3-turbo-q5_0" = "ggml-large-v3-turbo-q5_0";
-"Large v3 Turbo (Quantized)" = "大型v3 Turbo（量化版）";
+"Large v3 Turbo (Quantized)" = "Large v3 Turbo（量化版）";
 "547 MiB" = "547 MiB";
 "whisper-large-v3-turbo" = "whisper-large-v3-turbo";
-"Whisper Large v3 Turbo (Groq)" = "Whisper大型v3 Turbo（Groq）";
+"Whisper Large v3 Turbo (Groq)" = "Whisper Large v3 Turbo（Groq）";
 "Scribe v1 (ElevenLabs)" = "Scribe v1（ElevenLabs）";
 "nova-2" = "nova-2";
 "Nova (Deepgram)" = "Nova（Deepgram）";
@@ -1166,8 +1166,6 @@
 "Run Cleanup Now" = "立即清理";
 "Analyzing..." = "分析中...";
 
-"Launch at login" = "登录时启动";
-
 /* 音频保留期 */
 "1 day" = "1 天";
 "3 days" = "3 天";
@@ -1236,3 +1234,130 @@
 "API Endpoint URL" = "API端点URL";
 "API Key Configuration" = "API密钥配置";
 "Performance Analysis" = "性能分析";
+
+/* Model and Language Selection */
+"Current model:" = "当前模型：";
+
+/* Recording Status Messages */
+"Press ESC again to cancel recording" = "再次按下ESC取消录音";
+"No Audio Detected" = "未检测到音频";
+
+/* Settings */
+
+/* API Configuration Placeholders */
+"API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)" = "API端点URL（例如：https://api.example.com/v1/chat/completions）";
+"Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)" = "模型名称（例如：gpt-4o-mini, claude-3-5-sonnet-20240620）";
+
+/* Prompt Editor */
+"New Prompt" = "新提示词";
+"Edit Trigger Words" = "编辑触发词";
+"Ollama Configuration" = "Ollama配置";
+
+/* Power Mode */
+"Add New Power Mode" = "添加新专业模式";
+"Name your power mode" = "命名您的专业模式";
+"New Power Mode" = "新专业模式";
+"Add Power Mode" = "添加专业模式";
+"Edit Power Mode" = "编辑专业模式";
+"Edit Default Power Mode" = "编辑默认专业模式";
+"Default Power Mode" = "默认专业模式";
+"Custom Power Modes" = "自定义专业模式";
+"No custom power modes" = "无自定义专业模式";
+"Select Power Mode" = "选择专业模式";
+"Enable Power Mode" = "启用专业模式";
+"Power Mode is disabled" = "专业模式已禁用";
+"Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website." = "启用专业模式以创建基于当前应用或网站自动应用的上下文特定配置。";
+"No Power Modes" = "无专业模式";
+"Add customized power modes for different contexts" = "为不同上下文添加自定义专业模式";
+"Fallback power mode" = "备用专业模式";
+"Cannot Save Power Mode" = "无法保存专业模式";
+"Power mode name cannot be empty." = "专业模式名称不能为空。";
+"A power mode with the name '%@' already exists." = "名为'%@'的专业模式已存在。";
+"The app '%@' is already configured in the '%@' power mode." = "应用'%@'已在'%@'专业模式中配置。";
+"The website '%@' is already configured in the '%@' power mode." = "网站'%@'已在'%@'专业模式中配置。";
+
+/* Template Descriptions */
+"Default system prompt for improving clarity and accuracy of transcriptions" = "默认系统提示词，用于提高转录的清晰度和准确性";
+"Casual chat-style formatting" = "休闲聊天风格格式";
+"Professional email composition and formatting" = "专业邮件撰写和格式化";
+"Meeting notes organization and structure" = "会议记录整理和结构化";
+"Social media content formatting" = "社交媒体内容格式化";
+"Personal diary and journal entries" = "个人日记和日志条目";
+"Task list organization and management" = "任务列表整理和管理";
+"Template for converting voice notes into quick, organized notes" = "将语音笔记转换为快速、有条理笔记的模板";
+
+/* Language Names */
+"Albanian" = "阿尔巴尼亚语";
+"Armenian" = "亚美尼亚语";
+"Basque" = "巴斯克语";
+"Bosnian" = "波斯尼亚语";
+"Breton" = "布列塔尼语";
+"Catalan" = "加泰罗尼亚语";
+"Estonian" = "爱沙尼亚语";
+"Faroese" = "法罗语";
+"Galician" = "加利西亚语";
+"Georgian" = "格鲁吉亚语";
+"Gujarati" = "古吉拉特语";
+"Haitian Creole" = "海地克里奥尔语";
+"Hausa" = "豪萨语";
+"Hawaiian" = "夏威夷语";
+"Icelandic" = "冰岛语";
+"Javanese" = "爪哇语";
+"Kannada" = "卡纳达语";
+"Kazakh" = "哈萨克语";
+"Khmer" = "高棉语";
+"Lao" = "老挝语";
+"Latin" = "拉丁语";
+"Latvian" = "拉脱维亚语";
+"Lingala" = "林加拉语";
+"Lithuanian" = "立陶宛语";
+"Luxembourgish" = "卢森堡语";
+"Macedonian" = "马其顿语";
+"Malagasy" = "马达加斯加语";
+"Malayalam" = "马拉雅拉姆语";
+"Maltese" = "马耳他语";
+"Maori" = "毛利语";
+"Marathi" = "马拉地语";
+"Mongolian" = "蒙古语";
+"Myanmar" = "缅甸语";
+"Nepali" = "尼泊尔语";
+"Norwegian Nynorsk" = "挪威语（新挪威语）";
+"Occitan" = "奥克语";
+"Pashto" = "普什图语";
+"Persian" = "波斯语";
+"Punjabi" = "旁遮普语";
+"Sanskrit" = "梵语";
+
+/* System Default Prompt Template (Chinese) */
+"system_default_prompt_zh" = "您需要清理 <TRANSCRIPT> 标签中的转录文本。目标是生成说话者意图表达的清晰、连贯版本，删除错误开始和自我纠正。如果 <CONTEXT_INFORMATION> 中的可用上下文与用户的 <TRANSCRIPT> 文本直接相关，请使用该上下文。
+
+主要规则：
+0. 输出应始终与原始 <TRANSCRIPT> 文本使用相同的语言。
+1. 根据可用上下文纠正语音转文字的转录错误（拼写）。
+2. 正确格式化邮件消息，包括称谓、段落分隔和结束语。例如：
+   输入：\"hey prakash um hope you're doing well um I wanted to follow up on the project we discussed last week um I think we should move forward with it um let me know what you think um thanks john\"
+   输出：\"Hey Prakash,
+   
+   Hope you're doing well. I wanted to follow up on the project we discussed last week. I think we should move forward with it.
+   
+   Let me know what you think.
+   
+   Thanks,
+   John\"
+3. 保持说话者的原始含义和意图。不要添加新信息或改变所说内容的实质。
+4. 始终将结构分解为清晰、逻辑的部分，每2-3个句子换一个新段落。
+5. 当说话者自我纠正时，只保留纠正后的版本。
+   示例：
+   输入：\"We need to finish by Monday... actually no... by Wednesday\" 
+   输出：\"We need to finish by Wednesday\"
+
+   输入：\"um so basically what happened was that when I tried to implement the new feature yesterday afternoon it caused some unexpected issues with the database and then the server started throwing errors which affected our production environment\"
+   输出：\"When I tried to implement the new feature yesterday afternoon, it caused some unexpected issues with the database.
+
+   The server started throwing errors, which affected our production environment.\"
+6. 确保清理后的文本自然流畅且语法正确。
+7. 永远不要回答文本中出现的问题。只需正确格式化：
+   输入：\"hey so what do you think we should do about this. Do you like this idea.\"
+   输出：\"Hey, what do you think we should do about this? Do you like this idea?\"
+
+清理文本后，仅返回清理后的版本，不要任何额外的文本、解释或标签。输出应该可以直接使用而无需进一步编辑。";

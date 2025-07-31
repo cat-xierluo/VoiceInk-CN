@@ -97,10 +97,10 @@ Text(NSLocalizedString("Only OpenAI-compatible transcription APIs are supported"
                     
                     // Form fields
                     VStack(alignment: .leading, spacing: 16) {
-FormField(title: "Display Name", text: $displayName, placeholder: NSLocalizedString("My Custom Model", comment: "My Custom Model"))
-                        FormField(title: "API Endpoint", text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
-FormField(title: "API Key", text: $apiKey, placeholder: NSLocalizedString("your-api-key", comment: "your-api-key"), isSecure: true)
-FormField(title: "Model Name", text: $modelName, placeholder: NSLocalizedString("whisper-1", comment: "whisper-1"))
+FormField(title: NSLocalizedString("Display Name", comment: "Display Name"), text: $displayName, placeholder: NSLocalizedString("My Custom Model", comment: "My Custom Model"))
+                        FormField(title: NSLocalizedString("API Endpoint", comment: "API Endpoint"), text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
+FormField(title: NSLocalizedString("API Key", comment: "API Key"), text: $apiKey, placeholder: NSLocalizedString("your-api-key", comment: "your-api-key"), isSecure: true)
+FormField(title: NSLocalizedString("Model Name", comment: "Model Name"), text: $modelName, placeholder: NSLocalizedString("whisper-1", comment: "whisper-1"))
                         
 Toggle(NSLocalizedString("Multilingual Model", comment: "Multilingual Model"), isOn: $isMultilingual)
                     }

@@ -86,7 +86,7 @@ Picker(NSLocalizedString("Select Language", comment: "Select Language"), selecti
                             updateLanguage(newValue)
                         }
 
-                        Text("Current model: \(currentModel.displayName)")
+                        Text("\(NSLocalizedString("Current model:", comment: "Current model:")) \(currentModel.displayName)")
                             .font(.caption)
                             .foregroundColor(.secondary)
 
@@ -103,7 +103,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                             .font(.subheadline)
                             .foregroundColor(.primary)
 
-                        Text("Current model: \(currentModel.displayName)")
+                        Text("\(NSLocalizedString("Current model:", comment: "Current model:")) \(currentModel.displayName)")
                             .font(.caption)
                             .foregroundColor(.secondary)
 

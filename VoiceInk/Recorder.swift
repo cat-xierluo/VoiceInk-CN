@@ -131,7 +131,7 @@ class Recorder: ObservableObject {
 
                     await MainActor.run {
                         NotificationManager.shared.showNotification(
-                            title: "No Audio Detected",
+                            title: NSLocalizedString("No Audio Detected", comment: "No Audio Detected"),
                             type: .warning
                         )
                     }

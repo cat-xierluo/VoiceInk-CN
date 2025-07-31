@@ -6,7 +6,21 @@ enum ModelFilter: String, CaseIterable, Identifiable {
     case local = "Local"
     case cloud = "Cloud"
     case custom = "Custom"
+    
     var id: String { self.rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .recommended:
+            return NSLocalizedString("Recommended", comment: "Recommended")
+        case .local:
+            return NSLocalizedString("Local", comment: "Local")
+        case .cloud:
+            return NSLocalizedString("Cloud", comment: "Cloud")
+        case .custom:
+            return NSLocalizedString("Custom", comment: "Custom")
+        }
+    }
 }
 
 struct ModelManagementView: View {
@@ -79,7 +93,7 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                                 isShowingSettings = false
                             }
                         }) {
-                            Text(filter.rawValue)
+                            Text(filter.displayName)
                                 .font(.system(size: 14, weight: selectedFilter == filter ? .semibold : .medium))
                                 .foregroundColor(selectedFilter == filter ? .primary : .primary.opacity(0.7))
                                 .padding(.horizontal, 16)

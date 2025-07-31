@@ -8,6 +8,15 @@ struct DictionarySettingsView: View {
         case replacements = "Word Replacements"
         case spellings = "Correct Spellings"
         
+        var displayName: String {
+            switch self {
+            case .replacements:
+                return NSLocalizedString("Word Replacements", comment: "Word Replacements")
+            case .spellings:
+                return NSLocalizedString("Correct Spellings", comment: "Correct Spellings")
+            }
+        }
+        
         var description: String {
             switch self {
             case .spellings:
@@ -118,7 +127,7 @@ struct SectionCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(section.rawValue)
+                    Text(section.displayName)
                         .font(.headline)
                     
                     Text(section.description)

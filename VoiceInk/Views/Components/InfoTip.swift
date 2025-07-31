@@ -6,7 +6,7 @@ struct InfoTip: View {
     var title: String
     var message: String
     var learnMoreLink: URL?
-    var learnMoreText: String = "Learn More"
+    var learnMoreText: String = NSLocalizedString("Learn More", comment: "Learn More")
     
     // Appearance customization
     var iconName: String = "info.circle.fill"

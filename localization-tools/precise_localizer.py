@@ -55,9 +55,23 @@ class PreciseLocalizer:
             r'"(Transcribing|No Audio Detected|Press ESC again to cancel recording)"',
             r'"(Recommended|Local|Cloud|Custom)"',
             r'"(Multilingual|Albanian|Armenian|Basque|Bosnian|Breton|Catalan|Estonian|Faroese|Galician|Georgian|Gujarati|Haitian Creole|Hausa|Hawaiian|Icelandic|Javanese|Kannada|Kazakh|Khmer|Lao|Latin|Latvian|Lingala|Lithuanian|Luxembourgish|Macedonian|Malagasy|Malayalam|Maltese|Maori|Marathi|Mongolian|Myanmar|Nepali|Norwegian Nynorsk|Occitan|Pashto|Persian|Punjabi|Sanskrit)"',
-            r'"(Launch at login|Thank you for supporting VoiceInk)"',
+            r'"(Launch at login|Launch at Login|Thank you for supporting VoiceInk)"',
             r'"(Server URL|模型|刷新|已连接|Custom Provider Configuration|Requires OpenAI-compatible API endpoint)"',
             r'"(Word Replacements|Correct Spellings|Original Text|替换文本|验证并保存)"',
+            
+            # 提示词编辑器相关
+            r'"(New Prompt|Edit Trigger Words|Ollama Configuration)"',
+            
+            # 模型和语言显示相关
+            r'"(Current model:.*?)"',
+            r'Current model:\s*([^"]+)"',
+            
+            # API配置占位符（长文本）
+            r'"(API Endpoint URL.*?completions.*?)"',
+            r'"(Model Name.*?gpt-4o-mini.*?)"',
+            
+            # 通用长占位符模式
+            r'"([^"]*\(e\.g\.,[^"]+\))"',  # 包含 "(e.g.," 的占位符文本
             
             # 更多通用模式
             r'String\s*\(\s*"([^"]+)"\s*\)',
@@ -107,6 +121,15 @@ class PreciseLocalizer:
             r'[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
             r'Content-Type',
             r'Authorization',
+            
+            # 模型名称和专有名词相关的避免模式
+            r'whisper.*?large.*?v3',  # 避免翻译whisper模型名称
+            r'gpt-[0-9]',  # 避免翻译GPT模型名称
+            r'claude-[0-9]',  # 避免翻译Claude模型名称
+            r'ggml-\w+',  # 避免翻译ggml模型文件名
+            r'Large v[0-9]|Base|Tiny|Medium|Small',  # 避免在非UI上下文中翻译模型大小
+            r'\.displayName',  # 已经使用displayName的不需要再翻译
+            r'enum.*rawValue',  # enum的rawValue不应被翻译
             r'application/',
             r'audio/',
             r'video/',

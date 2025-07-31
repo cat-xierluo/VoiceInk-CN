@@ -103,7 +103,7 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                 VStack(alignment: .leading, spacing: 16) {
                     // Header with status
                     HStack {
-                        Label("Ollama Configuration", systemImage: "server.rack")
+                        Label(NSLocalizedString("Ollama Configuration", comment: "Ollama Configuration"), systemImage: "server.rack")
                             .font(.headline)
                         
                         Spacer()
@@ -250,10 +250,10 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                     // Configuration Fields
                     VStack(alignment: .leading, spacing: 8) {
                         if !aiService.isAPIKeyValid {
-                            TextField("API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)", text: $aiService.customBaseURL)
+                            TextField(NSLocalizedString("API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)", comment: "API Endpoint URL placeholder"), text: $aiService.customBaseURL)
                                 .textFieldStyle(.roundedBorder)
                             
-                            TextField("Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)", text: $aiService.customModel)
+                            TextField(NSLocalizedString("Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)", comment: "Model Name placeholder"), text: $aiService.customModel)
                                 .textFieldStyle(.roundedBorder)
                         } else {
                             VStack(alignment: .leading, spacing: 8) {

@@ -115,6 +115,7 @@
 "75 MiB" = "75 MiB";
 "A New Way to Type" = "A New Way to Type";
 "A power mode with the name" = "A power mode with the name";
+"A power mode with the name '%@' already exists." = "A power mode with the name '%@' already exists.";
 "A power mode with the name '\\(name)' already exists." = "A power mode with the name '\\(name)' already exists.";
 "AI Enhancement" = "AI Enhancement";
 "AI Model" = "AI Model";
@@ -127,6 +128,7 @@
 "AI provider not configured. Please check your API key." = "AI provider not configured. Please check your API key.";
 "API Endpoint" = "API Endpoint";
 "API Endpoint URL" = "API Endpoint URL";
+"API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)" = "API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)";
 "API Key" = "API Key";
 "API Key Configuration" = "API Key Configuration";
 "API key for this service is missing. Please configure it in the settings." = "API key for this service is missing. Please configure it in the settings.";
@@ -536,7 +538,6 @@
 "Latin" = "Latin";
 "Latvian" = "Latvian";
 "Launch at Login" = "Launch at Login";
-"Launch at login" = "Launch at login";
 "Launch options" = "Launch options";
 "Learn More" = "Learn More";
 "Learn what is on the screen to understand the context" = "Learn what is on the screen to understand the context";
@@ -567,6 +568,7 @@
 "Media & Creative" = "Media & Creative";
 "Meeting" = "Meeting";
 "Meeting Notes" = "Meeting Notes";
+"Meeting notes organization and structure" = "Meeting notes organization and structure";
 "Memory" = "Memory";
 "Merhaba, nasılsın? Tanıştığımıza memnun oldum." = "Merhaba, nasılsın? Tanıştığımıza memnun oldum.";
 "Message" = "Message";
@@ -580,6 +582,7 @@
 "Mistral's latest SOTA transcription model." = "Mistral's latest SOTA transcription model.";
 "Model" = "Model";
 "Model Name" = "Model Name";
+"Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)" = "Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)";
 "Model:" = "Model:";
 "Model: %@" = "Model: %@";
 "Mongolian" = "Mongolian";
@@ -632,6 +635,7 @@
 "Nova (Deepgram)" = "Nova (Deepgram)";
 "OK" = "OK";
 "Occitan" = "Occitan";
+"Ollama Configuration" = "Ollama Configuration";
 "Ollama server error" = "Ollama server error";
 "Ollama service is not available" = "Ollama service is not available";
 "Olá, como você está? Prazer em conhecê-lo." = "Olá, como você está? Prazer em conhecê-lo.";
@@ -655,6 +659,7 @@
 "Permission denied" = "Permission denied";
 "Permission required for VoiceInk to function properly" = "Permission required for VoiceInk to function properly";
 "Persian" = "Persian";
+"Personal diary and journal entries" = "Personal diary and journal entries";
 "Photo" = "Photo";
 "Please check your API key" = "Please check your API key";
 "Please enter a license key" = "Please enter a license key";
@@ -681,6 +686,7 @@
 "Processing audio..." = "Processing audio...";
 "Processor" = "Processor";
 "Professional" = "Professional";
+"Professional email composition and formatting" = "Professional email composition and formatting";
 "Prompt Instructions" = "Prompt Instructions";
 "Prompt:" = "Prompt:";
 "Prompt: %@" = "Prompt: %@";
@@ -774,6 +780,7 @@
 "Skip Tour" = "Skip Tour";
 "Slovak" = "Slovak";
 "Slovenian" = "Slovenian";
+"Social media content formatting" = "Social media content formatting";
 "Somali" = "Somali";
 "Sort by" = "Sort by";
 "Sound Feedback" = "Sound Feedback";
@@ -810,6 +817,7 @@
 "Tajik" = "Tajik";
 "Tamil" = "Tamil";
 "Task List" = "Task List";
+"Task list organization and management" = "Task list organization and management";
 "Tatar" = "Tatar";
 "Technical" = "Technical";
 "Telugu" = "Telugu";
@@ -825,6 +833,7 @@
 "Thank you for supporting VoiceInk" = "Thank you for supporting VoiceInk";
 "The API returned an empty or invalid response." = "The API returned an empty or invalid response.";
 "The app" = "The app";
+"The app '%@' is already configured in the '%@' power mode." = "The app '%@' is already configured in the '%@' power mode.";
 "The app '\\(appName)' is already configured in the '\\(powerModeName)' power mode." = "The app '\\(appName)' is already configured in the '\\(powerModeName)' power mode.";
 "The audio file is invalid or corrupted" = "The audio file is invalid or corrupted";
 "The audio file to transcribe could not be found." = "The audio file to transcribe could not be found.";
@@ -839,6 +848,7 @@
 "The settings import operation was canceled." = "The settings import operation was canceled.";
 "The text transcripts will be preserved." = "The text transcripts will be preserved.";
 "The website" = "The website";
+"The website '%@' is already configured in the '%@' power mode." = "The website '%@' is already configured in the '%@' power mode.";
 "The website '\\(website)' is already configured in the '\\(powerModeName)' power mode." = "The website '\\(website)' is already configured in the '\\(powerModeName)' power mode.";
 "This action cannot be undone" = "This action cannot be undone";
 "This can happen due to an issue with the audio recording or insufficient system resources. Please try again, or restart the app." = "This can happen due to an issue with the audio recording or insufficient system resources. Please try again, or restart the app.";

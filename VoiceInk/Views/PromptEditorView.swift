@@ -56,7 +56,7 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : NSLocalizedString("Edit Prompt", comment: "Edit Prompt")))
+Text(isEditingPredefinedPrompt ? NSLocalizedString("Edit Trigger Words", comment: "Edit Trigger Words") : (mode == .add ? NSLocalizedString("New Prompt", comment: "New Prompt") : NSLocalizedString("Edit Prompt", comment: "Edit Prompt")))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
