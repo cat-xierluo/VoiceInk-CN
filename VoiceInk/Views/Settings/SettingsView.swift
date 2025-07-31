@@ -202,7 +202,7 @@ subtitle: NSLocalizedString("Manage recording storage", comment: "Manage recordi
                 
                 // Startup Section
                 SettingsSection(
-                    icon: "power",
+                    icon: NSLocalizedString("power", comment: "power"),
 title: NSLocalizedString("Startup", comment: "Startup"),
 subtitle: NSLocalizedString("Launch options", comment: "Launch options")
                 ) {
@@ -317,7 +317,7 @@ Button(NSLocalizedString("Reset", comment: "Reset"), role: .destructive) {
                 }
             }
         } message: {
-            Text("Are you sure you want to reset the onboarding? You'll see the introduction screens again the next time you launch the app.")
+            Text(NSLocalizedString("Are you sure you want to reset the onboarding? You'll see the introduction screens again the next time you launch the app.", comment: "Are you sure you want to reset the onboarding? You'll see the introduction screens again the next time you launch the app."))
         }
     }
     
@@ -422,7 +422,7 @@ struct SettingsSection<Content: View>: View {
                     Spacer()
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.red)
-                        .help("Permission required for VoiceInk to function properly")
+                        .help(NSLocalizedString("Permission required for VoiceInk to function properly", comment: "Permission required for VoiceInk to function properly"))
                 }
             }
             

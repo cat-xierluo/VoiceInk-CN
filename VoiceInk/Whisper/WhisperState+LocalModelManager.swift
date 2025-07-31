@@ -371,10 +371,10 @@ struct DownloadProgressView: View {
     private var downloadPhase: String {
         // Check if we're currently downloading the CoreML model
         if supportsCoreML && downloadProgress[modelName + "_coreml"] != nil {
-            return "Downloading Core ML Model for \(modelName)"
+            return NSLocalizedString("Downloading Core ML Model for \(modelName)", comment: "Downloading Core ML Model for \(modelName)")
         }
         // Otherwise, we're downloading the main model
-        return "Downloading \(modelName) Model"
+        return NSLocalizedString("Downloading \(modelName) Model", comment: "Downloading \(modelName) Model")
     }
     
     var body: some View {
@@ -403,7 +403,7 @@ struct DownloadProgressView: View {
             // Percentage indicator in Apple style
             HStack {
                 Spacer()
-                Text("\(Int(totalProgress * 100))%")
+                Text(NSLocalizedString("\(Int(totalProgress * 100))%", comment: "\(Int(totalProgress * 100))%"))
                     .font(.system(size: 11, weight: .medium, design: .monospaced))
                     .foregroundColor(Color(.secondaryLabelColor))
             }

@@ -76,7 +76,7 @@ struct PowerModeConfigurationsGrid: View {
                     Button(role: .destructive, action: {
                         powerModeManager.removeConfiguration(with: config.id)
                     }) {
-                        Label(NSLocalizedString("Remove", comment: "Remove"), systemImage: "trash")
+                        Label("Remove", systemImage: "trash")
                     }
                 }
             }
@@ -108,13 +108,13 @@ struct ConfigurationRow: View {
            let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }) {
             return model.displayName
         }
-return NSLocalizedString("Default", comment: "Default")
+        return "Default"
     }
     
     private var selectedLanguage: String? {
         if let langCode = config.selectedLanguage {
-            if langCode == "auto" { return "Auto" }
-if langCode == "en" { return NSLocalizedString("English", comment: "English") }
+            if langCode == "auto" { return NSLocalizedString("Auto", comment: "Auto") }
+            if langCode == "en" { return "English" }
             
             if let modelName = config.selectedTranscriptionModelName,
                let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }),
@@ -123,7 +123,7 @@ if langCode == "en" { return NSLocalizedString("English", comment: "English") }
             }
             return langCode.uppercased()
         }
-return NSLocalizedString("Default", comment: "Default")
+        return "Default"
     }
     
     private var appCount: Int { return config.appConfigs?.count ?? 0 }
@@ -131,12 +131,12 @@ return NSLocalizedString("Default", comment: "Default")
     
     private var websiteText: String {
         if websiteCount == 0 { return "" }
-        return websiteCount == 1 ? "1 Website" : "\(websiteCount) Websites"
+        return websiteCount == 1 ? NSLocalizedString("1 Website", comment: "1 Website") : "\(websiteCount) Websites"
     }
     
     private var appText: String {
         if appCount == 0 { return "" }
-        return appCount == 1 ? "1 App" : "\(appCount) Apps"
+        return appCount == 1 ? NSLocalizedString("1 App", comment: "1 App") : "\(appCount) Apps"
     }
     
     private var extraAppsCount: Int {

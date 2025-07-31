@@ -69,13 +69,13 @@ class HotkeyManager: ObservableObject {
         var displayName: String {
             switch self {
 case .none: return NSLocalizedString("None", comment: "None")
-            case .rightOption: return "Right Option (⌥)"
-            case .leftOption: return "Left Option (⌥)"
-            case .leftControl: return "Left Control (⌃)"
-            case .rightControl: return "Right Control (⌃)"
-            case .fn: return "Fn"
-            case .rightCommand: return "Right Command (⌘)"
-            case .rightShift: return "Right Shift (⇧)"
+            case .rightOption: return NSLocalizedString(NSLocalizedString("Right Option (⌥)", comment: "Right Option (⌥)"), comment: "Right Option (⌥)")
+            case .leftOption: return NSLocalizedString(NSLocalizedString("Left Option (⌥)", comment: "Left Option (⌥)"), comment: "Left Option (⌥)")
+            case .leftControl: return NSLocalizedString(NSLocalizedString("Left Control (⌃)", comment: "Left Control (⌃)"), comment: "Left Control (⌃)")
+            case .rightControl: return NSLocalizedString(NSLocalizedString("Right Control (⌃)", comment: "Right Control (⌃)"), comment: "Right Control (⌃)")
+            case .fn: return NSLocalizedString(NSLocalizedString("Fn", comment: "Fn"), comment: "Fn")
+            case .rightCommand: return NSLocalizedString(NSLocalizedString("Right Command (⌘)", comment: "Right Command (⌘)"), comment: "Right Command (⌘)")
+            case .rightShift: return NSLocalizedString(NSLocalizedString("Right Shift (⇧)", comment: "Right Shift (⇧)"), comment: "Right Shift (⇧)")
 case .custom: return NSLocalizedString("Custom", comment: "Custom")
             }
         }

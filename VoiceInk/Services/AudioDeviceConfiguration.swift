@@ -83,7 +83,7 @@ enum AudioConfigurationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .failedToSetInputDevice(let status):
-            return "Failed to set input device: \(status)"
+            return NSLocalizedString("Failed to set input device: \(status)", comment: "Failed to set input device: \(status)")
         }
     }
 } 

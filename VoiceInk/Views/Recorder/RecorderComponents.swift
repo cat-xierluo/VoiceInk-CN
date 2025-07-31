@@ -114,7 +114,7 @@ struct RecorderStatusDisplay: View {
     var body: some View {
         Group {
             if currentState == .enhancing {
-                Text("Enhancing")
+                Text(NSLocalizedString("Enhancing", comment: "Enhancing"))
                     .foregroundColor(.white)
                     .font(.system(size: 10, weight: .medium, design: .default))
                     .lineLimit(1)

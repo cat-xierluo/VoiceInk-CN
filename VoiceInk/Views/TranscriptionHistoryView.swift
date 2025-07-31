@@ -102,7 +102,7 @@ struct TranscriptionHistoryView: View {
                                                 ProgressView()
                                                     .controlSize(.small)
                                             }
-                                            Text(isLoading ? "Loading..." : "Load More")
+                                            Text(isLoading ? NSLocalizedString("Loading...", comment: "Loading...") : "Load More")
                                                 .font(.system(size: 14, weight: .medium))
                                         }
                                         .frame(maxWidth: .infinity)
@@ -137,7 +137,7 @@ struct TranscriptionHistoryView: View {
                     .animation(.easeInOut(duration: 0.3), value: !selectedTranscriptions.isEmpty)
             }
         }
-        .alert("Delete Selected Items?", isPresented: $showDeleteConfirmation) {
+        .alert(NSLocalizedString("Delete Selected Items?", comment: "Delete Selected Items?"), isPresented: $showDeleteConfirmation) {
             Button(NSLocalizedString("Delete", comment: "Delete button"), role: .destructive) {
                 deleteSelectedTranscriptions()
             }
@@ -193,7 +193,7 @@ struct TranscriptionHistoryView: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
-            TextField("Search transcriptions", text: $searchText)
+            TextField(NSLocalizedString("Search transcriptions", comment: "Search transcriptions"), text: $searchText)
                 .font(.system(size: 16, weight: .regular, design: .default))
                 .textFieldStyle(PlainTextFieldStyle())
         }
@@ -232,7 +232,7 @@ Text(NSLocalizedString("Your history will appear here", comment: "Your history w
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "chart.bar.xaxis")
-                    Text("Analyze")
+                    Text(NSLocalizedString("Analyze", comment: "Analyze"))
                 }
             }
             .buttonStyle(.borderless)

@@ -29,7 +29,7 @@ struct CloudModelCardView: View {
     private var providerKey: String {
         switch model.provider {
         case .groq:
-            return "GROQ"
+            return NSLocalizedString("GROQ", comment: "GROQ")
         case .elevenLabs:
 return NSLocalizedString("ElevenLabs", comment: "ElevenLabs")
         case .deepgram:
@@ -94,7 +94,7 @@ Text(NSLocalizedString("Default", comment: "Default"))
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isConfiguredState {
-                Text("Configured")
+                Text(NSLocalizedString("Configured", comment: "Configured"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -194,7 +194,7 @@ Text(NSLocalizedString("Configure", comment: "Configure"))
                     Button {
                         clearAPIKey()
                     } label: {
-                        Label("Remove API Key", systemImage: "trash")
+                        Label(NSLocalizedString("Remove API Key", comment: "Remove API Key"), systemImage: "trash")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -228,7 +228,7 @@ Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"
                             Image(systemName: verificationStatus == .success ? "checkmark" : "checkmark.shield")
                                 .font(.system(size: 12, weight: .medium))
                         }
-                        Text(isVerifying ? "Verifying..." : "Verify")
+                        Text(isVerifying ? NSLocalizedString("Verifying...", comment: "Verifying...") : "Verify")
                             .font(.system(size: 12, weight: .medium))
                     }
                     .foregroundColor(.white)
@@ -244,11 +244,11 @@ Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"
             }
             
             if verificationStatus == .failure {
-                Text("Invalid API key. Please check your key and try again.")
+                Text(NSLocalizedString("Invalid API key. Please check your key and try again.", comment: "Invalid API key. Please check your key and try again."))
                     .font(.caption)
                     .foregroundColor(Color(.systemRed))
             } else if verificationStatus == .success {
-                Text("API key verified successfully!")
+                Text(NSLocalizedString("API key verified successfully!", comment: "API key verified successfully!"))
                     .font(.caption)
                     .foregroundColor(Color(.systemGreen))
             }

@@ -119,7 +119,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                     }
                 }
             } else {
-                Text("No model selected")
+                Text(NSLocalizedString("No model selected", comment: "No model selected"))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -155,7 +155,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                     }
                 } label: {
                     HStack {
-                        Text("Language: \(currentLanguageDisplayName())")
+                        Text(NSLocalizedString("Language: \(currentLanguageDisplayName())", comment: "Language: \(currentLanguageDisplayName())"))
                         Image(systemName: "chevron.up.chevron.down")
                             .font(.system(size: 10))
                     }
@@ -165,7 +165,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                 Button {
                     // Do nothing, just showing info
                 } label: {
-                    Text("Language: English (only)")
+                    Text(NSLocalizedString("Language: English (only)", comment: "Language: English (only)"))
                         .foregroundColor(.secondary)
                 }
                 .disabled(true)

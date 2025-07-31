@@ -547,7 +547,7 @@ Text(provider == .openRouter ? "No models loaded" : NSLocalizedString("No models
                                                 Image(systemName: "arrow.clockwise")
                                             }
                                             .buttonStyle(.borderless)
-                                            .help("Refresh models")
+                                            .help(NSLocalizedString("Refresh models", comment: "Refresh models"))
                                         }
                                         
                                         Spacer()

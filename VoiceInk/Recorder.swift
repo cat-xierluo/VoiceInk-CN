@@ -65,7 +65,7 @@ class Recorder: ObservableObject {
             if let deviceName = deviceManager.availableDevices.first(where: { $0.id == currentDeviceID })?.name {
                 await MainActor.run {
                     NotificationManager.shared.showNotification(
-                        title: "Using: \(deviceName)",
+                        title: NSLocalizedString(NSLocalizedString("Using: \(deviceName)", comment: "Using: \(deviceName)"), comment: "Using: \(deviceName)"),
                         type: .info
                     )
                 }

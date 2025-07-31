@@ -89,7 +89,7 @@ struct EmojiPickerView: View {
                             .foregroundColor(inputFeedbackMessage == "Emoji already exists!" || inputFeedbackMessage == "Invalid emoji." ? .red : .secondary)
                             .transition(.opacity)
                     }
-                    Text("Tip: Use ⌃⌘Space for emoji picker.")
+                    Text(NSLocalizedString("Tip: Use ⌃⌘Space for emoji picker.", comment: "Tip: Use ⌃⌘Space for emoji picker."))
                         .font(.caption2)
                         .foregroundColor(.secondary)
                         .padding(.top, 2)
@@ -101,7 +101,7 @@ struct EmojiPickerView: View {
         .padding()
         .background(.regularMaterial)
         .frame(minWidth: 260, idealWidth: 300, maxWidth: 320, minHeight: 150, idealHeight: 280, maxHeight: 350)
-        .alert("Emoji in Use", isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
+        .alert(NSLocalizedString("Emoji in Use", comment: "Emoji in Use"), isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
             Button("OK", role: .cancel) { }
         } message: { emojiStr in
             Text("The emoji \"\(emojiStr)\" is currently used by one or more Power Modes and cannot be removed.")
@@ -207,7 +207,7 @@ private struct AddEmojiButton: View {
                 )
         }
         .buttonStyle(.plain)
-        .help("Add custom emoji")
+        .help(NSLocalizedString("Add custom emoji", comment: "Add custom emoji"))
     }
 }
 

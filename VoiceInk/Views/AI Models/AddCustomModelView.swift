@@ -162,7 +162,7 @@ Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comme
                 )
             }
         }
-        .alert("Validation Errors", isPresented: $showingAlert) {
+        .alert(NSLocalizedString("Validation Errors", comment: "Validation Errors"), isPresented: $showingAlert) {
                             Button(NSLocalizedString("OK", comment: "OK")) { }
         } message: {
             Text(validationErrors.joined(separator: "\n"))
@@ -232,7 +232,7 @@ Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comme
                     id: editing.id,
                     name: generatedName,
                     displayName: trimmedDisplayName,
-                    description: "Custom transcription model",
+                    description: NSLocalizedString(NSLocalizedString("Custom transcription model", comment: "Custom transcription model"), comment: "Custom transcription model"),
                     apiEndpoint: trimmedApiEndpoint,
                     apiKey: trimmedApiKey,
                     modelName: trimmedModelName,

@@ -62,7 +62,7 @@ Text(NSLocalizedString("Custom", comment: "Custom"))
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Provider
-            Label("Custom Provider", systemImage: "cloud")
+            Label(NSLocalizedString("Custom Provider", comment: "Custom Provider"), systemImage: "cloud")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -116,7 +116,7 @@ Label(NSLocalizedString("Edit Model", comment: "Edit Model"), systemImage: "penc
                 Button(role: .destructive) {
                     deleteAction()
                 } label: {
-                    Label("Delete Model", systemImage: "trash")
+                    Label(NSLocalizedString("Delete Model", comment: "Delete Model"), systemImage: "trash")
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")

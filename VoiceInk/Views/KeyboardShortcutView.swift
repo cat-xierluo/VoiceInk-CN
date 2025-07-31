@@ -55,7 +55,7 @@ case .space: return NSLocalizedString("Space", comment: "Space")
         case .semicolon: return ";"
         case .quote: return "'"
         case .slash: return "/"
-        case .backslash: return "\\"
+        case .backslash: return NSLocalizedString(NSLocalizedString("\\", comment: "\\"), comment: "\\")
         case .minus: return "-"
         case .equal: return "="
         case .keypad0: return "0"

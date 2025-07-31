@@ -294,7 +294,7 @@ await NotificationManager.shared.showNotification(title: NSLocalizedString("Reco
                     let newTranscription = Transcription(
                         text: originalText,
                         duration: actualDuration,
-                        enhancedText: "Enhancement failed: \(error)",
+                        enhancedText: NSLocalizedString("Enhancement failed: \(error)", comment: "Enhancement failed: \(error)"),
                         audioFileURL: url.absoluteString,
                         transcriptionModelName: model.displayName,
                         transcriptionDuration: transcriptionDuration
@@ -370,7 +370,7 @@ title: NSLocalizedString("AI enhancement failed", comment: "AI enhancement faile
                     let fullErrorText = recoverySuggestion.isEmpty ? errorDescription : "\(errorDescription) \(recoverySuggestion)"
                     
                     let failedTranscription = Transcription(
-                        text: "Transcription Failed: \(fullErrorText)",
+                        text: NSLocalizedString("Transcription Failed: \(fullErrorText)", comment: "Transcription Failed: \(fullErrorText)"),
                         duration: duration,
                         enhancedText: nil,
                         audioFileURL: url.absoluteString

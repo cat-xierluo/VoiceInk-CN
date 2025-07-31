@@ -379,6 +379,6 @@ Text(NSLocalizedString("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV", comme
     private func formatDuration(_ duration: TimeInterval) -> String {
         let minutes = Int(duration) / 60
         let seconds = Int(duration) % 60
-        return String(format: "%d:%02d", minutes, seconds)
+        return String(format: NSLocalizedString("%d:%02d", comment: "%d:%02d"), minutes, seconds)
     }
 } 

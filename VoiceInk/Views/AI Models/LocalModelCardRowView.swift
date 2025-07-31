@@ -58,7 +58,7 @@ Text(NSLocalizedString("Default", comment: "Default"))
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isDownloaded {
-                Text("Downloaded")
+                Text(NSLocalizedString("Downloaded", comment: "Downloaded"))
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -164,7 +164,7 @@ Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "
             if isDownloaded {
                 Menu {
                     Button(action: deleteAction) {
-                        Label("Delete Model", systemImage: "trash")
+                        Label(NSLocalizedString("Delete Model", comment: "Delete Model"), systemImage: "trash")
                     }
                     
                     Button {
@@ -192,7 +192,7 @@ Label(NSLocalizedString("Show in Finder", comment: "Show in Finder"), systemImag
 func progressDotsWithNumber(value: Double) -> some View {
     HStack(spacing: 4) {
         progressDots(value: value)
-        Text(String(format: "%.1f", value))
+        Text(String(format: NSLocalizedString("%.1f", comment: "%.1f"), value))
             .font(.system(size: 10, weight: .medium, design: .monospaced))
             .foregroundColor(Color(.secondaryLabelColor))
     }

@@ -21,7 +21,7 @@ struct MetricsView: View {
             // Trial Message
             if case .trial(let daysRemaining) = licenseViewModel.licenseState {
                 TrialMessageView(
-                    message: "You have \(daysRemaining) days left in your trial",
+                    message: NSLocalizedString(NSLocalizedString("You have \(daysRemaining) days left in your trial", comment: "You have \(daysRemaining) days left in your trial"), comment: "You have \(daysRemaining) days left in your trial"),
                     type: daysRemaining <= 2 ? .warning : .info,
                     onAddLicenseKey: {
                         // Post notification to navigate to VoiceInk Pro tab
@@ -35,7 +35,7 @@ userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: "VoiceInk P
                 .padding()
             } else if case .trialExpired = licenseViewModel.licenseState {
                 TrialMessageView(
-                    message: "Your trial has expired. Upgrade to continue using VoiceInk",
+                    message: NSLocalizedString(NSLocalizedString("Your trial has expired. Upgrade to continue using VoiceInk", comment: "Your trial has expired. Upgrade to continue using VoiceInk"), comment: "Your trial has expired. Upgrade to continue using VoiceInk"),
                     type: .expired,
                     onAddLicenseKey: {
                         // Also allow navigation from expired state

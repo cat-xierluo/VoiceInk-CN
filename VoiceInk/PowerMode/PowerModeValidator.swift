@@ -10,11 +10,11 @@ enum PowerModeValidationError: Error, Identifiable {
     
     var id: String {
         switch self {
-        case .emptyName: return "emptyName"
-        case .duplicateName: return "duplicateName"
-        case .noTriggers: return "noTriggers"
-        case .duplicateAppTrigger: return "duplicateAppTrigger"
-        case .duplicateWebsiteTrigger: return "duplicateWebsiteTrigger"
+        case .emptyName: return NSLocalizedString(NSLocalizedString("emptyName", comment: "emptyName"), comment: "emptyName")
+        case .duplicateName: return NSLocalizedString(NSLocalizedString("duplicateName", comment: "duplicateName"), comment: "duplicateName")
+        case .noTriggers: return NSLocalizedString(NSLocalizedString("noTriggers", comment: "noTriggers"), comment: "noTriggers")
+        case .duplicateAppTrigger: return NSLocalizedString(NSLocalizedString("duplicateAppTrigger", comment: "duplicateAppTrigger"), comment: "duplicateAppTrigger")
+        case .duplicateWebsiteTrigger: return NSLocalizedString(NSLocalizedString("duplicateWebsiteTrigger", comment: "duplicateWebsiteTrigger"), comment: "duplicateWebsiteTrigger")
         }
     }
     
@@ -23,13 +23,13 @@ enum PowerModeValidationError: Error, Identifiable {
         case .emptyName:
 return NSLocalizedString("Power mode name cannot be empty.", comment: "Power mode name cannot be empty.")
         case .duplicateName(let name):
-            return "A power mode with the name '\(name)' already exists."
+            return NSLocalizedString("A power mode with the name '\(name)' already exists.", comment: "A power mode with the name '\(name)' already exists.")
         case .noTriggers:
 return NSLocalizedString("You must add at least one application or website.", comment: "You must add at least one application or website.")
         case .duplicateAppTrigger(let appName, let powerModeName):
-            return "The app '\(appName)' is already configured in the '\(powerModeName)' power mode."
+            return NSLocalizedString("The app '\(appName)' is already configured in the '\(powerModeName)' power mode.", comment: "The app '\(appName)' is already configured in the '\(powerModeName)' power mode.")
         case .duplicateWebsiteTrigger(let website, let powerModeName):
-            return "The website '\(website)' is already configured in the '\(powerModeName)' power mode."
+            return NSLocalizedString("The website '\(website)' is already configured in the '\(powerModeName)' power mode.", comment: "The website '\(website)' is already configured in the '\(powerModeName)' power mode.")
         }
     }
 }
@@ -126,7 +126,7 @@ NSLocalizedString("Cannot Save Power Mode", comment: "Cannot Save Power Mode"),
                 if let firstError = errors.first {
                     Text(firstError.localizedDescription)
                 } else {
-                    Text("Please fix the validation errors before saving.")
+                    Text(NSLocalizedString("Please fix the validation errors before saving.", comment: "Please fix the validation errors before saving."))
                 }
             }
         )

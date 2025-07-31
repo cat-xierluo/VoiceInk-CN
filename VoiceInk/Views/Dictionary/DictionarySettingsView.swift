@@ -13,7 +13,7 @@ struct DictionarySettingsView: View {
             case .spellings:
 return NSLocalizedString("Train VoiceInk to recognize industry terms, names, and technical words", comment: "Train VoiceInk to recognize industry terms, names, and technical words")
             case .replacements:
-                return "Automatically replace specific words/phrases with custom formatted text "
+                return NSLocalizedString("Automatically replace specific words/phrases with custom formatted text ", comment: "Automatically replace specific words/phrases with custom formatted text ")
             }
         }
         

@@ -69,7 +69,7 @@ struct MetricsSetupView: View {
         case 0:
             stepInfo = (
                 isCompleted: hotkeyManager.selectedHotkey1 != .none,
-                icon: "command",
+                icon: NSLocalizedString("command", comment: "command"),
                 title: NSLocalizedString("Set Keyboard Shortcut", comment: "Set Keyboard Shortcut"),
                 description: NSLocalizedString("Use VoiceInk anywhere with a shortcut.", comment: "Use VoiceInk anywhere with a shortcut.")
             )

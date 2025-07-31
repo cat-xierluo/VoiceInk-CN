@@ -83,7 +83,7 @@ Label(NSLocalizedString("Refresh", comment: "Refresh"), systemImage: "arrow.cloc
                 .buttonStyle(.borderless)
             }
             
-            Text("Note: Selecting a device here will override your Mac\'s system-wide default microphone.")
+            Text(NSLocalizedString("Note: Selecting a device here will override your Mac\'s system-wide default microphone.", comment: "Note: Selecting a device here will override your Mac\'s system-wide default microphone."))
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 8)
@@ -124,7 +124,7 @@ Text(NSLocalizedString("Devices will be used in order of priority. If a device i
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                Text("Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active.")
+                Text(NSLocalizedString("Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active.", comment: "Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active."))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(.top, 4)
@@ -201,7 +201,7 @@ Text(NSLocalizedString("Connect an audio input device to get started", comment: 
         
         return Group {
             if unprioritizedDevices.isEmpty {
-                Text("No additional devices available")
+                Text(NSLocalizedString("No additional devices available", comment: "No additional devices available"))
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -352,7 +352,7 @@ struct DevicePriorityCard: View {
         HStack {
             // Priority number or dash
             if let priority = priority {
-                Text("\(priority + 1)")
+                Text(NSLocalizedString("\(priority + 1)", comment: "\(priority + 1)"))
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(.secondary)
                     .frame(width: 24)

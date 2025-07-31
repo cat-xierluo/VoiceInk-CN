@@ -178,7 +178,7 @@ struct OnboardingTutorialView: View {
     
     private func instructionStep(number: Int, text: String) -> some View {
         HStack(spacing: 20) {
-            Text("\(number)")
+            Text(NSLocalizedString("\(number)", comment: "\(number)"))
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
                 .frame(width: 40, height: 40)

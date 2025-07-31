@@ -199,7 +199,7 @@ class MasterLocalizer:
         try:
             import subprocess
             result = subprocess.run([
-                'python3', 'localization-tools/smart_localize.py', '--auto-confirm'
+                'python3', 'localization-tools/precise_localizer.py', '--auto-confirm'
             ], text=True, cwd='.')
             
             if result.returncode == 0:
@@ -244,13 +244,12 @@ class MasterLocalizer:
                 print(f"  - {error}")
             return False
         
-        # 5. 可选：同步到代码
-        print("\n💾 步骤5: 同步到代码 (可选)")
-        choice = input("是否要同步新的本地化键到代码中？(y/n): ").lower().strip()
-        if choice in ['y', 'yes']:
-            sync_result = self.sync_to_code()
-            if sync_result < 0:
-                print("⚠️  代码同步失败，但本地化文件已更新")
+        # 5. 自动同步到代码
+        print("\n💾 步骤5: 同步到代码 (自动执行)")
+        print("🔄 自动同步新的本地化键到代码...")
+        sync_result = self.sync_to_code()
+        if sync_result < 0:
+            print("⚠️  代码同步失败，但本地化文件已更新")
         
         print("\n🎉 主本地化同步完成！")
         print(f"📁 中文文件: {self.zh_file}")

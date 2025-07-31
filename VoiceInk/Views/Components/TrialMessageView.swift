@@ -31,7 +31,7 @@ struct TrialMessageView: View {
                 Button(action: {
                     onAddLicenseKey?()
                 }) {
-                    Text("Enter License")
+                    Text(NSLocalizedString("Enter License", comment: "Enter License"))
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.bordered)
@@ -70,7 +70,7 @@ Text(NSLocalizedString("Buy License", comment: "Buy License"))
     
     private var title: String {
         switch type {
-        case .warning: return "Trial Ending Soon"
+        case .warning: return NSLocalizedString(NSLocalizedString("Trial Ending Soon", comment: "Trial Ending Soon"), comment: "Trial Ending Soon")
 case .expired: return NSLocalizedString("Trial Expired", comment: "Trial Expired")
 case .info: return NSLocalizedString("Trial Active", comment: "Trial Active")
         }

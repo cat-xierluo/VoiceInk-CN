@@ -58,17 +58,17 @@ Text(NSLocalizedString("Performance Analysis", comment: "Performance Analysis"))
             SummaryCard(
                 icon: "doc.text.fill", 
                 value: "\(analysis.totalTranscripts)", 
-                label: "Total Transcripts",
+                label: NSLocalizedString("Total Transcripts", comment: "Total Transcripts"),
                 color: .indigo
             )
             SummaryCard(
                 icon: "waveform.path.ecg", 
                 value: "\(analysis.totalWithTranscriptionData)", 
-                label: "Analyzable",
+                label: NSLocalizedString("Analyzable", comment: "Analyzable"),
                 color: .teal
             )
             SummaryCard(
-                icon: "sparkles", 
+                icon: NSLocalizedString("sparkles", comment: "sparkles"), 
                 value: "\(analysis.totalEnhancedFiles)", 
 label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 color: .mint
@@ -78,21 +78,21 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
 
     private var systemInfoSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("System Information")
+            Text(NSLocalizedString("System Information", comment: "System Information"))
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
             HStack(spacing: 12) {
-                SystemInfoCard(label: "Device", value: getMacModel())
-                SystemInfoCard(label: "Processor", value: getCPUInfo())
-                SystemInfoCard(label: "Memory", value: getMemoryInfo())
+                SystemInfoCard(label: NSLocalizedString("Device", comment: "Device"), value: getMacModel())
+                SystemInfoCard(label: NSLocalizedString("Processor", comment: "Processor"), value: getCPUInfo())
+                SystemInfoCard(label: NSLocalizedString("Memory", comment: "Memory"), value: getMemoryInfo())
             }
         }
     }
 
     private var transcriptionPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Transcription Models")
+            Text(NSLocalizedString("Transcription Models", comment: "Transcription Models"))
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
@@ -104,7 +104,7 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
 
     private var enhancementPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Enhancement Models")
+            Text(NSLocalizedString("Enhancement Models", comment: "Enhancement Models"))
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
@@ -320,19 +320,19 @@ struct TranscriptionModelCard: View {
                 // First row of metrics
                 HStack(spacing: 24) {
                     MetricDisplay(
-                        title: "Avg. Transcript Duration", 
+                        title: NSLocalizedString(NSLocalizedString("Avg. Transcript Duration", comment: "Avg. Transcript Duration"), comment: "Avg. Transcript Duration"), 
                         value: formatDuration(modelStat.avgAudioDuration),
                         color: .indigo
                     )
                     
                     MetricDisplay(
-                        title: "Avg. Transcription Time",
+                        title: NSLocalizedString(NSLocalizedString("Avg. Transcription Time", comment: "Avg. Transcription Time"), comment: "Avg. Transcription Time"),
                         value: String(format: "%.2f s", modelStat.avgProcessingTime),
                         color: .teal
                     )
                     
                     MetricDisplay(
-                        title: "Speed Factor",
+                        title: NSLocalizedString(NSLocalizedString("Speed Factor", comment: "Speed Factor"), comment: "Speed Factor"),
                         value: String(format: "%.1fx faster", modelStat.speedFactor),
                         color: .mint
                     )
@@ -375,7 +375,7 @@ struct EnhancementModelCard: View {
             VStack(spacing: 12) {
                 HStack(spacing: 24) {
                     MetricDisplay(
-                        title: "Avg. Enhancement Time",
+                        title: NSLocalizedString(NSLocalizedString("Avg. Enhancement Time", comment: "Avg. Enhancement Time"), comment: "Avg. Enhancement Time"),
                         value: String(format: "%.2f s", modelStat.avgProcessingTime),
                         color: .indigo
                     )

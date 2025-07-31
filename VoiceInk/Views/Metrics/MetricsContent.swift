@@ -26,10 +26,10 @@ struct MetricsContent: View {
             Image(systemName: "waveform")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            Text("No Transcriptions Yet")
+            Text(NSLocalizedString("No Transcriptions Yet", comment: "No Transcriptions Yet"))
                 .font(.title2)
                 .fontWeight(.semibold)
-            Text("Start recording to see your metrics")
+            Text(NSLocalizedString("Start recording to see your metrics", comment: "Start recording to see your metrics"))
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -39,25 +39,25 @@ struct MetricsContent: View {
     private var metricsGrid: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
             MetricCard(
-                title: "Words Captured",
-                value: "\(totalWordsTranscribed)",
+                title: NSLocalizedString(NSLocalizedString("Words Captured", comment: "Words Captured"), comment: "Words Captured"),
+                value: NSLocalizedString("\(totalWordsTranscribed)", comment: "\(totalWordsTranscribed)"),
                 icon: "text.word.spacing",
                 color: .blue
             )
             MetricCard(
-                title: "Voice-to-Text Sessions",
+                title: NSLocalizedString(NSLocalizedString("Voice-to-Text Sessions", comment: "Voice-to-Text Sessions"), comment: "Voice-to-Text Sessions"),
                 value: "\(transcriptions.count)",
                 icon: "mic.circle.fill",
                 color: .green
             )
             MetricCard(
-                title: "Average Words/Minute",
-                value: String(format: "%.1f", averageWordsPerMinute),
-                icon: "speedometer",
+                title: NSLocalizedString(NSLocalizedString("Average Words/Minute", comment: "Average Words/Minute"), comment: "Average Words/Minute"),
+                value: String(format: NSLocalizedString(NSLocalizedString("%.1f", comment: "%.1f"), comment: "%.1f"), averageWordsPerMinute),
+                icon: NSLocalizedString("speedometer", comment: "speedometer"),
                 color: .orange
             )
             MetricCard(
-                title: "Words/Session",
+                title: NSLocalizedString(NSLocalizedString("Words/Session", comment: "Words/Session"), comment: "Words/Session"),
                 value: String(format: "%.1f", averageWordsPerSession),
                 icon: "chart.bar.fill",
                 color: .purple
@@ -67,7 +67,7 @@ struct MetricsContent: View {
     
     private var voiceInkTrendChart: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("30-Day VoiceInk Trend")
+            Text(NSLocalizedString("30-Day VoiceInk Trend", comment: "30-Day VoiceInk Trend"))
                 .font(.headline)
             
             Chart {

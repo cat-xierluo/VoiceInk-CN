@@ -121,7 +121,7 @@ struct WaveformView: View {
                     VStack {
                         ProgressView()
                             .controlSize(.small)
-                        Text("Generating waveform...")
+                        Text(NSLocalizedString("Generating waveform...", comment: "Generating waveform..."))
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                     }
@@ -192,7 +192,7 @@ struct WaveformView: View {
     private func formatTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
-        return String(format: "%d:%02d", minutes, seconds)
+        return String(format: NSLocalizedString(NSLocalizedString("%d:%02d", comment: "%d:%02d"), comment: "%d:%02d"), minutes, seconds)
     }
 }
 

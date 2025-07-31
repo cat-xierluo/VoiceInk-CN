@@ -90,7 +90,7 @@ Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Pro
                     if isEditingPredefinedPrompt {
                         // Simplified view for predefined prompts - only trigger word editing
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Editing: \(title)")
+                            Text(NSLocalizedString("Editing: \(title)", comment: "Editing: \(title)"))
                                 .font(.title2)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)

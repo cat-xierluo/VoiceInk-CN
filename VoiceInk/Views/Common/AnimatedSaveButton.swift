@@ -8,11 +8,11 @@ struct AnimatedSaveButton: View {
     
     var body: some View {
         Menu {
-            Button("Save as TXT") {
+            Button(NSLocalizedString("Save as TXT", comment: "Save as TXT")) {
                 saveFile(as: .plainText, extension: "txt")
             }
             
-            Button("Save as MD") {
+            Button(NSLocalizedString("Save as MD", comment: "Save as MD")) {
                 saveFile(as: .text, extension: "md")
             }
         } label: {
@@ -69,8 +69,8 @@ struct AnimatedSaveButton: View {
         // Clean the text and split into words
         let cleanedText = textToSave
             .trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "\n", with: " ")
-            .replacingOccurrences(of: "\r", with: " ")
+            .replacingOccurrences(of: NSLocalizedString("\n", comment: "\n"), with: " ")
+            .replacingOccurrences(of: NSLocalizedString("\r", comment: "\r"), with: " ")
         
         let words = cleanedText.components(separatedBy: .whitespaces)
             .filter { !$0.isEmpty }
@@ -80,13 +80,13 @@ struct AnimatedSaveButton: View {
         let selectedWords = Array(words.prefix(wordCount))
         
         if selectedWords.isEmpty {
-            return "transcription"
+            return NSLocalizedString("transcription", comment: "transcription")
         }
         
         // Create filename by joining words and cleaning invalid characters
         let fileName = selectedWords.joined(separator: "-")
             .lowercased()
-            .replacingOccurrences(of: "[^a-z0-9\\-]", with: "", options: .regularExpression)
+            .replacingOccurrences(of: NSLocalizedString("[^a-z0-9\\-]", comment: "[^a-z0-9\\-]"), with: "", options: .regularExpression)
             .replacingOccurrences(of: "--+", with: "-", options: .regularExpression)
             .trimmingCharacters(in: CharacterSet(charactersIn: "-"))
         
@@ -112,7 +112,7 @@ struct AnimatedSaveButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             AnimatedSaveButton(textToSave: "Hello world this is a sample transcription text")
-            Text("Save Button Preview")
+            Text(NSLocalizedString("Save Button Preview", comment: "Save Button Preview"))
                 .padding()
         }
         .padding()

@@ -151,7 +151,7 @@ struct VoiceInkApp: App {
         
         #if DEBUG
         WindowGroup("Debug") {
-            Button("Toggle Menu Bar Only") {
+            Button(NSLocalizedString("Toggle Menu Bar Only", comment: "Toggle Menu Bar Only")) {
                 menuBarManager.isMenuBarOnly.toggle()
             }
         }

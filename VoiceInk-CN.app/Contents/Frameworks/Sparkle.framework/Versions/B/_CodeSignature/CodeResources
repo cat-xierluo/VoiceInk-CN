@@ -948,220 +948,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			JUtshCNq+A/dNZrRuwLdXQWhzJs=
+			zk2RJsDHZszRCifdqFrAwfdz770=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"254b6c84236af80fdd359ad1bb02dd5d05a1cc9b" or cdhash H"0e5efc8b36cd926229493fb1caab91d577641f4b"</string>
-		</dict>
-		<key>Headers/SPUDownloadData.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			yhS+aH6hPb1hSOt0tT6Rej2kQoPz6wrtntLOBuoIIJs=
-			</data>
-		</dict>
-		<key>Headers/SPUStandardUpdaterController.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			gf8QsQfI+rsdQIHZdznFSFICnui4Oavnhgn9ybmv6Hs=
-			</data>
-		</dict>
-		<key>Headers/SPUStandardUserDriver.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Y4fOofv2Ua1TAI9qM7wL8CalQGHLa1spvUNg9JB71NE=
-			</data>
-		</dict>
-		<key>Headers/SPUStandardUserDriverDelegate.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Y1CXvdztYvr7TNU5uykV9jSjdvcpl2aCQPwjVHZe+IQ=
-			</data>
-		</dict>
-		<key>Headers/SPUUpdateCheck.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			H30F2i5GYmOu/j4JEw5WsuZbiGJXnge5gpyb9e2SHAM=
-			</data>
-		</dict>
-		<key>Headers/SPUUpdatePermissionRequest.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hnRNYPeaK0NWoKPXEYs2AoyD6QOE0CHDJWJxKM5Ma24=
-			</data>
-		</dict>
-		<key>Headers/SPUUpdater.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			gHf2JF29zPpLfNllC9hyoYGyZVO9xJ0wNDCZNd65+hQ=
-			</data>
-		</dict>
-		<key>Headers/SPUUpdaterDelegate.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			bUP8h5u5vMbDU68cKrno2Y22fRQTrOJp5Ipj2rHTSbc=
-			</data>
-		</dict>
-		<key>Headers/SPUUpdaterSettings.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Nnk1lMwSl/z+ugdM8ovU0U/bQUoOWG6zjYQHXPF+kCU=
-			</data>
-		</dict>
-		<key>Headers/SPUUserDriver.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6/byufu2xa4bjEdEwfuFxkHUiYnK9gbYEtplebyvTSY=
-			</data>
-		</dict>
-		<key>Headers/SPUUserUpdateState.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Z4UKJcXMF/bUmSkIiM+D8jTiS8i5x1CLqoo4uG4aQvg=
-			</data>
-		</dict>
-		<key>Headers/SUAppcast.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			M3KUgO+Ud/n5t/rXjFYzQMUTPDA8fK7W46QQfuh5DnA=
-			</data>
-		</dict>
-		<key>Headers/SUAppcastItem.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			imKkb6r+8fp+9enH9Xlnh0VZ5S12ZkwmU53UHTx/Tdo=
-			</data>
-		</dict>
-		<key>Headers/SUErrors.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			fmP8Y0mI10K5McjVGtVKtgzae36JLxmqLw3sr7vdBGY=
-			</data>
-		</dict>
-		<key>Headers/SUExport.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			XO8CQmbFThLbYg949NEGhg3g+iouIw3/3+BCCLtEdFE=
-			</data>
-		</dict>
-		<key>Headers/SUStandardVersionComparator.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			fUB7nOch1cZQ50HstpLnfxLvO14Y6oE29yRI6NcgjGw=
-			</data>
-		</dict>
-		<key>Headers/SUUpdatePermissionResponse.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HScQok/zuc704lNfwGl1Csr6nigQLAsjeRJXG1HTuks=
-			</data>
-		</dict>
-		<key>Headers/SUUpdater.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			lvb1mNWCyofJ0X88zXvMsK5PBXrG6Pr7hUrY0E3jNvY=
-			</data>
-		</dict>
-		<key>Headers/SUUpdaterDelegate.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			oaCMM/1B690QWRbYGB0iJBf5/toBzcQq+moxURBs3jY=
-			</data>
-		</dict>
-		<key>Headers/SUVersionComparisonProtocol.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			KLu0JKx6uB4rk/YeNZ/vo+0J1qONCyZQBNIQPA9GvbQ=
-			</data>
-		</dict>
-		<key>Headers/SUVersionDisplayProtocol.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PyPE+5u9vBlxRYDuTdf3P/wxQ26nM8m7MIw/dOerUSw=
-			</data>
-		</dict>
-		<key>Headers/Sparkle.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			OkQqMusip3u1oI5hrGeNr/32xpfTMCC4Kmg7r0Aijgw=
-			</data>
-		</dict>
-		<key>Modules/module.modulemap</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			K8rh62bVXcSfWKz+hWN1pbvJHG6DvbKY0ZRCrmJkz6Y=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SPUAppcastItemStateResolver.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HDvimACMGXV647Jwg2IqAFvOgJoB8G0sdPbeoW8yFO4=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SPUGentleUserDriverReminders.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9W2dJ38WQX151mpIS0r8/EfCqZV6jEh621xwna2JVAI=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SPUInstallationType.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hj9Br7Gf1Y8X1dqNvSUHMP70K+Q+S9xZAyPYMqKthFQ=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SPUStandardUserDriver+Private.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			rMdk5zH+nm0wf+Mt6k0GtFGWQiXCsql0WiPwNanN6q0=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SPUUserAgent+Private.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DD6nxqq6syhA5BxWuyLPq03uTd4zAmA7b0q6msG1hQw=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SUAppcastItem+Private.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9H7OIT9nEoYXUBBcvTZdSOzlq81uWIUS8Mqjuhfz9Ww=
-			</data>
-		</dict>
-		<key>PrivateHeaders/SUInstallerLauncher+Private.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			yy6cRl8IqwMJwr86TS98NdnHb/WkSAaUcAoiKYUg3ZQ=
-			</data>
+			<string>cdhash H"ce4d9126c0c766ccd10a27dda85ac0c1f773efbd" or cdhash H"51497c6e7a92f2a5c398d433d7d609b3c4926d07"</string>
 		</dict>
 		<key>Resources/Base.lproj/SUUpdateAlert.nib</key>
 		<dict>
@@ -2125,28 +1915,28 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			tR6MjcKMenAfQmaN/eTRGHocfEU=
+			QRoZ34oJtHHhr8aZfbwvkHq5ip8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"b51e8c8dc28c7a701f42668dfde4d1187a1c7c45" or cdhash H"35ec3977294bbcf4e7a82cc43719e9d9fbbe7154"</string>
+			<string>cdhash H"411a19df8a09b471e1afc6997dbc2f907ab98a9f" or cdhash H"bca067ebb06c31007ecb063d5fc350aa88de26eb"</string>
 		</dict>
 		<key>XPCServices/Downloader.xpc</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			bBv3Ja37AIL/2YAXvagqXj1vSiI=
+			FOziDgnStlkivA8VYcpo9l6r12Y=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"6c1bf725adfb0082ffd98017bda82a5e3d6f4a22" or cdhash H"3bcf69a2b900474b009ac2429ff32c143dac6137"</string>
+			<string>cdhash H"14ece20e09d2b65922bc0f1561ca68f65eabd766" or cdhash H"5cbc97cf5ae68f813fa4b85e7d9bd325db21e747"</string>
 		</dict>
 		<key>XPCServices/Installer.xpc</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			IyoyCxllLWn0bXv+0Lip21j3WH8=
+			d2RUoldmd079zHrEYRMSpwZPAhA=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"232a320b19652d69f46d7bfed0b8a9db58f7587f" or cdhash H"6a1ed6a45e4b05549c05d96e629af726909d4990"</string>
+			<string>cdhash H"776454a25766774efdcc7ac4611312a7064f0210" or cdhash H"2d66d724a18cd697fa8b994aaa03f449f25510d6"</string>
 		</dict>
 	</dict>
 	<key>rules</key>

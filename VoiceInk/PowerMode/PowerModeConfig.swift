@@ -154,7 +154,7 @@ class PowerModeManager: ObservableObject {
             defaultConfig = PowerModeConfig(
                 id: UUID(),
 name: NSLocalizedString("Default Configuration", comment: "Default Configuration"),
-                emoji: "⚙️",
+                emoji: NSLocalizedString("⚙️", comment: "⚙️"),
                 isAIEnhancementEnabled: false,
                 selectedPrompt: nil,
                 selectedTranscriptionModelName: defaultModelName,
@@ -295,7 +295,7 @@ name: NSLocalizedString("Default Configuration", comment: "Default Configuration
         return url.lowercased()
             .replacingOccurrences(of: "https://", with: "")
             .replacingOccurrences(of: "http://", with: "")
-            .replacingOccurrences(of: "www.", with: "")
+            .replacingOccurrences(of: NSLocalizedString("www.", comment: "www."), with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
     }
     

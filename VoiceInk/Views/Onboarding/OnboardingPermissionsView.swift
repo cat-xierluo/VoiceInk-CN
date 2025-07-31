@@ -391,11 +391,11 @@ title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
     private func getButtonTitle() -> String {
         switch permissions[currentPermissionIndex].type {
         case .keyboardShortcut:
-            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : NSLocalizedString("Set Shortcut", comment: "Set Shortcut")
+return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : "Set Shortcut"
         case .audioDeviceSelection:
-            return NSLocalizedString("Continue", comment: "Continue")
+            return "Continue"
         default:
-            return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : NSLocalizedString("Enable Access", comment: "Enable Access")
+return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : "Enable Access"
         }
     }
 

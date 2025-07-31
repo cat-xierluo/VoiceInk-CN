@@ -187,13 +187,13 @@ performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), 
     
     private func getButtonTitle() -> String {
         if isModelSet {
-            return NSLocalizedString("Continue", comment: "Continue")
+            return "Continue"
         } else if isDownloading {
-            return NSLocalizedString("Downloading...", comment: "Downloading...")
+            return "Downloading..."
         } else if whisperState.availableModels.contains(where: { $0.name == turboModel.name }) {
-            return NSLocalizedString("Set as Default", comment: "Set as Default")
+            return "Set as Default"
         } else {
-            return NSLocalizedString("Download Model", comment: "Download Model")
+            return "Download Model"
         }
     }
     
@@ -215,7 +215,7 @@ performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), 
     
     private func ramUsageLabel(gb: Double) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("RAM")
+            Text(NSLocalizedString("RAM", comment: "RAM"))
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.7))
             
@@ -225,3 +225,4 @@ performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), 
         }
     }
 }
+

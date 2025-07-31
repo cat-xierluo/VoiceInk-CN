@@ -61,7 +61,7 @@ struct PromptSelectionGrid: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if sortedPrompts.isEmpty {
-                Text("No prompts available")
+                Text(NSLocalizedString("No prompts available", comment: "No prompts available"))
                     .foregroundColor(.secondary)
                     .font(.caption)
             } else {
@@ -87,7 +87,7 @@ struct PromptSelectionGrid: View {
                         CustomPrompt.addNewButton {
                             onAddNewPrompt()
                         }
-                        .help("Add new prompt")
+                        .help(NSLocalizedString("Add new prompt", comment: "Add new prompt"))
                     }
                 }
                 .padding(.vertical, 12)

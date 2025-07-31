@@ -29,7 +29,7 @@ Text(NSLocalizedString("Enhance your transcriptions with AI", comment: "Enhance 
                         Circle()
                             .fill(Color.green)
                             .frame(width: 8, height: 8)
-                        Text("Connected to")
+                        Text(NSLocalizedString("Connected to", comment: "Connected to"))
                             .font(.caption)
                         Text(aiService.selectedProvider.rawValue)
                             .font(.caption.bold())
@@ -82,7 +82,7 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                         Image(systemName: "arrow.clockwise")
                     }
                     .buttonStyle(.borderless)
-                    .help("Refresh models")
+                    .help(NSLocalizedString("Refresh models", comment: "Refresh models"))
                 }
             } else if !aiService.availableModels.isEmpty && 
                         aiService.selectedProvider != .ollama && 
@@ -131,7 +131,7 @@ Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" :
                         Spacer()
                         
                         if isEditingURL {
-                            TextField("Base URL", text: $ollamaBaseURL)
+                            TextField(NSLocalizedString("Base URL", comment: "Base URL"), text: $ollamaBaseURL)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: 200)
                             
@@ -207,7 +207,7 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                     // Help text for troubleshooting
                     if ollamaModels.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Troubleshooting")
+                            Text(NSLocalizedString("Troubleshooting", comment: "Troubleshooting"))
                                 .font(.subheadline)
                                 .bold()
                             
@@ -217,7 +217,7 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                                 bulletPoint("Verify you have at least one model pulled")
                             }
                             
-                            Button("Learn More") {
+                            Button(NSLocalizedString("Learn More", comment: "Learn More")) {
                                 NSWorkspace.shared.open(URL(string: "https://ollama.ai/download")!)
                             }
                             .font(.caption)
@@ -285,7 +285,7 @@ Text(NSLocalizedString("API Key", comment: "API Key"))
                                 Button(action: {
                                     aiService.clearAPIKey()
                                 }) {
-                                    Label("Remove Key", systemImage: "trash")
+                                    Label(NSLocalizedString(NSLocalizedString("Remove Key", comment: "Remove Key"), comment: "Remove Key"), systemImage: "trash")
                                         .foregroundColor(.red)
                                 }
                                 .buttonStyle(.borderless)

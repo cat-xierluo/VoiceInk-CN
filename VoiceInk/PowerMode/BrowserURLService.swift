@@ -17,17 +17,17 @@ enum BrowserType {
     
     var scriptName: String {
         switch self {
-        case .safari: return "safariURL"
-        case .arc: return "arcURL"
-        case .chrome: return "chromeURL"
-        case .edge: return "edgeURL"
-        case .firefox: return "firefoxURL"
-        case .brave: return "braveURL"
-        case .opera: return "operaURL"
-        case .vivaldi: return "vivaldiURL"
-        case .orion: return "orionURL"
-        case .zen: return "zenURL"
-        case .yandex: return "yandexURL"
+        case .safari: return NSLocalizedString(NSLocalizedString("safariURL", comment: "safariURL"), comment: "safariURL")
+        case .arc: return NSLocalizedString(NSLocalizedString("arcURL", comment: "arcURL"), comment: "arcURL")
+        case .chrome: return NSLocalizedString(NSLocalizedString("chromeURL", comment: "chromeURL"), comment: "chromeURL")
+        case .edge: return NSLocalizedString(NSLocalizedString("edgeURL", comment: "edgeURL"), comment: "edgeURL")
+        case .firefox: return NSLocalizedString(NSLocalizedString("firefoxURL", comment: "firefoxURL"), comment: "firefoxURL")
+        case .brave: return NSLocalizedString(NSLocalizedString("braveURL", comment: "braveURL"), comment: "braveURL")
+        case .opera: return NSLocalizedString(NSLocalizedString("operaURL", comment: "operaURL"), comment: "operaURL")
+        case .vivaldi: return NSLocalizedString(NSLocalizedString("vivaldiURL", comment: "vivaldiURL"), comment: "vivaldiURL")
+        case .orion: return NSLocalizedString(NSLocalizedString("orionURL", comment: "orionURL"), comment: "orionURL")
+        case .zen: return NSLocalizedString(NSLocalizedString("zenURL", comment: "zenURL"), comment: "zenURL")
+        case .yandex: return NSLocalizedString(NSLocalizedString("yandexURL", comment: "yandexURL"), comment: "yandexURL")
         }
     }
     
@@ -49,17 +49,17 @@ enum BrowserType {
     
     var displayName: String {
         switch self {
-        case .safari: return "Safari"
-        case .arc: return "Arc"
-        case .chrome: return "Google Chrome"
-        case .edge: return "Microsoft Edge"
-        case .firefox: return "Firefox"
-        case .brave: return "Brave"
-        case .opera: return "Opera"
-        case .vivaldi: return "Vivaldi"
-        case .orion: return "Orion"
-        case .zen: return "Zen Browser"
-        case .yandex: return "Yandex Browser"
+        case .safari: return NSLocalizedString(NSLocalizedString("Safari", comment: "Safari"), comment: "Safari")
+        case .arc: return NSLocalizedString(NSLocalizedString("Arc", comment: "Arc"), comment: "Arc")
+        case .chrome: return NSLocalizedString(NSLocalizedString("Google Chrome", comment: "Google Chrome"), comment: "Google Chrome")
+        case .edge: return NSLocalizedString(NSLocalizedString("Microsoft Edge", comment: "Microsoft Edge"), comment: "Microsoft Edge")
+        case .firefox: return NSLocalizedString(NSLocalizedString("Firefox", comment: "Firefox"), comment: "Firefox")
+        case .brave: return NSLocalizedString(NSLocalizedString("Brave", comment: "Brave"), comment: "Brave")
+        case .opera: return NSLocalizedString(NSLocalizedString("Opera", comment: "Opera"), comment: "Opera")
+        case .vivaldi: return NSLocalizedString(NSLocalizedString("Vivaldi", comment: "Vivaldi"), comment: "Vivaldi")
+        case .orion: return NSLocalizedString(NSLocalizedString("Orion", comment: "Orion"), comment: "Orion")
+        case .zen: return NSLocalizedString(NSLocalizedString("Zen Browser", comment: "Zen Browser"), comment: "Zen Browser")
+        case .yandex: return NSLocalizedString(NSLocalizedString("Yandex Browser", comment: "Yandex Browser"), comment: "Yandex Browser")
         }
     }
     

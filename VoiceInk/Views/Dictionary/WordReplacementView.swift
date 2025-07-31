@@ -70,7 +70,7 @@ Text(NSLocalizedString("Word Replacements", comment: "Word Replacements"))
                         Image(systemName: "plus")
                     }
                     .buttonStyle(.borderless)
-                    .help("Add new replacement")
+                    .help(NSLocalizedString("Add new replacement", comment: "Add new replacement"))
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 8)
@@ -195,7 +195,7 @@ Text(NSLocalizedString("Define a word or phrase to be automatically replaced dur
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
-                                Text("Required")
+                                Text(NSLocalizedString(NSLocalizedString("Required", comment: "Required"), comment: "Required"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -234,7 +234,7 @@ Text(NSLocalizedString("Replacement Text", comment: "Replacement Text"))
                     
                     // Example Section
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Example")
+                        Text(NSLocalizedString("Example", comment: "Example"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
@@ -243,7 +243,7 @@ Text(NSLocalizedString("Replacement Text", comment: "Replacement Text"))
 Text(NSLocalizedString("Original:", comment: "Original:"))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("my website link")
+                                Text(NSLocalizedString("my website link", comment: "my website link"))
                                     .font(.callout)
                             }
                             

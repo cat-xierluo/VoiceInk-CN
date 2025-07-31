@@ -41,7 +41,7 @@ struct LicenseManagementView: View {
 Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : NSLocalizedString("Upgrade to Pro", comment: "Upgrade to Pro"))
                             .font(.system(size: 32, weight: .bold))
                         
-                        Text("v\(appVersion)")
+                        Text(NSLocalizedString("v\(appVersion)", comment: "v\(appVersion)"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.bottom, 4)
@@ -116,7 +116,7 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
                     Image(systemName: "infinity.circle.fill")
                         .font(.system(size: 20))
                         .foregroundStyle(.blue)
-                    Text("Buy Once, Own Forever")
+                    Text(NSLocalizedString("Buy Once, Own Forever", comment: "Buy Once, Own Forever"))
                         .font(.headline)
                 }
                 .padding(.vertical, 8)
@@ -130,7 +130,7 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text("Upgrade to VoiceInk Pro")
+                    Text(NSLocalizedString("Upgrade to VoiceInk Pro", comment: "Upgrade to VoiceInk Pro"))
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -152,7 +152,7 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
 
             // License Activation
             VStack(spacing: 20) {
-                Text("Already have a license?")
+                Text(NSLocalizedString("Already have a license?", comment: "Already have a license?"))
                     .font(.headline)
                 
                 HStack(spacing: 12) {

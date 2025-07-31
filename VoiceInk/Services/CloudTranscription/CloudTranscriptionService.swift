@@ -22,7 +22,7 @@ return NSLocalizedString("API key for this service is missing. Please configure 
         case .audioFileNotFound:
             return "The audio file to transcribe could not be found."
         case .apiRequestFailed(let statusCode, let message):
-            return "The API request failed with status code \(statusCode): \(message)"
+            return NSLocalizedString("The API request failed with status code \(statusCode): \(message)", comment: "The API request failed with status code \(statusCode): \(message)")
         case .networkError(let error):
             return "A network error occurred: \(error.localizedDescription)"
         case .noTranscriptionReturned:

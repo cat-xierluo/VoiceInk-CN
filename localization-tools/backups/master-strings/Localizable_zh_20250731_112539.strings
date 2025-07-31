@@ -1,0 +1,958 @@
+/* VoiceInk 中文本地化字符串 */
+
+/* 主界面导航 */
+"Dashboard" = "仪表板";
+"Transcribe Audio" = "转录音频";
+"History" = "历史记录";
+"AI Models" = "AI 模型";
+"Enhancement" = "增强";
+"Power Mode" = "专业模式";
+"Permissions" = "权限";
+"Audio Input" = "音频输入";
+"Dictionary" = "词典";
+"Settings" = "设置";
+"VoiceInk Pro" = "VoiceInk Pro";
+
+/* 权限页面 */
+"App Permissions" = "应用权限";
+"VoiceInk requires the following permissions to function properly" = "VoiceInk需要以下权限才能正常工作";
+"Keyboard Shortcut" = "键盘快捷键";
+"Set up a keyboard shortcut to use VoiceInk anywhere" = "设置键盘快捷键，在任何地方都能使用VoiceInk";
+"Configure Shortcut" = "配置快捷键";
+"Microphone Access" = "麦克风访问";
+"Allow VoiceInk to record your voice for transcription" = "允许VoiceInk录制您的语音进行转录";
+"Request Permission" = "请求权限";
+"Open System Settings" = "打开系统设置";
+"Accessibility Access" = "辅助功能访问";
+"Allow VoiceInk to paste transcribed text directly at your cursor position" = "允许VoiceInk将转录的文本直接粘贴到您的光标位置";
+"Screen Recording Access" = "屏幕录制访问";
+"Allow VoiceInk to understand context from your screen for transcript Enhancement" = "允许VoiceInk从您的屏幕获取上下文信息以增强转录效果";
+
+/* MenuBarView */
+"Toggle Mini Recorder" = "切换迷你录音器";
+"AI Enhancement" = "AI增强";
+"Prompt: %@" = "提示词: %@";
+"AI Provider: %@" = "AI提供商: %@";
+"Model: %@" = "模型: %@";
+"Use Clipboard Context" = "使用剪贴板上下文";
+"Use Screen Context" = "使用屏幕上下文";
+"Additional" = "其他";
+"Auto-copy to Clipboard" = "自动复制到剪贴板";
+"Sound Feedback" = "声音反馈";
+"Mute System Audio During Recording" = "录音时静音系统音频";
+"Copy Last Transcription" = "复制上次转录";
+"Show Dock Icon" = "显示Dock图标";
+"Hide Dock Icon" = "隐藏Dock图标";
+"Launch at Login" = "开机启动";
+"Check for Updates" = "检查更新";
+"Check for Updates..." = "检查更新...";
+"Preferences..." = "偏好设置...";
+"Help and Support" = "帮助与支持";
+"Quit VoiceInk" = "退出VoiceInk";
+
+/* Settings */
+"Configure your microphone preferences" = "配置您的麦克风偏好设置";
+
+/* 录音相关 */
+"Recording" = "录音中";
+"Start Recording" = "开始录音";
+"Stop Recording" = "停止录音";
+"Pause Recording" = "暂停录音";
+"Resume Recording" = "继续录音";
+
+/* 转录相关 */
+"Transcription" = "转录";
+"Transcribing..." = "转录中...";
+"Transcription completed" = "转录完成";
+"Transcription failed" = "转录失败";
+"Transcription Failed" = "转录失败";
+"Retranscribe this audio" = "重新转录此音频";
+"Retranscription successful" = "重新转录成功";
+"Retranscription failed" = "重新转录失败";
+"No transcription available" = "无可用转录";
+
+/* Prompt Editor */
+"Edit Trigger Words" = "编辑触发词";
+"New Prompt" = "新建提示词";
+"Edit Prompt" = "编辑提示词";
+"Cancel" = "取消";
+"Save" = "保存";
+"You can only customize the trigger words for system prompts." = "您只能为系统提示词自定义触发词。";
+"Title" = "标题";
+"Enter a short, descriptive title" = "输入一个简短的描述性标题";
+"Icon" = "图标";
+"Description" = "描述";
+"Add a brief description of what this prompt does" = "添加此提示词功能的简要描述";
+"Enter a description" = "输入描述";
+"Prompt Instructions" = "提示词说明";
+"Define how AI should enhance your transcriptions" = "定义AI应如何增强您的转录内容";
+"Start with a Predefined Template" = "从预定义模板开始";
+"Trigger Words" = "触发词";
+"Add multiple words that can activate this prompt" = "添加可以激活此提示词的多个词语";
+"Add trigger word" = "添加触发词";
+"Add" = "添加";
+"Communication" = "通讯";
+"Professional" = "专业";
+"Technical" = "技术";
+"Content" = "内容";
+"Media & Creative" = "媒体与创意";
+"Document & Text" = "文档与文本";
+"New Power Mode" = "新建强力模式";
+"Name your power mode" = "命名您的强力模式";
+"Delete" = "删除";
+"When to Trigger" = "触发条件";
+"Applications" = "应用程序";
+"Add App" = "添加应用";
+"No applications added" = "未添加应用程序";
+"Websites" = "网站";
+"Enter website URL (e.g., google.com)" = "输入网站URL（例如：google.com）";
+"No websites added" = "未添加网站";
+"No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab." = "无可用转录模型。请连接到云服务或在AI模型标签页下载本地模型。";
+"Model" = "模型";
+"Language" = "语言";
+"Enable AI Enhancement" = "启用AI增强";
+"AI Provider" = "AI提供商";
+"No providers connected" = "未连接提供商";
+"AI Model" = "AI模型";
+"No models loaded" = "未加载模型";
+"No models available" = "无可用模型";
+"Enhancement Prompt" = "增强提示";
+"Context Awareness" = "上下文感知";
+"Advanced" = "高级";
+"Auto Send" = "自动发送";
+"Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text" = "粘贴文本后自动按下回车键。这对于聊天应用或表单很有用，无需修改转录文本";
+"Add New Power Mode" = "添加新模式";
+"Save Changes" = "保存更改";
+
+// SettingsView.swift
+"VoiceInk Shortcut" = "VoiceInk 快捷键";
+"Choose how you want to trigger VoiceInk" = "选择如何触发 VoiceInk";
+"Hotkey 1" = "快捷键 1";
+"Hotkey 2" = "快捷键 2";
+"Add another hotkey" = "添加另一个快捷键";
+"Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording)." = "快速点击开始免提录音（再次点击停止）。按住进行按键说话（松开停止录音）。";
+"Override default double-tap Escape cancellation" = "覆盖默认的双击 Esc 取消";
+"Custom Cancel Shortcut" = "自定义取消快捷键";
+"By default, double-tap Escape to cancel recordings. Enable override above for single-press custom cancellation (useful for Vim users)." = "默认情况下，双击 Esc 取消录音。启用上方覆盖以使用单次按键自定义取消（对 Vim 用户有用）。";
+"Recording Feedback" = "录音反馈";
+"Customize app & system feedback" = "自定义应用和系统反馈";
+"Auto-copy to clipboard" = "自动复制到剪贴板";
+"Sound feedback" = "声音反馈";
+"Mute system audio during recording" = "录音时静音系统音频";
+"Automatically mute system audio when recording starts and restore when recording stops" = "录音开始时自动静音系统音频，录音停止时恢复";
+"Pause media during recording" = "录音时暂停媒体";
+"Automatically pause active media playback when recording starts and resume when recording stops" = "录音开始时自动暂停活跃的媒体播放，录音停止时恢复";
+"Recorder Style" = "录音器样式";
+"Choose your preferred recorder interface" = "选择您偏好的录音器界面";
+"Select how you want the recorder to appear on your screen." = "选择录音器在屏幕上的显示方式。";
+"Notch Recorder" = "刘海录音器";
+"Mini Recorder" = "迷你录音器";
+"Paste Method" = "粘贴方式";
+"Choose how text is pasted" = "选择文本如何粘贴";
+"Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout." = "选择用于粘贴文本的方法。如果您使用非标准键盘布局，请使用 AppleScript。";
+"Use AppleScript Paste Method" = "使用 AppleScript 粘贴方式";
+"App Appearance" = "应用外观";
+"Dock and Menu Bar options" = "Dock 和菜单栏选项";
+"Choose how VoiceInk appears in your system." = "选择 VoiceInk 在系统中的显示方式。";
+"Hide Dock Icon (Menu Bar Only)" = "隐藏 Dock 图标（仅菜单栏）";
+"Audio Cleanup" = "音频清理";
+"Manage recording storage" = "管理录音存储";
+"Startup" = "启动";
+"Launch options" = "启动选项";
+"Choose whether VoiceInk should start automatically when you log in." = "选择是否在登录时自动启动 VoiceInk。";
+"Updates" = "更新";
+"Keep VoiceInk up to date" = "保持 VoiceInk 为最新版本";
+"VoiceInk automatically checks for updates on launch and every other day." = "VoiceInk 会在启动时和每隔一天自动检查更新。";
+"Check for Updates Now" = "立即检查更新";
+"Reset the onboarding process to view the app introduction again." = "重置引导流程以再次查看应用介绍。";
+"Reset Onboarding" = "重置引导";
+"Data Management" = "数据管理";
+"Import or export your settings" = "导入或导出设置";
+"Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export." = "将自定义提示词、强力模式、词汇替换、快捷键和应用偏好导出到备份文件。API密钥不包含在导出中。";
+"Import Settings..." = "导入设置...";
+"Export Settings..." = "导出设置...";
+
+// Dictionary Settings
+"Word Replacements" = "词汇替换";
+"Correct Spellings" = "正确拼写";
+"Train VoiceInk to recognize industry terms, names, and technical words" = "训练VoiceInk识别行业术语、姓名和技术词汇";
+"Automatically replace specific words/phrases with custom formatted text" = "自动将特定词汇/短语替换为自定义格式的文本";
+"Dictionary Settings" = "词典设置";
+"Enhance VoiceInk's transcription accuracy by teaching it your vocabulary" = "通过教授您的词汇来提高VoiceInk的转录准确性";
+"Select Section" = "选择部分";
+"Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement." = "添加词汇以帮助VoiceInk正确识别它们（最多154个字符，约25个词）。独立于AI增强功能工作。";
+"Add word to dictionary" = "添加词汇到词典";
+"Add word" = "添加词汇";
+"Dictionary Items (%d)" = "词典项目 (%d)";
+"Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance." = "开关词汇以优化识别。禁用不必要的词汇以提高本地AI模型性能。";
+"'%@' is already in the dictionary" = "'%@' 已在词典中";
+"Disable word" = "禁用词汇";
+"Enable word" = "启用词汇";
+"Remove word" = "移除词汇";
+"Original" = "原文";
+"Enhanced" = "增强";
+"Audio Duration" = "音频时长";
+"Transcription Model" = "转录模型";
+"Enhancement Model" = "增强模型";
+
+/* Enhancement Settings */
+"Enable Enhancement" = "启用增强";
+"AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc." = "AI增强功能让您可以通过LLM对转录的音频进行后处理，使用适合不同用例（如邮件、摘要、写作等）的不同提示词。";
+"Turn on AI-powered enhancement features" = "开启AI驱动的增强功能";
+"Clipboard Context" = "剪贴板上下文";
+"Use text from clipboard to understand the context" = "使用剪贴板中的文本来理解上下文";
+"Learn what is on the screen to understand the context" = "了解屏幕上的内容以理解上下文";
+"AI Provider Integration" = "AI提供商集成";
+"Editing: %@" = "编辑：%@";
+
+/* 模型相关 */
+"No AI Model Selected" = "未选择AI模型";
+"Local" = "本地";
+"Groq" = "Groq";
+"ElevenLabs" = "ElevenLabs";
+"Deepgram" = "Deepgram";
+"Mistral" = "Mistral";
+"Custom" = "自定义";
+"Native Apple" = "原生Apple";
+"Apple Speech" = "Apple语音";
+"Tiny" = "微型";
+"Base" = "基础";
+"Multilingual" = "多语言";
+"English-only" = "仅英语";
+
+"Edit" = "编辑";
+"Download" = "下载";
+"Copy" = "复制";
+"Copy Enhanced" = "复制增强版";
+"Copy Original" = "复制原文";
+"Show in Finder" = "在访达中显示";
+"Close" = "关闭";
+"Open" = "打开";
+"Refresh" = "刷新";
+"Retry" = "重试";
+"Continue" = "继续";
+"Back" = "返回";
+"Next" = "下一步";
+"Done" = "完成";
+"Paste" = "粘贴";
+"Share" = "分享";
+"Export" = "导出";
+"Import" = "导入";
+
+
+/* Import/Export */
+"Export VoiceInk Settings" = "导出 VoiceInk 设置";
+"Choose a location to save your settings." = "选择保存设置的位置。";
+
+/* Onboarding */
+"Welcome to the Future of Typing" = "欢迎来到打字新时代";
+"A New Way to Type" = "全新的打字方式";
+"Get Started" = "开始使用";
+"Skip Tour" = "跳过教程";
+"Your Writing Assistant" = "您的写作助手";
+"Your Vibe-Coding Assistant" = "您的编程助手";
+"Works Everywhere on Mac with a click" = "在 Mac 上随处可用，一键启动";
+"100% offline & private" = "100% 离线且私密";
+
+/* Audio Input Settings */
+"Input Mode" = "输入模式";
+"Available Devices" = "可用设备";
+"Note: Selecting a device here will override your Mac's system-wide default microphone." = "注意：在此处选择设备将覆盖您 Mac 的系统默认麦克风。";
+"Prioritized Devices" = "优先设备";
+"Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used." = "设备将按优先级顺序使用。如果某个设备不可用，将尝试下一个。如果没有可用的优先设备，将使用系统默认麦克风。";
+"Warning: Using a prioritized device will override your Mac's system-wide default microphone if it becomes active." = "警告：如果优先设备变为活动状态，将覆盖您 Mac 的系统默认麦克风。";
+"No prioritized devices" = "无优先设备";
+"No Audio Devices" = "无音频设备";
+"Connect an audio input device to get started" = "连接音频输入设备以开始使用";
+"Export Successful" = "导出成功";
+"Your settings have been successfully exported to %@." = "您的设置已成功导出到 %@。";
+"Export Error" = "导出错误";
+"Could not save settings to file: %@" = "无法将设置保存到文件：%@";
+"Export Canceled" = "导出已取消";
+"The settings export operation was canceled." = "设置导出操作已取消。";
+"Could not encode settings to JSON: %@" = "无法将设置编码为 JSON：%@";
+"Import VoiceInk Settings" = "导入 VoiceInk 设置";
+"Choose a settings file to import. This will overwrite ALL settings (prompts, power modes, dictionary, general app settings)." = "选择要导入的设置文件。这将覆盖所有设置（提示词、专业模式、词典、常规应用设置）。";
+"Import Error" = "导入错误";
+"Could not get the file URL from the open panel." = "无法从打开面板获取文件 URL。";
+"Version Mismatch" = "版本不匹配";
+"The imported settings file (version %@) is from a different version than your application (version %@). Proceeding with import, but be aware of potential incompatibilities." = "导入的设置文件（版本 %@）与您的应用程序（版本 %@）版本不同。继续导入，但请注意可能存在的不兼容性。";
+"Import Successful" = "导入成功";
+"Settings imported successfully from %@. All settings (including general app settings) have been applied." = "设置已成功从 %@ 导入。所有设置（包括常规应用设置）已应用。";
+"Error importing settings: %@. The file might be corrupted or not in the correct format." = "导入设置时出错：%@。文件可能已损坏或格式不正确。";
+"Import Canceled" = "导入已取消";
+"The settings import operation was canceled." = "设置导入操作已取消。";
+"OK" = "确定";
+"Configure API Keys" = "配置 API 密钥";
+
+/* 设置相关 */
+"Output Format" = "输出格式";
+
+
+/* Audio Transcribe */
+"Transcription Result" = "转录结果";
+"No audio file selected" = "未选择音频文件";
+"Select Audio File" = "选择音频文件";
+"Start Transcription" = "开始转录";
+"Choose Different File" = "选择其他文件";
+"Drop audio or video file here" = "将音频或视频文件拖放到此处";
+"Choose File" = "选择文件";
+"Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV" = "支持的格式：WAV、MP3、M4A、AIFF、MP4、MOV";
+"Processing audio..." = "处理音频中...";
+"Converting to text..." = "转换为文本中...";
+
+/* License */
+"License Management" = "许可证管理";
+"Premium Features Activated" = "高级功能已激活";
+"Trial Active" = "试用已激活";
+"Trial Expired" = "试用已过期";
+"Free Version" = "免费版本";
+"Enter License Key" = "输入许可证密钥";
+"Buy License" = "购买许可证";
+"Start Trial" = "开始试用";
+"License Key" = "许可证密钥";
+"Activate" = "激活";
+"Remove License" = "移除许可证";
+"Activate License" = "激活许可证";
+"Output Format Guide" = "输出格式指南";
+"Automatic text formatting" = "自动文本格式化";
+"Automatic Text Formatting" = "自动文本格式化";
+"Voice Activity Detection" = "语音活动检测";
+
+
+
+/* 图标名称 */
+"Document" = "文档";
+"Textbox" = "文本框";
+"Sealed" = "密封";
+"Chat" = "聊天";
+"Message" = "消息";
+"Email" = "邮件";
+"Meeting" = "会议";
+"Presentation" = "演示";
+"Briefcase" = "公文包";
+"Code" = "代码";
+"Terminal" = "终端";
+"Blog" = "博客";
+"Notes" = "笔记";
+"Book" = "书籍";
+"Bookmark" = "书签";
+"Video" = "视频";
+"Audio" = "音频";
+"Music" = "音乐";
+"Photo" = "照片";
+"Design" = "设计";
+"Add New" = "添加新项";
+
+"Transcription Time" = "转录时间";
+"Enhancement Time" = "增强时间";
+
+/* 错误和状态消息 */
+"Recording failed to start" = "录音启动失败";
+"AI enhancement failed" = "AI 增强失败";
+"No transcription model selected" = "未选择转录模型";
+"Please enter a license key" = "请输入许可证密钥";
+"Invalid license key" = "无效的许可证密钥";
+
+/* 预设模板 */
+"System Default" = "系统默认";
+"Default" = "默认";
+"Default mode to improved clarity and accuracy of the transcription" = "默认模式以改善转录的清晰度和准确性";
+"Assistant" = "助手";
+"AI assistant that provides direct answers to queries" = "提供查询直接答案的 AI 助手";
+"Task List" = "任务列表";
+"Template for converting voice notes into markdown task lists" = "将语音笔记转换为 markdown 任务列表的模板";
+"Quick Notes" = "快速笔记";
+"Tweet" = "推文";
+"Template for crafting engaging tweets and replies with personality" = "制作有个性的吸引人的推文和回复的模板";
+"Daily Journal" = "日记";
+"Template for converting voice notes into structured daily journal entries" = "将语音笔记转换为结构化日记条目的模板";
+"Meeting Notes" = "会议记录";
+"Template for structuring meeting notes and action items" = "结构化会议记录和行动项的模板";
+
+/* 语言相关 */
+"Auto-detect" = "自动检测";
+"English" = "英语";
+"Chinese" = "中文";
+"Spanish" = "西班牙语";
+"French" = "法语";
+"German" = "德语";
+"Japanese" = "日语";
+"Korean" = "韩语";
+"Portuguese" = "葡萄牙语";
+"Arabic" = "阿拉伯语";
+"Russian" = "俄语";
+"Italian" = "意大利语";
+"Afrikaans" = "南非荷兰语";
+"Amharic" = "阿姆哈拉语";
+"Assamese" = "阿萨姆语";
+"Azerbaijani" = "阿塞拜疆语";
+"Bashkir" = "巴什基尔语";
+"Belarusian" = "白俄罗斯语";
+"Bulgarian" = "保加利亚语";
+"Bengali" = "孟加拉语";
+"Hindi" = "印地语";
+"Dutch" = "荷兰语";
+"Thai" = "泰语";
+"Vietnamese" = "越南语";
+"Turkish" = "土耳其语";
+"Swedish" = "瑞典语";
+"Polish" = "波兰语";
+"Norwegian" = "挪威语";
+"Danish" = "丹麦语";
+"Finnish" = "芬兰语";
+"Czech" = "捷克语";
+"Hungarian" = "匈牙利语";
+"Romanian" = "罗马尼亚语";
+"Croatian" = "克罗地亚语";
+"Slovak" = "斯洛伐克语";
+"Ukrainian" = "乌克兰语";
+"Greek" = "希腊语";
+"Hebrew" = "希伯来语";
+"Farsi" = "波斯语";
+"Urdu" = "乌尔都语";
+"Indonesian" = "印尼语";
+"Malay" = "马来语";
+"Tagalog" = "他加禄语";
+"Cantonese" = "粤语";
+
+/* 欢迎设置页面 */
+"Welcome to VoiceInk" = "欢迎使用 VoiceInk";
+"Complete the setup to get started" = "完成设置以开始使用";
+"Set Keyboard Shortcut" = "设置键盘快捷键";
+"Use VoiceInk anywhere with a shortcut." = "使用快捷键在任何地方使用 VoiceInk。";
+"Enable Accessibility" = "启用辅助功能";
+"Paste transcribed text at your cursor." = "在光标位置粘贴转录文本。";
+"Enable Screen Recording" = "启用屏幕录制";
+"Get better transcriptions with screen context." = "通过屏幕上下文获得更好的转录效果。";
+"Download Model" = "下载模型";
+"Choose an AI model to start transcribing." = "选择 AI 模型开始转录。";
+"Need help? Check the Help menu for support options" = "需要帮助？请查看帮助菜单获取支持选项";
+
+"Active" = "激活";
+
+"Custom Device" = "自定义设备";
+"Prioritized" = "优先级";
+"Use system's default input device" = "使用系统默认输入设备";
+"Select a specific input device" = "选择特定输入设备";
+"Set up device priority order" = "设置设备优先级顺序";
+
+
+/* 词汇替换页面 */
+"Define word replacements to automatically replace specific words or phrases" = "定义词汇替换以自动替换特定单词或短语";
+"Enable automatic word replacement after transcription" = "启用转录后自动词汇替换";
+"No Replacements" = "无替换";
+"Add word replacements to automatically replace text during AI enhancement." = "添加词汇替换以在AI增强期间自动替换文本";
+"Add Replacement" = "添加替换";
+"Enable" = "启用";
+
+/* 模型下载页面 */
+"Download AI Model" = "下载 AI 模型";
+"We'll download the optimized model to get you started." = "我们将下载优化的模型以帮助您开始使用。";
+"Downloading..." = "下载中...";
+"Set as Default" = "设为默认";
+
+"Add Power Mode" = "添加专业模式";
+"Edit Default Power Mode" = "编辑默认专业模式";
+"Edit Power Mode" = "编辑专业模式";
+"Default Power Mode" = "默认专业模式";
+"Custom Power Modes" = "自定义专业模式";
+"No custom power modes" = "无自定义专业模式";
+"Create a new mode for specific apps/websites" = "为特定应用程序/网站创建新模式";
+"Power Mode is disabled" = "专业模式已禁用";
+"Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website." = "启用专业模式以创建根据当前应用程序或网站自动应用的上下文特定配置。";
+"Enable Power Mode" = "启用专业模式";
+"No Power Modes" = "无专业模式";
+"Add customized power modes for different contexts" = "为不同上下文添加自定义专业模式";
+"Fallback power mode" = "默认专业模式";
+"Select Power Mode" = "选择专业模式";
+
+/* 历史记录页面 */
+"No transcriptions found" = "未找到转录记录";
+"Your history will appear here" = "您的历史记录将显示在这里";
+
+
+"Create custom modes that automatically apply when using specific apps/websites." = "创建在使用特定应用程序/网站时自动应用的自定义模式。";
+"Cannot Save Power Mode" = "无法保存专业模式";
+
+/* 专业模式验证错误 */
+"Power mode name cannot be empty." = "专业模式名称不能为空。";
+"A power mode with the name" = "名为";
+"already exists." = "的专业模式已存在。";
+"You must add at least one application or website." = "您必须添加至少一个应用程序或网站。";
+"The app" = "应用程序";
+"is already configured in the" = "已在";
+"power mode." = "专业模式中配置。";
+"The website" = "网站";
+"The file might be corrupted or not in the correct format." = "文件可能已损坏或格式不正确。";
+
+"Your settings have been successfully exported to" = "您的设置已成功导出到";
+"Could not save settings to file:" = "无法将设置保存到文件：";
+"Could not encode settings to JSON:" = "无法将设置编码为JSON：";
+"Error importing settings:" = "导入设置时出错：";
+
+/* 其他界面文本 */
+"Define a word or phrase to be automatically replaced during AI enhancement." = "定义在AI增强过程中自动替换的单词或短语。";
+"VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts." = "VoiceInk可以自动删除转录历史中的音频文件，同时保留文本转录。";
+"API key for this service is missing. Please configure it in the settings." = "此服务的API密钥缺失。请在设置中配置。";
+
+
+/* VoiceInk Pro页面 */
+"Thank you for supporting VoiceInk" = "感谢您支持 VoiceInk";
+"Changelog" = "更新日志";
+"Discord" = "Discord";
+"Email Support" = "邮件支持";
+"Docs" = "文档";
+"Roadmap" = "路线图";
+"License Active" = "许可证已激活";
+"You can use VoiceInk Pro on all your personal devices" = "您可以在所有个人设备上使用 VoiceInk Pro";
+"Transcribe what you say to text instantly with AI" = "使用 AI 即时将您说的话转录为文本";
+"Manage license and billing" = "管理许可证和账单";
+"Deactivate License" = "停用许可证";
+
+/* AI模型页面 */
+"Default Model" = "默认模型";
+"Transcription Language" = "转录语言";
+"Select Language" = "选择语言";
+"Current model:" = "当前模型：";
+"This model supports multiple languages. Select a specific language or auto-detect(if available)" = "此模型支持多种语言。选择特定语言或自动检测（如果可用）";
+"Recommended" = "推荐";
+"Cloud" = "云端";
+"Speed" = "速度";
+"Accuracy" = "准确性";
+"Base model optimized for English, good balance between speed and accuracy" = "针对英语优化的基础模型，在速度和准确性之间保持良好平衡";
+"Quantized version of Large v3 Turbo, faster with slightly lower accuracy" = "Large v3 Turbo 的量化版本，速度更快，准确性略低";
+"Large model v3 Turbo, faster than v3 with similar accuracy" = "Large v3 Turbo 模型，比 v3 更快，准确性相似";
+"Setup Required" = "需要设置";
+"Configure" = "配置";
+
+"Enhance your transcriptions with AI" = "使用 AI 增强您的转录";
+"Enter your API Key" = "输入您的 API 密钥";
+"Verify and Save" = "验证并保存";
+"Free" = "免费";
+"Get API Key" = "获取 API 密钥";
+"Right-click on prompts to edit or delete" = "右键单击提示进行编辑或删除";
+
+/* 缺失的翻译 */
+"None" = "无";
+"PRO" = "专业版";
+"Error" = "错误";
+"Warning" = "警告";
+"Success" = "成功";
+"Info" = "信息";
+"Please select a model" = "请选择一个模型";
+"Please check your API key" = "请检查您的API密钥";
+"Network error" = "网络错误";
+"Invalid file format" = "无效的文件格式";
+"File not found" = "文件未找到";
+"Permission denied" = "权限被拒绝";
+"General" = "通用";
+"Hotkeys" = "热键";
+"Appearance" = "外观";
+"About" = "关于";
+"Version" = "版本";
+"Build" = "构建";
+"Contact" = "联系";
+"Support" = "支持";
+"Documentation" = "文档";
+"Ready" = "就绪";
+"Loading" = "加载中";
+"Processing" = "处理中";
+"Idle" = "空闲";
+"Connected" = "已连接";
+"Disconnected" = "已断开";
+"Available" = "可用";
+"Unavailable" = "不可用";
+"Just now" = "刚刚";
+"Minutes ago" = "分钟前";
+"Hours ago" = "小时前";
+"Days ago" = "天前";
+"Weeks ago" = "周前";
+"Months ago" = "月前";
+"Years ago" = "年前";
+"Select File" = "选择文件";
+"Select Folder" = "选择文件夹";
+"Drag and drop files here" = "将文件拖放到此处";
+"Supported formats" = "支持的格式";
+"File size" = "文件大小";
+"Duration" = "时长";
+"Microphone" = "麦克风";
+"Speaker" = "扬声器";
+"System Audio" = "系统音频";
+"Input Device" = "输入设备";
+"Output Device" = "输出设备";
+"Volume" = "音量";
+"Sample Rate" = "采样率";
+"Channels" = "声道";
+"Record Shortcut" = "录制快捷键";
+"Clear Shortcut" = "清除快捷键";
+"Shortcut already in use" = "快捷键已被使用";
+"Invalid shortcut" = "无效的快捷键";
+"Upgrade to Pro" = "升级到专业版";
+"Pro Features" = "专业功能";
+"Already purchased?" = "已经购买？";
+"Restore Purchase" = "恢复购买";
+"Purchase successful" = "购买成功";
+"Purchase failed" = "购买失败";
+"Search" = "搜索";
+"Filter" = "筛选";
+"Sort by" = "排序方式";
+"Name" = "名称";
+"Date" = "日期";
+"Size" = "大小";
+"Type" = "类型";
+"Ascending" = "升序";
+"Descending" = "降序";
+"Select All" = "全选";
+"Deselect All" = "取消全选";
+"Invert Selection" = "反选";
+"Clear" = "清除";
+"Reset" = "重置";
+"Apply" = "应用";
+"Yes" = "是";
+"No" = "否";
+"Confirm" = "确认";
+"Are you sure?" = "您确定吗？";
+"This action cannot be undone" = "此操作无法撤销";
+
+/* Common UI Actions */
+"Set Shortcut" = "设置快捷键";
+"Enable Access" = "启用访问";
+"Saved" = "已保存";
+"Remove" = "移除";
+
+/* New Discovered Strings */
+"Power mode name cannot be empty." = "专业模式名称不能为空。";
+"You must add at least one application or website." = "您必须添加至少一个应用程序或网站。";
+"Train VoiceInk to recognize industry terms, names, and technical words" = "训练VoiceInk识别行业术语、姓名和技术词汇";
+"API key for this service is missing. Please configure it in the settings." = "此服务的API密钥缺失。请在设置中配置。";
+
+/* Status and UI Messages */
+"Transcribing" = "转录中";
+"No Audio Detected" = "未检测到音频";
+"Press ESC again to cancel recording" = "再次按ESC键取消录制";
+"Recommended" = "推荐";
+"Local" = "本地";
+"Cloud" = "云端";
+"Custom" = "自定义";
+"Multilingual" = "多语言";
+"Launch at login" = "登录时启动";
+"Thank you for supporting VoiceInk" = "感谢您支持VoiceInk";
+
+/* Model Selection and Languages */
+"Albanian" = "阿尔巴尼亚语";
+"Armenian" = "亚美尼亚语";
+"Basque" = "巴斯克语";
+"Bosnian" = "波斯尼亚语";
+"Breton" = "布列塔尼语";
+"Catalan" = "加泰罗尼亚语";
+"Estonian" = "爱沙尼亚语";
+"Faroese" = "法罗语";
+"Galician" = "加利西亚语";
+"Georgian" = "格鲁吉亚语";
+"Gujarati" = "古吉拉特语";
+"Haitian Creole" = "海地克里奥尔语";
+"Hausa" = "豪萨语";
+"Hawaiian" = "夏威夷语";
+"Icelandic" = "冰岛语";
+"Javanese" = "爪哇语";
+"Kannada" = "卡纳达语";
+"Kazakh" = "哈萨克语";
+"Khmer" = "高棉语";
+"Lao" = "老挝语";
+"Latin" = "拉丁语";
+"Latvian" = "拉脱维亚语";
+"Lingala" = "林加拉语";
+"Lithuanian" = "立陶宛语";
+"Luxembourgish" = "卢森堡语";
+"Macedonian" = "马其顿语";
+"Malagasy" = "马拉加斯语";
+"Malayalam" = "马拉雅拉姆语";
+"Maltese" = "马耳他语";
+"Maori" = "毛利语";
+"Marathi" = "马拉地语";
+"Mongolian" = "蒙古语";
+"Myanmar" = "缅甸语";
+"Nepali" = "尼泊尔语";
+"Norwegian Nynorsk" = "挪威尼诺斯克语";
+"Occitan" = "奥克语";
+"Pashto" = "普什图语";
+"Persian" = "波斯语";
+"Punjabi" = "旁遮普语";
+"Sanskrit" = "梵语";
+
+/* AI Provider Messages */
+"Server URL" = "服务器URL";
+"模型" = "模型";
+"刷新" = "刷新";
+"已连接" = "已连接";
+"Custom Provider Configuration" = "自定义提供商配置";
+"Requires OpenAI-compatible API endpoint" = "需要OpenAI兼容的API端点";
+
+/* Dictionary and Word Replacement */
+"Word Replacements" = "词汇替换";
+"Correct Spellings" = "拼写纠正";
+"Original Text" = "原文";
+"替换文本" = "替换文本";
+"验证并保存" = "验证并保存";
+
+/* Error Messages and Status Updates */
+"Loading transcription model..." = "加载转录模型...";
+"Processing audio file for transcription..." = "处理音频文件以进行转录...";
+"Transcribing audio..." = "转录音频中...";
+"Enhancing transcription with AI..." = "使用AI增强转录...";
+"Transcription completed!" = "转录完成！";
+"Transcription was cancelled" = "转录已取消";
+"AI provider not configured. Please check your API key." = "AI提供商未配置。请检查您的API密钥。";
+"No text to enhance." = "没有要增强的文本。";
+"Invalid response from AI provider." = "AI提供商返回的响应无效。";
+"AI enhancement failed to process the text." = "AI增强无法处理文本。";
+"Network connection failed. Check your internet." = "网络连接失败。请检查您的互联网连接。";
+
+/* Onboarding and Tutorial Messages */
+"Enable your microphone to start speaking and converting your voice to text instantly." = "启用麦克风开始说话，立即将语音转换为文字。";
+"Microphone Selection" = "麦克风选择";
+"Select the audio input device you want to use with VoiceInk." = "选择您想要与VoiceInk一起使用的音频输入设备。";
+"Allow VoiceInk to help you type anywhere in your Mac." = "允许VoiceInk帮助您在Mac上的任何地方输入。";
+"Screen Recording" = "屏幕录制";
+"This helps to improve the accuracy of transcription." = "这有助于提高转录的准确性。";
+"Set up a keyboard shortcut to quickly access VoiceInk from anywhere." = "设置键盘快捷键以从任何地方快速访问VoiceInk。";
+"No microphones found" = "未找到麦克风";
+"Microphone:" = "麦克风：";
+"For best results, using your Mac's built-in microphone is recommended." = "为了获得最佳效果，建议使用Mac的内置麦克风。";
+"Shortcut:" = "快捷键：";
+"Try It Out!" = "试试看！";
+"Let's test your VoiceInk setup." = "让我们测试您的VoiceInk设置。";
+"Your Shortcut" = "您的快捷键";
+"Complete Setup" = "完成设置";
+"Click here and start speaking..." = "点击这里开始说话...";
+"Click the text area on the right" = "点击右侧的文本区域";
+"Press your shortcut key" = "按下您的快捷键";
+"Speak something" = "说点什么";
+"Press your shortcut key again" = "再次按下您的快捷键";
+
+/* Additional Error and Status Messages */
+"mic" = "麦克风";
+"headphones" = "耳机";
+"accessibility" = "辅助功能";
+"keyboard" = "键盘";
+"waveform" = "波形";
+"Failed to activate license on this device." = "无法在此设备上激活许可证。";
+"License validation failed." = "许可证验证失败。";
+"This license has reached its maximum number of activations." = "此许可证已达到最大激活次数。";
+"This license does not require activation." = "此许可证不需要激活。";
+"Failed to load the transcription model." = "无法加载转录模型。";
+"Failed to transcribe the audio." = "无法转录音频。";
+"The core transcription engine failed." = "核心转录引擎失败。";
+"Failed to unzip the downloaded Core ML model." = "无法解压下载的Core ML模型。";
+"An unknown error occurred." = "发生未知错误。";
+"Try selecting a different model or redownloading the current model." = "尝试选择其他模型或重新下载当前模型。";
+"Check the default model try again. If the problem persists, try a different model." = "检查默认模型后重试。如果问题仍然存在，请尝试其他模型。";
+"This can happen due to an issue with the audio recording or insufficient system resources. Please try again, or restart the app." = "这可能是由于音频录制问题或系统资源不足造成的。请重试或重启应用。";
+"The downloaded Core ML model archive might be corrupted. Try deleting the model and downloading it again. Check available disk space." = "下载的Core ML模型存档可能已损坏。尝试删除模型并重新下载。检查可用磁盘空间。";
+"Please restart the application. If the problem persists, contact support." = "请重启应用程序。如果问题仍然存在，请联系支持。";
+
+/* Audio and File Processing */
+"The audio file is invalid or corrupted" = "音频文件无效或已损坏";
+"Failed to convert the audio format" = "无法转换音频格式";
+"Failed to export the processed audio" = "无法导出处理后的音频";
+"The audio format is not supported" = "不支持此音频格式";
+"Failed to extract audio samples" = "无法提取音频样本";
+"Last transcription copied" = "最后转录已复制";
+"Failed to copy transcription" = "复制转录失败";
+"Failed to set input device: \\(status)" = "设置输入设备失败：\\(status)";
+
+/* Ollama Service Messages */
+"Invalid Ollama server URL" = "无效的Ollama服务器URL";
+"Ollama service is not available" = "Ollama服务不可用";
+"Invalid response from Ollama server" = "Ollama服务器返回无效响应";
+"Selected model not found" = "未找到所选模型";
+"Ollama server error" = "Ollama服务器错误";
+"System prompt is required" = "需要系统提示";
+
+/* Cloud Transcription Service */
+"The model provider is not supported by this service." = "此服务不支持该模型提供商。";
+"The provided API key is invalid." = "提供的API密钥无效。";
+"The audio file to transcribe could not be found." = "找不到要转录的音频文件。";
+"The API request failed with status code \\(statusCode): \\(message)" = "API请求失败，状态码\\(statusCode)：\\(message)";
+"The API returned an empty or invalid response." = "API返回空响应或无效响应。";
+"Failed to encode the request body." = "无法编码请求体。";
+
+/* Native Apple Transcription */
+"en-US" = "英语(美国)";
+"es-ES" = "西班牙语(西班牙)";
+"fr-FR" = "法语(法国)";
+"de-DE" = "德语(德国)";
+"ar-SA" = "阿拉伯语(沙特阿拉伯)";
+"it-IT" = "意大利语(意大利)";
+"ja-JP" = "日语(日本)";
+"ko-KR" = "韩语(韩国)";
+"pt-BR" = "葡萄牙语(巴西)";
+"yue-CN" = "粤语(中国)";
+"Transcription failed using SpeechAnalyzer." = "使用SpeechAnalyzer转录失败。";
+"The selected language is not supported by SpeechAnalyzer." = "SpeechAnalyzer不支持所选语言。";
+"Invalid model type provided for Native Apple transcription." = "为原生Apple转录提供的模型类型无效。";
+"Failed to allocate assets for the selected locale." = "无法为所选区域设置分配资源。";
+
+/* Deepgram Service */
+"smart_format" = "智能格式";
+"punctuate" = "标点符号";
+"paragraphs" = "段落";
+
+/* AI Service Model Names */
+"qwen-3-32b" = "千问-3-32b";
+"qwen/qwen3-32b" = "千问/qwen3-32b";
+"gemini-2.0-flash-lite" = "双子座-2.0-闪电精简版";
+"claude-sonnet-4-0" = "克劳德-奏鸣曲-4-0";
+"gpt-4.1-mini" = "GPT-4.1-迷你版";
+"mistral-large-latest" = "Mistral-大型-最新版";
+"scribe_v1" = "抄写员_v1";
+"openai/gpt-4o" = "OpenAI/GPT-4o";
+"user" = "用户";
+"system" = "系统";
+"You are a test system." = "您是一个测试系统。";
+
+/* Download and Progress Messages */
+"Downloading Core ML Model for \\(modelName)" = "正在下载\\(modelName)的Core ML模型";
+"Downloading \\(modelName) Model" = "正在下载\\(modelName)模型";
+"\\(Int(totalProgress * 100))%" = "\\(Int(totalProgress * 100))%";
+"%.1f GB" = "%.1f GB";
+
+/* Enhancement Messages */
+"Enhancement failed: \\(error)" = "增强失败：\\(error)";
+"Transcription Failed: \\(fullErrorText)" = "转录失败：\\(fullErrorText)";
+
+/* Multi-language Greetings and Prompts */
+"Hello, how are you doing? Nice to meet you." = "你好，你好吗？很高兴见到你。";
+"नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।" = "नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।";
+"নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।" = "নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।";
+"こんにちは、お元気ですか？お会いできて嬉しいです。" = "こんにちは、お元気ですか？お会いできて嬉しいです。";
+"안녕하세요, 잘 지내시나요? 만나서 반갑습니다." = "안녕하세요, 잘 지내시나요? 만나서 반갑습니다.";
+"你好，最近好吗？见到你很高兴。" = "你好，最近好吗？见到你很高兴。";
+"สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ" = "สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ";
+"Xin chào, bạn khỏe không? Rất vui được gặp bạn." = "Xin chào, bạn khỏe không? Rất vui được gặp bạn.";
+"你好，最近點呀？見到你好開心。" = "你好，最近點呀？見到你好開心。";
+"¡Hola, ¿cómo estás? Encantado de conocerte." = "¡Hola, ¿cómo estás? Encantado de conocerte.";
+"Bonjour, comment allez-vous? Ravi de vous rencontrer." = "Bonjour, comment allez-vous? Ravi de vous rencontrer.";
+"Hallo, wie geht es dir? Schön dich kennenzulernen." = "Hallo, wie geht es dir? Schön dich kennenzulernen.";
+"Ciao, come stai? Piacere di conoscerti." = "Ciao, come stai? Piacere di conoscerti.";
+"Olá, como você está? Prazer em conhecê-lo." = "Olá, como você está? Prazer em conhecê-lo.";
+"Здравствуйте, как ваши дела? Приятно познакомиться." = "Здравствуйте, как ваши дела? Приятно познакомиться.";
+"default" = "默认";
+
+/* Regex Patterns */
+"^[,\\.!\\?;:\\s]+" = "^[,\\.!\\?;:\\s]+";
+"[,\\.!\\?;:\\s]+$" = "[,\\.!\\?;:\\s]+$";
+
+/* Number Placeholder */
+"\\(number)" = "\\(number)";
+
+/* Word Replacement Settings */
+"Enter word or phrase to replace" = "输入要替换的单词或短语";
+"Replacement:" = "替换为：";
+"Original:" = "原文：";
+"Add Word Replacement" = "添加词汇替换";
+"Replacement Text" = "替换文本";
+"Remove replacement" = "移除替换";
+
+
+
+
+"Not Set" = "未设置";
+"Space" = "空格键";
+"Enter" = "回车键";
+"Unknown" = "未知";
+"All Languages" = "所有语言";
+"or" = "或";
+"Language: English" = "语言：英语";
+
+"Whisper Large v3 Turbo model with Groq's lightning-speed inference" = "Whisper Large v3 Turbo 模型，具有 Groq 的闪电速度推理";
+"Cloud Model" = "云端模型";
+
+"Default system prompt for improving clarity and accuracy of transcriptions" = "用于提高转录清晰度和准确性的默认系统提示";
+"Casual chat-style formatting" = "轻松聊天风格格式化";
+"Template for converting casual messages into professional email format" = "将随意消息转换为专业邮件格式的模板";
+"Template for converting voice notes into quick, organized notes" = "将语音笔记转换为快速有序笔记的模板";
+
+
+
+
+
+"Enable automatic audio cleanup" = "启用自动音频清理";
+"Retention Period" = "保留期限";
+"Keep audio files for" = "保留音频文件";
+"7 days" = "7 天";
+"Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact." = "超过选定期限的音频文件将自动删除，同时保持文本转录完整。";
+"Run Cleanup Now" = "立即清理";
+"Analyzing..." = "分析中...";
+
+"Launch at login" = "登录时启动";
+
+/* 音频保留期 */
+"1 day" = "1 天";
+"3 days" = "3 天";
+"14 days" = "14 天";
+"30 days" = "30 天";
+
+"Prompt:" = "提示：";
+"Manage AI Providers" = "管理AI提供商";
+"AI Provider:" = "AI提供商：";
+"Manage Models" = "管理模型";
+"Model:" = "模型：";
+
+/* 语言和自动检测 */
+"Language:" = "语言：";
+
+/* 提示编辑对话框 */
+"Editing:" = "编辑：";
+
+/* 专业模式配置 */
+"Default Configuration" = "默认配置";
+
+
+"View the introduction again" = "再次查看介绍";
+
+
+/* 专业模式详细描述 */
+"Automatically apply custom configurations based on the app/website you are using" = "根据您使用的应用程序/网站自动应用自定义配置";
+
+/* 自定义模型对话框 */
+"Add Custom Model" = "添加自定义模型";
+"Edit Custom Model" = "编辑自定义模型";
+"Only OpenAI-compatible transcription APIs are supported" = "仅支持OpenAI兼容的转录API";
+"Display Name" = "显示名称";
+"API Endpoint" = "API端点";
+"API Key" = "API密钥";
+"Model Name" = "模型名称";
+"My Custom Model" = "我的自定义模型";
+"your-api-key" = "您的API密钥";
+"whisper-1" = "whisper-1";
+"large-v3-turbo" = "large-v3-turbo";
+"Multilingual Model" = "多语言模型";
+"Add Model" = "添加模型";
+"Edit Model" = "编辑模型";
+"Update Model" = "更新模型";
+
+
+/* Voice Activity Detection */
+"Voice Activity Detection (VAD)" = "语音活动检测 (VAD)";
+
+
+/* 模型描述 - 保持一致性 */
+"Built-in" = "内置";
+"Uses the native Apple Speech framework for transcription. Requires macOS 26." = "使用原生Apple语音框架进行转录。需要macOS 26。";
+"Tiny model, fastest, least accurate" = "Tiny模型，最快，准确性最低";
+"Tiny model optimized for English, fastest, least accurate" = "针对英语优化的Tiny模型，最快，准确性最低";
+"Base model, good balance between speed and accuracy, supports multiple languages" = "基础模型，在速度和准确性之间保持良好平衡，支持多种语言";
+"ElevenLabs' Scribe model for fast and accurate transcription." = "ElevenLabs的Scribe模型，快速准确的转录。";
+"Deepgram's Nova model for fast, accurate, and cost-effective transcription." = "Deepgram的Nova模型，快速、准确且经济高效的转录。";
+"Mistral's latest SOTA transcription model." = "Mistral最新的SOTA转录模型。";
+
+/* 遗漏的模型描述 */
+"Large model v2, slower than Medium but more accurate" = "Large v2模型，比Medium慢但更准确";
+"Large model v3, very slow but most accurate" = "Large v3模型，非常慢但最准确";
+
+/* 新增的本地化键 */
+"API Endpoint URL" = "API端点URL";
+"API Key Configuration" = "API密钥配置";
+"Performance Analysis" = "性能分析";

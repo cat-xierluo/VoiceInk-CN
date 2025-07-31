@@ -111,14 +111,14 @@ Text(isPerformingCleanup ? "Analyzing..." : NSLocalizedString("Run Cleanup Now",
                         if cleanupInfo.fileCount > 0 {
                             Text("This will delete \(cleanupInfo.fileCount) audio files older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
                             Text("Total size to be freed: \(AudioCleanupManager.shared.formatFileSize(cleanupInfo.totalSize))")
-                            Text("The text transcripts will be preserved.")
+                            Text(NSLocalizedString("The text transcripts will be preserved.", comment: "The text transcripts will be preserved."))
                         } else {
                             Text("No audio files found that are older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
                         }
                     }
                 }
-                .alert("Cleanup Complete", isPresented: $showResultAlert) {
-                    Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) { }
+                .alert(NSLocalizedString("Cleanup Complete", comment: "Cleanup Complete"), isPresented: $showResultAlert) {
+                    Button("OK", role: .cancel) { }
                 } message: {
                     if cleanupResult.errorCount > 0 {
                         Text("Successfully deleted \(cleanupResult.deletedCount) audio files. Failed to delete \(cleanupResult.errorCount) files.")

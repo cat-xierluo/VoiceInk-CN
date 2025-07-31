@@ -16,7 +16,7 @@ Text(NSLocalizedString("Output Format", comment: "Output Format"))
                 
                 InfoTip(
 title: NSLocalizedString("Output Format Guide", comment: "Output Format Guide"),
-                    message: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.",
+                    message: NSLocalizedString(NSLocalizedString("Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.", comment: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands."), comment: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands."),
                     learnMoreURL: "https://cookbook.openai.com/examples/whisper_prompting_guide#comparison-with-gpt-prompting"
                 )
                 
@@ -74,7 +74,7 @@ Text(NSLocalizedString("Automatic text formatting", comment: "Automatic text for
                 
                 InfoTip(
 title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic Text Formatting"),
-                    message: "Apply intelligent text formatting to break large block of text into paragraphs."
+                    message: NSLocalizedString("Apply intelligent text formatting to break large block of text into paragraphs.", comment: "Apply intelligent text formatting to break large block of text into paragraphs.")
                 )
             }
 
@@ -86,7 +86,7 @@ Text(NSLocalizedString("Voice Activity Detection (VAD)", comment: "Voice Activit
                 
                 InfoTip(
 title: NSLocalizedString("Voice Activity Detection", comment: "Voice Activity Detection"),
-                    message: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models."
+                    message: NSLocalizedString("Detects speech segments and filters out silence to reduce hallucinations in local Whisper models.", comment: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models.")
                 )
             }
 

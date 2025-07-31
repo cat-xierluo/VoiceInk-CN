@@ -101,7 +101,7 @@ struct PermissionCard: View {
                         .fill(isGranted ? Color.green.opacity(0.15) : Color.orange.opacity(0.15))
                         .frame(width: 44, height: 44)
                     
-                    Image(systemName: isGranted ? "\(icon).fill" : icon)
+                    Image(systemName: isGranted ? NSLocalizedString("\(icon).fill", comment: "\(icon).fill") : icon)
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(isGranted ? .green : .orange)
                         .symbolRenderingMode(.hierarchical)

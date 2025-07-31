@@ -38,21 +38,21 @@ class WhisperPrompt: ObservableObject {
         "it": "Ciao, come stai? Piacere di conoscerti.",
         "pt": "Olá, como você está? Prazer em conhecê-lo.",
         "ru": "Здравствуйте, как ваши дела? Приятно познакомиться.",
-        "pl": "Cześć, jak się masz? Miło cię poznać.",
-        "nl": "Hallo, hoe gaat het? Aangenaam kennis te maken.",
-        "tr": "Merhaba, nasılsın? Tanıştığımıza memnun oldum.",
+        "pl": NSLocalizedString("Cześć, jak się masz? Miło cię poznać.", comment: "Cześć, jak się masz? Miło cię poznać."),
+        "nl": NSLocalizedString("Hallo, hoe gaat het? Aangenaam kennis te maken.", comment: "Hallo, hoe gaat het? Aangenaam kennis te maken."),
+        "tr": NSLocalizedString("Merhaba, nasılsın? Tanıştığımıza memnun oldum.", comment: "Merhaba, nasılsın? Tanıştığımıza memnun oldum."),
         
         // Middle Eastern Languages
-        "ar": "مرحباً، كيف حالك؟ سعيد بلقائك.",
-        "fa": "سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم.",
-        "he": ",שלום, מה שלומך? נעים להכיר",
+        "ar": NSLocalizedString("مرحباً، كيف حالك؟ سعيد بلقائك.", comment: "مرحباً، كيف حالك؟ سعيد بلقائك."),
+        "fa": NSLocalizedString("سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم.", comment: "سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم."),
+        "he": NSLocalizedString(",שלום, מה שלומך? נעים להכיר", comment: ",שלום, מה שלומך? נעים להכיר"),
         
         // South Asian Languages
-        "ta": "வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி.",
-        "te": "నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం.",
-        "ml": "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.",
-        "kn": "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.",
-        "ur": "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔",
+        "ta": NSLocalizedString("வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி.", comment: "வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி."),
+        "te": NSLocalizedString("నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం.", comment: "నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం."),
+        "ml": NSLocalizedString("നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.", comment: "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം."),
+        "kn": NSLocalizedString("ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.", comment: "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ."),
+        "ur": NSLocalizedString("السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔", comment: "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔"),
         
         // Default prompt for unsupported languages
         "default": ""

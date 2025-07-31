@@ -11,7 +11,7 @@ struct AppPickerSheet: View {
         VStack(spacing: 16) {
             // Header
             HStack {
-                Text("Select Applications")
+                Text(NSLocalizedString("Select Applications", comment: "Select Applications"))
                     .font(.headline)
                 
                 Spacer()
@@ -28,7 +28,7 @@ Button(NSLocalizedString("Done", comment: "Done")) {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-                TextField("Search applications...", text: $searchText)
+                TextField(NSLocalizedString("Search applications...", comment: "Search applications..."), text: $searchText)
                     .textFieldStyle(.roundedBorder)
                 if !searchText.isEmpty {
                     Button(action: { searchText = "" }) {
