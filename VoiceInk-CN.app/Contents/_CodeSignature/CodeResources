@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		fIq1UAy5NiCYpQXOTh+Ldsfx+ZY=
+		KFm++d9pjIt2Y7XknC4kXRFmvCM=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
@@ -163,6 +163,10 @@
 		<data>
 		SNCSAFWQcDlUjkBokWeSOlwYOLc=
 		</data>
+		<key>Resources/SettingsView.swift.backup</key>
+		<data>
+		rLQeg5gduBwJa7KWkkFsQ3cwjNY=
+		</data>
 		<key>Resources/arcURL.scpt</key>
 		<data>
 		5athbUvbetn7TY+GwT2J1546lxI=
@@ -282,7 +286,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jqYbBlqYfYdlIa2bX4bAGjvXZaQICeDQ3z08re1j4g0=
+			65/6qlTYQff7+rugwFTOt/i4LuKXIdyvLL6mNwB4VLg=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
@@ -446,6 +450,13 @@
 			<key>hash2</key>
 			<data>
 			gYS6la556ODcJtFO6APCzwPYf3Z2Sds4OtTAzIstFks=
+			</data>
+		</dict>
+		<key>Resources/SettingsView.swift.backup</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			skdtWqYYVPCxnfKtp7E+C7Z9CpYZ+2vhydJ2nn/MZPE=
 			</data>
 		</dict>
 		<key>Resources/arcURL.scpt</key>

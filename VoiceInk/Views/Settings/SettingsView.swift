@@ -24,7 +24,7 @@ struct SettingsView: View {
             VStack(spacing: 24) {
                 // Hotkey Selection Section
                 SettingsSection(
-                    icon: "command.circle",
+                    icon: "gearshape.fill",
 title: NSLocalizedString("VoiceInk Shortcut", comment: "VoiceInk Shortcut"),
 subtitle: NSLocalizedString("Choose how you want to trigger VoiceInk", comment: "Choose how you want to trigger VoiceInk")
                 ) {
@@ -202,7 +202,7 @@ subtitle: NSLocalizedString("Manage recording storage", comment: "Manage recordi
                 
                 // Startup Section
                 SettingsSection(
-                    icon: NSLocalizedString("power", comment: "power"),
+                    icon: "power",
 title: NSLocalizedString("Startup", comment: "Startup"),
 subtitle: NSLocalizedString("Launch options", comment: "Launch options")
                 ) {
@@ -210,8 +210,11 @@ subtitle: NSLocalizedString("Launch options", comment: "Launch options")
 Text(NSLocalizedString("Choose whether VoiceInk should start automatically when you log in.", comment: "Choose whether VoiceInk should start automatically when you log in."))
                             .settingsDescription()
                         
-                        LaunchAtLogin.Toggle()
-                            .toggleStyle(.switch)
+                                                Toggle(NSLocalizedString("Launch at Login", comment: "Launch at Login"), isOn: .init(
+                            get: { LaunchAtLogin.isEnabled },
+                            set: { LaunchAtLogin.isEnabled = $0 }
+                        ))
+                        .toggleStyle(.switch)
                     }
                 }
                 

@@ -19,8 +19,8 @@
 
 ## 🇨🇳 中文本地化工作
 
-本项目在原版基础上进行了**完整的中文本地化改造**：- **🔤 界面本地化**
-
+本项目在原版基础上进行了**完整的中文本地化改造**：
+- **🔤 界面本地化**
 - **💼 Pro版本配置**
 
 ### 直接使用
@@ -52,11 +52,3 @@
 ### 核心技术
 
 - [whisper.cpp](https://github.com/ggerganov/whisper.cpp) - OpenAI Whisper模型的高性能推理
-
-### 重要依赖
-
-- [Sparkle](https://github.com/sparkle-project/Sparkle) - 应用更新框架
-- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - 自定义快捷键
-- [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - 开机启动功能
-- [MediaRemoteAdapter](https://github.com/ejbills/mediaremote-adapter) - 媒体播放控制
-- [Zip](https://github.com/marmelroy/Zip) - 文件压缩工具

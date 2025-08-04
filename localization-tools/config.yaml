@@ -62,6 +62,12 @@ exclude_contexts:
   # 系统回调和通知名称
   - "Notification\\.Name"
   - "NotificationCenter.*name:"
+  - "icon:"
+  # SwiftUI视图标识符
+  - "Image("
+  - "Color("
+  - "Font.custom("
+  - "tag("
 
 # 本地化字符串映射（通用的UI元素）
 common_localizations:

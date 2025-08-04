@@ -171,12 +171,12 @@ Button(NSLocalizedString("Copy Last Transcription", comment: "Copy Last Transcri
                 menuBarManager.openMainWindowAndNavigate(to: NSLocalizedString("Settings", comment: "Settings"))
             }
             
-Button(menuBarManager.isMenuBarOnly ? "Show Dock Icon" : NSLocalizedString("Hide Dock Icon", comment: "Hide Dock Icon")) {
+            Button(menuBarManager.isMenuBarOnly ? NSLocalizedString("Show Dock Icon", comment: "Show Dock Icon") : NSLocalizedString("Hide Dock Icon", comment: "Hide Dock Icon")) {
                 menuBarManager.toggleMenuBarOnly()
             }
             
-Toggle(NSLocalizedString("Launch at Login", comment: "Launch at Login"), isOn: $launchAtLoginEnabled)
-                .onChange(of: launchAtLoginEnabled) { oldValue, newValue in
+            Toggle(NSLocalizedString("Launch at Login", comment: "Launch at Login"), isOn: $launchAtLoginEnabled)
+                .onChange(of: launchAtLoginEnabled) { newValue in
                     LaunchAtLogin.isEnabled = newValue
                 }
             
