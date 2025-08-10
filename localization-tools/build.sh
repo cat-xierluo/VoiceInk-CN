@@ -10,7 +10,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$REPO_ROOT"
 
 PROJECT_NAME="VoiceInk"
-OUTPUT_APP_NAME="VoiceInk.app"   # 最终在仓库根目录生成的 APP 名称
+OUTPUT_APP_NAME="VoiceInk-CN.app"   # 最终在仓库根目录生成的 APP 名称
 DERIVED_DATA_DIR="build"
 
 print_help() {

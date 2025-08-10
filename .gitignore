@@ -180,3 +180,7 @@ yarn-error.log*
 
 # Local helper scripts
 /build.sh
+ 
+# Built app bundles (keep local, never commit)
+/VoiceInk.app
+/VoiceInk-CN.app
