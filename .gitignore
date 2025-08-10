@@ -4,6 +4,12 @@
 
 ## User settings
 xcuserdata/
+*.xcuserdatad
+*.xcuserstate
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcresult
 
 ## Obj-C/Swift specific
 *.hmap
@@ -123,6 +129,22 @@ Package.resolved
 localization-tools/__pycache__/
 *.pyc
 *.pyo
+**/__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+dist/
+.eggs/
+*.egg-info
+
+# C/C++ and CMake
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+*.o
 
 # Whisper.cpp build artifacts
 whisper.cpp/build/
@@ -138,9 +160,13 @@ whisper.cpp/libwhisper.dylib
 # IDE and Editor files
 .vscode/
 .idea/
+.fleet/
+.clangd/
+.ccls-cache/
+*.code-workspace
 *.swp
 *.swo
-*~
+ 
 
 # Node.js (if any)
 node_modules/

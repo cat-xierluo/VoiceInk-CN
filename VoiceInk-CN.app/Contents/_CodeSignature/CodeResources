@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		KFm++d9pjIt2Y7XknC4kXRFmvCM=
+		LYZlS8w7uAsI6PJraZ7/cGDtOSw=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Info.plist</key>
 		<data>
-		DKxg3w3NvMiAaszaRxGH/dcVFRs=
+		KrvpEdnXBDr0PlvPpTMJlAhNpTE=
 		</data>
 		<key>Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/ar.lproj/Localizable.strings</key>
 		<dict>
@@ -157,7 +157,7 @@
 		</dict>
 		<key>Resources/MediaRemoteAdapter_MediaRemoteAdapter.bundle/Contents/Info.plist</key>
 		<data>
-		TSbnMtfvfdTXLNSh38+mpXpI83c=
+		Oh3RUWPIzXGwPVGXjPJ2a7N2nwo=
 		</data>
 		<key>Resources/MediaRemoteAdapter_MediaRemoteAdapter.bundle/Contents/Resources/run.pl</key>
 		<data>
@@ -252,10 +252,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			g2dr6NpNBSOI5HiyCY9Q6sd4OWs=
+			KfrL92VF5KT/yA5lOXXYXdBk1mY=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"83676be8da4d052388e478b2098f50eac778396b"</string>
+			<string>cdhash H"29facbf76545e4a4ffc80e653975d85dd064d666"</string>
 		</dict>
 		<key>Frameworks/Sparkle.framework</key>
 		<dict>
@@ -286,7 +286,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			65/6qlTYQff7+rugwFTOt/i4LuKXIdyvLL6mNwB4VLg=
+			svjkrVmHUO58Ket9sssLsl5CDK1OIU7pVnuuGGdg1bk=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
@@ -300,7 +300,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AK//E+9ejN+aJmn3Nnts5x17HtIKkxv6kI2fAy7sfbc=
+			WuqOqsOKSe9YFuoHO0GDDrtvrMjie3HZAlUXw+IurfY=
 			</data>
 		</dict>
 		<key>Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/ar.lproj/Localizable.strings</key>
@@ -442,7 +442,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CkaRhVpJ3SphUO5v6xLRVGXTVwi4KHKYsVW8dV/7CRo=
+			IVegE88S5KB4MTOVgXzj41oO3i/PtcPHHtBoR1/XuLU=
 			</data>
 		</dict>
 		<key>Resources/MediaRemoteAdapter_MediaRemoteAdapter.bundle/Contents/Resources/run.pl</key>
