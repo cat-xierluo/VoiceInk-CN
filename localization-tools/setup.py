@@ -40,7 +40,7 @@ def install_dependencies():
 
 def check_project_structure():
     """检查项目结构"""
-    required_dirs = ['VoiceInk', 'en.lproj', 'zh-Hans.lproj']
+    required_dirs = ['VoiceInk', 'VoiceInk/en.lproj', 'VoiceInk/zh-Hans.lproj']
     required_files = ['VoiceInk.xcodeproj']
     
     print("📁 检查项目结构...")

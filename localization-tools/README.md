@@ -42,7 +42,7 @@ pip install pyyaml
 # VoiceInk/zh-Hans.lproj/Localizable.strings
 
 # 2. 一键同步
-./localization-tools/localize.sh master
+python3 localization-tools/localize.py master
 
 # 完成！英文版本自动生成，代码自动同步
 ```
@@ -65,7 +65,7 @@ python localization-tools/localize.py smart
 python localization-tools/localize.py sync
 
 # 清理备份文件
-python localization-tools/localize.py cleanup
+python3 localization-tools/localize.py cleanup
 ```
 
 ### 3. 项目更新后的使用流程
