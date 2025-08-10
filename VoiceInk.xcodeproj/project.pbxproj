@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1304F742E3B9E8A0001F9E2 /* FluidAudio in Frameworks */ = {isa = PBXBuildFile; productRef = E1304F732E3B9E8A0001F9E2 /* FluidAudio */; };
+		E1A261122CC143AC00B233D1 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = E1A261112CC143AC00B233D1 /* KeyboardShortcuts */; };
+		E1ADD45A2CC5352A00303ECB /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E1ADD4592CC5352A00303ECB /* LaunchAtLogin */; };
+		E1ADD45F2CC544F100303ECB /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = E1ADD45E2CC544F100303ECB /* Sparkle */; };
+		E1B2DCAB2E3DE70A008DFD68 /* whisper.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B2DCAA2E3DE70A008DFD68 /* whisper.xcframework */; };
+		E1B2DCAC2E3DE70A008DFD68 /* whisper.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1B2DCAA2E3DE70A008DFD68 /* whisper.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E1D7EF992E35E16C00640029 /* MediaRemoteAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = E1D7EF982E35E16C00640029 /* MediaRemoteAdapter */; };
+		E1D7EF9A2E35E19B00640029 /* MediaRemoteAdapter in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E1D7EF982E35E16C00640029 /* MediaRemoteAdapter */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E1F5FA7A2DA6CBF900B1FD8A /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E1F5FA792DA6CBF900B1FD8A /* Zip */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E11473C42CBE0F0B00318EE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E11473A82CBE0F0A00318EE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E11473AF2CBE0F0A00318EE4;
+			remoteInfo = VoiceInk;
+		};
+		E11473CE2CBE0F0B00318EE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E11473A82CBE0F0A00318EE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E11473AF2CBE0F0A00318EE4;
+			remoteInfo = VoiceInk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E1A8C8CD2E1257B7003E58EC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E1B2DCAC2E3DE70A008DFD68 /* whisper.xcframework in Embed Frameworks */,
+				E1D7EF9A2E35E19B00640029 /* MediaRemoteAdapter in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E11473B02CBE0F0A00318EE4 /* VoiceInk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceInk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11473C32CBE0F0B00318EE4 /* VoiceInkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceInkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11473CD2CBE0F0B00318EE4 /* VoiceInkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceInkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1B2DCAA2E3DE70A008DFD68 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "../Downloads/build-apple/whisper.xcframework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E11473B22CBE0F0A00318EE4 /* VoiceInk */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VoiceInk;
+			sourceTree = "<group>";
+		};
+		E11473C62CBE0F0B00318EE4 /* VoiceInkTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VoiceInkTests;
+			sourceTree = "<group>";
+		};
+		E11473D02CBE0F0B00318EE4 /* VoiceInkUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VoiceInkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E11473AD2CBE0F0A00318EE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1ADD45A2CC5352A00303ECB /* LaunchAtLogin in Frameworks */,
+				E1D7EF992E35E16C00640029 /* MediaRemoteAdapter in Frameworks */,
+				E1304F742E3B9E8A0001F9E2 /* FluidAudio in Frameworks */,
+				E1B2DCAB2E3DE70A008DFD68 /* whisper.xcframework in Frameworks */,
+				E1ADD45F2CC544F100303ECB /* Sparkle in Frameworks */,
+				E1A261122CC143AC00B233D1 /* KeyboardShortcuts in Frameworks */,
+				E1F5FA7A2DA6CBF900B1FD8A /* Zip in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473C02CBE0F0B00318EE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473CA2CBE0F0B00318EE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E11473A72CBE0F0A00318EE4 = {
+			isa = PBXGroup;
+			children = (
+				E11473B22CBE0F0A00318EE4 /* VoiceInk */,
+				E11473C62CBE0F0B00318EE4 /* VoiceInkTests */,
+				E11473D02CBE0F0B00318EE4 /* VoiceInkUITests */,
+				E114741C2CBE1DE200318EE4 /* Frameworks */,
+				E11473B12CBE0F0A00318EE4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E11473B12CBE0F0A00318EE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E11473B02CBE0F0A00318EE4 /* VoiceInk.app */,
+				E11473C32CBE0F0B00318EE4 /* VoiceInkTests.xctest */,
+				E11473CD2CBE0F0B00318EE4 /* VoiceInkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E114741C2CBE1DE200318EE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1B2DCAA2E3DE70A008DFD68 /* whisper.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E11473AF2CBE0F0A00318EE4 /* VoiceInk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11473D72CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInk" */;
+			buildPhases = (
+				E11473AC2CBE0F0A00318EE4 /* Sources */,
+				E11473AD2CBE0F0A00318EE4 /* Frameworks */,
+				E11473AE2CBE0F0A00318EE4 /* Resources */,
+				E1A8C8CD2E1257B7003E58EC /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E11473B22CBE0F0A00318EE4 /* VoiceInk */,
+			);
+			name = VoiceInk;
+			packageProductDependencies = (
+				E1A261112CC143AC00B233D1 /* KeyboardShortcuts */,
+				E1ADD4592CC5352A00303ECB /* LaunchAtLogin */,
+				E1ADD45E2CC544F100303ECB /* Sparkle */,
+				E1F5FA792DA6CBF900B1FD8A /* Zip */,
+				E1D7EF982E35E16C00640029 /* MediaRemoteAdapter */,
+				E1304F732E3B9E8A0001F9E2 /* FluidAudio */,
+			);
+			productName = VoiceInk;
+			productReference = E11473B02CBE0F0A00318EE4 /* VoiceInk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E11473C22CBE0F0B00318EE4 /* VoiceInkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11473DA2CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInkTests" */;
+			buildPhases = (
+				E11473BF2CBE0F0B00318EE4 /* Sources */,
+				E11473C02CBE0F0B00318EE4 /* Frameworks */,
+				E11473C12CBE0F0B00318EE4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E11473C52CBE0F0B00318EE4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E11473C62CBE0F0B00318EE4 /* VoiceInkTests */,
+			);
+			name = VoiceInkTests;
+			packageProductDependencies = (
+			);
+			productName = VoiceInkTests;
+			productReference = E11473C32CBE0F0B00318EE4 /* VoiceInkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E11473CC2CBE0F0B00318EE4 /* VoiceInkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11473DD2CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInkUITests" */;
+			buildPhases = (
+				E11473C92CBE0F0B00318EE4 /* Sources */,
+				E11473CA2CBE0F0B00318EE4 /* Frameworks */,
+				E11473CB2CBE0F0B00318EE4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E11473CF2CBE0F0B00318EE4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E11473D02CBE0F0B00318EE4 /* VoiceInkUITests */,
+			);
+			name = VoiceInkUITests;
+			packageProductDependencies = (
+			);
+			productName = VoiceInkUITests;
+			productReference = E11473CD2CBE0F0B00318EE4 /* VoiceInkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E11473A82CBE0F0A00318EE4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					E11473AF2CBE0F0A00318EE4 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					E11473C22CBE0F0B00318EE4 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = E11473AF2CBE0F0A00318EE4;
+					};
+					E11473CC2CBE0F0B00318EE4 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = E11473AF2CBE0F0A00318EE4;
+					};
+				};
+			};
+			buildConfigurationList = E11473AB2CBE0F0A00318EE4 /* Build configuration list for PBXProject "VoiceInk" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E11473A72CBE0F0A00318EE4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E1A261102CC143AC00B233D1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				E1ADD4582CC5352A00303ECB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				E1ADD45D2CC544F100303ECB /* XCRemoteSwiftPackageReference "Sparkle" */,
+				E1F5FA782DA6CBF900B1FD8A /* XCRemoteSwiftPackageReference "Zip" */,
+				E1D7EF972E35E16C00640029 /* XCRemoteSwiftPackageReference "mediaremote-adapter" */,
+				E1304F722E3B9E8A0001F9E2 /* XCRemoteSwiftPackageReference "FluidAudio" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E11473B12CBE0F0A00318EE4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E11473AF2CBE0F0A00318EE4 /* VoiceInk */,
+				E11473C22CBE0F0B00318EE4 /* VoiceInkTests */,
+				E11473CC2CBE0F0B00318EE4 /* VoiceInkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E11473AE2CBE0F0A00318EE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473C12CBE0F0B00318EE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473CB2CBE0F0B00318EE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E11473AC2CBE0F0A00318EE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473BF2CBE0F0B00318EE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E11473C92CBE0F0B00318EE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E11473C52CBE0F0B00318EE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E11473AF2CBE0F0A00318EE4 /* VoiceInk */;
+			targetProxy = E11473C42CBE0F0B00318EE4 /* PBXContainerItemProxy */;
+		};
+		E11473CF2CBE0F0B00318EE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E11473AF2CBE0F0A00318EE4 /* VoiceInk */;
+			targetProxy = E11473CE2CBE0F0B00318EE4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E11473D52CBE0F0B00318EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E11473D62CBE0F0B00318EE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E11473D82CBE0F0B00318EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VoiceInk/VoiceInk.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 142;
+				DEVELOPMENT_ASSET_PATHS = "\"VoiceInk/Preview Content\"";
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceInk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VoiceInk;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.42;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E11473D92CBE0F0B00318EE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VoiceInk/VoiceInk.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 142;
+				DEVELOPMENT_ASSET_PATHS = "\"VoiceInk/Preview Content\"";
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceInk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VoiceInk;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.42;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E11473DB2CBE0F0B00318EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceInk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VoiceInk";
+			};
+			name = Debug;
+		};
+		E11473DC2CBE0F0B00318EE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceInk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VoiceInk";
+			};
+			name = Release;
+		};
+		E11473DE2CBE0F0B00318EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = VoiceInk;
+			};
+			name = Debug;
+		};
+		E11473DF2CBE0F0B00318EE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V6J6A3VWY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prakashjoshipax.VoiceInkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = VoiceInk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E11473AB2CBE0F0A00318EE4 /* Build configuration list for PBXProject "VoiceInk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11473D52CBE0F0B00318EE4 /* Debug */,
+				E11473D62CBE0F0B00318EE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11473D72CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11473D82CBE0F0B00318EE4 /* Debug */,
+				E11473D92CBE0F0B00318EE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11473DA2CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11473DB2CBE0F0B00318EE4 /* Debug */,
+				E11473DC2CBE0F0B00318EE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E11473DD2CBE0F0B00318EE4 /* Build configuration list for PBXNativeTarget "VoiceInkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11473DE2CBE0F0B00318EE4 /* Debug */,
+				E11473DF2CBE0F0B00318EE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1304F722E3B9E8A0001F9E2 /* XCRemoteSwiftPackageReference "FluidAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/FluidInference/FluidAudio";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		E1A261102CC143AC00B233D1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		E1ADD4582CC5352A00303ECB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		E1ADD45D2CC544F100303ECB /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.4;
+			};
+		};
+		E1D7EF972E35E16C00640029 /* XCRemoteSwiftPackageReference "mediaremote-adapter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ejbills/mediaremote-adapter";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E1F5FA782DA6CBF900B1FD8A /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1304F732E3B9E8A0001F9E2 /* FluidAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1304F722E3B9E8A0001F9E2 /* XCRemoteSwiftPackageReference "FluidAudio" */;
+			productName = FluidAudio;
+		};
+		E1A261112CC143AC00B233D1 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A261102CC143AC00B233D1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		E1ADD4592CC5352A00303ECB /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1ADD4582CC5352A00303ECB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		E1ADD45E2CC544F100303ECB /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1ADD45D2CC544F100303ECB /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		E1D7EF982E35E16C00640029 /* MediaRemoteAdapter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1D7EF972E35E16C00640029 /* XCRemoteSwiftPackageReference "mediaremote-adapter" */;
+			productName = MediaRemoteAdapter;
+		};
+		E1F5FA792DA6CBF900B1FD8A /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F5FA782DA6CBF900B1FD8A /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E11473A82CBE0F0A00318EE4 /* Project object */;
+}

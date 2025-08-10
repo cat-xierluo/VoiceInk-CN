@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>VoiceInk Releases</title>
+        <item>
+            <title>1.44</title>
+            <pubDate>Sat, 2 Aug 2025 12:20:00 +0545</pubDate>
+            <sparkle:version>144</sparkle:version>
+            <sparkle:shortVersionString>1.44</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <h3>What's New in Version 1.44 🚀⚡</h3>
+                            <ul>
+                              <li>Added support for parakeet model</li>
+                              <li>Support playing or pausing media during recording</li>
+                              <li>Added Gemini-2.5-flash-lite model</li>
+                              <li>New sound for recording start and recording stop</li>
+                              <li>Edit word replacement options</li>
+                              <li>More reliable and better working default prompt for AI enhancement</li>
+                              <li>Minor fixes and improvements</li>
+                            </ul> 
+            ]]></description>
+           <enclosure url="https://github.com/Beingpax/VoiceInk/releases/download/v1.44/VoiceInk.dmg" length="9088616" type="application/octet-stream" sparkle:edSignature="LrNVdPRyIer6kON1JWC95Tf5/IFZjp9oOluJKAfubfadra7WOveGL8rSii0J0N1dvmJbR3sd2UgQmLBspdguBg=="/>
+        </item>
+    </channel>
+</rss>
