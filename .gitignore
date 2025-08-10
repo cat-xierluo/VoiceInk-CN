@@ -173,3 +173,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+ 
+# SpecStory and Cursor indexing
+.specstory/
+.cursorindexingignore
+
+# Local helper scripts
+/build.sh
