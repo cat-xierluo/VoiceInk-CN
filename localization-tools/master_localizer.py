@@ -199,9 +199,8 @@ class MasterLocalizer:
         try:
             import subprocess
             result = subprocess.run([
-                'python3', 'localization-tools/precise_localizer.py', '--auto-confirm'
+                'python3', 'localization-tools/localizer.py', '--mode=precise', '--apply', '--auto-confirm'
             ], text=True, cwd='.')
-            
             if result.returncode == 0:
                 print("✅ 代码同步完成")
                 return 0

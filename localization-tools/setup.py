@@ -84,7 +84,7 @@ def make_executable():
     """设置脚本为可执行"""
     scripts = [
         'localization-tools/localize.py',
-        'localization-tools/smart_localize.py',
+        'localization-tools/localizer.py',
         'localization-tools/sync_strings.py'
     ]
     

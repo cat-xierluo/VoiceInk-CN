@@ -104,7 +104,7 @@ def run_smart_localize():
     """运行智能本地化"""
     print("🚀 启动智能本地化...")
     try:
-        from smart_localize import SmartLocalizer
+        from localizer import SmartLocalizer
         localizer = SmartLocalizer()
         report = localizer.run()
         return True
