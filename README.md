@@ -13,13 +13,14 @@
 
 ## 📖 项目介绍
 
-这是基于开源项目 [VoiceInk](https://github.com/Beingpax/VoiceInk) 的**完全中文本地化版本**。
+这是基于开源项目 [VoiceInk](https://github.com/Beingpax/VoiceInk) 的**中文本地化版本**。
 
 **原项目来源**: [VoiceInk by Beingpax](https://tryvoiceink.com) - 一个优秀的 macOS 语音转文字应用，提供高精度的本地语音识别功能。
 
 ## 🇨🇳 中文本地化工作
 
 本项目在原版基础上进行了**完整的中文本地化改造**：
+
 - **🔤 界面本地化**
 - **💼 Pro版本配置**
 
@@ -33,7 +34,7 @@
 
 ### 自行编译
 
-如需自行编译，请参阅 [BUILDING.md](BUILDING.md) 中的详细说明。
+如需自行编译，请参阅 [localization-tools/README_CN.md](localization-tools/README_CN.md) 中的详细说明。
 
 ## ⚙️ 系统要求
 
