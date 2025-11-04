@@ -3,33 +3,37 @@ import SwiftData
 import KeyboardShortcuts
 
 // ViewType enum with all cases
-enum ViewType: String, CaseIterable {
-    case metrics = "Dashboard"
-    case transcribeAudio = "Transcribe Audio"
-    case history = "History"
-    case models = "AI Models"
-    case enhancement = "Enhancement"
-    case powerMode = "Power Mode"
-    case permissions = "Permissions"
-    case audioInput = "Audio Input"
-    case dictionary = "Dictionary"
-    case settings = "Settings"
-    case license = "VoiceInk Pro"
+enum ViewType: CaseIterable {
+    case metrics
+    case transcribeAudio
+    case history
+    case models
+    case enhancement
+    case powerMode
+    case permissions
+    case audioInput
+    case dictionary
+    case settings
+    case license
     
-    var displayName: String {
+    private var localization: L10nItem {
         switch self {
-        case .metrics: return NSLocalizedString("Dashboard", comment: "Dashboard")
-        case .transcribeAudio: return NSLocalizedString("Transcribe Audio", comment: "Transcribe Audio")
-        case .history: return NSLocalizedString("History", comment: "History")
-        case .models: return NSLocalizedString("AI Models", comment: "AI Models")
-        case .enhancement: return NSLocalizedString("Enhancement", comment: "Enhancement")
-        case .powerMode: return NSLocalizedString("Power Mode", comment: "Power Mode")
-        case .permissions: return NSLocalizedString("Permissions", comment: "Permissions")
-        case .audioInput: return NSLocalizedString("Audio Input", comment: "Audio Input")
-        case .dictionary: return NSLocalizedString("Dictionary", comment: "Dictionary")
-        case .settings: return NSLocalizedString("Settings", comment: "Settings")
-        case .license: return NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro")
+        case .metrics: return L10n.Sidebar.dashboard
+        case .transcribeAudio: return L10n.Sidebar.transcribeAudio
+        case .history: return L10n.Sidebar.history
+        case .models: return L10n.Sidebar.models
+        case .enhancement: return L10n.Sidebar.enhancement
+        case .powerMode: return L10n.Sidebar.powerMode
+        case .permissions: return L10n.Sidebar.permissions
+        case .audioInput: return L10n.Sidebar.audioInput
+        case .dictionary: return L10n.Sidebar.dictionary
+        case .settings: return L10n.Sidebar.settings
+        case .license: return L10n.Sidebar.voiceInkPro
         }
+    }
+    
+    var localizedTitle: LocalizedStringKey {
+        localization.text
     }
     
     var icon: String {
@@ -86,11 +90,11 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
-                Text(NSLocalizedString("VoiceInk", comment: "VoiceInk"))
+                Text(L10n.App.name.text)
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
-                    Text(NSLocalizedString("PRO", comment: "PRO"))
+                    Text(L10n.App.proBadge.text)
                         .font(.system(size: 9, weight: .heavy))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 4)
@@ -107,7 +111,7 @@ struct DynamicSidebar: View {
             // Navigation Items
             ForEach(ViewType.allCases, id: \.self) { viewType in
                 DynamicSidebarButton(
-                    title: viewType.displayName,
+                    title: viewType.localizedTitle,
                     systemImage: viewType.icon,
                     isSelected: selectedView == viewType,
                     isHovered: hoveredView == viewType,
@@ -127,7 +131,7 @@ struct DynamicSidebar: View {
 }
 
 struct DynamicSidebarButton: View {
-    let title: String
+    let title: LocalizedStringKey
     let systemImage: String
     let isSelected: Bool
     let isHovered: Bool

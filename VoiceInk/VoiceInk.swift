@@ -117,7 +117,7 @@ struct VoiceInkApp: App {
                     .frame(minWidth: 880, minHeight: 780)
                     .background(WindowAccessor { window in
                         // Ensure this is called only once or is idempotent
-                        if window.title != "VoiceInk Onboarding" { // Prevent re-configuration
+                        if window.title != L10n.Window.onboardingTitle.string { // Prevent re-configuration
                             WindowManager.shared.configureOnboardingPanel(window)
                         }
                     })
@@ -150,8 +150,8 @@ struct VoiceInkApp: App {
         .menuBarExtraStyle(.menu)
         
         #if DEBUG
-        WindowGroup("Debug") {
-            Button(NSLocalizedString("Toggle Menu Bar Only", comment: "Toggle Menu Bar Only")) {
+        WindowGroup(L10n.Debug.windowTitle.text) {
+            Button(L10n.Debug.toggleMenuBarOnly.string) {
                 menuBarManager.isMenuBarOnly.toggle()
             }
         }
@@ -210,6 +210,5 @@ struct WindowAccessor: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSView, context: Context) {}
 }
-
 
 

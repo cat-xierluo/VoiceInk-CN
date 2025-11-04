@@ -40,6 +40,14 @@
 
 - macOS 14.0 或更高版本
 
+## 🧭 贡献与维护
+
+- [docs/AGENTS.md](docs/AGENTS.md) - 贡献者指南，说明项目结构、开发命令与提交规范
+- [docs/LOCALIZATION_PLAN.md](docs/LOCALIZATION_PLAN.md) - 上游同步与本地化策略
+- [docs/ROADMAP.md](docs/ROADMAP.md) - 近期里程碑与计划任务
+- [docs/PROGRESS.md](docs/PROGRESS.md) - 已完成工作与当前进度总览
+- [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md) - 文档分类及缺失项提醒
+
 ## 📄 开源协议
 
 本项目基于 GNU General Public License v3.0 开源协议 - 详见 [LICENSE](LICENSE) 文件。

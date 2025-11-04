@@ -180,5 +180,8 @@ yarn-error.log*
 
 # Local helper scripts
 /build.sh
+
+# Localization reports
+localization-tools/generated/
  
  

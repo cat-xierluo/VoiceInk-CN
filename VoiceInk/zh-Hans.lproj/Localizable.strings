@@ -11,7 +11,6 @@
 "Audio Input" = "音频输入";
 "Dictionary" = "词典";
 "Settings" = "设置";
-"VoiceInk Pro" = "VoiceInk Pro";
 
 /* 权限页面 */
 "App Permissions" = "应用权限";
@@ -208,15 +207,9 @@
 /* 模型相关 */
 "No AI Model Selected" = "未选择AI模型";
 "Local" = "本地";
-"Groq" = "Groq";
-"ElevenLabs" = "ElevenLabs";
-"Deepgram" = "Deepgram";
-"Mistral" = "Mistral";
 "Custom" = "自定义";
 "Native Apple" = "原生Apple";
 "Apple Speech" = "Apple语音";
-"Tiny" = "Tiny";
-"Base" = "Base";
 "Multilingual" = "多语言";
 "English-only" = "仅英语";
 
@@ -307,13 +300,20 @@
 "Trial Active" = "试用已激活";
 "Trial Expired" = "试用已过期";
 "Free Version" = "免费版本";
+"v%@" = "v%@";
+"Priority Support" = "优先支持";
+"Lifetime Access" = "终身访问";
+"Free Updates" = "免费更新";
+"Multiple Devices" = "多设备使用";
 "Enter License Key" = "输入许可证密钥";
+"Enter your license key" = "输入您的许可证密钥";
 "Buy License" = "购买许可证";
 "Start Trial" = "开始试用";
 "License Key" = "许可证密钥";
 "Activate" = "激活";
 "Remove License" = "移除许可证";
 "Activate License" = "激活许可证";
+"This license can be activated on up to %d devices" = "此许可证最多可在 %d 台设备上激活";
 "Output Format Guide" = "输出格式指南";
 "Automatic text formatting" = "自动文本格式化";
 "Automatic Text Formatting" = "自动文本格式化";
@@ -500,7 +500,6 @@
 /* VoiceInk Pro页面 */
 "Thank you for supporting VoiceInk" = "感谢您支持 VoiceInk";
 "Changelog" = "更新日志";
-"Discord" = "Discord";
 "Email Support" = "邮件支持";
 "Docs" = "文档";
 "Roadmap" = "路线图";
@@ -622,22 +621,12 @@
 "Remove" = "移除";
 
 /* New Discovered Strings */
-"Power mode name cannot be empty." = "专业模式名称不能为空。";
-"You must add at least one application or website." = "您必须添加至少一个应用程序或网站。";
-"Train VoiceInk to recognize industry terms, names, and technical words" = "训练VoiceInk识别行业术语、姓名和技术词汇";
-"API key for this service is missing. Please configure it in the settings." = "此服务的API密钥缺失。请在设置中配置。";
 
 /* Status and UI Messages */
 "Transcribing" = "转录中";
 "No Audio Detected" = "未检测到音频";
 "Press ESC again to cancel recording" = "再次按ESC键取消录制";
-"Recommended" = "推荐";
-"Local" = "本地";
-"Cloud" = "云端";
-"Custom" = "自定义";
-"Multilingual" = "多语言";
 
-"Thank you for supporting VoiceInk" = "感谢您支持VoiceInk";
 
 /* Model Selection and Languages */
 "Albanian" = "阿尔巴尼亚语";
@@ -683,18 +672,11 @@
 
 /* AI Provider Messages */
 "Server URL" = "服务器URL";
-"模型" = "模型";
-"刷新" = "刷新";
-"已连接" = "已连接";
 "Custom Provider Configuration" = "自定义提供商配置";
 "Requires OpenAI-compatible API endpoint" = "需要OpenAI兼容的API端点";
 
 /* Dictionary and Word Replacement */
-"Word Replacements" = "词汇替换";
-"Correct Spellings" = "拼写纠正";
 "Original Text" = "原文";
-"替换文本" = "替换文本";
-"验证并保存" = "验证并保存";
 
 /* Error Messages and Status Updates */
 "Loading transcription model..." = "加载转录模型...";
@@ -815,8 +797,6 @@
 /* Download and Progress Messages */
 "Downloading Core ML Model for \\(modelName)" = "正在下载\\(modelName)的Core ML模型";
 "Downloading \\(modelName) Model" = "正在下载\\(modelName)模型";
-"\\(Int(totalProgress * 100))%" = "\\(Int(totalProgress * 100))%";
-"%.1f GB" = "%.1f GB";
 
 /* Enhancement Messages */
 "Enhancement failed: \\(error)" = "增强失败：\\(error)";
@@ -824,28 +804,11 @@
 
 /* Multi-language Greetings and Prompts */
 "Hello, how are you doing? Nice to meet you." = "你好，你好吗？很高兴见到你。";
-"नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।" = "नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।";
-"নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।" = "নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।";
-"こんにちは、お元気ですか？お会いできて嬉しいです。" = "こんにちは、お元気ですか？お会いできて嬉しいです。";
-"안녕하세요, 잘 지내시나요? 만나서 반갑습니다." = "안녕하세요, 잘 지내시나요? 만나서 반갑습니다.";
-"你好，最近好吗？见到你很高兴。" = "你好，最近好吗？见到你很高兴。";
-"สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ" = "สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ";
-"Xin chào, bạn khỏe không? Rất vui được gặp bạn." = "Xin chào, bạn khỏe không? Rất vui được gặp bạn.";
-"你好，最近點呀？見到你好開心。" = "你好，最近點呀？見到你好開心。";
-"¡Hola, ¿cómo estás? Encantado de conocerte." = "¡Hola, ¿cómo estás? Encantado de conocerte.";
-"Bonjour, comment allez-vous? Ravi de vous rencontrer." = "Bonjour, comment allez-vous? Ravi de vous rencontrer.";
-"Hallo, wie geht es dir? Schön dich kennenzulernen." = "Hallo, wie geht es dir? Schön dich kennenzulernen.";
-"Ciao, come stai? Piacere di conoscerti." = "Ciao, come stai? Piacere di conoscerti.";
-"Olá, como você está? Prazer em conhecê-lo." = "Olá, como você está? Prazer em conhecê-lo.";
-"Здравствуйте, как ваши дела? Приятно познакомиться." = "Здравствуйте, как ваши дела? Приятно познакомиться.";
 "default" = "默认";
 
 /* Regex Patterns */
-"^[,\\.!\\?;:\\s]+" = "^[,\\.!\\?;:\\s]+";
-"[,\\.!\\?;:\\s]+$" = "[,\\.!\\?;:\\s]+$";
 
 /* Number Placeholder */
-"\\(number)" = "\\(number)";
 
 /* Additional UI and Status Messages */
 "Using: \\(deviceName)" = "使用：\\(deviceName)";
@@ -854,7 +817,6 @@
 "Left Option (⌥)" = "左Option (⌥)";
 "Left Control (⌃)" = "左Control (⌃)";
 "Right Control (⌃)" = "右Control (⌃)";
-"Fn" = "Fn";
 "Right Command (⌘)" = "右Command (⌘)";
 "Right Shift (⇧)" = "右Shift (⇧)";
 
@@ -886,15 +848,9 @@
 "orionURL" = "Orion网址";
 "zenURL" = "Zen网址";
 "yandexURL" = "Yandex网址";
-"Safari" = "Safari";
-"Arc" = "Arc";
 "Google Chrome" = "谷歌Chrome";
 "Microsoft Edge" = "微软Edge";
 "Firefox" = "火狐";
-"Brave" = "Brave";
-"Opera" = "Opera";
-"Vivaldi" = "Vivaldi";
-"Orion" = "Orion";
 "Zen Browser" = "Zen浏览器";
 "Yandex Browser" = "Yandex浏览器";
 
@@ -902,8 +858,6 @@
 "Tip: Use ⌃⌘Space for emoji picker." = "提示：使用⌃⌘Space打开表情符号选择器。";
 "Emoji in Use" = "使用中的表情符号";
 "Add custom emoji" = "添加自定义表情符号";
-"⚙️" = "⚙️";
-"www." = "www.";
 "Refresh models" = "刷新模型";
 
 /* Language and Region Settings */
@@ -946,29 +900,12 @@
 
 /* Model Information */
 "apple-speech" = "苹果语音";
-"ggml-tiny" = "ggml-tiny";
-"75 MiB" = "75 MiB";
 "Tiny (English)" = "Tiny（英语）";
-"ggml-base" = "ggml-base";
-"142 MiB" = "142 MiB";
 "Base (English)" = "Base（英语）";
-"ggml-large-v2" = "ggml-large-v2";
-"Large v2" = "Large v2";
-"2.9 GiB" = "2.9 GiB";
-"ggml-large-v3" = "ggml-large-v3";
-"Large v3" = "Large v3";
-"ggml-large-v3-turbo" = "ggml-large-v3-turbo";
-"Large v3 Turbo" = "Large v3 Turbo";
-"1.5 GiB" = "1.5 GiB";
-"ggml-large-v3-turbo-q5_0" = "ggml-large-v3-turbo-q5_0";
 "Large v3 Turbo (Quantized)" = "Large v3 Turbo（量化版）";
-"547 MiB" = "547 MiB";
-"whisper-large-v3-turbo" = "whisper-large-v3-turbo";
 "Whisper Large v3 Turbo (Groq)" = "Whisper Large v3 Turbo（Groq）";
 "Scribe v1 (ElevenLabs)" = "Scribe v1（ElevenLabs）";
-"nova-2" = "nova-2";
 "Nova (Deepgram)" = "Nova（Deepgram）";
-"voxtral-mini-2507" = "voxtral-mini-2507";
 "Voxtral Mini (Mistral)" = "Voxtral Mini（Mistral）";
 
 /* Additional Languages */
@@ -994,7 +931,6 @@
 /* Trial and License Messages */
 "You have \\(daysRemaining) days left in your trial" = "您的试用还剩\\(daysRemaining)天";
 "Your trial has expired. Upgrade to continue using VoiceInk" = "您的试用已过期。升级以继续使用VoiceInk";
-"v\\(appVersion)" = "v\\(appVersion)";
 "Buy Once, Own Forever" = "一次购买，永久拥有";
 "Upgrade to VoiceInk Pro" = "升级到VoiceInk Pro";
 "Already have a license?" = "已有许可证？";
@@ -1008,7 +944,6 @@
 "Analyze" = "分析";
 
 /* Audio and Time Format */
-"%d:%02d" = "%d:%02d";
 "Generating waveform..." = "生成波形中...";
 "%.0fms" = "%.0f毫秒";
 "%.1fs" = "%.1f秒";
@@ -1056,24 +991,19 @@
 "Note: Selecting a device here will override your Mac\\'s system-wide default microphone." = "注意：在此选择设备将覆盖您Mac的系统默认麦克风。";
 "Warning: Using a prioritized device will override your Mac\\'s system-wide default microphone if it becomes active." = "警告：如果优先设备变为活动状态，使用优先设备将覆盖您Mac的系统默认麦克风。";
 "No additional devices available" = "没有其他可用设备";
-"\\(priority + 1)" = "\\(priority + 1)";
 
 /* Model Settings and Enhancement */
 "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands." = "与GPT不同，语音模型(whisper)遵循提示的风格而非指令。使用期望输出格式的示例而非命令。";
 "Apply intelligent text formatting to break large block of text into paragraphs." = "应用智能文本格式化，将大块文本分解为段落。";
 "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models." = "检测语音片段并过滤静音，以减少本地Whisper模型的幻觉。";
-"VoiceInk" = "VoiceInk";
-"\\(icon).fill" = "\\(icon).fill";
+"VoiceInk Onboarding" = "VoiceInk 新手引导";
+"Debug" = "调试";
 "Editing: \\(title)" = "编辑：\\(title)";
-"\\\\" = "\\\\";
 
 /* Save and File Operations */
 "Save as TXT" = "保存为TXT";
 "Save as MD" = "保存为MD";
-"\\n" = "\\n";
-"\\r" = "\\r";
 "transcription" = "转录";
-"[^a-z0-9\\\\-]" = "[^a-z0-9\\\\-]";
 "Save Button Preview" = "保存按钮预览";
 "Before Copy" = "复制前";
 "Short text." = "短文本。";
@@ -1097,12 +1027,10 @@
 "Custom transcription model" = "自定义转录模型";
 "Downloaded" = "已下载";
 "Delete Model" = "删除模型";
-"%.1f" = "%.1f";
 "No model selected" = "未选择模型";
 "Language: \\(currentLanguageDisplayName())" = "语言：\\(currentLanguageDisplayName())";
 "Language: English (only)" = "语言：英语（仅限）";
 "Custom Provider" = "自定义提供商";
-"GROQ" = "GROQ";
 "Configured" = "已配置";
 "Remove API Key" = "移除API密钥";
 "Verifying..." = "验证中...";
@@ -1111,17 +1039,6 @@
 "RAM" = "内存";
 
 /* Multi-language Greetings */
-"Cześć, jak się masz? Miło cię poznać." = "Cześć, jak się masz? Miło cię poznać.";
-"Hallo, hoe gaat het? Aangenaam kennis te maken." = "Hallo, hoe gaat het? Aangenaam kennis te maken.";
-"Merhaba, nasılsın? Tanıştığımıza memnun oldum." = "Merhaba, nasılsın? Tanıştığımıza memnun oldum.";
-"مرحباً، كيف حالك؟ سعيد بلقائك." = "مرحباً، كيف حالك؟ سعيد بلقائك.";
-"سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم." = "سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم.";
-",שלום, מה שלומך? נעים להכיר" = ",שלום, מה שלומך? נעים להכיר";
-"வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி." = "வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி.";
-"నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం." = "నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం.";
-"നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം." = "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.";
-"ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ." = "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.";
-"السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔" = "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔";
 
 /* Prompt Selection */
 "No prompts available" = "没有可用提示";
@@ -1204,8 +1121,6 @@
 "Model Name" = "模型名称";
 "My Custom Model" = "我的自定义模型";
 "your-api-key" = "您的API密钥";
-"whisper-1" = "whisper-1";
-"large-v3-turbo" = "large-v3-turbo";
 "Multilingual Model" = "多语言模型";
 "Add Model" = "添加模型";
 "Edit Model" = "编辑模型";
@@ -1236,11 +1151,8 @@
 "Performance Analysis" = "性能分析";
 
 /* Model and Language Selection */
-"Current model:" = "当前模型：";
 
 /* Recording Status Messages */
-"Press ESC again to cancel recording" = "再次按下ESC取消录音";
-"No Audio Detected" = "未检测到音频";
 
 /* Settings */
 
@@ -1249,84 +1161,21 @@
 "Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)" = "模型名称（例如：gpt-4o-mini, claude-3-5-sonnet-20240620）";
 
 /* Prompt Editor */
-"New Prompt" = "新提示词";
-"Edit Trigger Words" = "编辑触发词";
 "Ollama Configuration" = "Ollama配置";
 
 /* Power Mode */
-"Add New Power Mode" = "添加新专业模式";
-"Name your power mode" = "命名您的专业模式";
-"New Power Mode" = "新专业模式";
-"Add Power Mode" = "添加专业模式";
-"Edit Power Mode" = "编辑专业模式";
-"Edit Default Power Mode" = "编辑默认专业模式";
-"Default Power Mode" = "默认专业模式";
-"Custom Power Modes" = "自定义专业模式";
-"No custom power modes" = "无自定义专业模式";
-"Select Power Mode" = "选择专业模式";
-"Enable Power Mode" = "启用专业模式";
-"Power Mode is disabled" = "专业模式已禁用";
-"Enable Power Mode to create context-specific configurations that automatically apply based on your current app or website." = "启用专业模式以创建基于当前应用或网站自动应用的上下文特定配置。";
-"No Power Modes" = "无专业模式";
-"Add customized power modes for different contexts" = "为不同上下文添加自定义专业模式";
-"Fallback power mode" = "备用专业模式";
-"Cannot Save Power Mode" = "无法保存专业模式";
-"Power mode name cannot be empty." = "专业模式名称不能为空。";
 "A power mode with the name '%@' already exists." = "名为'%@'的专业模式已存在。";
 "The app '%@' is already configured in the '%@' power mode." = "应用'%@'已在'%@'专业模式中配置。";
 "The website '%@' is already configured in the '%@' power mode." = "网站'%@'已在'%@'专业模式中配置。";
 
 /* Template Descriptions */
-"Default system prompt for improving clarity and accuracy of transcriptions" = "默认系统提示词，用于提高转录的清晰度和准确性";
-"Casual chat-style formatting" = "休闲聊天风格格式";
 "Professional email composition and formatting" = "专业邮件撰写和格式化";
 "Meeting notes organization and structure" = "会议记录整理和结构化";
 "Social media content formatting" = "社交媒体内容格式化";
 "Personal diary and journal entries" = "个人日记和日志条目";
 "Task list organization and management" = "任务列表整理和管理";
-"Template for converting voice notes into quick, organized notes" = "将语音笔记转换为快速、有条理笔记的模板";
 
 /* Language Names */
-"Albanian" = "阿尔巴尼亚语";
-"Armenian" = "亚美尼亚语";
-"Basque" = "巴斯克语";
-"Bosnian" = "波斯尼亚语";
-"Breton" = "布列塔尼语";
-"Catalan" = "加泰罗尼亚语";
-"Estonian" = "爱沙尼亚语";
-"Faroese" = "法罗语";
-"Galician" = "加利西亚语";
-"Georgian" = "格鲁吉亚语";
-"Gujarati" = "古吉拉特语";
-"Haitian Creole" = "海地克里奥尔语";
-"Hausa" = "豪萨语";
-"Hawaiian" = "夏威夷语";
-"Icelandic" = "冰岛语";
-"Javanese" = "爪哇语";
-"Kannada" = "卡纳达语";
-"Kazakh" = "哈萨克语";
-"Khmer" = "高棉语";
-"Lao" = "老挝语";
-"Latin" = "拉丁语";
-"Latvian" = "拉脱维亚语";
-"Lingala" = "林加拉语";
-"Lithuanian" = "立陶宛语";
-"Luxembourgish" = "卢森堡语";
-"Macedonian" = "马其顿语";
-"Malagasy" = "马达加斯加语";
-"Malayalam" = "马拉雅拉姆语";
-"Maltese" = "马耳他语";
-"Maori" = "毛利语";
-"Marathi" = "马拉地语";
-"Mongolian" = "蒙古语";
-"Myanmar" = "缅甸语";
-"Nepali" = "尼泊尔语";
-"Norwegian Nynorsk" = "挪威语（新挪威语）";
-"Occitan" = "奥克语";
-"Pashto" = "普什图语";
-"Persian" = "波斯语";
-"Punjabi" = "旁遮普语";
-"Sanskrit" = "梵语";
 
 /* System Default Prompt Template (Chinese) */
 "system_default_prompt_zh" = "您需要清理 <TRANSCRIPT> 标签中的转录文本。目标是生成说话者意图表达的清晰、连贯版本，删除错误开始和自我纠正。如果 <CONTEXT_INFORMATION> 中的可用上下文与用户的 <TRANSCRIPT> 文本直接相关，请使用该上下文。
@@ -1361,3 +1210,89 @@
    输出：\"Hey, what do you think we should do about this? Do you like this idea?\"
 
 清理文本后，仅返回清理后的版本，不要任何额外的文本、解释或标签。输出应该可以直接使用而无需进一步编辑。";
+
+/* 自动补齐缺失键 */
+"VoiceInk" = "VoiceInk";
+"VoiceInk Pro" = "VoiceInk Pro";
+"Groq" = "Groq";
+"ElevenLabs" = "ElevenLabs";
+"Deepgram" = "Deepgram";
+"Mistral" = "Mistral";
+"Tiny" = "Tiny";
+"Base" = "Base";
+"Discord" = "Discord";
+"Arc" = "Arc";
+"Brave" = "Brave";
+"Opera" = "Opera";
+"Safari" = "Safari";
+"Vivaldi" = "Vivaldi";
+"Orion" = "Orion";
+
+/* 自动补齐缺失键 (from en.lproj) */
+"%.1f" = "%.1f";
+"%.1f GB" = "%.1f GB";
+"%d:%02d" = "%d:%02d";
+",שלום, מה שלומך? נעים להכיר" = ",שלום, מה שלומך? נעים להכיר";
+"1.5 GiB" = "1.5 GiB";
+"142 MiB" = "142 MiB";
+"2.9 GiB" = "2.9 GiB";
+"547 MiB" = "547 MiB";
+"75 MiB" = "75 MiB";
+"Bonjour, comment allez-vous? Ravi de vous rencontrer." = "Bonjour, comment allez-vous? Ravi de vous rencontrer.";
+"Ciao, come stai? Piacere di conoscerti." = "Ciao, come stai? Piacere di conoscerti.";
+"Cześć, jak się masz? Miło cię poznać." = "Cześć, jak się masz? Miło cię poznać.";
+"Fn" = "Fn";
+"GROQ" = "GROQ";
+"Hallo, hoe gaat het? Aangenaam kennis te maken." = "Hallo, hoe gaat het? Aangenaam kennis te maken.";
+"Hallo, wie geht es dir? Schön dich kennenzulernen." = "Hallo, wie geht es dir? Schön dich kennenzulernen.";
+"Large v2" = "Large v2";
+"Large v3" = "Large v3";
+"Large v3 Turbo" = "Large v3 Turbo";
+"Merhaba, nasılsın? Tanıştığımıza memnun oldum." = "Merhaba, nasılsın? Tanıştığımıza memnun oldum.";
+"Olá, como você está? Prazer em conhecê-lo." = "Olá, como você está? Prazer em conhecê-lo.";
+"Xin chào, bạn khỏe không? Rất vui được gặp bạn." = "Xin chào, bạn khỏe không? Rất vui được gặp bạn.";
+"[,\\.!\\?;:\\s]+$" = "[,\\.!\\?;:\\s]+$";
+"[^a-z0-9\\\\-]" = "[^a-z0-9\\\\-]";
+"\\(Int(totalProgress * 100))%" = "\\(Int(totalProgress * 100))%";
+"\\(icon).fill" = "\\(icon).fill";
+"\\(number)" = "\\(number)";
+"\\(priority + 1)" = "\\(priority + 1)";
+"\\\\" = "\\\\";
+"\\n" = "\\n";
+"\\r" = "\\r";
+"^[,\\.!\\?;:\\s]+" = "^[,\\.!\\?;:\\s]+";
+"ggml-base" = "ggml-base";
+"ggml-large-v2" = "ggml-large-v2";
+"ggml-large-v3" = "ggml-large-v3";
+"ggml-large-v3-turbo" = "ggml-large-v3-turbo";
+"ggml-large-v3-turbo-q5_0" = "ggml-large-v3-turbo-q5_0";
+"ggml-tiny" = "ggml-tiny";
+"large-v3-turbo" = "large-v3-turbo";
+"nova-2" = "nova-2";
+"v\\(appVersion)" = "v\\(appVersion)";
+"voxtral-mini-2507" = "voxtral-mini-2507";
+"whisper-1" = "whisper-1";
+"whisper-large-v3-turbo" = "whisper-large-v3-turbo";
+"www." = "www.";
+"¡Hola, ¿cómo estás? Encantado de conocerte." = "¡Hola, ¿cómo estás? Encantado de conocerte.";
+"Здравствуйте, как ваши дела? Приятно познакомиться." = "Здравствуйте, как ваши дела? Приятно познакомиться.";
+"السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔" = "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔";
+"سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم." = "سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم.";
+"مرحباً، كيف حالك؟ سعيد بلقائك." = "مرحباً، كيف حالك؟ سعيد بلقائك.";
+"नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।" = "नमस्ते, कैसे हैं आप? आपसे मिलकर अच्छा लगा।";
+"নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।" = "নমস্কার, কেমন আছেন? আপনার সাথে দেখা হয়ে ভালো লাগলো।";
+"வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி." = "வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி.";
+"నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం." = "నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం.";
+"ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ." = "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.";
+"നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം." = "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.";
+"สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ" = "สวัสดีครับ/ค่ะ, สบายดีไหม? ยินดีที่ได้พบคุณ";
+"⚙️" = "⚙️";
+"こんにちは、お元気ですか？お会いできて嬉しいです。" = "こんにちは、お元気ですか？お会いできて嬉しいです。";
+"你好，最近好吗？见到你很高兴。" = "你好，最近好吗？见到你很高兴。";
+"你好，最近點呀？見到你好開心。" = "你好，最近點呀？見到你好開心。";
+"刷新" = "刷新";
+"已连接" = "已连接";
+"替换文本" = "替换文本";
+"模型" = "模型";
+"验证并保存" = "验证并保存";
+"안녕하세요, 잘 지내시나요? 만나서 반갑습니다." = "안녕하세요, 잘 지내시나요? 만나서 반갑습니다.";

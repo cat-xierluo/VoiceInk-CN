@@ -26,77 +26,77 @@ struct LicenseManagementView: View {
     }
     
     private var heroSection: some View {
-        VStack(spacing: 24) {
-            // App Icon
+        let isLicensed = licenseViewModel.licenseState == .licensed
+        let titleKey: LocalizedStringKey = isLicensed ? L10n.Sidebar.voiceInkPro.text : L10n.License.upgradeToPro.text
+        let subtitleKey: LocalizedStringKey = isLicensed ? L10n.License.supportMessage.text : L10n.License.heroSubtitle.text
+
+        return VStack(spacing: 24) {
             AppIconView()
-            
-            // Title Section
+
             VStack(spacing: 16) {
                 HStack(spacing: 16) {
                     Image(systemName: "checkmark.seal.fill")
                         .font(.system(size: 32))
                         .foregroundStyle(.blue)
-                    
-                    HStack(alignment: .lastTextBaseline, spacing: 8) { 
-Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : NSLocalizedString("Upgrade to Pro", comment: "Upgrade to Pro"))
+
+                    HStack(alignment: .lastTextBaseline, spacing: 8) {
+                        Text(titleKey)
                             .font(.system(size: 32, weight: .bold))
-                        
-                        Text(NSLocalizedString("v\(appVersion)", comment: "v\(appVersion)"))
+
+                        Text(L10n.License.versionFormat.format(appVersion))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.bottom, 4)
                     }
                 }
-                
-                Text(licenseViewModel.licenseState == .licensed ? 
-                     "Thank you for supporting VoiceInk" :
-NSLocalizedString("Transcribe what you say to text instantly with AI", comment: "Transcribe what you say to text instantly with AI"))
+
+                Text(subtitleKey)
                     .font(.title3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
-                
-                if case .licensed = licenseViewModel.licenseState {
+
+                if isLicensed {
                     HStack(spacing: 40) {
                         Button {
                             if let url = URL(string: "https://github.com/Beingpax/VoiceInk/releases") {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-featureItem(icon: "list.bullet.clipboard.fill", title: NSLocalizedString("Changelog", comment: "Changelog"), color: .blue)
+                            featureItem(icon: "list.bullet.clipboard.fill", title: L10n.License.changelog.text, color: .blue)
                         }
                         .buttonStyle(.plain)
-                        
+
                         Button {
                             if let url = URL(string: "https://discord.gg/xryDy57nYD") {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-featureItem(icon: "bubble.left.and.bubble.right.fill", title: NSLocalizedString("Discord", comment: "Discord"), color: .purple)
+                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: L10n.License.discord.text, color: .purple)
                         }
                         .buttonStyle(.plain)
-                        
+
                         Button {
                             EmailSupport.openSupportEmail()
                         } label: {
-featureItem(icon: "envelope.fill", title: NSLocalizedString("Email Support", comment: "Email Support"), color: .orange)
+                            featureItem(icon: "envelope.fill", title: L10n.License.emailSupport.text, color: .orange)
                         }
                         .buttonStyle(.plain)
-                        
+
                         Button {
                             if let url = URL(string: "https://tryvoiceink.com/docs") {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-featureItem(icon: "book.fill", title: NSLocalizedString("Docs", comment: "Docs"), color: .indigo)
+                            featureItem(icon: "book.fill", title: L10n.License.docs.text, color: .indigo)
                         }
                         .buttonStyle(.plain)
-                        
+
                         Button {
                             if let url = URL(string: "https://github.com/Beingpax/VoiceInk/issues") {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Roadmap"), color: .green)
+                            featureItem(icon: "map.fill", title: L10n.License.roadmap.text, color: .green)
                         }
                         .buttonStyle(.plain)
                     }
@@ -106,43 +106,39 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
         }
         .padding(.vertical, 60)
     }
-    
+
     private var purchaseContent: some View {
         VStack(spacing: 40) {
-            // Purchase Card
             VStack(spacing: 24) {
-                // Lifetime Access Badge
                 HStack {
                     Image(systemName: "infinity.circle.fill")
                         .font(.system(size: 20))
                         .foregroundStyle(.blue)
-                    Text(NSLocalizedString("Buy Once, Own Forever", comment: "Buy Once, Own Forever"))
+                    Text(L10n.License.buyOnceOwnForever.text)
                         .font(.headline)
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(12)
-                
-                // Purchase Button 
+
                 Button(action: {
                     if let url = URL(string: "https://tryvoiceink.com/buy") {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text(NSLocalizedString("Upgrade to VoiceInk Pro", comment: "Upgrade to VoiceInk Pro"))
+                    Text(L10n.License.upgradeToVoiceInkPro.text)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                 }
                 .buttonStyle(.borderedProminent)
-                
-                // Features Grid
+
                 HStack(spacing: 40) {
-                    featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Priority Support", color: .purple)
-                    featureItem(icon: "infinity.circle.fill", title: "Lifetime Access", color: .blue)
-                    featureItem(icon: "arrow.up.circle.fill", title: "Free Updates", color: .green)
-                    featureItem(icon: "macbook.and.iphone", title: "Multiple Devices", color: .orange)
+                    featureItem(icon: "bubble.left.and.bubble.right.fill", title: L10n.License.prioritySupport.text, color: .purple)
+                    featureItem(icon: "infinity.circle.fill", title: L10n.License.lifetimeAccess.text, color: .blue)
+                    featureItem(icon: "arrow.up.circle.fill", title: L10n.License.freeUpdates.text, color: .green)
+                    featureItem(icon: "macbook.and.iphone", title: L10n.License.multipleDevices.text, color: .orange)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
@@ -150,17 +146,16 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
             .background(CardBackground(isSelected: false))
             .shadow(color: .black.opacity(0.05), radius: 10)
 
-            // License Activation
             VStack(spacing: 20) {
-                Text(NSLocalizedString("Already have a license?", comment: "Already have a license?"))
+                Text(L10n.License.alreadyHaveLicense.text)
                     .font(.headline)
-                
+
                 HStack(spacing: 12) {
-                    TextField("Enter your license key", text: $licenseViewModel.licenseKey)
+                    TextField(L10n.License.enterLicenseKey.text, text: $licenseViewModel.licenseKey)
                         .textFieldStyle(.roundedBorder)
                         .font(.system(.body, design: .monospaced))
                         .textCase(.uppercase)
-                    
+
                     Button(action: {
                         Task { await licenseViewModel.validateLicense() }
                     }) {
@@ -168,14 +163,14 @@ featureItem(icon: "map.fill", title: NSLocalizedString("Roadmap", comment: "Road
                             ProgressView()
                                 .controlSize(.small)
                         } else {
-Text(NSLocalizedString("Activate", comment: "Activate"))
+                            Text(L10n.License.activate.text)
                                 .frame(width: 80)
                         }
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(licenseViewModel.isValidating)
                 }
-                
+
                 if let message = licenseViewModel.validationMessage {
                     Text(message)
                         .foregroundColor(.red)
@@ -187,34 +182,33 @@ Text(NSLocalizedString("Activate", comment: "Activate"))
             .shadow(color: .black.opacity(0.05), radius: 10)
         }
     }
-    
+
     private var activatedContent: some View {
         VStack(spacing: 32) {
-            // Status Card
             VStack(spacing: 24) {
                 HStack {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 24))
                         .foregroundStyle(.green)
-Text(NSLocalizedString("License Active", comment: "License Active"))
+                    Text(L10n.License.licenseActive.text)
                         .font(.headline)
                     Spacer()
-                    Text(NSLocalizedString("Active", comment: "Active status"))
+                    Text(L10n.License.activeStatus.text)
                         .font(.caption)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
                         .background(Capsule().fill(.green))
                         .foregroundStyle(.white)
                 }
-                
+
                 Divider()
-                
+
                 if licenseViewModel.activationsLimit > 0 {
-                    Text("This license can be activated on up to \(licenseViewModel.activationsLimit) devices")
+                    Text(L10n.License.activationLimitMessage.format(licenseViewModel.activationsLimit))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 } else {
-Text(NSLocalizedString("You can use VoiceInk Pro on all your personal devices", comment: "You can use VoiceInk Pro on all your personal devices"))
+                    Text(L10n.License.allDevicesMessage.text)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -222,16 +216,15 @@ Text(NSLocalizedString("You can use VoiceInk Pro on all your personal devices", 
             .padding(32)
             .background(CardBackground(isSelected: false))
             .shadow(color: .black.opacity(0.05), radius: 10)
-            
-            // Deactivation Card
+
             VStack(alignment: .leading, spacing: 16) {
-Text(NSLocalizedString("License Management", comment: "License Management"))
+                Text(L10n.License.licenseManagement.text)
                     .font(.headline)
-                
+
                 Button(role: .destructive, action: {
                     licenseViewModel.removeLicense()
                 }) {
-Label(NSLocalizedString("Deactivate License", comment: "Deactivate License"), systemImage: "xmark.circle.fill")
+                    Label(L10n.License.deactivateLicense.text, systemImage: "xmark.circle.fill")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
                 }
@@ -242,18 +235,17 @@ Label(NSLocalizedString("Deactivate License", comment: "Deactivate License"), sy
             .shadow(color: .black.opacity(0.05), radius: 10)
         }
     }
-    
-    private func featureItem(icon: String, title: String, color: Color) -> some View {
+
+    private func featureItem(icon: String, title: LocalizedStringKey, color: Color) -> some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(color)
-            
+
             Text(title)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(.primary)
         }
     }
 }
-
 

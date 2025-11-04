@@ -1056,3 +1056,14 @@
 "模型" = "模型";
 "验证并保存" = "验证并保存";
 "안녕하세요, 잘 지내시나요? 만나서 반갑습니다." = "안녕하세요, 잘 지내시나요? 만나서 반갑습니다.";
+
+/* Added via localization sync */
+"Debug" = "Debug";
+"Enter your license key" = "Enter your license key";
+"Free Updates" = "Free Updates";
+"Lifetime Access" = "Lifetime Access";
+"Multiple Devices" = "Multiple Devices";
+"Priority Support" = "Priority Support";
+"This license can be activated on up to %d devices" = "This license can be activated on up to %d devices";
+"VoiceInk Onboarding" = "VoiceInk Onboarding";
+"v%@" = "v%@";
