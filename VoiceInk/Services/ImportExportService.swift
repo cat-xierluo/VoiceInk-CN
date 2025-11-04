@@ -7,26 +7,29 @@ import LaunchAtLogin
 struct GeneralSettings: Codable {
     let toggleMiniRecorderShortcut: KeyboardShortcuts.Shortcut?
     let toggleMiniRecorderShortcut2: KeyboardShortcuts.Shortcut?
+    let retryLastTranscriptionShortcut: KeyboardShortcuts.Shortcut?
     let selectedHotkey1RawValue: String?
     let selectedHotkey2RawValue: String?
     let launchAtLoginEnabled: Bool?
     let isMenuBarOnly: Bool?
     let useAppleScriptPaste: Bool?
     let recorderType: String?
+    let isTranscriptionCleanupEnabled: Bool?
+    let transcriptionRetentionMinutes: Int?
     let isAudioCleanupEnabled: Bool?
     let audioRetentionPeriod: Int?
-    let isAutoCopyEnabled: Bool?
+
     let isSoundFeedbackEnabled: Bool?
     let isSystemMuteEnabled: Bool?
     let isPauseMediaEnabled: Bool?
     let isTextFormattingEnabled: Bool?
+    let isExperimentalFeaturesEnabled: Bool?
 }
 
 struct VoiceInkExportedSettings: Codable {
     let version: String
     let customPrompts: [CustomPrompt]
     let powerModeConfigs: [PowerModeConfig]
-    let defaultPowerModeConfig: PowerModeConfig
     let dictionaryItems: [DictionaryItem]?
     let wordReplacements: [String: String]?
     let generalSettings: GeneralSettings?
@@ -45,8 +48,10 @@ class ImportExportService {
     private let keyUseAppleScriptPaste = "UseAppleScriptPaste"
     private let keyRecorderType = "RecorderType"
     private let keyIsAudioCleanupEnabled = "IsAudioCleanupEnabled"
+    private let keyIsTranscriptionCleanupEnabled = "IsTranscriptionCleanupEnabled"
+    private let keyTranscriptionRetentionMinutes = "TranscriptionRetentionMinutes"
     private let keyAudioRetentionPeriod = "AudioRetentionPeriod"
-    private let keyIsAutoCopyEnabled = "IsAutoCopyEnabled"
+
     private let keyIsSoundFeedbackEnabled = "isSoundFeedbackEnabled"
     private let keyIsSystemMuteEnabled = "isSystemMuteEnabled"
     private let keyIsTextFormattingEnabled = "IsTextFormattingEnabled"
@@ -67,7 +72,6 @@ class ImportExportService {
         let exportablePrompts = enhancementService.customPrompts.filter { !$0.isPredefined }
 
         let powerConfigs = powerModeManager.configurations
-        let defaultPowerConfig = powerModeManager.defaultConfig
         
         // Export custom models
         let customModels = CustomModelManager.shared.customModels
@@ -83,26 +87,29 @@ class ImportExportService {
         let generalSettingsToExport = GeneralSettings(
             toggleMiniRecorderShortcut: KeyboardShortcuts.getShortcut(for: .toggleMiniRecorder),
             toggleMiniRecorderShortcut2: KeyboardShortcuts.getShortcut(for: .toggleMiniRecorder2),
+            retryLastTranscriptionShortcut: KeyboardShortcuts.getShortcut(for: .retryLastTranscription),
             selectedHotkey1RawValue: hotkeyManager.selectedHotkey1.rawValue,
             selectedHotkey2RawValue: hotkeyManager.selectedHotkey2.rawValue,
             launchAtLoginEnabled: LaunchAtLogin.isEnabled,
             isMenuBarOnly: menuBarManager.isMenuBarOnly,
             useAppleScriptPaste: UserDefaults.standard.bool(forKey: keyUseAppleScriptPaste),
             recorderType: whisperState.recorderType,
+            isTranscriptionCleanupEnabled: UserDefaults.standard.bool(forKey: keyIsTranscriptionCleanupEnabled),
+            transcriptionRetentionMinutes: UserDefaults.standard.integer(forKey: keyTranscriptionRetentionMinutes),
             isAudioCleanupEnabled: UserDefaults.standard.bool(forKey: keyIsAudioCleanupEnabled),
             audioRetentionPeriod: UserDefaults.standard.integer(forKey: keyAudioRetentionPeriod),
-            isAutoCopyEnabled: whisperState.isAutoCopyEnabled,
+
             isSoundFeedbackEnabled: soundManager.isEnabled,
             isSystemMuteEnabled: mediaController.isSystemMuteEnabled,
             isPauseMediaEnabled: playbackController.isPauseMediaEnabled,
-            isTextFormattingEnabled: UserDefaults.standard.object(forKey: keyIsTextFormattingEnabled) as? Bool ?? true
+            isTextFormattingEnabled: UserDefaults.standard.object(forKey: keyIsTextFormattingEnabled) as? Bool ?? true,
+            isExperimentalFeaturesEnabled: UserDefaults.standard.bool(forKey: "isExperimentalFeaturesEnabled")
         )
 
         let exportedSettings = VoiceInkExportedSettings(
             version: currentSettingsVersion,
             customPrompts: exportablePrompts,
             powerModeConfigs: powerConfigs,
-            defaultPowerModeConfig: defaultPowerConfig,
             dictionaryItems: exportedDictionaryItems,
             wordReplacements: exportedWordReplacements,
             generalSettings: generalSettingsToExport,
@@ -127,17 +134,17 @@ class ImportExportService {
                     if let url = savePanel.url {
                         do {
                             try jsonData.write(to: url)
-self.showAlert(title: NSLocalizedString("Export Successful", comment: "Export Successful"), message: "Your settings have been successfully exported to \(url.lastPathComponent).")
+                            self.showAlert(title: "Export Successful", message: "Your settings have been successfully exported to \(url.lastPathComponent).")
                         } catch {
-self.showAlert(title: NSLocalizedString("Export Error", comment: "Export Error"), message: "Could not save settings to file: \(error.localizedDescription)")
+                            self.showAlert(title: "Export Error", message: "Could not save settings to file: \(error.localizedDescription)")
                         }
                     }
                 } else {
-self.showAlert(title: "Export Canceled", message: NSLocalizedString("The settings export operation was canceled.", comment: "The settings export operation was canceled."))
+                    self.showAlert(title: "Export Canceled", message: "The settings export operation was canceled.")
                 }
             }
         } catch {
-self.showAlert(title: NSLocalizedString("Export Error", comment: "Export Error"), message: "Could not encode settings to JSON: \(error.localizedDescription)")
+            self.showAlert(title: "Export Error", message: "Could not encode settings to JSON: \(error.localizedDescription)")
         }
     }
 
@@ -154,7 +161,7 @@ self.showAlert(title: NSLocalizedString("Export Error", comment: "Export Error")
         DispatchQueue.main.async {
             if openPanel.runModal() == .OK {
                 guard let url = openPanel.url else {
-self.showAlert(title: "Import Error", message: NSLocalizedString("Could not get the file URL from the open panel.", comment: "Could not get the file URL from the open panel."))
+                    self.showAlert(title: "Import Error", message: "Could not get the file URL from the open panel.")
                     return
                 }
 
@@ -164,7 +171,7 @@ self.showAlert(title: "Import Error", message: NSLocalizedString("Could not get 
                     let importedSettings = try decoder.decode(VoiceInkExportedSettings.self, from: jsonData)
                     
                     if importedSettings.version != self.currentSettingsVersion {
-self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mismatch"), message: "The imported settings file (version \(importedSettings.version)) is from a different version than your application (version \(self.currentSettingsVersion)). Proceeding with import, but be aware of potential incompatibilities.")
+                        self.showAlert(title: "Version Mismatch", message: "The imported settings file (version \(importedSettings.version)) is from a different version than your application (version \(self.currentSettingsVersion)). Proceeding with import, but be aware of potential incompatibilities.")
                     }
 
                     let predefinedPrompts = enhancementService.customPrompts.filter { $0.isPredefined }
@@ -172,9 +179,7 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                     
                     let powerModeManager = PowerModeManager.shared
                     powerModeManager.configurations = importedSettings.powerModeConfigs
-                    powerModeManager.defaultConfig = importedSettings.defaultPowerModeConfig
                     powerModeManager.saveConfigurations()
-                    powerModeManager.updateConfiguration(powerModeManager.defaultConfig)
 
                     // Import Custom Models
                     if let modelsToImport = importedSettings.customCloudModels {
@@ -195,8 +200,8 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                     }
 
                     if let itemsToImport = importedSettings.dictionaryItems {
-                        Task {
-                            await whisperPrompt.saveDictionaryItems(itemsToImport)
+                        if let encoded = try? JSONEncoder().encode(itemsToImport) {
+                            UserDefaults.standard.set(encoded, forKey: "CustomDictionaryItems")
                         }
                     } else {
                         print("No dictionary items (for spelling) found in the imported file. Existing items remain unchanged.")
@@ -214,6 +219,9 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                         }
                         if let shortcut2 = general.toggleMiniRecorderShortcut2 {
                             KeyboardShortcuts.setShortcut(shortcut2, for: .toggleMiniRecorder2)
+                        }
+                        if let retryShortcut = general.retryLastTranscriptionShortcut {
+                            KeyboardShortcuts.setShortcut(retryShortcut, for: .retryLastTranscription)
                         }
                         if let hotkeyRaw = general.selectedHotkey1RawValue,
                            let hotkey = HotkeyManager.HotkeyOption(rawValue: hotkeyRaw) {
@@ -235,15 +243,20 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                         if let recType = general.recorderType {
                             whisperState.recorderType = recType
                         }
+                        
+                        if let transcriptionCleanup = general.isTranscriptionCleanupEnabled {
+                            UserDefaults.standard.set(transcriptionCleanup, forKey: self.keyIsTranscriptionCleanupEnabled)
+                        }
+                        if let transcriptionMinutes = general.transcriptionRetentionMinutes {
+                            UserDefaults.standard.set(transcriptionMinutes, forKey: self.keyTranscriptionRetentionMinutes)
+                        }
                         if let audioCleanup = general.isAudioCleanupEnabled {
                             UserDefaults.standard.set(audioCleanup, forKey: self.keyIsAudioCleanupEnabled)
                         }
                         if let audioRetention = general.audioRetentionPeriod {
                             UserDefaults.standard.set(audioRetention, forKey: self.keyAudioRetentionPeriod)
                         }
-                        if let autoCopy = general.isAutoCopyEnabled {
-                            whisperState.isAutoCopyEnabled = autoCopy
-                        }
+
                         if let soundFeedback = general.isSoundFeedbackEnabled {
                             soundManager.isEnabled = soundFeedback
                         }
@@ -253,6 +266,12 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                         if let pauseMedia = general.isPauseMediaEnabled {
                             playbackController.isPauseMediaEnabled = pauseMedia
                         }
+                        if let experimentalEnabled = general.isExperimentalFeaturesEnabled {
+                            UserDefaults.standard.set(experimentalEnabled, forKey: "isExperimentalFeaturesEnabled")
+                            if experimentalEnabled == false {
+                                playbackController.isPauseMediaEnabled = false
+                            }
+                        }
                         if let textFormattingEnabled = general.isTextFormattingEnabled {
                             UserDefaults.standard.set(textFormattingEnabled, forKey: self.keyIsTextFormattingEnabled)
                         }
@@ -261,7 +280,7 @@ self.showAlert(title: NSLocalizedString("Version Mismatch", comment: "Version Mi
                     self.showRestartAlert(message: "Settings imported successfully from \(url.lastPathComponent). All settings (including general app settings) have been applied.")
 
                 } catch {
-self.showAlert(title: NSLocalizedString("Import Error", comment: "Import Error"), message: "Error importing settings: \(error.localizedDescription). The file might be corrupted or not in the correct format.")
+                    self.showAlert(title: "Import Error", message: "Error importing settings: \(error.localizedDescription). The file might be corrupted or not in the correct format.")
                 }
             } else {
                 self.showAlert(title: "Import Canceled", message: "The settings import operation was canceled.")
@@ -275,7 +294,7 @@ self.showAlert(title: NSLocalizedString("Import Error", comment: "Import Error")
             alert.messageText = title
             alert.informativeText = message
             alert.alertStyle = .informational
-            alert.addButton(withTitle: NSLocalizedString("OK", comment: "OK"))
+            alert.addButton(withTitle: "OK")
             alert.runModal()
         }
     }
@@ -286,15 +305,15 @@ self.showAlert(title: NSLocalizedString("Import Error", comment: "Import Error")
             alert.messageText = "Import Successful"
             alert.informativeText = message + "\n\nIMPORTANT: If you were using AI enhancement features, please make sure to reconfigure your API keys in the Enhancement section.\n\nIt is recommended to restart VoiceInk for all changes to take full effect."
             alert.alertStyle = .informational
-            alert.addButton(withTitle: NSLocalizedString("OK", comment: "OK"))
-alert.addButton(withTitle: NSLocalizedString("Configure API Keys", comment: "Configure API Keys"))
+            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: "Configure API Keys")
             
             let response = alert.runModal()
             if response == .alertSecondButtonReturn {
                 NotificationCenter.default.post(
                     name: .navigateToDestination,
                     object: nil,
-userInfo: ["destination": NSLocalizedString("Enhancement", comment: "Enhancement")]
+                    userInfo: ["destination": "Enhancement"]
                 )
             }
         }

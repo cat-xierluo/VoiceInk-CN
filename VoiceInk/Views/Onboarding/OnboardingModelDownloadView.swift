@@ -42,12 +42,20 @@ struct OnboardingModelDownloadView: View {
                         
                         // Title and description
                         VStack(spacing: 12) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Download AI Model", comment: "Download AI Model"))
+=======
+                            Text("Download AI Model")
+>>>>>>> upstream/main
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                             
+<<<<<<< HEAD
 Text(NSLocalizedString("We'll download the optimized model to get you started.", comment: "We'll download the optimized model to get you started."))
+=======
+                            Text("We'll download the optimized model to get you started.")
+>>>>>>> upstream/main
                                 .font(.body)
                                 .foregroundColor(.white.opacity(0.7))
                                 .multilineTextAlignment(.center)
@@ -75,8 +83,13 @@ Text(NSLocalizedString("We'll download the optimized model to get you started.",
                         
                         // Performance indicators in a more compact layout
                         HStack(spacing: 20) {
+<<<<<<< HEAD
 performanceIndicator(label: NSLocalizedString("Speed", comment: "Speed"), value: turboModel.speed)
 performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), value: turboModel.accuracy)
+=======
+                            performanceIndicator(label: "Speed", value: turboModel.speed)
+                            performanceIndicator(label: "Accuracy", value: turboModel.accuracy)
+>>>>>>> upstream/main
                             ramUsageLabel(gb: turboModel.ramUsage)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -215,7 +228,11 @@ performanceIndicator(label: NSLocalizedString("Accuracy", comment: "Accuracy"), 
     
     private func ramUsageLabel(gb: Double) -> some View {
         VStack(alignment: .leading, spacing: 4) {
+<<<<<<< HEAD
             Text(NSLocalizedString("RAM", comment: "RAM"))
+=======
+            Text("RAM")
+>>>>>>> upstream/main
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.7))
             

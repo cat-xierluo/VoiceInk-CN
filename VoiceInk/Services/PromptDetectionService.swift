@@ -3,7 +3,7 @@ import os
 
 class PromptDetectionService {
     private let logger = Logger(
-        subsystem: "com.prakashjoshipax.VoiceInk",
+        subsystem: "com.prakashjoshipax.voiceink",
         category: "promptdetection"
     )
     
@@ -16,13 +16,14 @@ class PromptDetectionService {
         let originalPromptId: UUID?
     }
     
+    @MainActor
     func analyzeText(_ text: String, with enhancementService: AIEnhancementService) -> PromptDetectionResult {
         let originalEnhancementState = enhancementService.isEnhancementEnabled
         let originalPromptId = enhancementService.selectedPromptId
 
-        for prompt in enhancementService.allPrompts {
+		for prompt in enhancementService.allPrompts {
             if !prompt.triggerWords.isEmpty {
-                if let (detectedWord, processedText) = findMatchingTriggerWord(from: text, triggerWords: prompt.triggerWords) {
+				if let (detectedWord, processedText) = detectAndStripTriggerWord(from: text, triggerWords: prompt.triggerWords) {
                     return PromptDetectionResult(
                         shouldEnableAI: true,
                         selectedPromptId: prompt.id,
@@ -75,7 +76,7 @@ class PromptDetectionService {
         }
     }
     
-    private func removeTriggerWord(from text: String, triggerWord: String) -> String? {
+	private func stripLeadingTriggerWord(from text: String, triggerWord: String) -> String? {
         let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
         let lowerText = trimmedText.lowercased()
         let lowerTrigger = triggerWord.lowercased()
@@ -84,6 +85,13 @@ class PromptDetectionService {
         
         let triggerEndIndex = trimmedText.index(trimmedText.startIndex, offsetBy: triggerWord.count)
         
+		if triggerEndIndex < trimmedText.endIndex {
+			let charAfterTrigger = trimmedText[triggerEndIndex]
+			if charAfterTrigger.isLetter || charAfterTrigger.isNumber {
+				return nil
+			}
+		}
+		
         if triggerEndIndex >= trimmedText.endIndex {
             return ""
         }
@@ -105,7 +113,7 @@ class PromptDetectionService {
         return remainingText
     }
     
-    private func removeTrailingTriggerWord(from text: String, triggerWord: String) -> String? {
+	private func stripTrailingTriggerWord(from text: String, triggerWord: String) -> String? {
         var trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
         let punctuationSet = CharacterSet(charactersIn: ",.!?;:")
@@ -142,24 +150,30 @@ class PromptDetectionService {
         return remainingText
     }
     
-    private func findMatchingTriggerWord(from text: String, triggerWords: [String]) -> (String, String)? {
+	private func detectAndStripTriggerWord(from text: String, triggerWords: [String]) -> (String, String)? {
         let trimmedWords = triggerWords.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
         
         // Sort by length (longest first) to match the most specific trigger word
         let sortedTriggerWords = trimmedWords.sorted { $0.count > $1.count }
         
-        for triggerWord in sortedTriggerWords {
-            if let processedText = removeTrailingTriggerWord(from: text, triggerWord: triggerWord) {
-                return (triggerWord, processedText)
-            }
-        }
-        
-        for triggerWord in sortedTriggerWords {
-            if let processedText = removeTriggerWord(from: text, triggerWord: triggerWord) {
-                return (triggerWord, processedText)
-            }
-        }
-        return nil
+		for triggerWord in sortedTriggerWords {
+			if let afterTrailing = stripTrailingTriggerWord(from: text, triggerWord: triggerWord) {
+				if let afterBoth = stripLeadingTriggerWord(from: afterTrailing, triggerWord: triggerWord) {
+					return (triggerWord, afterBoth)
+				}
+				return (triggerWord, afterTrailing)
+			}
+		}
+		
+		for triggerWord in sortedTriggerWords {
+			if let afterLeading = stripLeadingTriggerWord(from: text, triggerWord: triggerWord) {
+				if let afterBoth = stripTrailingTriggerWord(from: afterLeading, triggerWord: triggerWord) {
+					return (triggerWord, afterBoth)
+				}
+				return (triggerWord, afterLeading)
+			}
+		}
+		return nil
     }
 }

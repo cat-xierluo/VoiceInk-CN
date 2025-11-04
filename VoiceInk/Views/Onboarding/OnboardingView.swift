@@ -27,14 +27,22 @@ struct OnboardingView: View {
                                 
                                 // Title and subtitle
                                 VStack(spacing: 16) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Welcome to the Future of Typing", comment: "Welcome to the Future of Typing"))
+=======
+                                    Text("Welcome to the Future of Typing")
+>>>>>>> upstream/main
                                         .font(.system(size: min(geometry.size.width * 0.055, 42), weight: .bold, design: .rounded))
                                         .foregroundColor(.white)
                                         .opacity(textOpacity)
                                         .multilineTextAlignment(.center)
                                         .padding(.horizontal)
                                     
+<<<<<<< HEAD
 Text(NSLocalizedString("A New Way to Type", comment: "A New Way to Type"))
+=======
+                                    Text("A New Way to Type")
+>>>>>>> upstream/main
                                         .font(.system(size: min(geometry.size.width * 0.032, 24), weight: .medium, design: .rounded))
                                         .foregroundColor(.white.opacity(0.7))
                                         .opacity(textOpacity)
@@ -61,7 +69,11 @@ Text(NSLocalizedString("A New Way to Type", comment: "A New Way to Type"))
                                             showPermissions = true
                                         }
                                     }) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Get Started", comment: "Get Started"))
+=======
+                                        Text("Get Started")
+>>>>>>> upstream/main
                                             .font(.system(size: 18, weight: .semibold))
                                             .foregroundColor(.black)
                                             .frame(width: min(geometry.size.width * 0.3, 200), height: 50)
@@ -70,7 +82,11 @@ Text(NSLocalizedString("Get Started", comment: "Get Started"))
                                     }
                                     .buttonStyle(ScaleButtonStyle())
                                     
+<<<<<<< HEAD
 SkipButton(text: NSLocalizedString("Skip Tour", comment: "Skip Tour")) {
+=======
+                                    SkipButton(text: "Skip Tour") {
+>>>>>>> upstream/main
                                         hasCompletedOnboarding = true
                                     }
                                 }
@@ -110,10 +126,17 @@ SkipButton(text: NSLocalizedString("Skip Tour", comment: "Skip Tour")) {
 // MARK: - Supporting Views
 struct TypewriterRoles: View {
     private let roles = [
+<<<<<<< HEAD
 NSLocalizedString("Your Writing Assistant", comment: "Your Writing Assistant"),
 NSLocalizedString("Your Vibe-Coding Assistant", comment: "Your Vibe-Coding Assistant"),
 NSLocalizedString("Works Everywhere on Mac with a click", comment: "Works Everywhere on Mac with a click"),
 NSLocalizedString("100% offline & private", comment: "100% offline & private"),
+=======
+        "Your Writing Assistant",
+        "Your Vibe-Coding Assistant",
+        "Works Everywhere on Mac with a click",
+        "100% offline & private",
+>>>>>>> upstream/main
        
     ]
     

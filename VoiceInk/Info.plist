@@ -18,5 +18,33 @@
 	<string>VoiceInk needs to interact with your browser to detect the current website for applying website-specific configurations.</string>
 	<key>NSScreenCaptureUsageDescription</key>
 	<string>VoiceInk needs screen recording access to understand context from your screen for improved transcription accuracy.</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Audio/Video File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.movie</string>
+			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>wav</string>
+				<string>mp3</string>
+				<string>m4a</string>
+				<string>aiff</string>
+				<string>mp4</string>
+				<string>mov</string>
+				<string>aac</string>
+				<string>flac</string>
+				<string>caf</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

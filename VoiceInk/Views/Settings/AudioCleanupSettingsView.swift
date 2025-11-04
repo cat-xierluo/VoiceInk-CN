@@ -1,26 +1,44 @@
 import SwiftUI
 import SwiftData
 
+<<<<<<< HEAD
 /// A view component for configuring audio cleanup settings
+=======
+>>>>>>> upstream/main
 struct AudioCleanupSettingsView: View {
     @EnvironmentObject private var whisperState: WhisperState
     
     // Audio cleanup settings
+<<<<<<< HEAD
     @AppStorage("IsAudioCleanupEnabled") private var isAudioCleanupEnabled = true
+=======
+    @AppStorage("IsTranscriptionCleanupEnabled") private var isTranscriptionCleanupEnabled = false
+    @AppStorage("TranscriptionRetentionMinutes") private var transcriptionRetentionMinutes = 24 * 60
+    @AppStorage("IsAudioCleanupEnabled") private var isAudioCleanupEnabled = false
+>>>>>>> upstream/main
     @AppStorage("AudioRetentionPeriod") private var audioRetentionPeriod = 7
     @State private var isPerformingCleanup = false
     @State private var isShowingConfirmation = false
     @State private var cleanupInfo: (fileCount: Int, totalSize: Int64, transcriptions: [Transcription]) = (0, 0, [])
     @State private var showResultAlert = false
     @State private var cleanupResult: (deletedCount: Int, errorCount: Int) = (0, 0)
+<<<<<<< HEAD
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
 Text(NSLocalizedString("VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts.", comment: "VoiceInk can automatically delete audio files from transcription history while preserving the text transcripts."))
+=======
+    @State private var showTranscriptCleanupResult = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Control how VoiceInk handles your transcription data and audio recordings for privacy and storage management.")
+>>>>>>> upstream/main
                 .font(.system(size: 13))
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             
+<<<<<<< HEAD
 Toggle(NSLocalizedString("Enable automatic audio cleanup", comment: "Enable automatic audio cleanup"), isOn: $isAudioCleanupEnabled)
                 .toggleStyle(.switch)
                 .padding(.vertical, 4)
@@ -40,6 +58,71 @@ Text(NSLocalizedString("30 days", comment: "30 days")).tag(30)
                     .pickerStyle(.menu)
                     
 Text(NSLocalizedString("Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.", comment: "Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact."))
+=======
+            Toggle("Automatically delete transcript history", isOn: $isTranscriptionCleanupEnabled)
+                .toggleStyle(.switch)
+                .padding(.vertical, 4)
+            
+            if isTranscriptionCleanupEnabled {
+                VStack(alignment: .leading, spacing: 8) {
+                    Picker("Delete transcripts older than", selection: $transcriptionRetentionMinutes) {
+                        Text("Immediately").tag(0)
+                        Text("1 hour").tag(60)
+                        Text("1 day").tag(24 * 60)
+                        Text("3 days").tag(3 * 24 * 60)
+                        Text("7 days").tag(7 * 24 * 60)
+                    }
+                    .pickerStyle(.menu)
+
+                    Text("Older transcripts will be deleted automatically based on your selection.")
+                        .font(.system(size: 13))
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 2)
+
+                    Button(action: {
+                        Task {
+                            await TranscriptionAutoCleanupService.shared.runManualCleanup(modelContext: whisperState.modelContext)
+                            await MainActor.run {
+                                showTranscriptCleanupResult = true
+                            }
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "trash.circle")
+                            Text("Run Transcript Cleanup Now")
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .alert("Transcript Cleanup", isPresented: $showTranscriptCleanupResult) {
+                        Button("OK", role: .cancel) { }
+                    } message: {
+                        Text("Cleanup triggered. Old transcripts are cleaned up according to your retention setting.")
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+
+            if !isTranscriptionCleanupEnabled {
+                Toggle("Enable automatic audio cleanup", isOn: $isAudioCleanupEnabled)
+                    .toggleStyle(.switch)
+                    .padding(.vertical, 4)
+            }
+
+            if isAudioCleanupEnabled && !isTranscriptionCleanupEnabled {
+                VStack(alignment: .leading, spacing: 8) {
+                    Picker("Keep audio files for", selection: $audioRetentionPeriod) {
+                        Text("1 day").tag(1)
+                        Text("3 days").tag(3)
+                        Text("7 days").tag(7)
+                        Text("14 days").tag(14)
+                        Text("30 days").tag(30)
+                    }
+                    .pickerStyle(.menu)
+                    
+                    Text("Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.")
+>>>>>>> upstream/main
                         .font(.system(size: 13))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -74,14 +157,23 @@ Text(NSLocalizedString("Audio files older than the selected period will be autom
                         } else {
                             Image(systemName: "arrow.clockwise")
                         }
+<<<<<<< HEAD
 Text(isPerformingCleanup ? "Analyzing..." : NSLocalizedString("Run Cleanup Now", comment: "Run Cleanup Now"))
+=======
+                        Text(isPerformingCleanup ? "Analyzing..." : "Run Cleanup Now")
+>>>>>>> upstream/main
                     }
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
                 .disabled(isPerformingCleanup)
+<<<<<<< HEAD
 .alert(NSLocalizedString("Audio Cleanup", comment: "Audio Cleanup"), isPresented: $isShowingConfirmation) {
                     Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) { }
+=======
+                .alert("Audio Cleanup", isPresented: $isShowingConfirmation) {
+                    Button("Cancel", role: .cancel) { }
+>>>>>>> upstream/main
                     
                     if cleanupInfo.fileCount > 0 {
                         Button("Delete \(cleanupInfo.fileCount) Files", role: .destructive) {
@@ -111,13 +203,21 @@ Text(isPerformingCleanup ? "Analyzing..." : NSLocalizedString("Run Cleanup Now",
                         if cleanupInfo.fileCount > 0 {
                             Text("This will delete \(cleanupInfo.fileCount) audio files older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
                             Text("Total size to be freed: \(AudioCleanupManager.shared.formatFileSize(cleanupInfo.totalSize))")
+<<<<<<< HEAD
                             Text(NSLocalizedString("The text transcripts will be preserved.", comment: "The text transcripts will be preserved."))
+=======
+                            Text("The text transcripts will be preserved.")
+>>>>>>> upstream/main
                         } else {
                             Text("No audio files found that are older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
                         }
                     }
                 }
+<<<<<<< HEAD
                 .alert(NSLocalizedString("Cleanup Complete", comment: "Cleanup Complete"), isPresented: $showResultAlert) {
+=======
+                .alert("Cleanup Complete", isPresented: $showResultAlert) {
+>>>>>>> upstream/main
                     Button("OK", role: .cancel) { }
                 } message: {
                     if cleanupResult.errorCount > 0 {
@@ -128,5 +228,15 @@ Text(isPerformingCleanup ? "Analyzing..." : NSLocalizedString("Run Cleanup Now",
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        .onChange(of: isTranscriptionCleanupEnabled) { _, newValue in
+            if newValue {
+                AudioCleanupManager.shared.stopAutomaticCleanup()
+            } else if isAudioCleanupEnabled {
+                AudioCleanupManager.shared.startAutomaticCleanup(modelContext: whisperState.modelContext)
+            }
+        }
+>>>>>>> upstream/main
     }
 } 

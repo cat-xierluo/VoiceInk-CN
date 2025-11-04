@@ -10,17 +10,9 @@ struct PrioritizedDevice: Codable, Identifiable {
 }
 
 enum AudioInputMode: String, CaseIterable {
-    case systemDefault = "systemDefault"
-    case custom = "custom"
-    case prioritized = "prioritized"
-    
-    var displayName: String {
-        switch self {
-        case .systemDefault: return NSLocalizedString("System Default", comment: "System Default")
-        case .custom: return NSLocalizedString("Custom Device", comment: "Custom Device")
-        case .prioritized: return NSLocalizedString("Prioritized", comment: "Prioritized")
-        }
-    }
+    case systemDefault = "System Default"
+    case custom = "Custom Device"
+    case prioritized = "Prioritized"
 }
 
 class AudioDeviceManager: ObservableObject {

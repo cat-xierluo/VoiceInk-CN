@@ -1,63 +1,106 @@
 <div align="center">
   <img src="VoiceInk/Assets.xcassets/AppIcon.appiconset/256-mac.png" width="180" height="180" />
-  <h1>VoiceInk 中文版</h1>
-  <p>完全中文本地化的 macOS 语音转文字应用</p>
+  <h1>VoiceInk</h1>
+  <p>Voice to text app for macOS to transcribe what you say to text almost instantly</p>
 
   [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
   ![Platform](https://img.shields.io/badge/platform-macOS%2014.0%2B-brightgreen)
-  ![Pro版本](https://img.shields.io/badge/版本-Pro无限制-gold)
+  [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Beingpax/VoiceInk)](https://github.com/Beingpax/VoiceInk/releases)
+  ![GitHub all releases](https://img.shields.io/github/downloads/Beingpax/VoiceInk/total)
+  ![GitHub stars](https://img.shields.io/github/stars/Beingpax/VoiceInk?style=social)
+  <p>
+    <a href="https://tryvoiceink.com">Website</a> •
+    <a href="https://www.youtube.com/@tryvoiceink">YouTube</a>
+  </p>
 
+  <a href="https://tryvoiceink.com">
+    <img src="https://img.shields.io/badge/Download%20Now-Latest%20Version-blue?style=for-the-badge&logo=apple" alt="Download VoiceInk" width="250"/>
+  </a>
 </div>
 
 ---
 
-## 📖 项目介绍
+VoiceInk is a native macOS application that transcribes what you say to text almost instantly. You can find all the information and download the app from [here](https://tryvoiceink.com). 
 
-这是基于开源项目 [VoiceInk](https://github.com/Beingpax/VoiceInk) 的**中文本地化版本**。
+![VoiceInk Mac App](https://github.com/user-attachments/assets/12367379-83e7-48a6-b52c-4488a6a04bba)
 
-**原项目来源**: [VoiceInk by Beingpax](https://tryvoiceink.com) - 一个优秀的 macOS 语音转文字应用，提供高精度的本地语音识别功能。
+After dedicating the past 5 months to developing this app, I've decided to open source it for the greater good. 
 
-## 🇨🇳 中文本地化工作
+My goal is to make it **the most efficient and privacy-focused voice-to-text solution for macOS** that is a joy to use. While the source code is now open for experienced developers to build and contribute, purchasing a license helps support continued development and gives you access to automatic updates, priority support, and upcoming features.
 
-本项目在原版基础上进行了**完整的中文本地化改造**：
+## Features
 
-- **🔤 界面本地化**
-- **💼 Pro版本配置**
+- 🎙️ **Accurate Transcription**: Local AI models that transcribe your voice to text with 99% accuracy, almost instantly
+- 🔒 **Privacy First**: 100% offline processing ensures your data never leaves your device
+- ⚡ **Power Mode**: Intelligent app detection automatically applies your perfect pre-configured settings based on the app/ URL you're on
+- 🧠 **Context Aware**: Smart AI that understands your screen content and adapts to the context
+- 🎯 **Global Shortcuts**: Configurable keyboard shortcuts for quick recording and push-to-talk functionality
+- 📝 **Personal Dictionary**: Train the AI to understand your unique terminology with custom words, industry terms, and smart text replacements
+- 🔄 **Smart Modes**: Instantly switch between AI-powered modes optimized for different writing styles and contexts
+- 🤖 **AI Assistant**: Built-in voice assistant mode for a quick chatGPT like conversational assistant
 
-### 直接使用
+## Get Started
 
-编译好的应用: **VoiceInk-CN.app** (包含在项目根目录)
+### Download
+Get the latest version with a free trial from [tryvoiceink.com](https://tryvoiceink.com). Your purchase helps me work on VoiceInk full-time and continuously improve it with new features and updates.
 
-- ✅ 完全中文界面
-- ✅ Pro版本无限制
-- ✅ 即开即用
+#### Homebrew
+Alternatively, you can install VoiceInk via `brew`:
 
-### 自行编译
+```shell
+brew install --cask voiceink
+```
 
-如需自行编译，请参阅 [localization-tools/README_CN.md](localization-tools/README_CN.md) 中的详细说明。
+### Build from Source
+As an open-source project, you can build VoiceInk yourself by following the instructions in [BUILDING.md](BUILDING.md). However, the compiled version includes additional benefits like automatic updates, priority support via Discord and email, and helps fund ongoing development.
 
-## ⚙️ 系统要求
+## Requirements
 
-- macOS 14.0 或更高版本
+- macOS 14.0 or later
 
-## 🧭 贡献与维护
+## Documentation
 
-- [docs/AGENTS.md](docs/AGENTS.md) - 贡献者指南，说明项目结构、开发命令与提交规范
-- [docs/LOCALIZATION_PLAN.md](docs/LOCALIZATION_PLAN.md) - 上游同步与本地化策略
-- [docs/ROADMAP.md](docs/ROADMAP.md) - 近期里程碑与计划任务
-- [docs/PROGRESS.md](docs/PROGRESS.md) - 已完成工作与当前进度总览
-- [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md) - 文档分类及缺失项提醒
+- [Building from Source](BUILDING.md) - Detailed instructions for building the project
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute to VoiceInk
+- [Code of Conduct](CODE_OF_CONDUCT.md) - Our community standards
 
-## 📄 开源协议
+## Contributing
 
-本项目基于 GNU General Public License v3.0 开源协议 - 详见 [LICENSE](LICENSE) 文件。
+We welcome contributions! However, please note that all contributions should align with the project's goals and vision. Before starting work on any feature or fix:
 
-## 🙏 致谢
+1. Read our [Contributing Guidelines](CONTRIBUTING.md)
+2. Open an issue to discuss your proposed changes
+3. Wait for maintainer feedback
 
-### 原项目
+For build instructions, see our [Building Guide](BUILDING.md).
 
-- **[VoiceInk](https://github.com/Beingpax/VoiceInk)** by Pax - 优秀的原始项目
+## License
 
-### 核心技术
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
-- [whisper.cpp](https://github.com/ggerganov/whisper.cpp) - OpenAI Whisper模型的高性能推理
+## Support
+
+If you encounter any issues or have questions, please:
+1. Check the existing issues in the GitHub repository
+2. Create a new issue if your problem isn't already reported
+3. Provide as much detail as possible about your environment and the problem
+
+## Acknowledgments
+
+### Core Technology
+- [whisper.cpp](https://github.com/ggerganov/whisper.cpp) - High-performance inference of OpenAI's Whisper model
+- [FluidAudio](https://github.com/FluidInference/FluidAudio) - Used for Parakeet model implementation
+
+### Essential Dependencies
+- [Sparkle](https://github.com/sparkle-project/Sparkle) - Keeping VoiceInk up to date
+- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - User-customizable keyboard shortcuts
+- [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Launch at login functionality
+- [MediaRemoteAdapter](https://github.com/ejbills/mediaremote-adapter) - Media playback control during recording
+- [Zip](https://github.com/marmelroy/Zip) - File compression and decompression utilities
+- [SelectedTextKit](https://github.com/tisfeng/SelectedTextKit) - A modern macOS library for getting selected text
+- [Swift Atomics](https://github.com/apple/swift-atomics) - Low-level atomic operations for thread-safe concurrent programming
+
+
+---
+
+Made with ❤️ by Pax

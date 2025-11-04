@@ -4,12 +4,19 @@ struct MiniRecorderView: View {
     @ObservedObject var whisperState: WhisperState
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: MiniWindowManager
+<<<<<<< HEAD
     @State private var showPowerModePopover = false
     @State private var showEnhancementPromptPopover = false
     @ObservedObject private var powerModeManager = PowerModeManager.shared
     
     @EnvironmentObject private var enhancementService: AIEnhancementService
     
+=======
+    @EnvironmentObject private var enhancementService: AIEnhancementService
+    
+    @State private var activePopover: ActivePopoverState = .none
+    
+>>>>>>> upstream/main
     private var backgroundView: some View {
         ZStack {
             Color.black.opacity(0.9)
@@ -34,6 +41,7 @@ struct MiniRecorderView: View {
         )
     }
     
+<<<<<<< HEAD
     private var rightButton: some View {
         Group {
             if powerModeManager.isPowerModeEnabled {
@@ -71,11 +79,46 @@ struct MiniRecorderView: View {
                 }
             }
         }
+=======
+    private var contentLayout: some View {
+        HStack(spacing: 0) {
+            // Left button zone - always visible
+            RecorderPromptButton(activePopover: $activePopover)
+                .padding(.leading, 7)
+
+            Spacer()
+
+            // Fixed visualizer zone
+            statusView
+                .frame(maxWidth: .infinity)
+
+            Spacer()
+
+            // Right button zone - always visible
+            RecorderPowerModeButton(activePopover: $activePopover)
+                .padding(.trailing, 7)
+        }
+        .padding(.vertical, 9)
+    }
+    
+    private var recorderCapsule: some View {
+        Capsule()
+            .fill(.clear)
+            .background(backgroundView)
+            .overlay {
+                Capsule()
+                    .strokeBorder(Color.white.opacity(0.3), lineWidth: 0.5)
+            }
+            .overlay {
+                contentLayout
+            }
+>>>>>>> upstream/main
     }
     
     var body: some View {
         Group {
             if windowManager.isVisible {
+<<<<<<< HEAD
                 Capsule()
                     .fill(.clear)
                     .background(backgroundView)
@@ -106,9 +149,15 @@ struct MiniRecorderView: View {
                         .padding(.vertical, 8)
                     }
                     .opacity(windowManager.isVisible ? 1 : 0)
+=======
+                recorderCapsule
+>>>>>>> upstream/main
             }
         }
     }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> upstream/main

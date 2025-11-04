@@ -12,6 +12,7 @@ class MiniRecorderPanel: NSPanel {
             backing: .buffered,
             defer: false
         )
+<<<<<<< HEAD
         
         self.isFloatingPanel = true
         self.level = .floating
@@ -28,10 +29,29 @@ class MiniRecorderPanel: NSPanel {
         self.standardWindowButton(.closeButton)?.isHidden = true
         
         self.isMovable = true
+=======
+        configurePanel()
+    }
+    
+    private func configurePanel() {
+        isFloatingPanel = true
+        level = .floating
+        hidesOnDeactivate = false
+        collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+        isMovable = true
+        isMovableByWindowBackground = true
+        backgroundColor = .clear
+        isOpaque = false
+        hasShadow = false
+        titlebarAppearsTransparent = true
+        titleVisibility = .hidden
+        standardWindowButton(.closeButton)?.isHidden = true
+>>>>>>> upstream/main
     }
     
     static func calculateWindowMetrics() -> NSRect {
         guard let screen = NSScreen.main else {
+<<<<<<< HEAD
             return NSRect(x: 0, y: 0, width: 150, height: 34)
         }
         
@@ -44,6 +64,20 @@ class MiniRecorderPanel: NSPanel {
         let xPosition = visibleFrame.midX - (width / 2)
         let yPosition = visibleFrame.minY + padding
         
+=======
+            return NSRect(x: 0, y: 0, width: 184, height: 40)
+        }
+
+        let width: CGFloat = 184
+        let height: CGFloat = 40
+        let padding: CGFloat = 24
+
+        let visibleFrame = screen.visibleFrame
+        let centerX = visibleFrame.midX
+        let xPosition = centerX - (width / 2)
+        let yPosition = visibleFrame.minY + padding
+
+>>>>>>> upstream/main
         return NSRect(
             x: xPosition,
             y: yPosition,

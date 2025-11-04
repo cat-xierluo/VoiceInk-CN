@@ -2,7 +2,7 @@ import Foundation
 import os
 
 class GroqTranscriptionService {
-    private let logger = Logger(subsystem: "com.voiceink.transcription", category: "GroqService")
+    private let logger = Logger(subsystem: "com.prakashjoshipax.voiceink", category: "GroqService")
     
     func transcribe(audioURL: URL, model: any TranscriptionModel) async throws -> String {
         let config = try getAPIConfig(for: model)

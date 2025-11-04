@@ -15,36 +15,36 @@ class LocalTranscriptionService: TranscriptionService {
     }
     
     func transcribe(audioURL: URL, model: any TranscriptionModel) async throws -> String {
-        guard let localModel = model as? LocalModel else {
+        guard model.provider == .local else {
             throw WhisperStateError.modelLoadFailed
         }
         
-        logger.notice("Initiating local transcription for model: \(localModel.displayName)")
+        logger.notice("Initiating local transcription for model: \(model.displayName)")
         
         // Check if the required model is already loaded in WhisperState
         if let whisperState = whisperState,
            await whisperState.isModelLoaded,
            let loadedContext = await whisperState.whisperContext,
-           let currentModel = await whisperState.currentTranscriptionModel,
-           currentModel.provider == .local,
-           currentModel.name == localModel.name {
+            let currentModel = await whisperState.currentTranscriptionModel,
+            currentModel.provider == .local,
+            currentModel.name == model.name {
             
-            logger.notice("✅ Using already loaded model: \(localModel.name)")
+            logger.notice("✅ Using already loaded model: \(model.name)")
             whisperContext = loadedContext
         } else {
             // Model not loaded or wrong model loaded, proceed with loading
-            let modelURL = modelsDirectory.appendingPathComponent(localModel.filename)
-            
-            guard FileManager.default.fileExists(atPath: modelURL.path) else {
-                logger.error("Model file not found at path: \(modelURL.path)")
+            // Resolve the on-disk URL using WhisperState.availableModels (covers imports)
+            let resolvedURL: URL? = await whisperState?.availableModels.first(where: { $0.name == model.name })?.url
+            guard let modelURL = resolvedURL, FileManager.default.fileExists(atPath: modelURL.path) else {
+                logger.error("Model file not found for: \(model.name)")
                 throw WhisperStateError.modelLoadFailed
             }
             
-            logger.notice("Loading model: \(localModel.name)")
+            logger.notice("Loading model: \(model.name)")
             do {
                 whisperContext = try await WhisperContext.createContext(path: modelURL.path)
             } catch {
-                logger.error("Failed to load model: \(localModel.name) - \(error.localizedDescription)")
+                logger.error("Failed to load model: \(model.name) - \(error.localizedDescription)")
                 throw WhisperStateError.modelLoadFailed
             }
         }
@@ -70,11 +70,7 @@ class LocalTranscriptionService: TranscriptionService {
         }
         
         var text = await whisperContext.getTranscription()
-        
-        if UserDefaults.standard.object(forKey: "IsTextFormattingEnabled") as? Bool ?? true {
-            text = WhisperTextFormatter.format(text)
-        }
-        
+
         logger.notice("✅ Local transcription completed successfully.")
         
         // Only release resources if we created a new context (not using the shared one)

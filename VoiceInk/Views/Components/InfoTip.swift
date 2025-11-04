@@ -6,7 +6,11 @@ struct InfoTip: View {
     var title: String
     var message: String
     var learnMoreLink: URL?
+<<<<<<< HEAD
     var learnMoreText: String = NSLocalizedString("Learn More", comment: "Learn More")
+=======
+    var learnMoreText: String = "Learn More"
+>>>>>>> upstream/main
     
     // Appearance customization
     var iconName: String = "info.circle.fill"
@@ -25,6 +29,7 @@ struct InfoTip: View {
             .padding(5)
             .contentShape(Rectangle())
             .popover(isPresented: $isShowingTip) {
+<<<<<<< HEAD
                 VStack(alignment: .leading, spacing: 10) {
                     Text(title)
                         .font(.headline)
@@ -41,6 +46,41 @@ struct InfoTip: View {
                     }
                 }
                 .padding()
+=======
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    
+                    Text(message)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(width: width, alignment: .leading)
+                    
+                    if let url = learnMoreLink {
+                        Link(destination: url) {
+                            HStack(spacing: 4) {
+                                Text(learnMoreText)
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                Image(systemName: "arrow.up.forward")
+                                    .font(.caption2)
+                            }
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.top, 8)
+                    }
+                }
+                .padding(16)
+>>>>>>> upstream/main
             }
             .onTapGesture {
                 isShowingTip.toggle()

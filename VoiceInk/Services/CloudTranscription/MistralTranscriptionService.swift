@@ -18,7 +18,7 @@ class MistralTranscriptionService {
 
         let boundary = "Boundary-\(UUID().uuidString)"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
 
         var body = Data()
 
@@ -28,19 +28,20 @@ class MistralTranscriptionService {
         body.append(model.name.data(using: .utf8)!)
         body.append("\r\n".data(using: .utf8)!)
 
-        // Add file data
+        // Add file data - matching Python SDK structure (no language field as it's commented out in all Python examples)
         guard let audioData = try? Data(contentsOf: audioURL) else {
             throw CloudTranscriptionError.audioFileNotFound
         }
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(audioURL.lastPathComponent)\"\r\n".data(using: .utf8)!)
-        body.append("Content-Type: audio/mpeg\r\n\r\n".data(using: .utf8)!)
+        body.append("Content-Type: audio/wav\r\n\r\n".data(using: .utf8)!)
         body.append(audioData)
         body.append("\r\n".data(using: .utf8)!)
 
         body.append("--\(boundary)--\r\n".data(using: .utf8)!)
 
         request.httpBody = body
+        
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
 

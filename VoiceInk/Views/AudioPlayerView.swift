@@ -121,7 +121,11 @@ struct WaveformView: View {
                     VStack {
                         ProgressView()
                             .controlSize(.small)
+<<<<<<< HEAD
                         Text(NSLocalizedString("Generating waveform...", comment: "Generating waveform..."))
+=======
+                        Text("Generating waveform...")
+>>>>>>> upstream/main
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                     }
@@ -192,7 +196,11 @@ struct WaveformView: View {
     private func formatTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
+<<<<<<< HEAD
         return String(format: NSLocalizedString(NSLocalizedString("%d:%02d", comment: "%d:%02d"), comment: "%d:%02d"), minutes, seconds)
+=======
+        return String(format: "%d:%02d", minutes, seconds)
+>>>>>>> upstream/main
     }
 }
 
@@ -252,7 +260,11 @@ struct AudioPlayerView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "waveform")
                         .foregroundStyle(Color.accentColor)
+<<<<<<< HEAD
                     Text(NSLocalizedString("Recording", comment: "Recording"))
+=======
+                    Text("Recording")
+>>>>>>> upstream/main
                         .font(.system(size: 14, weight: .medium))
                 }
                 .foregroundColor(.secondary)
@@ -286,7 +298,11 @@ struct AudioPlayerView: View {
                             )
                     }
                     .buttonStyle(.plain)
+<<<<<<< HEAD
 .help(NSLocalizedString("Show in Finder", comment: "Show in Finder"))
+=======
+                    .help("Show in Finder")
+>>>>>>> upstream/main
                     
                     Button(action: {
                         if playerManager.isPlaying {
@@ -336,7 +352,11 @@ struct AudioPlayerView: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(isRetranscribing)
+<<<<<<< HEAD
 .help(NSLocalizedString("Retranscribe this audio", comment: "Retranscribe this audio"))
+=======
+                    .help("Retranscribe this audio")
+>>>>>>> upstream/main
                     
                     Text(formatTime(playerManager.currentTime))
                         .font(.system(size: 14, weight: .medium))
@@ -356,7 +376,11 @@ struct AudioPlayerView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
+<<<<<<< HEAD
 Text(NSLocalizedString("Retranscription successful", comment: "Retranscription successful"))
+=======
+                        Text("Retranscription successful")
+>>>>>>> upstream/main
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)
@@ -373,7 +397,11 @@ Text(NSLocalizedString("Retranscription successful", comment: "Retranscription s
                     HStack(spacing: 8) {
                         Image(systemName: "exclamationmark.circle.fill")
                             .foregroundColor(.red)
+<<<<<<< HEAD
 Text(errorMessage.isEmpty ? NSLocalizedString("Retranscription failed", comment: "Retranscription failed") : errorMessage)
+=======
+                        Text(errorMessage.isEmpty ? "Retranscription failed" : errorMessage)
+>>>>>>> upstream/main
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)

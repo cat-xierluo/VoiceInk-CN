@@ -14,12 +14,21 @@ struct APIKeyManagementView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+<<<<<<< HEAD
             // Header Section
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
 Text(NSLocalizedString("Enhance your transcriptions with AI", comment: "Enhance your transcriptions with AI"))
                         .font(.headline)
                         .foregroundColor(.secondary)
+=======
+            // Provider Selection
+            HStack {
+                Picker("AI Provider", selection: $aiService.selectedProvider) {
+                    ForEach(AIProvider.allCases.filter { $0 != .elevenLabs && $0 != .deepgram && $0 != .soniox }, id: \.self) { provider in
+                        Text(provider.rawValue).tag(provider)
+                    }
+>>>>>>> upstream/main
                 }
                 
                 Spacer()
@@ -29,7 +38,11 @@ Text(NSLocalizedString("Enhance your transcriptions with AI", comment: "Enhance 
                         Circle()
                             .fill(Color.green)
                             .frame(width: 8, height: 8)
+<<<<<<< HEAD
                         Text(NSLocalizedString("Connected to", comment: "Connected to"))
+=======
+                        Text("Connected to")
+>>>>>>> upstream/main
                             .font(.caption)
                         Text(aiService.selectedProvider.rawValue)
                             .font(.caption.bold())
@@ -42,6 +55,7 @@ Text(NSLocalizedString("Enhance your transcriptions with AI", comment: "Enhance 
                 }
             }
             
+<<<<<<< HEAD
             // Provider Selection
 Picker(NSLocalizedString("AI Provider", comment: "AI Provider"), selection: $aiService.selectedProvider) {
                 ForEach(AIProvider.allCases.filter { $0 != .elevenLabs && $0 != .deepgram }, id: \.self) { provider in
@@ -49,6 +63,8 @@ Picker(NSLocalizedString("AI Provider", comment: "AI Provider"), selection: $aiS
                 }
             }
             
+=======
+>>>>>>> upstream/main
             .onChange(of: aiService.selectedProvider) { oldValue, newValue in
                 if aiService.selectedProvider == .ollama {
                     checkOllamaConnection()
@@ -59,10 +75,17 @@ Picker(NSLocalizedString("AI Provider", comment: "AI Provider"), selection: $aiS
             if aiService.selectedProvider == .openRouter {
                 HStack {
                     if aiService.availableModels.isEmpty {
+<<<<<<< HEAD
 Text(NSLocalizedString("No models loaded", comment: "No models loaded"))
                             .foregroundColor(.secondary)
                     } else {
 Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
+=======
+                        Text("No models loaded")
+                            .foregroundColor(.secondary)
+                    } else {
+                        Picker("Model", selection: Binding(
+>>>>>>> upstream/main
                             get: { aiService.currentModel },
                             set: { aiService.selectModel($0) }
                         )) {
@@ -82,13 +105,21 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                         Image(systemName: "arrow.clockwise")
                     }
                     .buttonStyle(.borderless)
+<<<<<<< HEAD
                     .help(NSLocalizedString("Refresh models", comment: "Refresh models"))
+=======
+                    .help("Refresh models")
+>>>>>>> upstream/main
                 }
             } else if !aiService.availableModels.isEmpty && 
                         aiService.selectedProvider != .ollama && 
                         aiService.selectedProvider != .custom {
                 HStack {
+<<<<<<< HEAD
 Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
+=======
+                    Picker("Model", selection: Binding(
+>>>>>>> upstream/main
                         get: { aiService.currentModel },
                         set: { aiService.selectModel($0) }
                     )) {
@@ -103,7 +134,11 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                 VStack(alignment: .leading, spacing: 16) {
                     // Header with status
                     HStack {
+<<<<<<< HEAD
                         Label(NSLocalizedString("Ollama Configuration", comment: "Ollama Configuration"), systemImage: "server.rack")
+=======
+                        Label("Ollama Configuration", systemImage: "server.rack")
+>>>>>>> upstream/main
                             .font(.headline)
                         
                         Spacer()
@@ -112,7 +147,11 @@ Picker(NSLocalizedString("Model", comment: "Model"), selection: Binding(
                             Circle()
                                 .fill(isCheckingOllama ? Color.orange : (ollamaModels.isEmpty ? Color.red : Color.green))
                                 .frame(width: 8, height: 8)
+<<<<<<< HEAD
 Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" : NSLocalizedString("Connected", comment: "Connected")))
+=======
+                            Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" : "Connected"))
+>>>>>>> upstream/main
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -131,11 +170,19 @@ Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" :
                         Spacer()
                         
                         if isEditingURL {
+<<<<<<< HEAD
                             TextField(NSLocalizedString("Base URL", comment: "Base URL"), text: $ollamaBaseURL)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(maxWidth: 200)
                             
                             Button(NSLocalizedString("Save", comment: "Save button")) {
+=======
+                            TextField("Base URL", text: $ollamaBaseURL)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(maxWidth: 200)
+                            
+                            Button("Save") {
+>>>>>>> upstream/main
                                 aiService.updateOllamaBaseURL(ollamaBaseURL)
                                 checkOllamaConnection()
                                 isEditingURL = false
@@ -168,7 +215,11 @@ Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" :
                     
                     // Model selection and refresh
                     HStack {
+<<<<<<< HEAD
 Label(NSLocalizedString("Model", comment: "Model"), systemImage: "cpu")
+=======
+                        Label("Model", systemImage: "cpu")
+>>>>>>> upstream/main
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
@@ -178,7 +229,11 @@ Label(NSLocalizedString("Model", comment: "Model"), systemImage: "cpu")
                             HStack(spacing: 8) {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundColor(.orange)
+<<<<<<< HEAD
 Text(NSLocalizedString("No models available", comment: "No models available"))
+=======
+                                Text("No models available")
+>>>>>>> upstream/main
                                     .foregroundColor(.secondary)
                                     .italic()
                             }
@@ -196,7 +251,11 @@ Text(NSLocalizedString("No models available", comment: "No models available"))
                         }
                         
                         Button(action: { checkOllamaConnection() }) {
+<<<<<<< HEAD
 Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment: "Refresh"), systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
+=======
+                            Label(isCheckingOllama ? "Refreshing..." : "Refresh", systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
+>>>>>>> upstream/main
                                 .font(.caption)
                         }
                         .disabled(isCheckingOllama)
@@ -207,7 +266,11 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                     // Help text for troubleshooting
                     if ollamaModels.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
+<<<<<<< HEAD
                             Text(NSLocalizedString("Troubleshooting", comment: "Troubleshooting"))
+=======
+                            Text("Troubleshooting")
+>>>>>>> upstream/main
                                 .font(.subheadline)
                                 .bold()
                             
@@ -217,7 +280,11 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                                 bulletPoint("Verify you have at least one model pulled")
                             }
                             
+<<<<<<< HEAD
                             Button(NSLocalizedString("Learn More", comment: "Learn More")) {
+=======
+                            Button("Learn More") {
+>>>>>>> upstream/main
                                 NSWorkspace.shared.open(URL(string: "https://ollama.ai/download")!)
                             }
                             .font(.caption)
@@ -250,6 +317,7 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                     // Configuration Fields
                     VStack(alignment: .leading, spacing: 8) {
                         if !aiService.isAPIKeyValid {
+<<<<<<< HEAD
                             TextField(NSLocalizedString("API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)", comment: "API Endpoint URL placeholder"), text: $aiService.customBaseURL)
                                 .textFieldStyle(.roundedBorder)
                             
@@ -258,12 +326,26 @@ Label(isCheckingOllama ? "Refreshing..." : NSLocalizedString("Refresh", comment:
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
 Text(NSLocalizedString("API Endpoint URL", comment: "API Endpoint URL"))
+=======
+                            TextField("API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)", text: $aiService.customBaseURL)
+                                .textFieldStyle(.roundedBorder)
+                            
+                            TextField("Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)", text: $aiService.customModel)
+                                .textFieldStyle(.roundedBorder)
+                        } else {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("API Endpoint URL")
+>>>>>>> upstream/main
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customBaseURL)
                                     .font(.system(.body, design: .monospaced))
                                 
+<<<<<<< HEAD
 Text(NSLocalizedString("Model", comment: "Model"))
+=======
+                                Text("Model")
+>>>>>>> upstream/main
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customModel)
@@ -272,7 +354,11 @@ Text(NSLocalizedString("Model", comment: "Model"))
                         }
                         
                         if aiService.isAPIKeyValid {
+<<<<<<< HEAD
 Text(NSLocalizedString("API Key", comment: "API Key"))
+=======
+                            Text("API Key")
+>>>>>>> upstream/main
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
@@ -285,17 +371,29 @@ Text(NSLocalizedString("API Key", comment: "API Key"))
                                 Button(action: {
                                     aiService.clearAPIKey()
                                 }) {
+<<<<<<< HEAD
                                     Label(NSLocalizedString(NSLocalizedString("Remove Key", comment: "Remove Key"), comment: "Remove Key"), systemImage: "trash")
+=======
+                                    Label("Remove Key", systemImage: "trash")
+>>>>>>> upstream/main
                                         .foregroundColor(.red)
                                 }
                                 .buttonStyle(.borderless)
                             }
                         } else {
+<<<<<<< HEAD
 Text(NSLocalizedString("Enter your API Key", comment: "Enter your API Key"))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
 SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
+=======
+                            Text("Enter your API Key")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                            SecureField("API Key", text: $apiKey)
+>>>>>>> upstream/main
                                 .textFieldStyle(.roundedBorder)
                                 .font(.system(.body, design: .monospaced))
                             
@@ -319,7 +417,11 @@ SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
                                         } else {
                                             Image(systemName: "checkmark.circle.fill")
                                         }
+<<<<<<< HEAD
 Text(NSLocalizedString("Verify and Save", comment: "Verify and Save"))
+=======
+                                        Text("Verify and Save")
+>>>>>>> upstream/main
                                     }
                                 }
                                 .disabled(aiService.customBaseURL.isEmpty || aiService.customModel.isEmpty || apiKey.isEmpty)
@@ -336,7 +438,11 @@ Text(NSLocalizedString("Verify and Save", comment: "Verify and Save"))
                 // API Key Display for other providers if valid
                 if aiService.isAPIKeyValid {
                     VStack(alignment: .leading, spacing: 8) {
+<<<<<<< HEAD
 Text(NSLocalizedString("API Key", comment: "API Key"))
+=======
+                        Text("API Key")
+>>>>>>> upstream/main
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
@@ -358,11 +464,19 @@ Text(NSLocalizedString("API Key", comment: "API Key"))
                 } else {
                     // API Key Input for other providers
                     VStack(alignment: .leading, spacing: 8) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Enter your API Key", comment: "Enter your API Key"))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
 SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
+=======
+                        Text("Enter your API Key")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        
+                        SecureField("API Key", text: $apiKey)
+>>>>>>> upstream/main
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .font(.system(.body, design: .monospaced))
                         
@@ -386,14 +500,22 @@ SecureField(NSLocalizedString("API Key", comment: "API Key"), text: $apiKey)
                                     } else {
                                         Image(systemName: "checkmark.circle.fill")
                                     }
+<<<<<<< HEAD
 Text(NSLocalizedString("Verify and Save", comment: "Verify and Save"))
+=======
+                                    Text("Verify and Save")
+>>>>>>> upstream/main
                                 }
                             }
                             
                             Spacer()
                             
                             HStack(spacing: 8) {
+<<<<<<< HEAD
 Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? NSLocalizedString("Free", comment: "Free") : "Paid")
+=======
+                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? "Free" : "Paid")
+>>>>>>> upstream/main
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .padding(.horizontal, 6)
@@ -418,6 +540,11 @@ Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemi
                                             URL(string: "https://elevenlabs.io/speech-synthesis")!
                                         case .deepgram:
                                             URL(string: "https://console.deepgram.com/api-keys")!
+<<<<<<< HEAD
+=======
+                                            case .soniox:
+                                                URL(string: "https://console.soniox.com/")!
+>>>>>>> upstream/main
                                         case .ollama, .custom:
                                             URL(string: "")! // This case should never be reached
                                         case .openRouter:
@@ -428,7 +555,11 @@ Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemi
                                         NSWorkspace.shared.open(url)
                                     } label: {
                                         HStack(spacing: 4) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Get API Key", comment: "Get API Key"))
+=======
+                                            Text("Get API Key")
+>>>>>>> upstream/main
                                                 .foregroundColor(.accentColor)
                                             Image(systemName: "arrow.up.right")
                                                 .font(.caption)
@@ -443,9 +574,14 @@ Text(NSLocalizedString("Get API Key", comment: "Get API Key"))
                 }
             }
         }
+<<<<<<< HEAD
         .padding()
 .alert(NSLocalizedString("Error", comment: "Error"), isPresented: $showAlert) {
                                 Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) { }
+=======
+        .alert("Error", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+>>>>>>> upstream/main
         } message: {
             Text(alertMessage)
         }

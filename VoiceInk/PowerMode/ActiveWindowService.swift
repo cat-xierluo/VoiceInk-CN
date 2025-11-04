@@ -10,7 +10,11 @@ class ActiveWindowService: ObservableObject {
     private var whisperState: WhisperState?
     
     private let logger = Logger(
+<<<<<<< HEAD
         subsystem: "com.prakashjoshipax.VoiceInk",
+=======
+        subsystem: "com.prakashjoshipax.voiceink",
+>>>>>>> upstream/main
         category: "browser.detection"
     )
     
@@ -25,6 +29,7 @@ class ActiveWindowService: ObservableObject {
     }
     
     func applyConfigurationForCurrentApp() async {
+<<<<<<< HEAD
         guard PowerModeManager.shared.isPowerModeEnabled else {
             return
         }
@@ -53,11 +58,30 @@ class ActiveWindowService: ObservableObject {
                     return
                 } else {
                     logger.debug("📝 No URL configuration found for: \(currentURL)")
+=======
+        guard let frontmostApp = NSWorkspace.shared.frontmostApplication,
+              let bundleIdentifier = frontmostApp.bundleIdentifier else {
+            return
+        }
+
+        await MainActor.run {
+            currentApplication = frontmostApp
+        }
+
+        var configToApply: PowerModeConfig?
+
+        if let browserType = BrowserType.allCases.first(where: { $0.bundleIdentifier == bundleIdentifier }) {
+            do {
+                let currentURL = try await browserURLService.getCurrentURL(from: browserType)
+                if let config = PowerModeManager.shared.getConfigurationForURL(currentURL) {
+                    configToApply = config
+>>>>>>> upstream/main
                 }
             } catch {
                 logger.error("❌ Failed to get URL from \(browserType.displayName): \(error.localizedDescription)")
             }
         }
+<<<<<<< HEAD
         
         let config = PowerModeManager.shared.getConfigurationForApp(bundleIdentifier) ?? PowerModeManager.shared.defaultConfig
         
@@ -155,6 +179,24 @@ class ActiveWindowService: ObservableObject {
         // Then check if we should capture
         if config.isAIEnhancementEnabled && config.useScreenCapture {
             await enhancementService.captureScreenContext()
+=======
+
+        if configToApply == nil {
+            configToApply = PowerModeManager.shared.getConfigurationForApp(bundleIdentifier)
+        }
+
+        if configToApply == nil {
+            configToApply = PowerModeManager.shared.getDefaultConfiguration()
+        }
+
+        if let config = configToApply {
+            await MainActor.run {
+                PowerModeManager.shared.setActiveConfiguration(config)
+            }
+            await PowerModeSessionManager.shared.beginSession(with: config)
+        } else {
+            // If no config found, keep the current active configuration (don't clear it)
+>>>>>>> upstream/main
         }
     }
 } 

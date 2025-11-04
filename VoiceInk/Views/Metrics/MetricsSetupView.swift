@@ -17,11 +17,19 @@ struct MetricsSetupView: View {
                         .padding(.bottom, 20)
                        
                     VStack(spacing: 4) {
+<<<<<<< HEAD
                         Text(NSLocalizedString("Welcome to VoiceInk", comment: "Welcome to VoiceInk"))
                             .font(.system(size: 28, weight: .bold, design: .rounded))
                             .multilineTextAlignment(.center)
                         
                         Text(NSLocalizedString("Complete the setup to get started", comment: "Complete the setup to get started"))
+=======
+                        Text("Welcome to VoiceInk")
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .multilineTextAlignment(.center)
+                        
+                        Text("Complete the setup to get started")
+>>>>>>> upstream/main
                             .font(.system(size: 16))
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -69,30 +77,51 @@ struct MetricsSetupView: View {
         case 0:
             stepInfo = (
                 isCompleted: hotkeyManager.selectedHotkey1 != .none,
+<<<<<<< HEAD
                 icon: NSLocalizedString("command", comment: "command"),
                 title: NSLocalizedString("Set Keyboard Shortcut", comment: "Set Keyboard Shortcut"),
                 description: NSLocalizedString("Use VoiceInk anywhere with a shortcut.", comment: "Use VoiceInk anywhere with a shortcut.")
+=======
+                icon: "command",
+                title: "Set Keyboard Shortcut",
+                description: "Use VoiceInk anywhere with a shortcut."
+>>>>>>> upstream/main
             )
         case 1:
             stepInfo = (
                 isCompleted: isAccessibilityEnabled,
                 icon: "hand.raised.fill",
+<<<<<<< HEAD
                 title: NSLocalizedString("Enable Accessibility", comment: "Enable Accessibility"),
                 description: NSLocalizedString("Paste transcribed text at your cursor.", comment: "Paste transcribed text at your cursor.")
+=======
+                title: "Enable Accessibility",
+                description: "Paste transcribed text at your cursor."
+>>>>>>> upstream/main
             )
         case 2:
             stepInfo = (
                 isCompleted: isScreenRecordingEnabled,
                 icon: "video.fill",
+<<<<<<< HEAD
                 title: NSLocalizedString("Enable Screen Recording", comment: "Enable Screen Recording"),
                 description: NSLocalizedString("Get better transcriptions with screen context.", comment: "Get better transcriptions with screen context.")
+=======
+                title: "Enable Screen Recording",
+                description: "Get better transcriptions with screen context."
+>>>>>>> upstream/main
             )
         default:
             stepInfo = (
                 isCompleted: whisperState.currentTranscriptionModel != nil,
                 icon: "arrow.down.to.line",
+<<<<<<< HEAD
                 title: NSLocalizedString("Download Model", comment: "Download Model"),
                 description: NSLocalizedString("Choose an AI model to start transcribing.", comment: "Choose an AI model to start transcribing.")
+=======
+                title: "Download Model",
+                description: "Choose an AI model to start transcribing."
+>>>>>>> upstream/main
             )
         }
         
@@ -168,6 +197,7 @@ struct MetricsSetupView: View {
     
     private func getActionButtonTitle() -> String {
         if hotkeyManager.selectedHotkey1 == .none {
+<<<<<<< HEAD
 return NSLocalizedString("Configure Shortcut", comment: "Configure Shortcut")
         } else if !AXIsProcessTrusted() {
 return NSLocalizedString("Enable Accessibility", comment: "Enable Accessibility")
@@ -181,6 +211,21 @@ return NSLocalizedString("Get Started", comment: "Get Started")
     
     private var helpText: some View {
 Text(NSLocalizedString("Need help? Check the Help menu for support options", comment: "Need help? Check the Help menu for support options"))
+=======
+            return "Configure Shortcut"
+        } else if !AXIsProcessTrusted() {
+            return "Enable Accessibility"
+        } else if !CGPreflightScreenCaptureAccess() {
+            return "Enable Screen Recording"
+        } else if whisperState.currentTranscriptionModel == nil {
+            return "Download Model"
+        }
+        return "Get Started"
+    }
+    
+    private var helpText: some View {
+        Text("Need help? Check the Help menu for support options")
+>>>>>>> upstream/main
             .font(.caption)
             .foregroundColor(.secondary)
     }
@@ -195,7 +240,11 @@ Text(NSLocalizedString("Need help? Check the Help menu for support options", com
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
+<<<<<<< HEAD
 userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
+=======
+            userInfo: ["destination": "Settings"]
+>>>>>>> upstream/main
         )
     }
     
@@ -203,7 +252,15 @@ userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
         NotificationCenter.default.post(
             name: .navigateToDestination,
             object: nil,
+<<<<<<< HEAD
 userInfo: ["destination": NSLocalizedString("AI Models", comment: "AI Models")]
         )
     }
 }
+=======
+            userInfo: ["destination": "AI Models"]
+        )
+    }
+}
+
+>>>>>>> upstream/main

@@ -34,26 +34,16 @@ class AudioProcessor {
         }
     }
     
-    /// Process audio file and return samples ready for Whisper
-    /// - Parameter url: URL of the input audio file
-    /// - Returns: Array of normalized float samples
     func processAudioToSamples(_ url: URL) async throws -> [Float] {
-        logger.notice("🎵 Processing audio file to samples: \(url.lastPathComponent)")
-        
-        // Create AVAudioFile from input
         guard let audioFile = try? AVAudioFile(forReading: url) else {
-            logger.error("❌ Failed to create AVAudioFile from input")
             throw AudioProcessingError.invalidAudioFile
         }
         
-        // Get format information
         let format = audioFile.processingFormat
         let sampleRate = format.sampleRate
         let channels = format.channelCount
+        let totalFrames = audioFile.length
         
-        logger.notice("📊 Input format - Sample Rate: \(sampleRate), Channels: \(channels)")
-        
-        // Create output format (always 16kHz mono float)
         let outputFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
             sampleRate: AudioFormat.targetSampleRate,
@@ -62,76 +52,69 @@ class AudioProcessor {
         )
         
         guard let outputFormat = outputFormat else {
-            logger.error("❌ Failed to create output format")
             throw AudioProcessingError.unsupportedFormat
         }
         
-        // Read input file into buffer
-        let inputBuffer = AVAudioPCMBuffer(
-            pcmFormat: format,
-            frameCapacity: AVAudioFrameCount(audioFile.length)
-        )
+        let chunkSize: AVAudioFrameCount = 50_000_000
+        var allSamples: [Float] = []
+        var currentFrame: AVAudioFramePosition = 0
         
-        guard let inputBuffer = inputBuffer else {
-            logger.error("❌ Failed to create input buffer")
-            throw AudioProcessingError.conversionFailed
-        }
-        
-        try audioFile.read(into: inputBuffer)
-        
-        // If format matches our target, just convert to samples
-        if sampleRate == AudioFormat.targetSampleRate && channels == AudioFormat.targetChannels {
-            logger.notice("✅ Audio format already matches requirements")
-            return convertToWhisperFormat(inputBuffer)
-        }
-        
-        // Create converter for format conversion
-        guard let converter = AVAudioConverter(from: format, to: outputFormat) else {
-            logger.error("❌ Failed to create audio converter")
-            throw AudioProcessingError.conversionFailed
-        }
-        
-        // Create output buffer
-        let ratio = AudioFormat.targetSampleRate / sampleRate
-        let outputBuffer = AVAudioPCMBuffer(
-            pcmFormat: outputFormat,
-            frameCapacity: AVAudioFrameCount(Double(inputBuffer.frameLength) * ratio)
-        )
-        
-        guard let outputBuffer = outputBuffer else {
-            logger.error("❌ Failed to create output buffer")
-            throw AudioProcessingError.conversionFailed
-        }
-        
-        // Perform conversion
-        var error: NSError?
-        let status = converter.convert(
-            to: outputBuffer,
-            error: &error,
-            withInputFrom: { inNumPackets, outStatus in
-                outStatus.pointee = .haveData
-                return inputBuffer
+        while currentFrame < totalFrames {
+            let remainingFrames = totalFrames - currentFrame
+            let framesToRead = min(chunkSize, AVAudioFrameCount(remainingFrames))
+            
+            guard let inputBuffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: framesToRead) else {
+                throw AudioProcessingError.conversionFailed
             }
-        )
-        
-        if let error = error {
-            logger.error("❌ Conversion failed: \(error.localizedDescription)")
-            throw AudioProcessingError.conversionFailed
+            
+            audioFile.framePosition = currentFrame
+            try audioFile.read(into: inputBuffer, frameCount: framesToRead)
+            
+            if sampleRate == AudioFormat.targetSampleRate && channels == AudioFormat.targetChannels {
+                let chunkSamples = convertToWhisperFormat(inputBuffer)
+                allSamples.append(contentsOf: chunkSamples)
+            } else {
+                guard let converter = AVAudioConverter(from: format, to: outputFormat) else {
+                    throw AudioProcessingError.conversionFailed
+                }
+                
+                let ratio = AudioFormat.targetSampleRate / sampleRate
+                let outputFrameCount = AVAudioFrameCount(Double(inputBuffer.frameLength) * ratio)
+                
+                guard let outputBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: outputFrameCount) else {
+                    throw AudioProcessingError.conversionFailed
+                }
+                
+                var error: NSError?
+                let status = converter.convert(
+                    to: outputBuffer,
+                    error: &error,
+                    withInputFrom: { inNumPackets, outStatus in
+                        outStatus.pointee = .haveData
+                        return inputBuffer
+                    }
+                )
+                
+                if let error = error {
+                    throw AudioProcessingError.conversionFailed
+                }
+                
+                if status == .error {
+                    throw AudioProcessingError.conversionFailed
+                }
+                
+                let chunkSamples = convertToWhisperFormat(outputBuffer)
+                allSamples.append(contentsOf: chunkSamples)
+            }
+            
+            currentFrame += AVAudioFramePosition(framesToRead)
         }
         
-        if status == .error {
-            logger.error("❌ Conversion failed with status: error")
-            throw AudioProcessingError.conversionFailed
-        }
-        
-        logger.notice("✅ Successfully converted audio format")
-        return convertToWhisperFormat(outputBuffer)
+        return allSamples
     }
     
-    /// Convert audio buffer to Whisper-compatible samples
     private func convertToWhisperFormat(_ buffer: AVAudioPCMBuffer) -> [Float] {
         guard let channelData = buffer.floatChannelData else {
-            logger.error("❌ No channel data available in buffer")
             return []
         }
         
@@ -139,16 +122,9 @@ class AudioProcessor {
         let frameLength = Int(buffer.frameLength)
         var samples = Array(repeating: Float(0), count: frameLength)
         
-        logger.notice("📊 Converting buffer - Channels: \(channelCount), Frames: \(frameLength)")
-        
-        // If mono, just copy the samples
         if channelCount == 1 {
             samples = Array(UnsafeBufferPointer(start: channelData[0], count: frameLength))
-            logger.notice("✅ Copied mono samples directly")
-        }
-        // If stereo or more, average all channels
-        else {
-            logger.notice("🔄 Converting \(channelCount) channels to mono")
+        } else {
             for frame in 0..<frameLength {
                 var sum: Float = 0
                 for channel in 0..<channelCount {
@@ -158,19 +134,11 @@ class AudioProcessor {
             }
         }
         
-        // Normalize samples to [-1, 1]
         let maxSample = samples.map(abs).max() ?? 1
         if maxSample > 0 {
-            logger.notice("📈 Normalizing samples with max amplitude: \(maxSample)")
             samples = samples.map { $0 / maxSample }
         }
         
-        // Log sample statistics
-        if let min = samples.min(), let max = samples.max() {
-            logger.notice("📊 Final sample range: [\(min), \(max)]")
-        }
-        
-        logger.notice("✅ Successfully converted \(samples.count) samples")
         return samples
     }
     func saveSamplesAsWav(samples: [Float], to url: URL) throws {
@@ -213,7 +181,6 @@ class AudioProcessor {
         )
 
         try audioFile.write(from: buffer)
-        logger.notice("✅ Successfully saved processed audio to \(url.lastPathComponent)")
     }
 } 
 

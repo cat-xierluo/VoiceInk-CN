@@ -95,14 +95,24 @@ struct TranscriptionHistoryView: View {
                                 
                                 if hasMoreContent {
                                     Button(action: {
+<<<<<<< HEAD
                                         loadMoreContent()
+=======
+                                        Task {
+                                            await loadMoreContent()
+                                        }
+>>>>>>> upstream/main
                                     }) {
                                         HStack(spacing: 8) {
                                             if isLoading {
                                                 ProgressView()
                                                     .controlSize(.small)
                                             }
+<<<<<<< HEAD
                                             Text(isLoading ? NSLocalizedString("Loading...", comment: "Loading...") : "Load More")
+=======
+                                            Text(isLoading ? "Loading..." : "Load More")
+>>>>>>> upstream/main
                                                 .font(.system(size: 14, weight: .medium))
                                         }
                                         .frame(maxWidth: .infinity)
@@ -137,11 +147,19 @@ struct TranscriptionHistoryView: View {
                     .animation(.easeInOut(duration: 0.3), value: !selectedTranscriptions.isEmpty)
             }
         }
+<<<<<<< HEAD
         .alert(NSLocalizedString("Delete Selected Items?", comment: "Delete Selected Items?"), isPresented: $showDeleteConfirmation) {
             Button(NSLocalizedString("Delete", comment: "Delete button"), role: .destructive) {
                 deleteSelectedTranscriptions()
             }
             Button(NSLocalizedString("Cancel", comment: "Cancel button"), role: .cancel) {}
+=======
+        .alert("Delete Selected Items?", isPresented: $showDeleteConfirmation) {
+            Button("Delete", role: .destructive) {
+                deleteSelectedTranscriptions()
+            }
+            Button("Cancel", role: .cancel) {}
+>>>>>>> upstream/main
         } message: {
             Text("This action cannot be undone. Are you sure you want to delete \(selectedTranscriptions.count) item\(selectedTranscriptions.count == 1 ? "" : "s")?")
         }
@@ -193,7 +211,11 @@ struct TranscriptionHistoryView: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
+<<<<<<< HEAD
             TextField(NSLocalizedString("Search transcriptions", comment: "Search transcriptions"), text: $searchText)
+=======
+            TextField("Search transcriptions", text: $searchText)
+>>>>>>> upstream/main
                 .font(.system(size: 16, weight: .regular, design: .default))
                 .textFieldStyle(PlainTextFieldStyle())
         }
@@ -208,9 +230,15 @@ struct TranscriptionHistoryView: View {
             Image(systemName: "doc.text.magnifyingglass")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
+<<<<<<< HEAD
 Text(NSLocalizedString("No transcriptions found", comment: "No transcriptions found"))
                 .font(.system(size: 24, weight: .semibold, design: .default))
 Text(NSLocalizedString("Your history will appear here", comment: "Your history will appear here"))
+=======
+            Text("No transcriptions found")
+                .font(.system(size: 24, weight: .semibold, design: .default))
+            Text("Your history will appear here")
+>>>>>>> upstream/main
                 .font(.system(size: 18, weight: .regular, design: .default))
                 .foregroundColor(.secondary)
         }
@@ -232,7 +260,11 @@ Text(NSLocalizedString("Your history will appear here", comment: "Your history w
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "chart.bar.xaxis")
+<<<<<<< HEAD
                     Text(NSLocalizedString("Analyze", comment: "Analyze"))
+=======
+                    Text("Analyze")
+>>>>>>> upstream/main
                 }
             }
             .buttonStyle(.borderless)
@@ -242,7 +274,11 @@ Text(NSLocalizedString("Your history will appear here", comment: "Your history w
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "square.and.arrow.up")
+<<<<<<< HEAD
 Text(NSLocalizedString("Export", comment: "Export"))
+=======
+                    Text("Export")
+>>>>>>> upstream/main
                 }
             }
             .buttonStyle(.borderless)
@@ -252,20 +288,32 @@ Text(NSLocalizedString("Export", comment: "Export"))
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "trash")
+<<<<<<< HEAD
                     Text(NSLocalizedString("Delete", comment: "Delete button"))
+=======
+                    Text("Delete")
+>>>>>>> upstream/main
                 }
             }
             .buttonStyle(.borderless)
             
             if selectedTranscriptions.count < displayedTranscriptions.count {
+<<<<<<< HEAD
 Button(NSLocalizedString("Select All", comment: "Select All")) {
+=======
+                Button("Select All") {
+>>>>>>> upstream/main
                     Task {
                         await selectAllTranscriptions()
                     }
                 }
                 .buttonStyle(.borderless)
             } else {
+<<<<<<< HEAD
 Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
+=======
+                Button("Deselect All") {
+>>>>>>> upstream/main
                     selectedTranscriptions.removeAll()
                 }
                 .buttonStyle(.borderless)
@@ -279,6 +327,10 @@ Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
         )
     }
     
+<<<<<<< HEAD
+=======
+    @MainActor
+>>>>>>> upstream/main
     private func loadInitialContent() async {
         isLoading = true
         defer { isLoading = false }
@@ -290,6 +342,7 @@ Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
             // Fetch initial page without a cursor
             let items = try modelContext.fetch(cursorQueryDescriptor())
             
+<<<<<<< HEAD
             await MainActor.run {
                 displayedTranscriptions = items
                 // Update cursor to the timestamp of the last item
@@ -297,11 +350,19 @@ Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
                 // If we got fewer items than the page size, there are no more items
                 hasMoreContent = items.count == pageSize
             }
+=======
+            displayedTranscriptions = items
+            // Update cursor to the timestamp of the last item
+            lastTimestamp = items.last?.timestamp
+            // If we got fewer items than the page size, there are no more items
+            hasMoreContent = items.count == pageSize
+>>>>>>> upstream/main
         } catch {
             print("Error loading transcriptions: \(error)")
         }
     }
     
+<<<<<<< HEAD
     private func loadMoreContent() {
         guard !isLoading, hasMoreContent, let lastTimestamp = lastTimestamp else { return }
         
@@ -334,6 +395,36 @@ Button(NSLocalizedString("Deselect All", comment: "Deselect All")) {
             hasMoreContent = true
             isLoading = false
         }
+=======
+    @MainActor
+    private func loadMoreContent() async {
+        guard !isLoading, hasMoreContent, let lastTimestamp = lastTimestamp else { return }
+        
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            // Fetch next page using the cursor
+            let newItems = try modelContext.fetch(cursorQueryDescriptor(after: lastTimestamp))
+            
+            // Append new items to the displayed list
+            displayedTranscriptions.append(contentsOf: newItems)
+            // Update cursor to the timestamp of the last new item
+            self.lastTimestamp = newItems.last?.timestamp
+            // If we got fewer items than the page size, there are no more items
+            hasMoreContent = newItems.count == pageSize
+        } catch {
+            print("Error loading more transcriptions: \(error)")
+        }
+    }
+    
+    @MainActor
+    private func resetPagination() {
+        displayedTranscriptions = []
+        lastTimestamp = nil
+        hasMoreContent = true
+        isLoading = false
+>>>>>>> upstream/main
     }
     
     private func deleteTranscription(_ transcription: Transcription) {

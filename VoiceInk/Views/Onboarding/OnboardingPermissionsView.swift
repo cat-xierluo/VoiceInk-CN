@@ -42,7 +42,11 @@ struct OnboardingPermissionsView: View {
     
     private let permissions: [OnboardingPermission] = [
         OnboardingPermission(
+<<<<<<< HEAD
 title: NSLocalizedString("Microphone Access", comment: "Microphone Access"),
+=======
+            title: "Microphone Access",
+>>>>>>> upstream/main
             description: "Enable your microphone to start speaking and converting your voice to text instantly.",
             icon: "waveform",
             type: .microphone
@@ -54,7 +58,11 @@ title: NSLocalizedString("Microphone Access", comment: "Microphone Access"),
             type: .audioDeviceSelection
         ),
         OnboardingPermission(
+<<<<<<< HEAD
 title: NSLocalizedString("Accessibility Access", comment: "Accessibility Access"),
+=======
+            title: "Accessibility Access",
+>>>>>>> upstream/main
             description: "Allow VoiceInk to help you type anywhere in your Mac.",
             icon: "accessibility",
             type: .accessibility
@@ -66,7 +74,11 @@ title: NSLocalizedString("Accessibility Access", comment: "Accessibility Access"
             type: .screenRecording
         ),
         OnboardingPermission(
+<<<<<<< HEAD
 title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
+=======
+            title: "Keyboard Shortcut",
+>>>>>>> upstream/main
             description: "Set up a keyboard shortcut to quickly access VoiceInk from anywhere.",
             icon: "keyboard",
             type: .keyboardShortcut
@@ -117,10 +129,27 @@ title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
                             
                             // Permission text
                             VStack(spacing: 12) {
+<<<<<<< HEAD
                                 Text(permissions[currentPermissionIndex].title)
                                     .font(.title2)
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
+=======
+                                HStack(spacing: 8) {
+                                    Text(permissions[currentPermissionIndex].title)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                    
+                                    if permissions[currentPermissionIndex].type == .screenRecording {
+                                        InfoTip(
+                                            title: "Screen Recording Access",
+                                            message: "VoiceInk captures on-screen text to understand the context of your voice input, which significantly improves transcription accuracy. Your privacy is important: this data is processed locally and is not stored.",
+                                            learnMoreURL: "https://tryvoiceink.com/docs/contextual-awareness"
+                                        )
+                                    }
+                                }
+>>>>>>> upstream/main
                                 
                                 Text(permissions[currentPermissionIndex].description)
                                     .font(.body)
@@ -391,11 +420,19 @@ title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
     private func getButtonTitle() -> String {
         switch permissions[currentPermissionIndex].type {
         case .keyboardShortcut:
+<<<<<<< HEAD
 return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : "Set Shortcut"
         case .audioDeviceSelection:
             return "Continue"
         default:
 return permissionStates[currentPermissionIndex] ? NSLocalizedString("Continue", comment: "Continue") : "Enable Access"
+=======
+            return permissionStates[currentPermissionIndex] ? "Continue" : "Set Shortcut"
+        case .audioDeviceSelection:
+            return "Continue"
+        default:
+            return permissionStates[currentPermissionIndex] ? "Continue" : "Enable Access"
+>>>>>>> upstream/main
         }
     }
 

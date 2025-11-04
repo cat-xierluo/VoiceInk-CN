@@ -8,6 +8,7 @@ struct DictionarySettingsView: View {
         case replacements = "Word Replacements"
         case spellings = "Correct Spellings"
         
+<<<<<<< HEAD
         var displayName: String {
             switch self {
             case .replacements:
@@ -23,6 +24,14 @@ struct DictionarySettingsView: View {
 return NSLocalizedString("Train VoiceInk to recognize industry terms, names, and technical words", comment: "Train VoiceInk to recognize industry terms, names, and technical words")
             case .replacements:
                 return NSLocalizedString("Automatically replace specific words/phrases with custom formatted text ", comment: "Automatically replace specific words/phrases with custom formatted text ")
+=======
+        var description: String {
+            switch self {
+            case .spellings:
+                return "Add words to help VoiceInk recognize them properly"
+            case .replacements:
+                return "Automatically replace specific words/phrases with custom formatted text "
+>>>>>>> upstream/main
             }
         }
         
@@ -58,9 +67,15 @@ return NSLocalizedString("Train VoiceInk to recognize industry terms, names, and
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Dictionary Settings", comment: "Dictionary Settings"))
                     .font(.system(size: 28, weight: .bold))
 Text(NSLocalizedString("Enhance VoiceInk's transcription accuracy by teaching it your vocabulary", comment: "Enhance VoiceInk's transcription accuracy by teaching it your vocabulary"))
+=======
+                Text("Dictionary Settings")
+                    .font(.system(size: 28, weight: .bold))
+                Text("Enhance VoiceInk's transcription accuracy by teaching it your vocabulary")
+>>>>>>> upstream/main
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -83,7 +98,11 @@ Text(NSLocalizedString("Enhance VoiceInk's transcription accuracy by teaching it
     
     private var sectionSelector: some View {
         VStack(alignment: .leading, spacing: 20) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Select Section", comment: "Select Section"))
+=======
+            Text("Select Section")
+>>>>>>> upstream/main
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -127,7 +146,11 @@ struct SectionCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
+<<<<<<< HEAD
                     Text(section.displayName)
+=======
+                    Text(section.rawValue)
+>>>>>>> upstream/main
                         .font(.headline)
                     
                     Text(section.description)

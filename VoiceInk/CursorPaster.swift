@@ -2,14 +2,15 @@ import Foundation
 import AppKit
 
 class CursorPaster {
-    private static let pasteCompletionDelay: TimeInterval = 0.3
     
-    static func pasteAtCursor(_ text: String, shouldPreserveClipboard: Bool = true) {
+    static func pasteAtCursor(_ text: String) {
         let pasteboard = NSPasteboard.general
+        let preserveTranscript = UserDefaults.standard.bool(forKey: "preserveTranscriptInClipboard")
         
         var savedContents: [(NSPasteboard.PasteboardType, Data)] = []
         
-        if shouldPreserveClipboard {
+        // Only save clipboard contents if we plan to restore them
+        if !preserveTranscript {
             let currentItems = pasteboard.pasteboardItems ?? []
             
             for item in currentItems {
@@ -30,11 +31,14 @@ class CursorPaster {
             pasteUsingCommandV()
         }
         
-        if shouldPreserveClipboard && !savedContents.isEmpty {
-            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + pasteCompletionDelay) {
-                pasteboard.clearContents()
-                for (type, data) in savedContents {
-                    pasteboard.setData(data, forType: type)
+        // Only restore clipboard if preserve setting is disabled
+        if !preserveTranscript {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                if !savedContents.isEmpty {
+                    pasteboard.clearContents()
+                    for (type, data) in savedContents {
+                        pasteboard.setData(data, forType: type)
+                    }
                 }
             }
         }

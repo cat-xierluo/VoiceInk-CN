@@ -70,13 +70,21 @@ struct EmojiPickerView: View {
                             }
                             .onSubmit(attemptAddCustomEmoji)
 
+<<<<<<< HEAD
                         Button(NSLocalizedString("Add", comment: "Add button")) {
+=======
+                        Button("Add") {
+>>>>>>> upstream/main
                             attemptAddCustomEmoji()
                         }
                         .buttonStyle(.borderedProminent)
                         .disabled(newEmojiText.isEmpty || !newEmojiText.isValidEmoji || emojiManager.allEmojis.contains(newEmojiText))
 
+<<<<<<< HEAD
                         Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
+=======
+                        Button("Cancel") {
+>>>>>>> upstream/main
                             isAddingCustomEmoji = false
                             newEmojiText = ""
                             inputFeedbackMessage = ""
@@ -89,7 +97,11 @@ struct EmojiPickerView: View {
                             .foregroundColor(inputFeedbackMessage == "Emoji already exists!" || inputFeedbackMessage == "Invalid emoji." ? .red : .secondary)
                             .transition(.opacity)
                     }
+<<<<<<< HEAD
                     Text(NSLocalizedString("Tip: Use ⌃⌘Space for emoji picker.", comment: "Tip: Use ⌃⌘Space for emoji picker."))
+=======
+                    Text("Tip: Use ⌃⌘Space for emoji picker.")
+>>>>>>> upstream/main
                         .font(.caption2)
                         .foregroundColor(.secondary)
                         .padding(.top, 2)
@@ -101,7 +113,11 @@ struct EmojiPickerView: View {
         .padding()
         .background(.regularMaterial)
         .frame(minWidth: 260, idealWidth: 300, maxWidth: 320, minHeight: 150, idealHeight: 280, maxHeight: 350)
+<<<<<<< HEAD
         .alert(NSLocalizedString("Emoji in Use", comment: "Emoji in Use"), isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
+=======
+        .alert("Emoji in Use", isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
+>>>>>>> upstream/main
             Button("OK", role: .cancel) { }
         } message: { emojiStr in
             Text("The emoji \"\(emojiStr)\" is currently used by one or more Power Modes and cannot be removed.")
@@ -207,7 +223,11 @@ private struct AddEmojiButton: View {
                 )
         }
         .buttonStyle(.plain)
+<<<<<<< HEAD
         .help(NSLocalizedString("Add custom emoji", comment: "Add custom emoji"))
+=======
+        .help("Add custom emoji")
+>>>>>>> upstream/main
     }
 }
 

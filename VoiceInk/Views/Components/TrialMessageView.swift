@@ -31,7 +31,11 @@ struct TrialMessageView: View {
                 Button(action: {
                     onAddLicenseKey?()
                 }) {
+<<<<<<< HEAD
                     Text(NSLocalizedString("Enter License", comment: "Enter License"))
+=======
+                    Text("Enter License")
+>>>>>>> upstream/main
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.bordered)
@@ -41,7 +45,11 @@ struct TrialMessageView: View {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Buy License", comment: "Buy License"))
+=======
+                    Text("Buy License")
+>>>>>>> upstream/main
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.borderedProminent)
@@ -70,9 +78,15 @@ Text(NSLocalizedString("Buy License", comment: "Buy License"))
     
     private var title: String {
         switch type {
+<<<<<<< HEAD
         case .warning: return NSLocalizedString(NSLocalizedString("Trial Ending Soon", comment: "Trial Ending Soon"), comment: "Trial Ending Soon")
 case .expired: return NSLocalizedString("Trial Expired", comment: "Trial Expired")
 case .info: return NSLocalizedString("Trial Active", comment: "Trial Active")
+=======
+        case .warning: return "Trial Ending Soon"
+        case .expired: return "Trial Expired"
+        case .info: return "Trial Active"
+>>>>>>> upstream/main
         }
     }
     

@@ -3,6 +3,7 @@ import SwiftData
 import KeyboardShortcuts
 
 // ViewType enum with all cases
+<<<<<<< HEAD
 enum ViewType: CaseIterable {
     case metrics
     case transcribeAudio
@@ -35,6 +36,20 @@ enum ViewType: CaseIterable {
     var localizedTitle: LocalizedStringKey {
         localization.text
     }
+=======
+enum ViewType: String, CaseIterable {
+    case metrics = "Dashboard"
+    case transcribeAudio = "Transcribe Audio"
+    case history = "History"
+    case models = "AI Models"
+    case enhancement = "Enhancement"
+    case powerMode = "Power Mode"
+    case permissions = "Permissions"
+    case audioInput = "Audio Input"
+    case dictionary = "Dictionary"
+    case settings = "Settings"
+    case license = "VoiceInk Pro"
+>>>>>>> upstream/main
     
     var icon: String {
         switch self {
@@ -75,8 +90,23 @@ struct DynamicSidebar: View {
     @Binding var selectedView: ViewType
     @Binding var hoveredView: ViewType?
     @Environment(\.colorScheme) private var colorScheme
+<<<<<<< HEAD
     @StateObject private var licenseViewModel = LicenseViewModel()
     @Namespace private var buttonAnimation
+=======
+    @AppStorage("powerModeUIFlag") private var powerModeUIFlag = false
+    @StateObject private var licenseViewModel = LicenseViewModel()
+    @Namespace private var buttonAnimation
+    
+    private var visibleViewTypes: [ViewType] {
+        ViewType.allCases.filter { viewType in
+            if viewType == .powerMode {
+                return powerModeUIFlag
+            }
+            return true
+        }
+    }
+>>>>>>> upstream/main
 
     var body: some View {
         VStack(spacing: 15) {
@@ -90,11 +120,19 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
+<<<<<<< HEAD
                 Text(L10n.App.name.text)
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
                     Text(L10n.App.proBadge.text)
+=======
+                Text("VoiceInk")
+                    .font(.system(size: 14, weight: .semibold))
+                
+                if case .licensed = licenseViewModel.licenseState {
+                    Text("PRO")
+>>>>>>> upstream/main
                         .font(.system(size: 9, weight: .heavy))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 4)
@@ -109,9 +147,15 @@ struct DynamicSidebar: View {
             .padding(.vertical, 12)
             
             // Navigation Items
+<<<<<<< HEAD
             ForEach(ViewType.allCases, id: \.self) { viewType in
                 DynamicSidebarButton(
                     title: viewType.localizedTitle,
+=======
+            ForEach(visibleViewTypes, id: \.self) { viewType in
+                DynamicSidebarButton(
+                    title: viewType.rawValue,
+>>>>>>> upstream/main
                     systemImage: viewType.icon,
                     isSelected: selectedView == viewType,
                     isHovered: hoveredView == viewType,
@@ -131,7 +175,11 @@ struct DynamicSidebar: View {
 }
 
 struct DynamicSidebarButton: View {
+<<<<<<< HEAD
     let title: LocalizedStringKey
+=======
+    let title: String
+>>>>>>> upstream/main
     let systemImage: String
     let isSelected: Bool
     let isHovered: Bool
@@ -179,6 +227,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var whisperState: WhisperState
     @EnvironmentObject private var hotkeyManager: HotkeyManager
+<<<<<<< HEAD
     @State private var selectedView: ViewType = .metrics
     @State private var hoveredView: ViewType?
     @State private var hasLoadedData = false
@@ -192,6 +241,13 @@ struct ContentView: View {
         AXIsProcessTrusted() &&
         CGPreflightScreenCaptureAccess()
     }
+=======
+    @AppStorage("powerModeUIFlag") private var powerModeUIFlag = false
+    @State private var selectedView: ViewType = .metrics
+    @State private var hoveredView: ViewType?
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+    @StateObject private var licenseViewModel = LicenseViewModel()
+>>>>>>> upstream/main
 
     var body: some View {
         NavigationSplitView {
@@ -209,6 +265,7 @@ struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .frame(minWidth: 940, minHeight: 730)
+<<<<<<< HEAD
         .onAppear {
             hasLoadedData = true
         }
@@ -241,6 +298,31 @@ struct ContentView: View {
                 }
             } else {
                 print("ContentView: No destination in notification")
+=======
+        // inside ContentView body:
+        .onReceive(NotificationCenter.default.publisher(for: .navigateToDestination)) { notification in
+            if let destination = notification.userInfo?["destination"] as? String {
+                switch destination {
+                case "Settings":
+                    selectedView = .settings
+                case "AI Models":
+                    selectedView = .models
+                case "VoiceInk Pro":
+                    selectedView = .license
+                case "History":
+                    selectedView = .history
+                case "Permissions":
+                    selectedView = .permissions
+                case "Enhancement":
+                    selectedView = .enhancement
+                case "Transcribe Audio":
+                    selectedView = .transcribeAudio
+                case "Power Mode":
+                    selectedView = .powerMode
+                default:
+                    break
+                }
+>>>>>>> upstream/main
             }
         }
     }
@@ -249,12 +331,16 @@ struct ContentView: View {
     private var detailView: some View {
         switch selectedView {
         case .metrics:
+<<<<<<< HEAD
             if isSetupComplete {
                 MetricsView(skipSetupCheck: true)
             } else {
                 MetricsSetupView()
                     .environmentObject(hotkeyManager)
             }
+=======
+            MetricsView()
+>>>>>>> upstream/main
         case .models:
             ModelManagementView(whisperState: whisperState)
         case .enhancement:
@@ -279,3 +365,8 @@ struct ContentView: View {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> upstream/main

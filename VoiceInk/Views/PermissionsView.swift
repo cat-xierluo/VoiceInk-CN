@@ -90,6 +90,12 @@ struct PermissionCard: View {
     let buttonTitle: String
     let buttonAction: () -> Void
     let checkPermission: () -> Void
+<<<<<<< HEAD
+=======
+    var infoTipTitle: String?
+    var infoTipMessage: String?
+    var infoTipLink: String?
+>>>>>>> upstream/main
     @State private var isRefreshing = false
     
     var body: some View {
@@ -101,15 +107,33 @@ struct PermissionCard: View {
                         .fill(isGranted ? Color.green.opacity(0.15) : Color.orange.opacity(0.15))
                         .frame(width: 44, height: 44)
                     
+<<<<<<< HEAD
                     Image(systemName: isGranted ? NSLocalizedString("\(icon).fill", comment: "\(icon).fill") : icon)
+=======
+                    Image(systemName: isGranted ? "\(icon).fill" : icon)
+>>>>>>> upstream/main
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(isGranted ? .green : .orange)
                         .symbolRenderingMode(.hierarchical)
                 }
                 
                 VStack(alignment: .leading, spacing: 4) {
+<<<<<<< HEAD
                     Text(title)
                         .font(.headline)
+=======
+                    HStack {
+                        Text(title)
+                            .font(.headline)
+                        if let infoTipTitle = infoTipTitle, let infoTipMessage = infoTipMessage {
+                            InfoTip(
+                                title: infoTipTitle,
+                                message: infoTipMessage,
+                                learnMoreURL: infoTipLink ?? ""
+                            )
+                        }
+                    }
+>>>>>>> upstream/main
                     Text(description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -200,9 +224,15 @@ struct PermissionsView: View {
                             .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
                     
                     VStack(spacing: 8) {
+<<<<<<< HEAD
                         Text(NSLocalizedString("App Permissions", comment: "App Permissions"))
                             .font(.system(size: 28, weight: .bold))
                         Text(NSLocalizedString("VoiceInk requires the following permissions to function properly", comment: "VoiceInk requires the following permissions to function properly"))
+=======
+                        Text("App Permissions")
+                            .font(.system(size: 28, weight: .bold))
+                        Text("VoiceInk requires the following permissions to function properly")
+>>>>>>> upstream/main
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
@@ -215,15 +245,26 @@ struct PermissionsView: View {
                     // Keyboard Shortcut Permission
                     PermissionCard(
                         icon: "keyboard",
+<<<<<<< HEAD
                         title: NSLocalizedString("Keyboard Shortcut", comment: "Keyboard Shortcut"),
                         description: NSLocalizedString("Set up a keyboard shortcut to use VoiceInk anywhere", comment: "Set up a keyboard shortcut to use VoiceInk anywhere"),
                         isGranted: hotkeyManager.selectedHotkey1 != .none,
                         buttonTitle: NSLocalizedString("Configure Shortcut", comment: "Configure Shortcut"),
+=======
+                        title: "Keyboard Shortcut",
+                        description: "Set up a keyboard shortcut to use VoiceInk anywhere",
+                        isGranted: hotkeyManager.selectedHotkey1 != .none,
+                        buttonTitle: "Configure Shortcut",
+>>>>>>> upstream/main
                         buttonAction: {
                             NotificationCenter.default.post(
                                 name: .navigateToDestination,
                                 object: nil,
+<<<<<<< HEAD
 userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
+=======
+                                userInfo: ["destination": "Settings"]
+>>>>>>> upstream/main
                             )
                         },
                         checkPermission: { permissionManager.checkKeyboardShortcut() }
@@ -232,10 +273,17 @@ userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
                     // Audio Permission
                     PermissionCard(
                         icon: "mic",
+<<<<<<< HEAD
                         title: NSLocalizedString("Microphone Access", comment: "Microphone Access"),
                         description: NSLocalizedString("Allow VoiceInk to record your voice for transcription", comment: "Allow VoiceInk to record your voice for transcription"),
                         isGranted: permissionManager.audioPermissionStatus == .authorized,
                         buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? NSLocalizedString("Request Permission", comment: "Request Permission") : NSLocalizedString("Open System Settings", comment: "Open System Settings"),
+=======
+                        title: "Microphone Access",
+                        description: "Allow VoiceInk to record your voice for transcription",
+                        isGranted: permissionManager.audioPermissionStatus == .authorized,
+                        buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? "Request Permission" : "Open System Settings",
+>>>>>>> upstream/main
                         buttonAction: {
                             if permissionManager.audioPermissionStatus == .notDetermined {
                                 permissionManager.requestAudioPermission()
@@ -251,25 +299,45 @@ userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
                     // Accessibility Permission
                     PermissionCard(
                         icon: "hand.raised",
+<<<<<<< HEAD
                         title: NSLocalizedString("Accessibility Access", comment: "Accessibility Access"),
                         description: NSLocalizedString("Allow VoiceInk to paste transcribed text directly at your cursor position", comment: "Allow VoiceInk to paste transcribed text directly at your cursor position"),
                         isGranted: permissionManager.isAccessibilityEnabled,
                         buttonTitle: NSLocalizedString("Open System Settings", comment: "Open System Settings"),
+=======
+                        title: "Accessibility Access",
+                        description: "Allow VoiceInk to paste transcribed text directly at your cursor position",
+                        isGranted: permissionManager.isAccessibilityEnabled,
+                        buttonTitle: "Open System Settings",
+>>>>>>> upstream/main
                         buttonAction: {
                             if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
                                 NSWorkspace.shared.open(url)
                             }
                         },
+<<<<<<< HEAD
                         checkPermission: { permissionManager.checkAccessibilityPermissions() }
+=======
+                        checkPermission: { permissionManager.checkAccessibilityPermissions() },
+                        infoTipTitle: "Accessibility Access",
+                        infoTipMessage: "VoiceInk uses Accessibility permissions to paste the transcribed text directly into other applications at your cursor's position. This allows for a seamless dictation experience across your Mac."
+>>>>>>> upstream/main
                     )
                     
                     // Screen Recording Permission
                     PermissionCard(
                         icon: "rectangle.on.rectangle",
+<<<<<<< HEAD
                         title: NSLocalizedString("Screen Recording Access", comment: "Screen Recording Access"),
                         description: NSLocalizedString("Allow VoiceInk to understand context from your screen for transcript Enhancement", comment: "Allow VoiceInk to understand context from your screen for transcript Enhancement"),
                         isGranted: permissionManager.isScreenRecordingEnabled,
                         buttonTitle: NSLocalizedString("Request Permission", comment: "Request Permission"),
+=======
+                        title: "Screen Recording Access",
+                        description: "Allow VoiceInk to understand context from your screen for transcript Enhancement",
+                        isGranted: permissionManager.isScreenRecordingEnabled,
+                        buttonTitle: "Request Permission",
+>>>>>>> upstream/main
                         buttonAction: {
                             permissionManager.requestScreenRecordingPermission()
                             // After requesting, open system preferences as fallback
@@ -277,7 +345,14 @@ userInfo: ["destination": NSLocalizedString("Settings", comment: "Settings")]
                                 NSWorkspace.shared.open(url)
                             }
                         },
+<<<<<<< HEAD
                         checkPermission: { permissionManager.checkScreenRecordingPermission() }
+=======
+                        checkPermission: { permissionManager.checkScreenRecordingPermission() },
+                        infoTipTitle: "Screen Recording Access",
+                        infoTipMessage: "VoiceInk captures on-screen text to understand the context of your voice input, which significantly improves transcription accuracy. Your privacy is important: this data is processed locally and is not stored.",
+                        infoTipLink: "https://tryvoiceink.com/docs/contextual-awareness"
+>>>>>>> upstream/main
                     )
                 }
             }

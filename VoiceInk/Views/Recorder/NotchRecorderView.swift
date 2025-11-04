@@ -5,8 +5,12 @@ struct NotchRecorderView: View {
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: NotchWindowManager
     @State private var isHovering = false
+<<<<<<< HEAD
     @State private var showPowerModePopover = false
     @State private var showEnhancementPromptPopover = false
+=======
+    @State private var activePopover: ActivePopoverState = .none
+>>>>>>> upstream/main
     @ObservedObject private var powerModeManager = PowerModeManager.shared
     
     @EnvironmentObject private var enhancementService: AIEnhancementService
@@ -32,6 +36,7 @@ struct NotchRecorderView: View {
     }
     
     private var leftSection: some View {
+<<<<<<< HEAD
         HStack(spacing: 8) {
             let isRecording = whisperState.recordingState == .recording
             let isProcessing = whisperState.recordingState == .transcribing || whisperState.recordingState == .enhancing
@@ -46,12 +51,28 @@ struct NotchRecorderView: View {
             
             rightToggleButton
             
+=======
+        HStack(spacing: 12) {
+            RecorderPromptButton(
+                activePopover: $activePopover,
+                buttonSize: 22,
+                padding: EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            )
+
+            RecorderPowerModeButton(
+                activePopover: $activePopover,
+                buttonSize: 22,
+                padding: EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            )
+
+>>>>>>> upstream/main
             Spacer()
         }
         .frame(width: 64)
         .padding(.leading, 16)
     }
     
+<<<<<<< HEAD
     private var rightToggleButton: some View {
         Group {
             if powerModeManager.isPowerModeEnabled {
@@ -89,6 +110,8 @@ struct NotchRecorderView: View {
         }
     }
     
+=======
+>>>>>>> upstream/main
     private var centerSection: some View {
         Rectangle()
             .fill(Color.clear)
@@ -97,11 +120,19 @@ struct NotchRecorderView: View {
     }
     
     private var rightSection: some View {
+<<<<<<< HEAD
         HStack(spacing: 0) {
             Spacer()
             statusDisplay
         }
         .frame(width: 84)
+=======
+        HStack(spacing: 8) {
+            Spacer()
+            statusDisplay
+        }
+        .frame(width: 64)
+>>>>>>> upstream/main
         .padding(.trailing, 16)
     }
     
@@ -124,7 +155,10 @@ struct NotchRecorderView: View {
                     rightSection
                 }
                 .frame(height: menuBarHeight)
+<<<<<<< HEAD
                 .frame(maxWidth: windowManager.isVisible ? .infinity : 0)
+=======
+>>>>>>> upstream/main
                 .background(Color.black)
                 .mask {
                     NotchShape(cornerRadius: 10)
@@ -138,7 +172,10 @@ struct NotchRecorderView: View {
         }
     }
 }
+<<<<<<< HEAD
 
 
 
  
+=======
+>>>>>>> upstream/main

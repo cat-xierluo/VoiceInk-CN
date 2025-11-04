@@ -16,13 +16,13 @@ enum CloudTranscriptionError: Error, LocalizedError {
         case .unsupportedProvider:
             return "The model provider is not supported by this service."
         case .missingAPIKey:
-return NSLocalizedString("API key for this service is missing. Please configure it in the settings.", comment: "API key for this service is missing. Please configure it in the settings.")
+            return "API key for this service is missing. Please configure it in the settings."
         case .invalidAPIKey:
             return "The provided API key is invalid."
         case .audioFileNotFound:
             return "The audio file to transcribe could not be found."
         case .apiRequestFailed(let statusCode, let message):
-            return NSLocalizedString("The API request failed with status code \(statusCode): \(message)", comment: "The API request failed with status code \(statusCode): \(message)")
+            return "The API request failed with status code \(statusCode): \(message)"
         case .networkError(let error):
             return "A network error occurred: \(error.localizedDescription)"
         case .noTranscriptionReturned:
@@ -39,7 +39,9 @@ class CloudTranscriptionService: TranscriptionService {
     private lazy var elevenLabsService = ElevenLabsTranscriptionService()
     private lazy var deepgramService = DeepgramTranscriptionService()
     private lazy var mistralService = MistralTranscriptionService()
+    private lazy var geminiService = GeminiTranscriptionService()
     private lazy var openAICompatibleService = OpenAICompatibleTranscriptionService()
+    private lazy var sonioxService = SonioxTranscriptionService()
     
     func transcribe(audioURL: URL, model: any TranscriptionModel) async throws -> String {
         var text: String
@@ -53,6 +55,10 @@ class CloudTranscriptionService: TranscriptionService {
             text = try await deepgramService.transcribe(audioURL: audioURL, model: model)
         case .mistral:
             text = try await mistralService.transcribe(audioURL: audioURL, model: model)
+        case .gemini:
+            text = try await geminiService.transcribe(audioURL: audioURL, model: model)
+        case .soniox:
+            text = try await sonioxService.transcribe(audioURL: audioURL, model: model)
         case .custom:
             guard let customModel = model as? CustomCloudModel else {
                 throw CloudTranscriptionError.unsupportedProvider
@@ -60,10 +66,6 @@ class CloudTranscriptionService: TranscriptionService {
             text = try await openAICompatibleService.transcribe(audioURL: audioURL, model: customModel)
         default:
             throw CloudTranscriptionError.unsupportedProvider
-        }
-        
-        if UserDefaults.standard.object(forKey: "IsTextFormattingEnabled") as? Bool ?? true {
-            text = WhisperTextFormatter.format(text)
         }
         
         return text

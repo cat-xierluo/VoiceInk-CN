@@ -1,16 +1,22 @@
 import Foundation
 
+<<<<<<< HEAD
 extension Notification.Name {
     static let languageDidChange = Notification.Name("languageDidChange")
     static let promptDidChange = Notification.Name("promptDidChange")
 }
+=======
+>>>>>>> upstream/main
 
 @MainActor
 class WhisperPrompt: ObservableObject {
     @Published var transcriptionPrompt: String = UserDefaults.standard.string(forKey: "TranscriptionPrompt") ?? ""
     
+<<<<<<< HEAD
     private var dictionaryWords: [String] = []
     private let saveKey = "CustomDictionaryItems"
+=======
+>>>>>>> upstream/main
     private let customPromptsKey = "CustomLanguagePrompts"
     
     // Store user-customized prompts
@@ -38,6 +44,7 @@ class WhisperPrompt: ObservableObject {
         "it": "Ciao, come stai? Piacere di conoscerti.",
         "pt": "Olá, como você está? Prazer em conhecê-lo.",
         "ru": "Здравствуйте, как ваши дела? Приятно познакомиться.",
+<<<<<<< HEAD
         "pl": NSLocalizedString("Cześć, jak się masz? Miło cię poznać.", comment: "Cześć, jak się masz? Miło cię poznać."),
         "nl": NSLocalizedString("Hallo, hoe gaat het? Aangenaam kennis te maken.", comment: "Hallo, hoe gaat het? Aangenaam kennis te maken."),
         "tr": NSLocalizedString("Merhaba, nasılsın? Tanıştığımıza memnun oldum.", comment: "Merhaba, nasılsın? Tanıştığımıza memnun oldum."),
@@ -53,13 +60,33 @@ class WhisperPrompt: ObservableObject {
         "ml": NSLocalizedString("നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.", comment: "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം."),
         "kn": NSLocalizedString("ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.", comment: "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ."),
         "ur": NSLocalizedString("السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔", comment: "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔"),
+=======
+        "pl": "Cześć, jak się masz? Miło cię poznać.",
+        "nl": "Hallo, hoe gaat het? Aangenaam kennis te maken.",
+        "tr": "Merhaba, nasılsın? Tanıştığımıza memnun oldum.",
+        
+        // Middle Eastern Languages
+        "ar": "مرحباً، كيف حالك؟ سعيد بلقائك.",
+        "fa": "سلام، حال شما چطور است؟ از آشنایی با شما خوشوقتم.",
+        "he": ",שלום, מה שלומך? נעים להכיר",
+        
+        // South Asian Languages
+        "ta": "வணக்கம், எப்படி இருக்கிறீர்கள்? உங்களை சந்தித்ததில் மகிழ்ச்சி.",
+        "te": "నమస్కారం, ఎలా ఉన్నారు? కలవడం చాలా సంతోషం.",
+        "ml": "നമസ്കാരം, സുഖമാണോ? കണ്ടതിൽ സന്തോഷം.",
+        "kn": "ನಮಸ್ಕಾರ, ಹೇಗಿದ್ದೀರಾ? ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ಸಂತೋಷವಾಗಿದೆ.",
+        "ur": "السلام علیکم، کیسے ہیں آپ؟ آپ سے مل کر خوشی ہوئی۔",
+>>>>>>> upstream/main
         
         // Default prompt for unsupported languages
         "default": ""
     ]
     
     init() {
+<<<<<<< HEAD
         loadDictionaryItems()
+=======
+>>>>>>> upstream/main
         loadCustomPrompts()
         updateTranscriptionPrompt()
         
@@ -80,6 +107,7 @@ class WhisperPrompt: ObservableObject {
         updateTranscriptionPrompt()
     }
     
+<<<<<<< HEAD
     private func loadDictionaryItems() {
         guard let data = UserDefaults.standard.data(forKey: saveKey) else { return }
         
@@ -90,6 +118,8 @@ class WhisperPrompt: ObservableObject {
         }
     }
     
+=======
+>>>>>>> upstream/main
     private func loadCustomPrompts() {
         if let savedPrompts = UserDefaults.standard.dictionary(forKey: customPromptsKey) as? [String: String] {
             customPrompts = savedPrompts
@@ -101,17 +131,21 @@ class WhisperPrompt: ObservableObject {
         UserDefaults.standard.synchronize() // Force immediate synchronization
     }
     
+<<<<<<< HEAD
     func updateDictionaryWords(_ words: [String]) {
         dictionaryWords = words
         updateTranscriptionPrompt()
     }
     
+=======
+>>>>>>> upstream/main
     func updateTranscriptionPrompt() {
         // Get the currently selected language from UserDefaults
         let selectedLanguage = UserDefaults.standard.string(forKey: "SelectedLanguage") ?? "en"
         
         // Get the prompt for the selected language (custom if available, otherwise default)
         let basePrompt = getLanguagePrompt(for: selectedLanguage)
+<<<<<<< HEAD
         
         // Always include VoiceInk in the prompt
         var prompt = basePrompt + "\nVoiceInk, "
@@ -120,6 +154,9 @@ class WhisperPrompt: ObservableObject {
         if !dictionaryWords.isEmpty {
             prompt += dictionaryWords.joined(separator: ", ")
         }
+=======
+        let prompt = basePrompt.isEmpty ? "" : basePrompt
+>>>>>>> upstream/main
         
         transcriptionPrompt = prompt
         UserDefaults.standard.set(prompt, forKey: "TranscriptionPrompt")
@@ -147,6 +184,7 @@ class WhisperPrompt: ObservableObject {
         // Force update the UI
         objectWillChange.send()
     }
+<<<<<<< HEAD
     
     func saveDictionaryItems(_ items: [DictionaryItem]) async {
         if let encoded = try? JSONEncoder().encode(items) {
@@ -157,3 +195,6 @@ class WhisperPrompt: ObservableObject {
         }
     }
 } 
+=======
+}
+>>>>>>> upstream/main

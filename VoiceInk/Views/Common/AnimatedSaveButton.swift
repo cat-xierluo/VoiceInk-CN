@@ -8,11 +8,19 @@ struct AnimatedSaveButton: View {
     
     var body: some View {
         Menu {
+<<<<<<< HEAD
             Button(NSLocalizedString("Save as TXT", comment: "Save as TXT")) {
                 saveFile(as: .plainText, extension: "txt")
             }
             
             Button(NSLocalizedString("Save as MD", comment: "Save as MD")) {
+=======
+            Button("Save as TXT") {
+                saveFile(as: .plainText, extension: "txt")
+            }
+            
+            Button("Save as MD") {
+>>>>>>> upstream/main
                 saveFile(as: .text, extension: "md")
             }
         } label: {
@@ -20,7 +28,11 @@ struct AnimatedSaveButton: View {
                 Image(systemName: isSaved ? "checkmark" : "square.and.arrow.down")
                     .font(.system(size: 12, weight: isSaved ? .bold : .regular))
                     .foregroundColor(.white)
+<<<<<<< HEAD
         Text(isSaved ? NSLocalizedString("Saved", comment: "Saved") : NSLocalizedString("Save", comment: "Save"))
+=======
+                Text(isSaved ? "Saved" : "Save")
+>>>>>>> upstream/main
                     .font(.system(size: 12, weight: isSaved ? .medium : .regular))
                     .foregroundColor(.white)
             }
@@ -69,8 +81,13 @@ struct AnimatedSaveButton: View {
         // Clean the text and split into words
         let cleanedText = textToSave
             .trimmingCharacters(in: .whitespacesAndNewlines)
+<<<<<<< HEAD
             .replacingOccurrences(of: NSLocalizedString("\n", comment: "\n"), with: " ")
             .replacingOccurrences(of: NSLocalizedString("\r", comment: "\r"), with: " ")
+=======
+            .replacingOccurrences(of: "\n", with: " ")
+            .replacingOccurrences(of: "\r", with: " ")
+>>>>>>> upstream/main
         
         let words = cleanedText.components(separatedBy: .whitespaces)
             .filter { !$0.isEmpty }
@@ -80,13 +97,21 @@ struct AnimatedSaveButton: View {
         let selectedWords = Array(words.prefix(wordCount))
         
         if selectedWords.isEmpty {
+<<<<<<< HEAD
             return NSLocalizedString("transcription", comment: "transcription")
+=======
+            return "transcription"
+>>>>>>> upstream/main
         }
         
         // Create filename by joining words and cleaning invalid characters
         let fileName = selectedWords.joined(separator: "-")
             .lowercased()
+<<<<<<< HEAD
             .replacingOccurrences(of: NSLocalizedString("[^a-z0-9\\-]", comment: "[^a-z0-9\\-]"), with: "", options: .regularExpression)
+=======
+            .replacingOccurrences(of: "[^a-z0-9\\-]", with: "", options: .regularExpression)
+>>>>>>> upstream/main
             .replacingOccurrences(of: "--+", with: "-", options: .regularExpression)
             .trimmingCharacters(in: CharacterSet(charactersIn: "-"))
         
@@ -112,9 +137,17 @@ struct AnimatedSaveButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             AnimatedSaveButton(textToSave: "Hello world this is a sample transcription text")
+<<<<<<< HEAD
             Text(NSLocalizedString("Save Button Preview", comment: "Save Button Preview"))
+=======
+            Text("Save Button Preview")
+>>>>>>> upstream/main
                 .padding()
         }
         .padding()
     }
+<<<<<<< HEAD
 } 
+=======
+} 
+>>>>>>> upstream/main

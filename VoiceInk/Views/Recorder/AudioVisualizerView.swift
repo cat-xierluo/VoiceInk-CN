@@ -6,10 +6,17 @@ struct AudioVisualizer: View {
     let isActive: Bool
     
     private let barCount = 12
+<<<<<<< HEAD
     private let minHeight: CGFloat = 4
     private let maxHeight: CGFloat = 28
     private let barWidth: CGFloat = 3.0
     private let barSpacing: CGFloat = 2.0
+=======
+    private let minHeight: CGFloat = 5
+    private let maxHeight: CGFloat = 32
+    private let barWidth: CGFloat = 3.5
+    private let barSpacing: CGFloat = 2.3
+>>>>>>> upstream/main
     private let hardThreshold: Double = 0.3
     
     private let sensitivityMultipliers: [Double]
@@ -33,7 +40,11 @@ struct AudioVisualizer: View {
     var body: some View {
         HStack(spacing: barSpacing) {
             ForEach(0..<barCount, id: \.self) { index in
+<<<<<<< HEAD
                 RoundedRectangle(cornerRadius: 1.5)
+=======
+                RoundedRectangle(cornerRadius: 1.7)
+>>>>>>> upstream/main
                     .fill(color)
                     .frame(width: barWidth, height: barHeights[index])
             }
@@ -96,15 +107,25 @@ struct AudioVisualizer: View {
 
 struct StaticVisualizer: View {
     private let barCount = 12
+<<<<<<< HEAD
     private let barWidth: CGFloat = 3.0
     private let staticHeight: CGFloat = 4.0 
     private let barSpacing: CGFloat = 2.0
+=======
+    private let barWidth: CGFloat = 3.5
+    private let staticHeight: CGFloat = 5.0 
+    private let barSpacing: CGFloat = 2.3
+>>>>>>> upstream/main
     let color: Color
     
     var body: some View {
         HStack(spacing: barSpacing) {
             ForEach(0..<barCount, id: \.self) { index in
+<<<<<<< HEAD
                 RoundedRectangle(cornerRadius: 1.5)
+=======
+                RoundedRectangle(cornerRadius: 1.7)
+>>>>>>> upstream/main
                     .fill(color)
                     .frame(width: barWidth, height: staticHeight)
             }

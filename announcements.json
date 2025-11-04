@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2025-08-welcome",
+    "title": "Thanks for using VoiceInk!",
+    "description": "We’re rolling out minor fixes and performance improvements this week. No action needed.",
+    "url": "https://tryvoiceink.com/docs/announcements",
+    "startAt": "2025-07-01T00:00:00Z",
+    "endAt": "2025-08-01T00:00:00Z"
+  },
+  {
+    "id": "2025-09-ios-launch",
+    "title": "VoiceInk iOS App is Now Live!",
+    "description": "Our iOS app is now available on the App Store! Download it today and experience seamless voice-to-text transcription on your iPhone and iPad.",
+    "url": "https://www.youtube.com/watch?v=T6NwmXadG3M",
+    "startAt": "2025-09-25T00:00:00Z",
+    "endAt": "2025-12-31T23:59:59Z"
+  }
+]
+
+

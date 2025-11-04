@@ -25,6 +25,7 @@ extension WhisperState {
         if model.provider != .local {
             self.isModelLoaded = true
         }
+<<<<<<< HEAD
         
         // Post notification about the model change
         NotificationCenter.default.post(name: .didChangeModel, object: nil, userInfo: ["modelName": model.name])
@@ -39,6 +40,30 @@ extension WhisperState {
         if let currentId = currentModelId,
            let updatedModel = allAvailableModels.first(where: { $0.id == currentId })
         {
+=======
+        // Post notification about the model change
+        NotificationCenter.default.post(name: .didChangeModel, object: nil, userInfo: ["modelName": model.name])
+        NotificationCenter.default.post(name: .AppSettingsDidChange, object: nil)
+    }
+    
+    func refreshAllAvailableModels() {
+        let currentModelName = currentTranscriptionModel?.name
+        var models = PredefinedModels.models
+
+        // Append dynamically discovered local models (imported .bin files) with minimal metadata
+        for whisperModel in availableModels {
+            if !models.contains(where: { $0.name == whisperModel.name }) {
+                let importedModel = ImportedLocalModel(fileBaseName: whisperModel.name)
+                models.append(importedModel)
+            }
+        }
+
+        allAvailableModels = models
+
+        // Preserve current selection by name (IDs may change for dynamic models)
+        if let currentName = currentModelName,
+           let updatedModel = allAvailableModels.first(where: { $0.name == currentName }) {
+>>>>>>> upstream/main
             setDefaultTranscriptionModel(updatedModel)
         }
     }

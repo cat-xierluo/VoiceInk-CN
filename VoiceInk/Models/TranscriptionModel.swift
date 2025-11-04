@@ -3,10 +3,13 @@ import Foundation
 // Enum to differentiate between model providers
 enum ModelProvider: String, Codable, Hashable, CaseIterable {
     case local = "Local"
+    case parakeet = "Parakeet"
     case groq = "Groq"
     case elevenLabs = "ElevenLabs"
     case deepgram = "Deepgram"
     case mistral = "Mistral"
+    case gemini = "Gemini"
+    case soniox = "Soniox"
     case custom = "Custom"
     case nativeApple = "Native Apple"
     // Future providers can be added here
@@ -31,7 +34,7 @@ extension TranscriptionModel {
     }
     
     var language: String {
-        isMultilingualModel ? NSLocalizedString("Multilingual", comment: "Multilingual") : NSLocalizedString("English-only", comment: "English-only")
+        isMultilingualModel ? "Multilingual" : "English-only"
     }
 }
 
@@ -43,6 +46,23 @@ struct NativeAppleModel: TranscriptionModel {
     let description: String
     let provider: ModelProvider = .nativeApple
     let isMultilingualModel: Bool
+    let supportedLanguages: [String: String]
+}
+
+// A new struct for Parakeet models
+struct ParakeetModel: TranscriptionModel {
+    let id = UUID()
+    let name: String
+    let displayName: String
+    let description: String
+    let provider: ModelProvider = .parakeet
+    let size: String
+    let speed: Double
+    let accuracy: Double
+    let ramUsage: Double
+    var isMultilingualModel: Bool {
+        supportedLanguages.count > 1
+    }
     let supportedLanguages: [String: String]
 }
 
@@ -121,3 +141,22 @@ struct LocalModel: TranscriptionModel {
         supportedLanguages.count > 1
     }
 } 
+
+// User-imported local models 
+struct ImportedLocalModel: TranscriptionModel {
+    let id = UUID()
+    let name: String
+    let displayName: String
+    let description: String
+    let provider: ModelProvider = .local
+    let isMultilingualModel: Bool
+    let supportedLanguages: [String: String]
+
+    init(fileBaseName: String) {
+        self.name = fileBaseName
+        self.displayName = fileBaseName
+        self.description = "Imported local model"
+        self.isMultilingualModel = true
+        self.supportedLanguages = PredefinedModels.getLanguageDictionary(isMultilingual: true, provider: .local)
+    }
+}

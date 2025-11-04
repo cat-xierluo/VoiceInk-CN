@@ -7,12 +7,19 @@ struct LocalModelCardView: View {
     let isCurrent: Bool
     let downloadProgress: [String: Double]
     let modelURL: URL?
+<<<<<<< HEAD
+=======
+    let isWarming: Bool
+>>>>>>> upstream/main
     
     // Actions
     var deleteAction: () -> Void
     var setDefaultAction: () -> Void
     var downloadAction: () -> Void
+<<<<<<< HEAD
     
+=======
+>>>>>>> upstream/main
     private var isDownloading: Bool {
         downloadProgress.keys.contains(model.name + "_main") || 
         downloadProgress.keys.contains(model.name + "_coreml")
@@ -51,14 +58,22 @@ struct LocalModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
+<<<<<<< HEAD
 Text(NSLocalizedString("Default", comment: "Default"))
+=======
+                Text("Default")
+>>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isDownloaded {
+<<<<<<< HEAD
                 Text(NSLocalizedString("Downloaded", comment: "Downloaded"))
+=======
+                Text("Downloaded")
+>>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -84,7 +99,11 @@ Text(NSLocalizedString("Default", comment: "Default"))
             
             // Speed
             HStack(spacing: 3) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Speed", comment: "Speed"))
+=======
+                Text("Speed")
+>>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.speed * 10)
@@ -94,7 +113,11 @@ Text(NSLocalizedString("Speed", comment: "Speed"))
             
             // Accuracy
             HStack(spacing: 3) {
+<<<<<<< HEAD
 Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
+=======
+                Text("Accuracy")
+>>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -130,6 +153,7 @@ Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
+<<<<<<< HEAD
 Text(NSLocalizedString("Default Model", comment: "Default Model"))
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
@@ -144,6 +168,32 @@ Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                 Button(action: downloadAction) {
                     HStack(spacing: 4) {
 Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "Download"))
+=======
+                Text("Default Model")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(.secondaryLabelColor))
+            } else if isDownloaded {
+                if isWarming {
+                    HStack(spacing: 6) {
+                        ProgressView()
+                            .controlSize(.small)
+                        Text("Optimizing model for your device...")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(.secondaryLabelColor))
+                    }
+                } else {
+                    Button(action: setDefaultAction) {
+                        Text("Set as Default")
+                            .font(.system(size: 12))
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+            } else {
+                Button(action: downloadAction) {
+                    HStack(spacing: 4) {
+                        Text(isDownloading ? "Downloading..." : "Download")
+>>>>>>> upstream/main
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "arrow.down.circle")
                             .font(.system(size: 12, weight: .medium))
@@ -164,7 +214,11 @@ Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "
             if isDownloaded {
                 Menu {
                     Button(action: deleteAction) {
+<<<<<<< HEAD
                         Label(NSLocalizedString("Delete Model", comment: "Delete Model"), systemImage: "trash")
+=======
+                        Label("Delete Model", systemImage: "trash")
+>>>>>>> upstream/main
                     }
                     
                     Button {
@@ -172,7 +226,11 @@ Text(isDownloading ? "Downloading..." : NSLocalizedString("Download", comment: "
                             NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
                         }
                     } label: {
+<<<<<<< HEAD
 Label(NSLocalizedString("Show in Finder", comment: "Show in Finder"), systemImage: "folder")
+=======
+                        Label("Show in Finder", systemImage: "folder")
+>>>>>>> upstream/main
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -186,13 +244,105 @@ Label(NSLocalizedString("Show in Finder", comment: "Show in Finder"), systemImag
     }
 }
 
+<<<<<<< HEAD
+=======
+// MARK: - Imported Local Model (minimal UI)
+struct ImportedLocalModelCardView: View {
+    let model: ImportedLocalModel
+    let isDownloaded: Bool
+    let isCurrent: Bool
+    let modelURL: URL?
+
+    var deleteAction: () -> Void
+    var setDefaultAction: () -> Void
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 16) {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(model.displayName)
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundColor(Color(.labelColor))
+                    if isCurrent {
+                        Text("Default")
+                            .font(.system(size: 11, weight: .medium))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Capsule().fill(Color.accentColor))
+                            .foregroundColor(.white)
+                    } else if isDownloaded {
+                        Text("Imported")
+                            .font(.system(size: 11, weight: .medium))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Capsule().fill(Color(.quaternaryLabelColor)))
+                            .foregroundColor(Color(.labelColor))
+                    }
+                    Spacer()
+                }
+
+                Text("Imported local model")
+                    .font(.system(size: 11))
+                    .foregroundColor(Color(.secondaryLabelColor))
+                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, 4)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            HStack(spacing: 8) {
+                if isCurrent {
+                    Text("Default Model")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color(.secondaryLabelColor))
+                } else if isDownloaded {
+                    Button(action: setDefaultAction) {
+                        Text("Set as Default")
+                            .font(.system(size: 12))
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+
+                if isDownloaded {
+                    Menu {
+                        Button(action: deleteAction) {
+                            Label("Delete Model", systemImage: "trash")
+                        }
+                        Button {
+                            if let modelURL = modelURL {
+                                NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
+                            }
+                        } label: {
+                            Label("Show in Finder", systemImage: "folder")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.system(size: 14))
+                    }
+                    .menuStyle(.borderlessButton)
+                    .menuIndicator(.hidden)
+                    .frame(width: 20, height: 20)
+                }
+            }
+        }
+        .padding(16)
+        .background(CardBackground(isSelected: isCurrent, useAccentGradientWhenSelected: isCurrent))
+    }
+}
+
+>>>>>>> upstream/main
 
 // MARK: - Helper Views and Functions
 
 func progressDotsWithNumber(value: Double) -> some View {
     HStack(spacing: 4) {
         progressDots(value: value)
+<<<<<<< HEAD
         Text(String(format: NSLocalizedString("%.1f", comment: "%.1f"), value))
+=======
+        Text(String(format: "%.1f", value))
+>>>>>>> upstream/main
             .font(.system(size: 10, weight: .medium, design: .monospaced))
             .foregroundColor(Color(.secondaryLabelColor))
     }

@@ -9,45 +9,65 @@ struct MetricsView: View {
     @EnvironmentObject private var whisperState: WhisperState
     @EnvironmentObject private var hotkeyManager: HotkeyManager
     @StateObject private var licenseViewModel = LicenseViewModel()
+<<<<<<< HEAD
     @State private var hasLoadedData = false
     let skipSetupCheck: Bool
     
     init(skipSetupCheck: Bool = false) {
         self.skipSetupCheck = skipSetupCheck
     }
+=======
+>>>>>>> upstream/main
     
     var body: some View {
         VStack {
             // Trial Message
             if case .trial(let daysRemaining) = licenseViewModel.licenseState {
                 TrialMessageView(
+<<<<<<< HEAD
                     message: NSLocalizedString(NSLocalizedString("You have \(daysRemaining) days left in your trial", comment: "You have \(daysRemaining) days left in your trial"), comment: "You have \(daysRemaining) days left in your trial"),
+=======
+                    message: "You have \(daysRemaining) days left in your trial",
+>>>>>>> upstream/main
                     type: daysRemaining <= 2 ? .warning : .info,
                     onAddLicenseKey: {
                         // Post notification to navigate to VoiceInk Pro tab
                         NotificationCenter.default.post(
                             name: .navigateToDestination,
                             object: nil,
+<<<<<<< HEAD
 userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro")]
+=======
+                            userInfo: ["destination": "VoiceInk Pro"]
+>>>>>>> upstream/main
                         )
                     }
                 )
                 .padding()
             } else if case .trialExpired = licenseViewModel.licenseState {
                 TrialMessageView(
+<<<<<<< HEAD
                     message: NSLocalizedString(NSLocalizedString("Your trial has expired. Upgrade to continue using VoiceInk", comment: "Your trial has expired. Upgrade to continue using VoiceInk"), comment: "Your trial has expired. Upgrade to continue using VoiceInk"),
+=======
+                    message: "Your trial has expired. Upgrade to continue using VoiceInk",
+>>>>>>> upstream/main
                     type: .expired,
                     onAddLicenseKey: {
                         // Also allow navigation from expired state
                         NotificationCenter.default.post(
                             name: .navigateToDestination,
                             object: nil,
+<<<<<<< HEAD
 userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: "VoiceInk Pro")]
+=======
+                            userInfo: ["destination": "VoiceInk Pro"]
+>>>>>>> upstream/main
                         )
                     }
                 )
                 .padding()
             }
+<<<<<<< HEAD
             
             Group {
                 if skipSetupCheck {
@@ -72,5 +92,14 @@ userInfo: ["destination": NSLocalizedString("VoiceInk Pro", comment: "VoiceInk P
         hotkeyManager.selectedHotkey1 != .none &&
         AXIsProcessTrusted() &&
         CGPreflightScreenCaptureAccess()
+=======
+
+            MetricsContent(
+                transcriptions: Array(transcriptions),
+                licenseState: licenseViewModel.licenseState
+            )
+        }
+        .background(Color(.controlBackgroundColor))
+>>>>>>> upstream/main
     }
 }
