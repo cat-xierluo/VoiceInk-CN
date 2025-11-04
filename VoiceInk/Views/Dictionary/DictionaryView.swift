@@ -4,15 +4,6 @@ struct DictionaryItem: Identifiable, Hashable, Codable {
     let id: UUID
     var word: String
     var dateAdded: Date
-<<<<<<< HEAD
-    var isEnabled: Bool
-    
-    init(id: UUID = UUID(), word: String, dateAdded: Date = Date(), isEnabled: Bool = true) {
-        self.id = id
-        self.word = word
-        self.dateAdded = dateAdded
-        self.isEnabled = isEnabled
-=======
     
     init(id: UUID = UUID(), word: String, dateAdded: Date = Date()) {
         self.id = id
@@ -40,7 +31,6 @@ struct DictionaryItem: Identifiable, Hashable, Codable {
         try container.encode(word, forKey: .word)
         try container.encode(dateAdded, forKey: .dateAdded)
         // Don't encode isEnabled anymore
->>>>>>> upstream/main
     }
 }
 
@@ -59,26 +49,12 @@ class DictionaryManager: ObservableObject {
         
         if let savedItems = try? JSONDecoder().decode([DictionaryItem].self, from: data) {
             items = savedItems.sorted(by: { $0.dateAdded > $1.dateAdded })
-<<<<<<< HEAD
-            updatePrompt()
-=======
->>>>>>> upstream/main
         }
     }
     
     private func saveItems() {
         if let encoded = try? JSONEncoder().encode(items) {
             UserDefaults.standard.set(encoded, forKey: saveKey)
-<<<<<<< HEAD
-            updatePrompt()
-        }
-    }
-    
-    private func updatePrompt() {
-        Task { @MainActor in
-            await whisperPrompt.saveDictionaryItems(items)
-=======
->>>>>>> upstream/main
         }
     }
     
@@ -98,20 +74,8 @@ class DictionaryManager: ObservableObject {
         saveItems()
     }
     
-<<<<<<< HEAD
-    func toggleWordState(id: UUID) {
-        if let index = items.firstIndex(where: { $0.id == id }) {
-            items[index].isEnabled.toggle()
-            saveItems()
-        }
-    }
-    
-    var allWords: [String] {
-        items.filter { $0.isEnabled }.map { $0.word }
-=======
     var allWords: [String] {
         items.map { $0.word }
->>>>>>> upstream/main
     }
 }
 
@@ -132,11 +96,7 @@ struct DictionaryView: View {
             // Information Section
             GroupBox {
                 Label {
-<<<<<<< HEAD
-Text(NSLocalizedString("Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement.", comment: "Add words to help VoiceInk recognize them properly(154 chars max, ~25 words). Works independently of AI enhancement."))
-=======
                     Text("Add words to help VoiceInk recognize them properly. (Requires AI enhancement)")
->>>>>>> upstream/main
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -148,21 +108,12 @@ Text(NSLocalizedString("Add words to help VoiceInk recognize them properly(154 c
             
             // Input Section
             HStack(spacing: 8) {
-<<<<<<< HEAD
-TextField(NSLocalizedString("Add word to dictionary", comment: "Add word to dictionary"), text: $newWord)
-                    .textFieldStyle(.roundedBorder)
-                    .font(.system(size: 13))
-                    .onSubmit { addWord() }
-                
-                Button(action: addWord) {
-=======
                 TextField("Add word to dictionary", text: $newWord)
                     .textFieldStyle(.roundedBorder)
                     .font(.system(size: 13))
                     .onSubmit { addWords() }
                 
                 Button(action: addWords) {
->>>>>>> upstream/main
                     Image(systemName: "plus.circle.fill")
                         .symbolRenderingMode(.hierarchical)
                         .foregroundStyle(.blue)
@@ -170,11 +121,7 @@ TextField(NSLocalizedString("Add word to dictionary", comment: "Add word to dict
                 }
                 .buttonStyle(.borderless)
                 .disabled(newWord.isEmpty)
-<<<<<<< HEAD
-.help(NSLocalizedString("Add word", comment: "Add word"))
-=======
                 .help("Add word")
->>>>>>> upstream/main
             }
             
             // Words List
@@ -184,14 +131,6 @@ TextField(NSLocalizedString("Add word to dictionary", comment: "Add word to dict
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
                     
-<<<<<<< HEAD
-Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance.", comment: "Toggle words on/off to optimize recognition. Disable unnecessary words to improve local AI model performance."))
-                        .font(.system(size: 11))
-                        .foregroundColor(.secondary)
-                        .padding(.bottom, 4)
-                    
-=======
->>>>>>> upstream/main
                     ScrollView {
                         let columns = [
                             GridItem(.adaptive(minimum: 240, maximum: .infinity), spacing: 12)
@@ -201,11 +140,6 @@ Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unn
                             ForEach(dictionaryManager.items) { item in
                                 DictionaryItemView(item: item) {
                                     dictionaryManager.removeWord(item.word)
-<<<<<<< HEAD
-                                } onToggle: {
-                                    dictionaryManager.toggleWordState(id: item.id)
-=======
->>>>>>> upstream/main
                                 }
                             }
                         }
@@ -217,31 +151,13 @@ Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unn
             }
         }
         .padding()
-<<<<<<< HEAD
-.alert(NSLocalizedString("Dictionary", comment: "Dictionary"), isPresented: $showAlert) {
-                            Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) {}
-=======
         .alert("Dictionary", isPresented: $showAlert) {
             Button("OK", role: .cancel) {}
->>>>>>> upstream/main
         } message: {
             Text(alertMessage)
         }
     }
     
-<<<<<<< HEAD
-    private func addWord() {
-        let word = newWord.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !word.isEmpty else { return }
-        
-        if dictionaryManager.items.contains(where: { $0.word.lowercased() == word.lowercased() }) {
-            alertMessage = "'\(word)' is already in the dictionary"
-            showAlert = true
-            return
-        }
-        
-        dictionaryManager.addWord(word)
-=======
     private func addWords() {
         let input = newWord.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !input.isEmpty else { return }
@@ -270,7 +186,6 @@ Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unn
                 dictionaryManager.addWord(word)
             }
         }
->>>>>>> upstream/main
         newWord = ""
     }
 }
@@ -278,10 +193,6 @@ Text(NSLocalizedString("Toggle words on/off to optimize recognition. Disable unn
 struct DictionaryItemView: View {
     let item: DictionaryItem
     let onDelete: () -> Void
-<<<<<<< HEAD
-    let onToggle: () -> Void
-=======
->>>>>>> upstream/main
     @State private var isHovered = false
     
     var body: some View {
@@ -289,31 +200,6 @@ struct DictionaryItemView: View {
             Text(item.word)
                 .font(.system(size: 13))
                 .lineLimit(1)
-<<<<<<< HEAD
-                .foregroundColor(item.isEnabled ? .primary : .secondary)
-            
-            Spacer(minLength: 8)
-            
-            HStack(spacing: 4) {
-                Button(action: onToggle) {
-                    Image(systemName: item.isEnabled ? "checkmark.circle.fill" : "circle")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundStyle(item.isEnabled ? .green : .secondary)
-                        .contentTransition(.symbolEffect(.replace))
-                }
-                .buttonStyle(.borderless)
-.help(item.isEnabled ? "Disable word" : NSLocalizedString("Enable word", comment: "Enable word"))
-                
-                Button(action: onDelete) {
-                    Image(systemName: "xmark.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundStyle(isHovered ? .red : .secondary)
-                        .contentTransition(.symbolEffect(.replace))
-                }
-                .buttonStyle(.borderless)
-.help(NSLocalizedString("Remove word", comment: "Remove word"))
-            }
-=======
                 .foregroundColor(.primary)
             
             Spacer(minLength: 8)
@@ -326,7 +212,6 @@ struct DictionaryItemView: View {
             }
             .buttonStyle(.borderless)
             .help("Remove word")
->>>>>>> upstream/main
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isHovered = hover
@@ -341,15 +226,8 @@ struct DictionaryItemView: View {
         }
         .overlay {
             RoundedRectangle(cornerRadius: 6)
-<<<<<<< HEAD
-                .stroke(Color.secondary.opacity(item.isEnabled ? 0.2 : 0.1), lineWidth: 1)
-        }
-        .opacity(item.isEnabled ? 1 : 0.7)
-        .shadow(color: Color.black.opacity(item.isEnabled ? 0.05 : 0), radius: 2, y: 1)
-=======
                 .stroke(Color.secondary.opacity(0.2), lineWidth: 1)
         }
         .shadow(color: Color.black.opacity(0.05), radius: 2, y: 1)
->>>>>>> upstream/main
     }
 } 

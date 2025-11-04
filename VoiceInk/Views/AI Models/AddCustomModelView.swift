@@ -44,11 +44,7 @@ struct AddCustomModelCardView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "plus")
                             .font(.system(size: 14, weight: .medium))
-<<<<<<< HEAD
-Text(editingModel != nil ? "Edit Model" : NSLocalizedString("Add Model", comment: "Add Model"))
-=======
                         Text(editingModel != nil ? "Edit Model" : "Add Model")
->>>>>>> upstream/main
                             .font(.system(size: 14, weight: .semibold))
                     }
                     .foregroundColor(.white)
@@ -66,11 +62,7 @@ Text(editingModel != nil ? "Edit Model" : NSLocalizedString("Add Model", comment
                 VStack(alignment: .leading, spacing: 20) {
                     // Header
                     HStack {
-<<<<<<< HEAD
-Text(editingModel != nil ? "Edit Custom Model" : NSLocalizedString("Add Custom Model", comment: "Add Custom Model"))
-=======
                         Text(editingModel != nil ? "Edit Custom Model" : "Add Custom Model")
->>>>>>> upstream/main
                             .font(.headline)
                             .foregroundColor(.primary)
                         
@@ -94,11 +86,7 @@ Text(editingModel != nil ? "Edit Custom Model" : NSLocalizedString("Add Custom M
                         Image(systemName: "exclamationmark.triangle.fill")
                             .foregroundColor(.orange)
                             .font(.caption)
-<<<<<<< HEAD
-Text(NSLocalizedString("Only OpenAI-compatible transcription APIs are supported", comment: "Only OpenAI-compatible transcription APIs are supported"))
-=======
                         Text("Only OpenAI-compatible transcription APIs are supported")
->>>>>>> upstream/main
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -109,21 +97,12 @@ Text(NSLocalizedString("Only OpenAI-compatible transcription APIs are supported"
                     
                     // Form fields
                     VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-FormField(title: NSLocalizedString("Display Name", comment: "Display Name"), text: $displayName, placeholder: NSLocalizedString("My Custom Model", comment: "My Custom Model"))
-                        FormField(title: NSLocalizedString("API Endpoint", comment: "API Endpoint"), text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
-FormField(title: NSLocalizedString("API Key", comment: "API Key"), text: $apiKey, placeholder: NSLocalizedString("your-api-key", comment: "your-api-key"), isSecure: true)
-FormField(title: NSLocalizedString("Model Name", comment: "Model Name"), text: $modelName, placeholder: NSLocalizedString("whisper-1", comment: "whisper-1"))
-                        
-Toggle(NSLocalizedString("Multilingual Model", comment: "Multilingual Model"), isOn: $isMultilingual)
-=======
                         FormField(title: "Display Name", text: $displayName, placeholder: "My Custom Model")
                         FormField(title: "API Endpoint", text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
                         FormField(title: "API Key", text: $apiKey, placeholder: "your-api-key", isSecure: true)
                         FormField(title: "Model Name", text: $modelName, placeholder: "whisper-1")
                         
                         Toggle("Multilingual Model", isOn: $isMultilingual)
->>>>>>> upstream/main
                     }
                     
                     // Action buttons
@@ -134,11 +113,7 @@ Toggle(NSLocalizedString("Multilingual Model", comment: "Multilingual Model"), i
                                 clearForm()
                             }
                         }) {
-<<<<<<< HEAD
-                            Text(NSLocalizedString("Cancel", comment: "Cancel button"))
-=======
                             Text("Cancel")
->>>>>>> upstream/main
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
                                 .frame(maxWidth: .infinity)
@@ -160,11 +135,7 @@ Toggle(NSLocalizedString("Multilingual Model", comment: "Multilingual Model"), i
                                     Image(systemName: editingModel != nil ? "checkmark.circle.fill" : "plus.circle.fill")
                                         .font(.system(size: 14))
                                 }
-<<<<<<< HEAD
-Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comment: "Add Model"))
-=======
                                 Text(editingModel != nil ? "Update Model" : "Add Model")
->>>>>>> upstream/main
                                     .font(.system(size: 13, weight: .medium))
                             }
                             .foregroundColor(.white)
@@ -191,13 +162,8 @@ Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comme
                 )
             }
         }
-<<<<<<< HEAD
-        .alert(NSLocalizedString("Validation Errors", comment: "Validation Errors"), isPresented: $showingAlert) {
-                            Button(NSLocalizedString("OK", comment: "OK")) { }
-=======
         .alert("Validation Errors", isPresented: $showingAlert) {
             Button("OK") { }
->>>>>>> upstream/main
         } message: {
             Text(validationErrors.joined(separator: "\n"))
         }
@@ -266,11 +232,7 @@ Text(editingModel != nil ? "Update Model" : NSLocalizedString("Add Model", comme
                     id: editing.id,
                     name: generatedName,
                     displayName: trimmedDisplayName,
-<<<<<<< HEAD
-                    description: NSLocalizedString(NSLocalizedString("Custom transcription model", comment: "Custom transcription model"), comment: "Custom transcription model"),
-=======
                     description: "Custom transcription model",
->>>>>>> upstream/main
                     apiEndpoint: trimmedApiEndpoint,
                     apiKey: trimmedApiKey,
                     modelName: trimmedModelName,
@@ -325,8 +287,4 @@ struct FormField: View {
             }
         }
     }
-<<<<<<< HEAD
 } 
-=======
-} 
->>>>>>> upstream/main

@@ -3,28 +3,18 @@ import AppKit
 
 struct ModelCardRowView: View {
     let model: any TranscriptionModel
-<<<<<<< HEAD
-=======
     @ObservedObject var whisperState: WhisperState
->>>>>>> upstream/main
     let isDownloaded: Bool
     let isCurrent: Bool
     let downloadProgress: [String: Double]
     let modelURL: URL?
-<<<<<<< HEAD
-=======
     let isWarming: Bool
->>>>>>> upstream/main
     
     // Actions
     var deleteAction: () -> Void
     var setDefaultAction: () -> Void
     var downloadAction: () -> Void
     var editAction: ((CustomCloudModel) -> Void)?
-<<<<<<< HEAD
-    
-=======
->>>>>>> upstream/main
     var body: some View {
         Group {
             switch model.provider {
@@ -36,16 +26,11 @@ struct ModelCardRowView: View {
                         isCurrent: isCurrent,
                         downloadProgress: downloadProgress,
                         modelURL: modelURL,
-<<<<<<< HEAD
-=======
                         isWarming: isWarming,
->>>>>>> upstream/main
                         deleteAction: deleteAction,
                         setDefaultAction: setDefaultAction,
                         downloadAction: downloadAction
                     )
-<<<<<<< HEAD
-=======
                 } else if let importedModel = model as? ImportedLocalModel {
                     ImportedLocalModelCardView(
                         model: importedModel,
@@ -62,7 +47,6 @@ struct ModelCardRowView: View {
                     model: parakeetModel,
                         whisperState: whisperState
                     )
->>>>>>> upstream/main
                 }
             case .nativeApple:
                 if let nativeAppleModel = model as? NativeAppleModel {
@@ -72,11 +56,7 @@ struct ModelCardRowView: View {
                         setDefaultAction: setDefaultAction
                     )
                 }
-<<<<<<< HEAD
-            case .groq, .elevenLabs, .deepgram, .mistral:
-=======
             case .groq, .elevenLabs, .deepgram, .mistral, .gemini, .soniox:
->>>>>>> upstream/main
                 if let cloudModel = model as? CloudModel {
                     CloudModelCardView(
                         model: cloudModel,
@@ -97,8 +77,4 @@ struct ModelCardRowView: View {
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> upstream/main

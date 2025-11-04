@@ -29,15 +29,6 @@ struct CloudModelCardView: View {
     private var providerKey: String {
         switch model.provider {
         case .groq:
-<<<<<<< HEAD
-            return NSLocalizedString("GROQ", comment: "GROQ")
-        case .elevenLabs:
-return NSLocalizedString("ElevenLabs", comment: "ElevenLabs")
-        case .deepgram:
-return NSLocalizedString("Deepgram", comment: "Deepgram")
-        case .mistral:
-return NSLocalizedString("Mistral", comment: "Mistral")
-=======
             return "GROQ"
         case .elevenLabs:
             return "ElevenLabs"
@@ -49,7 +40,6 @@ return NSLocalizedString("Mistral", comment: "Mistral")
             return "Gemini"
         case .soniox:
             return "Soniox"
->>>>>>> upstream/main
         default:
             return model.provider.rawValue
         }
@@ -101,33 +91,21 @@ return NSLocalizedString("Mistral", comment: "Mistral")
     private var statusBadge: some View {
         Group {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default", comment: "Default"))
-=======
                 Text("Default")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isConfiguredState {
-<<<<<<< HEAD
-                Text(NSLocalizedString("Configured", comment: "Configured"))
-=======
                 Text("Configured")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color(.systemGreen).opacity(0.2)))
                     .foregroundColor(Color(.systemGreen))
             } else {
-<<<<<<< HEAD
-Text(NSLocalizedString("Setup Required", comment: "Setup Required"))
-=======
                 Text("Setup Required")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -151,22 +129,14 @@ Text(NSLocalizedString("Setup Required", comment: "Setup Required"))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
-<<<<<<< HEAD
-Label(NSLocalizedString("Cloud Model", comment: "Cloud Model"), systemImage: "icloud")
-=======
             Label("Cloud Model", systemImage: "icloud")
->>>>>>> upstream/main
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Accuracy
             HStack(spacing: 3) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
-=======
                 Text("Accuracy")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -189,20 +159,12 @@ Text(NSLocalizedString("Accuracy", comment: "Accuracy"))
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default Model", comment: "Default Model"))
-=======
                 Text("Default Model")
->>>>>>> upstream/main
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isConfiguredState {
                 Button(action: setDefaultAction) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
-=======
                     Text("Set as Default")
->>>>>>> upstream/main
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -214,11 +176,7 @@ Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                     }
                 }) {
                     HStack(spacing: 4) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Configure", comment: "Configure"))
-=======
                         Text("Configure")
->>>>>>> upstream/main
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "gear")
                             .font(.system(size: 12, weight: .medium))
@@ -240,11 +198,7 @@ Text(NSLocalizedString("Configure", comment: "Configure"))
                     Button {
                         clearAPIKey()
                     } label: {
-<<<<<<< HEAD
-                        Label(NSLocalizedString("Remove API Key", comment: "Remove API Key"), systemImage: "trash")
-=======
                         Label("Remove API Key", systemImage: "trash")
->>>>>>> upstream/main
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -259,11 +213,7 @@ Text(NSLocalizedString("Configure", comment: "Configure"))
     
     private var configurationSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-<<<<<<< HEAD
-Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"))
-=======
             Text("API Key Configuration")
->>>>>>> upstream/main
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(Color(.labelColor))
             
@@ -282,11 +232,7 @@ Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"
                             Image(systemName: verificationStatus == .success ? "checkmark" : "checkmark.shield")
                                 .font(.system(size: 12, weight: .medium))
                         }
-<<<<<<< HEAD
-                        Text(isVerifying ? NSLocalizedString("Verifying...", comment: "Verifying...") : "Verify")
-=======
                         Text(isVerifying ? "Verifying..." : "Verify")
->>>>>>> upstream/main
                             .font(.system(size: 12, weight: .medium))
                     }
                     .foregroundColor(.white)
@@ -302,19 +248,11 @@ Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"
             }
             
             if verificationStatus == .failure {
-<<<<<<< HEAD
-                Text(NSLocalizedString("Invalid API key. Please check your key and try again.", comment: "Invalid API key. Please check your key and try again."))
-                    .font(.caption)
-                    .foregroundColor(Color(.systemRed))
-            } else if verificationStatus == .success {
-                Text(NSLocalizedString("API key verified successfully!", comment: "API key verified successfully!"))
-=======
                 Text("Invalid API key. Please check your key and try again.")
                     .font(.caption)
                     .foregroundColor(Color(.systemRed))
             } else if verificationStatus == .success {
                 Text("API key verified successfully!")
->>>>>>> upstream/main
                     .font(.caption)
                     .foregroundColor(Color(.systemGreen))
             }
@@ -343,13 +281,10 @@ Text(NSLocalizedString("API Key Configuration", comment: "API Key Configuration"
             aiService.selectedProvider = .deepgram
         case .mistral:
             aiService.selectedProvider = .mistral
-<<<<<<< HEAD
-=======
         case .gemini:
             aiService.selectedProvider = .gemini
         case .soniox:
             aiService.selectedProvider = .soniox
->>>>>>> upstream/main
         default:
             // This case should ideally not be hit for cloud models in this view
             print("Warning: verifyAPIKey called for unsupported provider \(model.provider.rawValue)")

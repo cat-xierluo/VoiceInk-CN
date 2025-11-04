@@ -39,22 +39,14 @@ struct NativeAppleModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default", comment: "Default"))
-=======
                 Text("Default")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else {
-<<<<<<< HEAD
-Text(NSLocalizedString("Built-in", comment: "Built-in"))
-=======
                 Text("Built-in")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -67,11 +59,7 @@ Text(NSLocalizedString("Built-in", comment: "Built-in"))
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Native Apple
-<<<<<<< HEAD
-Label(NSLocalizedString("Native Apple", comment: "Native Apple"), systemImage: "apple.logo")
-=======
             Label("Native Apple", systemImage: "apple.logo")
->>>>>>> upstream/main
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -109,20 +97,12 @@ Label(NSLocalizedString("Native Apple", comment: "Native Apple"), systemImage: "
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default Model", comment: "Default Model"))
-=======
                 Text("Default Model")
->>>>>>> upstream/main
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else {
                 Button(action: setDefaultAction) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
-=======
                     Text("Set as Default")
->>>>>>> upstream/main
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)

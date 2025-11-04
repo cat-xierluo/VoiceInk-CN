@@ -1,24 +1,4 @@
 import SwiftUI
-<<<<<<< HEAD
-import Charts
-
-struct MetricsContent: View {
-    let transcriptions: [Transcription]
-    
-    var body: some View {
-        if transcriptions.isEmpty {
-            emptyStateView
-        } else {
-            ScrollView {
-                VStack(spacing: 20) {
-                    TimeEfficiencyView(totalRecordedTime: totalRecordedTime, estimatedTypingTime: estimatedTypingTime)
-                    
-                    metricsGrid
-                    
-                    voiceInkTrendChart
-                }
-                .padding()
-=======
 
 struct MetricsContent: View {
     let transcriptions: [Transcription]
@@ -52,7 +32,6 @@ struct MetricsContent: View {
                     }
                     .background(Color(.windowBackgroundColor))
                 }
->>>>>>> upstream/main
             }
         }
     }
@@ -60,101 +39,17 @@ struct MetricsContent: View {
     private var emptyStateView: some View {
         VStack(spacing: 20) {
             Image(systemName: "waveform")
-<<<<<<< HEAD
-                .font(.system(size: 50))
-                .foregroundColor(.secondary)
-            Text(NSLocalizedString("No Transcriptions Yet", comment: "No Transcriptions Yet"))
-                .font(.title2)
-                .fontWeight(.semibold)
-            Text(NSLocalizedString("Start recording to see your metrics", comment: "Start recording to see your metrics"))
-=======
                 .font(.system(size: 56, weight: .semibold))
                 .foregroundColor(.secondary)
             Text("No Transcriptions Yet")
                 .font(.title3.weight(.semibold))
             Text("Start your first recording to unlock value insights.")
->>>>>>> upstream/main
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.windowBackgroundColor))
     }
     
-<<<<<<< HEAD
-    private var metricsGrid: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-            MetricCard(
-                title: NSLocalizedString(NSLocalizedString("Words Captured", comment: "Words Captured"), comment: "Words Captured"),
-                value: NSLocalizedString("\(totalWordsTranscribed)", comment: "\(totalWordsTranscribed)"),
-                icon: "text.word.spacing",
-                color: .blue
-            )
-            MetricCard(
-                title: NSLocalizedString(NSLocalizedString("Voice-to-Text Sessions", comment: "Voice-to-Text Sessions"), comment: "Voice-to-Text Sessions"),
-                value: "\(transcriptions.count)",
-                icon: "mic.circle.fill",
-                color: .green
-            )
-            MetricCard(
-                title: NSLocalizedString(NSLocalizedString("Average Words/Minute", comment: "Average Words/Minute"), comment: "Average Words/Minute"),
-                value: String(format: NSLocalizedString(NSLocalizedString("%.1f", comment: "%.1f"), comment: "%.1f"), averageWordsPerMinute),
-                icon: NSLocalizedString("speedometer", comment: "speedometer"),
-                color: .orange
-            )
-            MetricCard(
-                title: NSLocalizedString(NSLocalizedString("Words/Session", comment: "Words/Session"), comment: "Words/Session"),
-                value: String(format: "%.1f", averageWordsPerSession),
-                icon: "chart.bar.fill",
-                color: .purple
-            )
-        }
-    }
-    
-    private var voiceInkTrendChart: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(NSLocalizedString("30-Day VoiceInk Trend", comment: "30-Day VoiceInk Trend"))
-                .font(.headline)
-            
-            Chart {
-                ForEach(dailyTranscriptionCounts, id: \.date) { item in
-                    LineMark(
-x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
-                        y: .value("Sessions", item.count)
-                    )
-                    .interpolationMethod(.catmullRom)
-                    
-                    AreaMark(
-x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
-                        y: .value("Sessions", item.count)
-                    )
-                    .foregroundStyle(LinearGradient(colors: [.blue.opacity(0.3), .blue.opacity(0.1)], startPoint: .top, endPoint: .bottom))
-                    .interpolationMethod(.catmullRom)
-                }
-            }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: .day, count: 7)) { _ in
-                    AxisGridLine()
-                    AxisTick()
-                    AxisValueLabel(format: .dateTime.day().month(), centered: true)
-                }
-            }
-            .chartYAxis {
-                AxisMarks { value in
-                    AxisGridLine()
-                    AxisTick()
-                    AxisValueLabel()
-                }
-            }
-            .frame(height: 250)
-        }
-        .padding()
-        .background(Color(.controlBackgroundColor))
-        .cornerRadius(10)
-        .shadow(radius: 2)
-    }
-    
-    // Computed properties for metrics
-=======
     // MARK: - Sections
     
     private var heroSection: some View {
@@ -279,7 +174,6 @@ x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
     
     // MARK: - Computed Metrics
     
->>>>>>> upstream/main
     private var totalWordsTranscribed: Int {
         transcriptions.reduce(0) { $0 + $1.text.split(separator: " ").count }
     }
@@ -295,42 +189,15 @@ x: .value(NSLocalizedString("Date", comment: "Date"), item.date),
         return estimatedTypingTimeInMinutes * 60
     }
     
-<<<<<<< HEAD
-    private var dailyTranscriptionCounts: [(date: Date, count: Int)] {
-        let calendar = Calendar.current
-        let now = Date()
-        let thirtyDaysAgo = calendar.date(byAdding: .day, value: -29, to: now)!
-        
-        let dailyData = (0..<30).compactMap { dayOffset -> (date: Date, count: Int)? in
-            guard let date = calendar.date(byAdding: .day, value: -dayOffset, to: now) else { return nil }
-            let startOfDay = calendar.startOfDay(for: date)
-            let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-            let count = transcriptions.filter { $0.timestamp >= startOfDay && $0.timestamp < endOfDay }.count
-            return (date: startOfDay, count: count)
-        }
-        
-        return dailyData.reversed()
-    }
-    
-    // Add computed properties for new metrics
-=======
     private var timeSaved: TimeInterval {
         max(estimatedTypingTime - totalRecordedTime, 0)
     }
     
->>>>>>> upstream/main
     private var averageWordsPerMinute: Double {
         guard totalRecordedTime > 0 else { return 0 }
         return Double(totalWordsTranscribed) / (totalRecordedTime / 60.0)
     }
     
-<<<<<<< HEAD
-    private var averageWordsPerSession: Double {
-        guard !transcriptions.isEmpty else { return 0 }
-        return Double(totalWordsTranscribed) / Double(transcriptions.count)
-    }
-} 
-=======
     private var totalKeystrokesSaved: Int {
         Int(Double(totalWordsTranscribed) * 5.0)
     }
@@ -452,4 +319,3 @@ private struct CopySystemInfoButton: View {
         }
     }
 }
->>>>>>> upstream/main

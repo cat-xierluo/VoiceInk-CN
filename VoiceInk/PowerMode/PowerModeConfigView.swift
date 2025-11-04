@@ -35,19 +35,12 @@ struct ConfigurationView: View {
     
     // New state for screen capture toggle
     @State private var useScreenCapture = false
-<<<<<<< HEAD
-    // NEW: Auto-send toggle state
-    @State private var isAutoSendEnabled = false
-=======
     @State private var isAutoSendEnabled = false
     @State private var isDefault = false
->>>>>>> upstream/main
     
     // State for prompt editing (similar to EnhancementSettingsView)
     @State private var isEditingPrompt = false
     @State private var selectedPromptForEdit: CustomPrompt?
-<<<<<<< HEAD
-=======
 
     private func languageSelectionDisabled() -> Bool {
         guard let selectedModelName = effectiveModelName,
@@ -57,13 +50,10 @@ struct ConfigurationView: View {
         }
         return model.provider == .parakeet || model.provider == .gemini
     }
->>>>>>> upstream/main
     
     // Whisper state for model selection
     @EnvironmentObject private var whisperState: WhisperState
     
-<<<<<<< HEAD
-=======
     // Computed property to check if current config is the default
     private var isCurrentConfigDefault: Bool {
         if case .edit(let config) = mode {
@@ -72,7 +62,6 @@ struct ConfigurationView: View {
         return false
     }
     
->>>>>>> upstream/main
     private var filteredApps: [(url: URL, name: String, bundleId: String, icon: NSImage)] {
         if searchText.isEmpty {
             return installedApps
@@ -106,10 +95,7 @@ struct ConfigurationView: View {
             _selectedEmoji = State(initialValue: "✏️")
             _useScreenCapture = State(initialValue: false)
             _isAutoSendEnabled = State(initialValue: false)
-<<<<<<< HEAD
-=======
             _isDefault = State(initialValue: false)
->>>>>>> upstream/main
             // Default to current global AI provider/model for new configurations - use UserDefaults only
             _selectedAIProvider = State(initialValue: UserDefaults.standard.string(forKey: "selectedAIProvider"))
             _selectedAIModel = State(initialValue: nil) // Initialize to nil and set it after view appears
@@ -126,23 +112,7 @@ struct ConfigurationView: View {
             _websiteConfigs = State(initialValue: latestConfig.urlConfigs ?? [])
             _useScreenCapture = State(initialValue: latestConfig.useScreenCapture)
             _isAutoSendEnabled = State(initialValue: latestConfig.isAutoSendEnabled)
-<<<<<<< HEAD
-            _selectedAIProvider = State(initialValue: latestConfig.selectedAIProvider)
-            _selectedAIModel = State(initialValue: latestConfig.selectedAIModel)
-        case .editDefault(let config):
-            // Always use the latest default config
-            let latestConfig = powerModeManager.defaultConfig
-            _isAIEnhancementEnabled = State(initialValue: latestConfig.isAIEnhancementEnabled)
-            _selectedPromptId = State(initialValue: latestConfig.selectedPrompt.flatMap { UUID(uuidString: $0) })
-            _selectedTranscriptionModelName = State(initialValue: latestConfig.selectedTranscriptionModelName)
-            _selectedLanguage = State(initialValue: latestConfig.selectedLanguage)
-            _configName = State(initialValue: latestConfig.name)
-            _selectedEmoji = State(initialValue: latestConfig.emoji)
-            _useScreenCapture = State(initialValue: latestConfig.useScreenCapture)
-            _isAutoSendEnabled = State(initialValue: latestConfig.isAutoSendEnabled)
-=======
             _isDefault = State(initialValue: latestConfig.isDefault)
->>>>>>> upstream/main
             _selectedAIProvider = State(initialValue: latestConfig.selectedAIProvider)
             _selectedAIModel = State(initialValue: latestConfig.selectedAIModel)
         }
@@ -159,11 +129,6 @@ struct ConfigurationView: View {
                 Spacer()
                 
                 if case .edit(let config) = mode {
-<<<<<<< HEAD
-Button(NSLocalizedString("Delete", comment: "Delete")) {
-                        powerModeManager.removeConfiguration(with: config.id)
-                        presentationMode.wrappedValue.dismiss()
-=======
                     Button("Delete") {
                         let alert = NSAlert()
                         alert.messageText = "Delete Power Mode?"
@@ -180,17 +145,12 @@ Button(NSLocalizedString("Delete", comment: "Delete")) {
                             powerModeManager.removeConfiguration(with: config.id)
                             presentationMode.wrappedValue.dismiss()
                         }
->>>>>>> upstream/main
                     }
                     .foregroundColor(.red)
                     .padding(.trailing, 8)
                 }
                 
-<<<<<<< HEAD
-Button(NSLocalizedString("Cancel", comment: "Cancel")) {
-=======
                 Button("Cancel") {
->>>>>>> upstream/main
                     presentationMode.wrappedValue.dismiss()
                 }
                 .keyboardShortcut(.escape, modifiers: [])
@@ -204,43 +164,6 @@ Button(NSLocalizedString("Cancel", comment: "Cancel")) {
             ScrollView {
                 VStack(spacing: 20) {
                     // Main Input Section
-<<<<<<< HEAD
-                    HStack(spacing: 16) {
-                        Button(action: {
-                            isShowingEmojiPicker.toggle()
-                        }) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.accentColor.opacity(0.15))
-                                    .frame(width: 48, height: 48)
-                                
-                                Text(selectedEmoji)
-                                    .font(.system(size: 24))
-                            }
-                        }
-                        .buttonStyle(.plain)
-                        .disabled(mode.isEditingDefault)
-                        .opacity(mode.isEditingDefault ? 0.5 : 1)
-                        .popover(isPresented: $isShowingEmojiPicker, arrowEdge: .bottom) {
-                            EmojiPickerView(
-                                selectedEmoji: $selectedEmoji,
-                                isPresented: $isShowingEmojiPicker
-                            )
-                        }
-                        
-TextField(NSLocalizedString("Name your power mode", comment: "Name your power mode"), text: $configName)
-                            .font(.system(size: 18, weight: .bold))
-                            .textFieldStyle(.plain)
-                            .foregroundColor(.primary)
-                            .tint(.accentColor)
-                            .disabled(mode.isEditingDefault)
-                            .focused($isNameFieldFocused)
-                            .onAppear {
-                                if !mode.isEditingDefault {
-                                    isNameFieldFocused = true
-                                }
-                            }
-=======
                     VStack(spacing: 16) {
                         HStack(spacing: 16) {
                             Button(action: {
@@ -283,182 +206,11 @@ TextField(NSLocalizedString("Name your power mode", comment: "Name your power mo
                             
                             Spacer()
                         }
->>>>>>> upstream/main
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)
                     .background(CardBackground(isSelected: false))
                     .padding(.horizontal)
-<<<<<<< HEAD
-                    
-                    // Enhanced Emoji Picker with Custom Emoji Support
-                    // if isShowingEmojiPicker { // <<< This conditional block will be removed
-                    //     EmojiPickerView(
-                    //         selectedEmoji: $selectedEmoji,
-                    //         isPresented: $isShowingEmojiPicker
-                    //     )
-                    //     .padding(.horizontal)
-                    // }
-                    
-                    // SECTION 1: TRIGGERS
-                    if !mode.isEditingDefault {
-                        VStack(spacing: 16) {
-                            // Section Header
-SectionHeader(title: NSLocalizedString("When to Trigger", comment: "When to Trigger"))
-                            
-                            // Applications Subsection
-                            VStack(alignment: .leading, spacing: 12) {
-                                HStack {
-Text(NSLocalizedString("Applications", comment: "Applications"))
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                    
-                                    Spacer()
-                                    
-                                    Button(action: {
-                                        loadInstalledApps()
-                                        isShowingAppPicker = true
-                                    }) {
-Label(NSLocalizedString("Add App", comment: "Add App"), systemImage: "plus.circle.fill")
-                                            .font(.subheadline)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                                
-                                if selectedAppConfigs.isEmpty {
-                                    HStack {
-                                        Spacer()
-Text(NSLocalizedString("No applications added", comment: "No applications added"))
-                                            .foregroundColor(.secondary)
-                                            .font(.subheadline)
-                                        Spacer()
-                                    }
-                                    .padding()
-                                    .background(CardBackground(isSelected: false))
-                                } else {
-                                    // Grid of selected apps that wraps to next line
-                                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 55), spacing: 10)], spacing: 10) {
-                                        ForEach(selectedAppConfigs) { appConfig in
-                                            VStack {
-                                                ZStack(alignment: .topTrailing) {
-                                                    // App icon - completely filling the container
-                                                    if let appURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: appConfig.bundleIdentifier) {
-                                                        Image(nsImage: NSWorkspace.shared.icon(forFile: appURL.path))
-                                                            .resizable()
-                                                            .aspectRatio(contentMode: .fill)
-                                                            .frame(width: 50, height: 50)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                    } else {
-                                                        Image(systemName: "app.fill")
-                                                            .resizable()
-                                                            .aspectRatio(contentMode: .fill)
-                                                            .frame(width: 50, height: 50)
-                                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                                    }
-                                                    
-                                                    // Remove button
-                                                    Button(action: {
-                                                        selectedAppConfigs.removeAll(where: { $0.id == appConfig.id })
-                                                    }) {
-                                                        Image(systemName: "xmark.circle.fill")
-                                                            .font(.system(size: 14))
-                                                            .foregroundColor(.white)
-                                                            .background(Circle().fill(Color.black.opacity(0.6)))
-                                                    }
-                                                    .buttonStyle(.plain)
-                                                    .offset(x: 6, y: -6)
-                                                }
-                                            }
-                                            .frame(width: 50, height: 50)
-                                            .background(CardBackground(isSelected: false, cornerRadius: 10))
-                                        }
-                                    }
-                                }
-                            }
-                            
-                            Divider()
-                            
-                            // Websites Subsection
-                            VStack(alignment: .leading, spacing: 12) {
-Text(NSLocalizedString("Websites", comment: "Websites"))
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                                    
-                                // Add URL Field
-                                HStack {
-TextField(NSLocalizedString("Enter website URL (e.g., google.com)", comment: "Enter website URL (e.g., google.com)"), text: $newWebsiteURL)
-                                    .textFieldStyle(.roundedBorder)
-                                        .onSubmit {
-                                            addWebsite()
-                                        }
-                                    
-                                    Button(action: addWebsite) {
-                                        Image(systemName: "plus.circle.fill")
-                                            .foregroundColor(.accentColor)
-                                            .font(.system(size: 18))
-                                    }
-                                    .buttonStyle(.plain)
-                                    .disabled(newWebsiteURL.isEmpty)
-                                }
-                                
-                                if websiteConfigs.isEmpty {
-                                    HStack {
-                                        Spacer()
-Text(NSLocalizedString("No websites added", comment: "No websites added"))
-                                            .foregroundColor(.secondary)
-                                            .font(.subheadline)
-                                        Spacer()
-                                    }
-                                    .padding()
-                                    .background(CardBackground(isSelected: false))
-                                } else {
-                                    // Grid of website tags that wraps to next line
-                                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100, maximum: 160), spacing: 10)], spacing: 10) {
-                                        ForEach(websiteConfigs) { urlConfig in
-                                            HStack(spacing: 4) {
-                                                Image(systemName: "globe")
-                                                    .font(.system(size: 11))
-                                                    .foregroundColor(.accentColor)
-                                                
-                                                Text(urlConfig.url)
-                                                    .font(.system(size: 11))
-                                                    .lineLimit(1)
-                                                
-                                                Spacer(minLength: 0)
-                                                
-                                                Button(action: {
-                                                    websiteConfigs.removeAll(where: { $0.id == urlConfig.id })
-                                                }) {
-                                                    Image(systemName: "xmark.circle.fill")
-                                                        .font(.system(size: 9))
-                                                        .foregroundColor(.secondary)
-                                                }
-                                                .buttonStyle(.plain)
-                                            }
-                                            .padding(.horizontal, 8)
-                                            .padding(.vertical, 6)
-                                            .frame(height: 28)
-                                            .background(CardBackground(isSelected: false, cornerRadius: 10))
-                                        }
-                                    }
-                                    .padding(8)
-                                }
-                            }
-                        }
-                        .padding()
-                        .background(CardBackground(isSelected: false))
-                        .padding(.horizontal)
-                    }
-                    
-                    // SECTION 2: TRANSCRIPTION
-                    VStack(spacing: 16) {
-                        // Section Header
-SectionHeader(title: NSLocalizedString("Transcription", comment: "Transcription"))
-                        
-                        // Whisper Model Selection Subsection
-                        if whisperState.usableModels.isEmpty {
-Text(NSLocalizedString("No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab.", comment: "No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab."))
-=======
                     .onAppear {
                         // Add a small delay to ensure the view is fully loaded
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -615,17 +367,12 @@ Text(NSLocalizedString("No transcription models available. Please connect to a c
                         
                         if whisperState.usableModels.isEmpty {
                             Text("No transcription models available. Please connect to a cloud service or download a local model in the AI Models tab.")
->>>>>>> upstream/main
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .background(CardBackground(isSelected: false))
                         } else {
-<<<<<<< HEAD
-                            // Create a simple binding that uses current model if nil
-=======
->>>>>>> upstream/main
                             let modelBinding = Binding<String?>(
                                 get: {
                                     selectedTranscriptionModelName ?? whisperState.usableModels.first?.name
@@ -634,11 +381,7 @@ Text(NSLocalizedString("No transcription models available. Please connect to a c
                             )
                             
                             HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("Model", comment: "Model"))
-=======
                                 Text("Model")
->>>>>>> upstream/main
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -653,14 +396,6 @@ Text(NSLocalizedString("Model", comment: "Model"))
                             }
                         }
                         
-<<<<<<< HEAD
-                        // Language Selection Subsection
-                        if let selectedModel = effectiveModelName,
-                           let modelInfo = whisperState.allAvailableModels.first(where: { $0.name == selectedModel }),
-                           modelInfo.isMultilingualModel {
-                            
-                            // Create a simple binding that uses UserDefaults language if nil
-=======
                         if languageSelectionDisabled() {
                             HStack {
                                 Text("Language")
@@ -677,7 +412,6 @@ Text(NSLocalizedString("Model", comment: "Model"))
                                   let modelInfo = whisperState.allAvailableModels.first(where: { $0.name == selectedModel }),
                                   modelInfo.isMultilingualModel {
                             
->>>>>>> upstream/main
                             let languageBinding = Binding<String?>(
                                 get: {
                                     selectedLanguage ?? UserDefaults.standard.string(forKey: "SelectedLanguage") ?? "auto"
@@ -686,11 +420,7 @@ Text(NSLocalizedString("Model", comment: "Model"))
                             )
                             
                             HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("Language", comment: "Language"))
-=======
                                 Text("Language")
->>>>>>> upstream/main
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -710,10 +440,6 @@ Text(NSLocalizedString("Language", comment: "Language"))
                         } else if let selectedModel = effectiveModelName,
                                   let modelInfo = whisperState.allAvailableModels.first(where: { $0.name == selectedModel }),
                                   !modelInfo.isMultilingualModel {
-<<<<<<< HEAD
-                            // Silently set to English without showing UI
-                            let _ = { selectedLanguage = "en" }()
-=======
                             
                             EmptyView()
                                 .onAppear {
@@ -721,25 +447,12 @@ Text(NSLocalizedString("Language", comment: "Language"))
                                         selectedLanguage = "en"
                                     }
                                 }
->>>>>>> upstream/main
                         }
                     }
                     .padding()
                     .background(CardBackground(isSelected: false))
                     .padding(.horizontal)
                     
-<<<<<<< HEAD
-                    // SECTION 3: AI ENHANCEMENT
-                    VStack(spacing: 16) {
-                        // Section Header
-SectionHeader(title: NSLocalizedString("AI Enhancement", comment: "AI Enhancement"))
-
-Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancement"), isOn: $isAIEnhancementEnabled)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .onChange(of: isAIEnhancementEnabled) { oldValue, newValue in
-                                if newValue {
-                                    // When enabling AI enhancement, set default values if none are selected
-=======
                     VStack(spacing: 16) {
                         SectionHeader(title: "AI Enhancement")
 
@@ -747,7 +460,6 @@ Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancemen
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onChange(of: isAIEnhancementEnabled) { oldValue, newValue in
                                 if newValue {
->>>>>>> upstream/main
                                     if selectedAIProvider == nil {
                                         selectedAIProvider = aiService.selectedProvider.rawValue
                                     }
@@ -759,33 +471,18 @@ Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancemen
 
                         Divider()
                             
-<<<<<<< HEAD
-                            // AI Provider Selection - Match style with Whisper model selection
-                            // Create a binding for the provider selection that falls back to global settings
-=======
->>>>>>> upstream/main
                             let providerBinding = Binding<AIProvider>(
                                 get: {
                                     if let providerName = selectedAIProvider,
                                        let provider = AIProvider(rawValue: providerName) {
                                         return provider
                                     }
-<<<<<<< HEAD
-                                    // Just return the global provider without modifying state
-                                    return aiService.selectedProvider
-                                },
-                                set: { newValue in
-                                    selectedAIProvider = newValue.rawValue // Update local state for UI responsiveness
-                                    aiService.selectedProvider = newValue // Update global AI service state
-                                    selectedAIModel = nil                 // Reset selected model when provider changes
-=======
                                     return aiService.selectedProvider
                                 },
                                 set: { newValue in
                                     selectedAIProvider = newValue.rawValue
                                     aiService.selectedProvider = newValue
                                     selectedAIModel = nil
->>>>>>> upstream/main
                                 }
                             )
                             
@@ -795,20 +492,12 @@ Toggle(NSLocalizedString("Enable AI Enhancement", comment: "Enable AI Enhancemen
                         if isAIEnhancementEnabled {
                             
                             HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("AI Provider", comment: "AI Provider"))
-=======
                                 Text("AI Provider")
->>>>>>> upstream/main
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
                                 if aiService.connectedProviders.isEmpty {
-<<<<<<< HEAD
-Text(NSLocalizedString("No providers connected", comment: "No providers connected"))
-=======
                                     Text("No providers connected")
->>>>>>> upstream/main
                                         .foregroundColor(.secondary)
                                         .italic()
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -820,13 +509,7 @@ Text(NSLocalizedString("No providers connected", comment: "No providers connecte
                                     }
                                     .labelsHidden()
                                     .onChange(of: selectedAIProvider) { oldValue, newValue in
-<<<<<<< HEAD
-                                        // When provider changes, ensure we have a valid model for that provider
                                         if let provider = newValue.flatMap({ AIProvider(rawValue: $0) }) {
-                                            // Set default model for this provider
-=======
-                                        if let provider = newValue.flatMap({ AIProvider(rawValue: $0) }) {
->>>>>>> upstream/main
                                             selectedAIModel = provider.defaultModel
                                         }
                                     }
@@ -834,55 +517,30 @@ Text(NSLocalizedString("No providers connected", comment: "No providers connecte
                                 }
                             }
                             
-<<<<<<< HEAD
-                            // AI Model Selection - Match style with whisper language selection
-=======
->>>>>>> upstream/main
                             let providerName = selectedAIProvider ?? aiService.selectedProvider.rawValue
                             if let provider = AIProvider(rawValue: providerName),
                                provider != .custom {
                                 
                                 HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("AI Model", comment: "AI Model"))
-=======
                                     Text("AI Model")
->>>>>>> upstream/main
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
                                     if aiService.availableModels.isEmpty {
-<<<<<<< HEAD
-Text(provider == .openRouter ? "No models loaded" : NSLocalizedString("No models available", comment: "No models available"))
-=======
                                         Text(provider == .openRouter ? "No models loaded" : "No models available")
->>>>>>> upstream/main
                                             .foregroundColor(.secondary)
                                             .italic()
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     } else {
-<<<<<<< HEAD
-                                        // Create binding that falls back to current model for the selected provider
-=======
->>>>>>> upstream/main
                                         let modelBinding = Binding<String>(
                                             get: { 
                                                 if let model = selectedAIModel, !model.isEmpty {
                                                     return model
                                                 }
-<<<<<<< HEAD
-                                                // Just return the current model without modifying state
-                                                return aiService.currentModel
-                                            },
-                                            set: { newModelValue in
-                                                selectedAIModel = newModelValue // Update local state
-                                                // Update the model in AIService for the current provider
-=======
                                                 return aiService.currentModel
                                             },
                                             set: { newModelValue in
                                                 selectedAIModel = newModelValue
->>>>>>> upstream/main
                                                 aiService.selectModel(newModelValue)
                                             }
                                         )
@@ -905,11 +563,7 @@ Text(provider == .openRouter ? "No models loaded" : NSLocalizedString("No models
                                                 Image(systemName: "arrow.clockwise")
                                             }
                                             .buttonStyle(.borderless)
-<<<<<<< HEAD
-                                            .help(NSLocalizedString("Refresh models", comment: "Refresh models"))
-=======
                                             .help("Refresh models")
->>>>>>> upstream/main
                                         }
                                         
                                         Spacer()
@@ -918,14 +572,8 @@ Text(provider == .openRouter ? "No models loaded" : NSLocalizedString("No models
                             }
                         
                             
-<<<<<<< HEAD
-                            // Enhancement Prompts Section (reused from EnhancementSettingsView)
-                            VStack(alignment: .leading, spacing: 12) {
-Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"))
-=======
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Enhancement Prompt")
->>>>>>> upstream/main
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
@@ -950,11 +598,7 @@ Text(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"))
                             Divider()
                             
                            
-<<<<<<< HEAD
-Toggle(NSLocalizedString("Context Awareness", comment: "Context Awareness"), isOn: $useScreenCapture)
-=======
                             Toggle("Context Awareness", isOn: $useScreenCapture)
->>>>>>> upstream/main
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
                             
@@ -964,18 +608,6 @@ Toggle(NSLocalizedString("Context Awareness", comment: "Context Awareness"), isO
                     .background(CardBackground(isSelected: false))
                     .padding(.horizontal)
                     
-<<<<<<< HEAD
-                    // SECTION 4: ADVANCED
-                    VStack(spacing: 16) {
-SectionHeader(title: NSLocalizedString("Advanced", comment: "Advanced"))
-
-                        HStack {
-Toggle(NSLocalizedString("Auto Send", comment: "Auto Send"), isOn: $isAutoSendEnabled)
-                            
-                            InfoTip(
-title: NSLocalizedString("Auto Send", comment: "Auto Send"),
-message: NSLocalizedString("Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text", comment: "Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text")
-=======
                     VStack(spacing: 16) {
                         SectionHeader(title: "Advanced")
 
@@ -985,7 +617,6 @@ message: NSLocalizedString("Automatically presses the Return/Enter key after pas
                             InfoTip(
                                 title: "Auto Send",
                                 message: "Automatically presses the Return/Enter key after pasting text. This is useful for chat applications or forms where its not necessary to to make changes to the transcribed text"
->>>>>>> upstream/main
                             )
                             
                             Spacer()
@@ -995,15 +626,6 @@ message: NSLocalizedString("Automatically presses the Return/Enter key after pas
                     .background(CardBackground(isSelected: false))
                     .padding(.horizontal)
                     
-<<<<<<< HEAD
-                    // Save Button
-                    VoiceInkButton(
-title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", comment: "Save Changes"),
-                        action: saveConfiguration,
-                        isDisabled: !canSave
-                    )
-                    .frame(maxWidth: .infinity)
-=======
                     HStack {
                         Spacer()
                         Button(action: saveConfiguration) {
@@ -1020,7 +642,6 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
                         .buttonStyle(.plain)
                         .disabled(!canSave)
                     }
->>>>>>> upstream/main
                     .padding(.horizontal)
                 }
                 .padding(.vertical)
@@ -1098,12 +719,8 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
                     useScreenCapture: useScreenCapture,
                     selectedAIProvider: selectedAIProvider,
                     selectedAIModel: selectedAIModel,
-<<<<<<< HEAD
-                    isAutoSendEnabled: isAutoSendEnabled
-=======
                     isAutoSendEnabled: isAutoSendEnabled,
                     isDefault: isDefault
->>>>>>> upstream/main
                 )
         case .edit(let config):
             var updatedConfig = config
@@ -1119,24 +736,7 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
             updatedConfig.isAutoSendEnabled = isAutoSendEnabled
             updatedConfig.selectedAIProvider = selectedAIProvider
             updatedConfig.selectedAIModel = selectedAIModel
-<<<<<<< HEAD
-            return updatedConfig
-            
-        case .editDefault(let config):
-            var updatedConfig = config
-            updatedConfig.name = configName
-            updatedConfig.emoji = selectedEmoji
-            updatedConfig.isAIEnhancementEnabled = isAIEnhancementEnabled
-            updatedConfig.selectedPrompt = selectedPromptId?.uuidString
-            updatedConfig.selectedTranscriptionModelName = selectedTranscriptionModelName
-            updatedConfig.selectedLanguage = selectedLanguage
-            updatedConfig.useScreenCapture = useScreenCapture
-            updatedConfig.isAutoSendEnabled = isAutoSendEnabled
-            updatedConfig.selectedAIProvider = selectedAIProvider
-            updatedConfig.selectedAIModel = selectedAIModel
-=======
             updatedConfig.isDefault = isDefault
->>>>>>> upstream/main
             return updatedConfig
         }
     }
@@ -1148,30 +748,6 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
         let systemAppURLs = FileManager.default.urls(for: .applicationDirectory, in: .systemDomainMask)
         let allAppURLs = userAppURLs + localAppURLs + systemAppURLs
         
-<<<<<<< HEAD
-        let apps = allAppURLs.flatMap { baseURL -> [URL] in
-            let enumerator = FileManager.default.enumerator(
-                at: baseURL,
-                includingPropertiesForKeys: [.isApplicationKey, .isDirectoryKey],
-                options: [.skipsHiddenFiles]
-            )
-            
-            return enumerator?.compactMap { item -> URL? in
-                guard let url = item as? URL else { return nil }
-                
-                // If it's an app, return it and skip descending into it
-                if url.pathExtension == "app" {
-                    enumerator?.skipDescendants()
-                    return url
-                }
-                
-                // Continue searching in directories
-                return nil
-            } ?? []
-        }
-        
-        installedApps = apps.compactMap { url in
-=======
         var allApps: [URL] = []
         
         func scanDirectory(_ baseURL: URL, depth: Int = 0) {
@@ -1214,7 +790,6 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
         }
         
         installedApps = allApps.compactMap { url in
->>>>>>> upstream/main
             guard let bundle = Bundle(url: url),
                   let bundleId = bundle.bundleIdentifier,
                   let name = (bundle.infoDictionary?["CFBundleName"] as? String) ??
@@ -1246,12 +821,6 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
         switch mode {
         case .add:
             powerModeManager.addConfiguration(config)
-<<<<<<< HEAD
-        case .edit, .editDefault:
-            powerModeManager.updateConfiguration(config)
-        }
-        
-=======
         case .edit:
             powerModeManager.updateConfiguration(config)
         }
@@ -1261,7 +830,6 @@ title: mode.isAdding ? "Add New Power Mode" : NSLocalizedString("Save Changes", 
             powerModeManager.setAsDefault(configId: config.id)
         }
         
->>>>>>> upstream/main
         presentationMode.wrappedValue.dismiss()
     }
 }

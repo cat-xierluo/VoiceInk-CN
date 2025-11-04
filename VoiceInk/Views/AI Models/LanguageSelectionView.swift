@@ -22,10 +22,7 @@ struct LanguageSelectionView: View {
 
         // Post notification for language change
         NotificationCenter.default.post(name: .languageDidChange, object: nil)
-<<<<<<< HEAD
-=======
         NotificationCenter.default.post(name: .AppSettingsDidChange, object: nil)
->>>>>>> upstream/main
     }
     
     // Function to check if current model is multilingual
@@ -36,8 +33,6 @@ struct LanguageSelectionView: View {
         return currentModel.isMultilingualModel
     }
 
-<<<<<<< HEAD
-=======
     private func languageSelectionDisabled() -> Bool {
         guard let provider = whisperState.currentTranscriptionModel?.provider else {
             return false
@@ -45,7 +40,6 @@ struct LanguageSelectionView: View {
         return provider == .parakeet || provider == .gemini
     }
 
->>>>>>> upstream/main
     // Function to get current model's supported languages
     private func getCurrentModelLanguages() -> [String: String] {
         guard let currentModel = whisperState.currentTranscriptionModel else {
@@ -77,20 +71,11 @@ struct LanguageSelectionView: View {
     
     private var languageSelectionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Transcription Language", comment: "Transcription Language"))
-=======
             Text("Transcription Language")
->>>>>>> upstream/main
                 .font(.headline)
 
             if let currentModel = whisperState.currentTranscriptionModel
             {
-<<<<<<< HEAD
-                if isMultilingualModel() {
-                    VStack(alignment: .leading, spacing: 8) {
-Picker(NSLocalizedString("Select Language", comment: "Select Language"), selection: $selectedLanguage) {
-=======
                 if languageSelectionDisabled() {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Language: Autodetected")
@@ -109,7 +94,6 @@ Picker(NSLocalizedString("Select Language", comment: "Select Language"), selecti
                 } else if isMultilingualModel() {
                     VStack(alignment: .leading, spacing: 8) {
                         Picker("Select Language", selection: $selectedLanguage) {
->>>>>>> upstream/main
                             ForEach(
                                 currentModel.supportedLanguages.sorted(by: {
                                     if $0.key == "auto" { return true }
@@ -125,11 +109,7 @@ Picker(NSLocalizedString("Select Language", comment: "Select Language"), selecti
                             updateLanguage(newValue)
                         }
 
-<<<<<<< HEAD
-                        Text("\(NSLocalizedString("Current model:", comment: "Current model:")) \(currentModel.displayName)")
-=======
                         Text("Current model: \(currentModel.displayName)")
->>>>>>> upstream/main
                             .font(.caption)
                             .foregroundColor(.secondary)
 
@@ -142,19 +122,11 @@ Picker(NSLocalizedString("Select Language", comment: "Select Language"), selecti
                 } else {
                     // For English-only models, force set language to English
                     VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Language: English", comment: "Language: English"))
-                            .font(.subheadline)
-                            .foregroundColor(.primary)
-
-                        Text("\(NSLocalizedString("Current model:", comment: "Current model:")) \(currentModel.displayName)")
-=======
                         Text("Language: English")
                             .font(.subheadline)
                             .foregroundColor(.primary)
 
                         Text("Current model: \(currentModel.displayName)")
->>>>>>> upstream/main
                             .font(.caption)
                             .foregroundColor(.secondary)
 
@@ -170,11 +142,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                     }
                 }
             } else {
-<<<<<<< HEAD
-                Text(NSLocalizedString("No model selected", comment: "No model selected"))
-=======
                 Text("No model selected")
->>>>>>> upstream/main
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -188,9 +156,6 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
     // New compact view for menu bar
     private var menuItemView: some View {
         Group {
-<<<<<<< HEAD
-            if isMultilingualModel() {
-=======
             if languageSelectionDisabled() {
                 Button {
                     // Do nothing, just showing info
@@ -200,7 +165,6 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                 }
                 .disabled(true)
             } else if isMultilingualModel() {
->>>>>>> upstream/main
                 Menu {
                     ForEach(
                         getCurrentModelLanguages().sorted(by: {
@@ -222,11 +186,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                     }
                 } label: {
                     HStack {
-<<<<<<< HEAD
-                        Text(NSLocalizedString("Language: \(currentLanguageDisplayName())", comment: "Language: \(currentLanguageDisplayName())"))
-=======
                         Text("Language: \(currentLanguageDisplayName())")
->>>>>>> upstream/main
                         Image(systemName: "chevron.up.chevron.down")
                             .font(.system(size: 10))
                     }
@@ -236,11 +196,7 @@ Text(NSLocalizedString("Language: English", comment: "Language: English"))
                 Button {
                     // Do nothing, just showing info
                 } label: {
-<<<<<<< HEAD
-                    Text(NSLocalizedString("Language: English (only)", comment: "Language: English (only)"))
-=======
                     Text("Language: English (only)")
->>>>>>> upstream/main
                         .foregroundColor(.secondary)
                 }
                 .disabled(true)

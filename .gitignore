@@ -98,4 +98,19 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
-.apdisk 
+.apdisk
+
+# Claude AI context and configuration
+.claude/
+
+# Cursor IDE configuration
+.cursorindexingignore
+
+# Documentation and project management
+.github/
+.specstory/
+docs/
+status/
+AGENTS.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md 

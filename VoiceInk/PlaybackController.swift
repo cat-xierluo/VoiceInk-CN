@@ -3,35 +3,24 @@ import Combine
 import Foundation
 import SwiftUI
 import MediaRemoteAdapter
-<<<<<<< HEAD
-
-/// Pauses media when recording starts, resumes when recording stops
-=======
->>>>>>> upstream/main
 class PlaybackController: ObservableObject {
     static let shared = PlaybackController()
     private var mediaController: MediaRemoteAdapter.MediaController
     private var wasPlayingWhenRecordingStarted = false
     private var isMediaPlaying = false
-<<<<<<< HEAD
-=======
     private var lastKnownTrackInfo: TrackInfo?
     private var originalMediaAppBundleId: String?
 
->>>>>>> upstream/main
     
     @Published var isPauseMediaEnabled: Bool = UserDefaults.standard.bool(forKey: "isPauseMediaEnabled") {
         didSet {
             UserDefaults.standard.set(isPauseMediaEnabled, forKey: "isPauseMediaEnabled")
-<<<<<<< HEAD
-=======
             
             if isPauseMediaEnabled {
                 startMediaTracking()
             } else {
                 stopMediaTracking()
             }
->>>>>>> upstream/main
         }
     }
     
@@ -39,41 +28,6 @@ class PlaybackController: ObservableObject {
         mediaController = MediaRemoteAdapter.MediaController()
         
         if !UserDefaults.standard.contains(key: "isPauseMediaEnabled") {
-<<<<<<< HEAD
-            UserDefaults.standard.set(true, forKey: "isPauseMediaEnabled")
-        }
-        
-        mediaController.startListening()
-        
-        // Listen for track changes to know if media is playing
-        mediaController.onTrackInfoReceived = { [weak self] trackInfo in
-            self?.isMediaPlaying = trackInfo.payload.isPlaying ?? false
-        }
-        
-        mediaController.onListenerTerminated = {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.mediaController.startListening()
-            }
-        }
-    }
-    
-    func pauseMedia() async {
-        guard isPauseMediaEnabled else { return }
-
-        if isMediaPlaying {
-            wasPlayingWhenRecordingStarted = true
-            mediaController.pause()
-        } else {
-            wasPlayingWhenRecordingStarted = false
-        }
-    }
-
-    func resumeMedia() async {
-        guard isPauseMediaEnabled, wasPlayingWhenRecordingStarted else { return }
-        
-        mediaController.play()
-    }
-=======
             UserDefaults.standard.set(false, forKey: "isPauseMediaEnabled")
         }
         
@@ -160,7 +114,6 @@ class PlaybackController: ObservableObject {
         let runningApps = NSWorkspace.shared.runningApplications
         return runningApps.contains { $0.bundleIdentifier == bundleId }
     }
->>>>>>> upstream/main
 }
 
 extension UserDefaults {
@@ -168,9 +121,5 @@ extension UserDefaults {
         get { bool(forKey: "isPauseMediaEnabled") }
         set { set(newValue, forKey: "isPauseMediaEnabled") }
     }
-<<<<<<< HEAD
-} 
-=======
 } 
 
->>>>>>> upstream/main

@@ -5,31 +5,19 @@ struct ModelSettingsView: View {
     @AppStorage("SelectedLanguage") private var selectedLanguage: String = "en"
     @AppStorage("IsTextFormattingEnabled") private var isTextFormattingEnabled = true
     @AppStorage("IsVADEnabled") private var isVADEnabled = true
-<<<<<<< HEAD
-=======
     @AppStorage("AppendTrailingSpace") private var appendTrailingSpace = true
->>>>>>> upstream/main
     @State private var customPrompt: String = ""
     @State private var isEditing: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("Output Format", comment: "Output Format"))
-                    .font(.headline)
-                
-                InfoTip(
-title: NSLocalizedString("Output Format Guide", comment: "Output Format Guide"),
-                    message: NSLocalizedString(NSLocalizedString("Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.", comment: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands."), comment: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands."),
-=======
                 Text("Output Format")
                     .font(.headline)
                 
                 InfoTip(
                     title: "Output Format Guide",
                     message: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.",
->>>>>>> upstream/main
                     learnMoreURL: "https://cookbook.openai.com/examples/whisper_prompting_guide#comparison-with-gpt-prompting"
                 )
                 
@@ -46,11 +34,7 @@ title: NSLocalizedString("Output Format Guide", comment: "Output Format Guide"),
                         isEditing = true
                     }
                 }) {
-<<<<<<< HEAD
-                Text(isEditing ? NSLocalizedString("Save", comment: "Save") : NSLocalizedString("Edit", comment: "Edit"))
-=======
                     Text(isEditing ? "Save" : "Edit")
->>>>>>> upstream/main
                         .font(.caption)
                 }
             }
@@ -84,21 +68,12 @@ title: NSLocalizedString("Output Format Guide", comment: "Output Format Guide"),
             Divider().padding(.vertical, 4)
 
             HStack {
-<<<<<<< HEAD
-                Toggle(isOn: $isTextFormattingEnabled) {
-Text(NSLocalizedString("Automatic text formatting", comment: "Automatic text formatting"))
-=======
                 Toggle(isOn: $appendTrailingSpace) {
                     Text("Add space after paste")
->>>>>>> upstream/main
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-<<<<<<< HEAD
-title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic Text Formatting"),
-                    message: NSLocalizedString("Apply intelligent text formatting to break large block of text into paragraphs.", comment: "Apply intelligent text formatting to break large block of text into paragraphs.")
-=======
                     title: "Trailing Space",
                     message: "Automatically add a space after pasted text. Useful for space-delimited languages."
                 )
@@ -113,28 +88,18 @@ title: NSLocalizedString("Automatic Text Formatting", comment: "Automatic Text F
                 InfoTip(
                     title: "Automatic Text Formatting",
                     message: "Apply intelligent text formatting to break large block of text into paragraphs."
->>>>>>> upstream/main
                 )
             }
 
             HStack {
                 Toggle(isOn: $isVADEnabled) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Voice Activity Detection (VAD)", comment: "Voice Activity Detection (VAD)"))
-=======
                     Text("Voice Activity Detection (VAD)")
->>>>>>> upstream/main
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-<<<<<<< HEAD
-title: NSLocalizedString("Voice Activity Detection", comment: "Voice Activity Detection"),
-                    message: NSLocalizedString("Detects speech segments and filters out silence to reduce hallucinations in local Whisper models.", comment: "Detects speech segments and filters out silence to reduce hallucinations in local Whisper models.")
-=======
                     title: "Voice Activity Detection",
                     message: "Detect speech segments and filter out silence to improve accuracy of local models."
->>>>>>> upstream/main
                 )
             }
 

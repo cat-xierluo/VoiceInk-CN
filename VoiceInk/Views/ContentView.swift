@@ -3,40 +3,6 @@ import SwiftData
 import KeyboardShortcuts
 
 // ViewType enum with all cases
-<<<<<<< HEAD
-enum ViewType: CaseIterable {
-    case metrics
-    case transcribeAudio
-    case history
-    case models
-    case enhancement
-    case powerMode
-    case permissions
-    case audioInput
-    case dictionary
-    case settings
-    case license
-    
-    private var localization: L10nItem {
-        switch self {
-        case .metrics: return L10n.Sidebar.dashboard
-        case .transcribeAudio: return L10n.Sidebar.transcribeAudio
-        case .history: return L10n.Sidebar.history
-        case .models: return L10n.Sidebar.models
-        case .enhancement: return L10n.Sidebar.enhancement
-        case .powerMode: return L10n.Sidebar.powerMode
-        case .permissions: return L10n.Sidebar.permissions
-        case .audioInput: return L10n.Sidebar.audioInput
-        case .dictionary: return L10n.Sidebar.dictionary
-        case .settings: return L10n.Sidebar.settings
-        case .license: return L10n.Sidebar.voiceInkPro
-        }
-    }
-    
-    var localizedTitle: LocalizedStringKey {
-        localization.text
-    }
-=======
 enum ViewType: String, CaseIterable {
     case metrics = "Dashboard"
     case transcribeAudio = "Transcribe Audio"
@@ -49,7 +15,6 @@ enum ViewType: String, CaseIterable {
     case dictionary = "Dictionary"
     case settings = "Settings"
     case license = "VoiceInk Pro"
->>>>>>> upstream/main
     
     var icon: String {
         switch self {
@@ -90,10 +55,6 @@ struct DynamicSidebar: View {
     @Binding var selectedView: ViewType
     @Binding var hoveredView: ViewType?
     @Environment(\.colorScheme) private var colorScheme
-<<<<<<< HEAD
-    @StateObject private var licenseViewModel = LicenseViewModel()
-    @Namespace private var buttonAnimation
-=======
     @AppStorage("powerModeUIFlag") private var powerModeUIFlag = false
     @StateObject private var licenseViewModel = LicenseViewModel()
     @Namespace private var buttonAnimation
@@ -106,7 +67,6 @@ struct DynamicSidebar: View {
             return true
         }
     }
->>>>>>> upstream/main
 
     var body: some View {
         VStack(spacing: 15) {
@@ -120,19 +80,11 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
-<<<<<<< HEAD
-                Text(L10n.App.name.text)
-                    .font(.system(size: 14, weight: .semibold))
-                
-                if case .licensed = licenseViewModel.licenseState {
-                    Text(L10n.App.proBadge.text)
-=======
                 Text("VoiceInk")
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
                     Text("PRO")
->>>>>>> upstream/main
                         .font(.system(size: 9, weight: .heavy))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 4)
@@ -147,15 +99,9 @@ struct DynamicSidebar: View {
             .padding(.vertical, 12)
             
             // Navigation Items
-<<<<<<< HEAD
-            ForEach(ViewType.allCases, id: \.self) { viewType in
-                DynamicSidebarButton(
-                    title: viewType.localizedTitle,
-=======
             ForEach(visibleViewTypes, id: \.self) { viewType in
                 DynamicSidebarButton(
                     title: viewType.rawValue,
->>>>>>> upstream/main
                     systemImage: viewType.icon,
                     isSelected: selectedView == viewType,
                     isHovered: hoveredView == viewType,
@@ -175,11 +121,7 @@ struct DynamicSidebar: View {
 }
 
 struct DynamicSidebarButton: View {
-<<<<<<< HEAD
-    let title: LocalizedStringKey
-=======
     let title: String
->>>>>>> upstream/main
     let systemImage: String
     let isSelected: Bool
     let isHovered: Bool
@@ -227,27 +169,11 @@ struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var whisperState: WhisperState
     @EnvironmentObject private var hotkeyManager: HotkeyManager
-<<<<<<< HEAD
-    @State private var selectedView: ViewType = .metrics
-    @State private var hoveredView: ViewType?
-    @State private var hasLoadedData = false
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
-    @StateObject private var licenseViewModel = LicenseViewModel()
-    
-    private var isSetupComplete: Bool {
-        hasLoadedData &&
-        whisperState.currentTranscriptionModel != nil &&
-        hotkeyManager.selectedHotkey1 != .none &&
-        AXIsProcessTrusted() &&
-        CGPreflightScreenCaptureAccess()
-    }
-=======
     @AppStorage("powerModeUIFlag") private var powerModeUIFlag = false
     @State private var selectedView: ViewType = .metrics
     @State private var hoveredView: ViewType?
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
     @StateObject private var licenseViewModel = LicenseViewModel()
->>>>>>> upstream/main
 
     var body: some View {
         NavigationSplitView {
@@ -265,40 +191,6 @@ struct ContentView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .frame(minWidth: 940, minHeight: 730)
-<<<<<<< HEAD
-        .onAppear {
-            hasLoadedData = true
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .navigateToDestination)) { notification in
-            print("ContentView: Received navigation notification")
-            if let destination = notification.userInfo?["destination"] as? String {
-                print("ContentView: Destination received: \(destination)")
-                switch destination {
-                case "Settings":
-                    print("ContentView: Navigating to Settings")
-                    selectedView = .settings
-                case "AI Models":
-                    print("ContentView: Navigating to AI Models")
-                    selectedView = .models
-                case "VoiceInk Pro":
-                    print("ContentView: Navigating to VoiceInk Pro")
-                    selectedView = .license
-                case "History":
-                    print("ContentView: Navigating to History")
-                    selectedView = .history
-                case "Permissions":
-                    print("ContentView: Navigating to Permissions")
-                    selectedView = .permissions
-                case "Enhancement":
-                    print("ContentView: Navigating to Enhancement")
-                    selectedView = .enhancement
-                default:
-                    print("ContentView: No matching destination found for: \(destination)")
-                    break
-                }
-            } else {
-                print("ContentView: No destination in notification")
-=======
         // inside ContentView body:
         .onReceive(NotificationCenter.default.publisher(for: .navigateToDestination)) { notification in
             if let destination = notification.userInfo?["destination"] as? String {
@@ -322,7 +214,6 @@ struct ContentView: View {
                 default:
                     break
                 }
->>>>>>> upstream/main
             }
         }
     }
@@ -331,16 +222,7 @@ struct ContentView: View {
     private var detailView: some View {
         switch selectedView {
         case .metrics:
-<<<<<<< HEAD
-            if isSetupComplete {
-                MetricsView(skipSetupCheck: true)
-            } else {
-                MetricsSetupView()
-                    .environmentObject(hotkeyManager)
-            }
-=======
             MetricsView()
->>>>>>> upstream/main
         case .models:
             ModelManagementView(whisperState: whisperState)
         case .enhancement:
@@ -365,8 +247,5 @@ struct ContentView: View {
         }
     }
 }
-<<<<<<< HEAD
-=======
 
  
->>>>>>> upstream/main

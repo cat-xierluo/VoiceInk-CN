@@ -6,11 +6,7 @@ struct InfoTip: View {
     var title: String
     var message: String
     var learnMoreLink: URL?
-<<<<<<< HEAD
-    var learnMoreText: String = NSLocalizedString("Learn More", comment: "Learn More")
-=======
     var learnMoreText: String = "Learn More"
->>>>>>> upstream/main
     
     // Appearance customization
     var iconName: String = "info.circle.fill"
@@ -29,24 +25,6 @@ struct InfoTip: View {
             .padding(5)
             .contentShape(Rectangle())
             .popover(isPresented: $isShowingTip) {
-<<<<<<< HEAD
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(title)
-                        .font(.headline)
-                    
-                    Text(message)
-                        .frame(width: width)
-                        .padding(.bottom, learnMoreLink != nil ? 5 : 0)
-                    
-                    if let url = learnMoreLink {
-                        Button(learnMoreText) {
-                            NSWorkspace.shared.open(url)
-                        }
-                        .foregroundColor(.blue)  
-                    }
-                }
-                .padding()
-=======
                 VStack(alignment: .leading, spacing: 12) {
                     Text(title)
                         .font(.headline)
@@ -80,7 +58,6 @@ struct InfoTip: View {
                     }
                 }
                 .padding(16)
->>>>>>> upstream/main
             }
             .onTapGesture {
                 isShowingTip.toggle()

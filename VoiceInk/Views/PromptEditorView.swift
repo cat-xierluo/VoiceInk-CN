@@ -26,11 +26,8 @@ struct PromptEditorView: View {
     @State private var description: String
     @State private var triggerWords: [String]
     @State private var showingPredefinedPrompts = false
-<<<<<<< HEAD
-=======
     @State private var useSystemInstructions: Bool
     @State private var showingIconPicker = false
->>>>>>> upstream/main
     
     private var isEditingPredefinedPrompt: Bool {
         if case .edit(let prompt) = mode {
@@ -45,26 +42,17 @@ struct PromptEditorView: View {
         case .add:
             _title = State(initialValue: "")
             _promptText = State(initialValue: "")
-<<<<<<< HEAD
-            _selectedIcon = State(initialValue: .documentFill)
-            _description = State(initialValue: "")
-            _triggerWords = State(initialValue: [])
-=======
             _selectedIcon = State(initialValue: "doc.text.fill")
             _description = State(initialValue: "")
             _triggerWords = State(initialValue: [])
             _useSystemInstructions = State(initialValue: true)
->>>>>>> upstream/main
         case .edit(let prompt):
             _title = State(initialValue: prompt.title)
             _promptText = State(initialValue: prompt.promptText)
             _selectedIcon = State(initialValue: prompt.icon)
             _description = State(initialValue: prompt.description ?? "")
             _triggerWords = State(initialValue: prompt.triggerWords)
-<<<<<<< HEAD
-=======
             _useSystemInstructions = State(initialValue: prompt.useSystemInstructions)
->>>>>>> upstream/main
         }
     }
     
@@ -72,20 +60,12 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-<<<<<<< HEAD
-Text(isEditingPredefinedPrompt ? NSLocalizedString("Edit Trigger Words", comment: "Edit Trigger Words") : (mode == .add ? NSLocalizedString("New Prompt", comment: "New Prompt") : NSLocalizedString("Edit Prompt", comment: "Edit Prompt")))
-=======
                 Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : "Edit Prompt"))
->>>>>>> upstream/main
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
                 HStack(spacing: 12) {
-<<<<<<< HEAD
-                    Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
-=======
                     Button("Cancel") {
->>>>>>> upstream/main
                         dismiss()
                     }
                     .buttonStyle(.plain)
@@ -95,11 +75,7 @@ Text(isEditingPredefinedPrompt ? NSLocalizedString("Edit Trigger Words", comment
                         save()
                         dismiss()
                     } label: {
-<<<<<<< HEAD
-                        Text(NSLocalizedString("Save", comment: "Save button"))
-=======
                         Text("Save")
->>>>>>> upstream/main
                             .fontWeight(.medium)
                     }
                     .buttonStyle(.borderedProminent)
@@ -118,22 +94,14 @@ Text(isEditingPredefinedPrompt ? NSLocalizedString("Edit Trigger Words", comment
                     if isEditingPredefinedPrompt {
                         // Simplified view for predefined prompts - only trigger word editing
                         VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-                            Text(NSLocalizedString("Editing: \(title)", comment: "Editing: \(title)"))
-=======
                             Text("Editing: \(title)")
->>>>>>> upstream/main
                                 .font(.title2)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
                                 .padding(.horizontal)
                                 .padding(.top, 8)
                             
-<<<<<<< HEAD
-Text(NSLocalizedString("You can only customize the trigger words for system prompts.", comment: "You can only customize the trigger words for system prompts."))
-=======
                             Text("You can only customize the trigger words for system prompts.")
->>>>>>> upstream/main
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding(.horizontal)
@@ -150,17 +118,10 @@ Text(NSLocalizedString("You can only customize the trigger words for system prom
                         HStack(spacing: 20) {
                             // Title Field
                             VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Title", comment: "Title"))
-                                    .font(.headline)
-                                    .foregroundColor(.secondary)
-TextField(NSLocalizedString("Enter a short, descriptive title", comment: "Enter a short, descriptive title"), text: $title)
-=======
                                 Text("Title")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 TextField("Enter a short, descriptive title", text: $title)
->>>>>>> upstream/main
                                     .textFieldStyle(.roundedBorder)
                                     .font(.body)
                             }
@@ -168,35 +129,6 @@ TextField(NSLocalizedString("Enter a short, descriptive title", comment: "Enter 
                             
                             // Icon Selector with preview
                             VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Icon", comment: "Icon"))
-                                    .font(.headline)
-                                    .foregroundColor(.secondary)
-                                
-                                Menu {
-                                    IconMenuContent(selectedIcon: $selectedIcon)
-                                } label: {
-                                    HStack {
-                                        Image(systemName: selectedIcon.rawValue)
-                                            .font(.system(size: 16))
-                                            .foregroundColor(.accentColor)
-                                            .frame(width: 24)
-                                        
-                                        Text(selectedIcon.title)
-                                            .foregroundColor(.primary)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.up.chevron.down")
-                                            .font(.system(size: 12))
-                                            .foregroundColor(.secondary)
-                                    }
-                                    .padding(8)
-                                    .background(Color(NSColor.controlBackgroundColor))
-                                    .cornerRadius(8)
-                                }
-                                .frame(width: 180)
-=======
                                 Text("Icon")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
@@ -220,7 +152,6 @@ Text(NSLocalizedString("Icon", comment: "Icon"))
                             }
                             .popover(isPresented: $showingIconPicker, arrowEdge: .bottom) {
                                 IconPickerPopover(selectedIcon: $selectedIcon, isPresented: $showingIconPicker)
->>>>>>> upstream/main
                             }
                         }
                         .padding(.horizontal)
@@ -228,17 +159,6 @@ Text(NSLocalizedString("Icon", comment: "Icon"))
                         
                         // Description Field
                         VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Description", comment: "Description"))
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-Text(NSLocalizedString("Add a brief description of what this prompt does", comment: "Add a brief description of what this prompt does"))
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                            
-TextField(NSLocalizedString("Enter a description", comment: "Enter a description"), text: $description)
-=======
                             Text("Description")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
@@ -248,7 +168,6 @@ TextField(NSLocalizedString("Enter a description", comment: "Enter a description
                                 .foregroundColor(.secondary)
                             
                             TextField("Enter a description", text: $description)
->>>>>>> upstream/main
                                 .textFieldStyle(.roundedBorder)
                                 .font(.body)
                         }
@@ -256,16 +175,6 @@ TextField(NSLocalizedString("Enter a description", comment: "Enter a description
                         
                         // Prompt Text Section with improved styling
                         VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Prompt Instructions", comment: "Prompt Instructions"))
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            
-Text(NSLocalizedString("Define how AI should enhance your transcriptions", comment: "Define how AI should enhance your transcriptions"))
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                            
-=======
                             Text("Prompt Instructions")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
@@ -286,7 +195,6 @@ Text(NSLocalizedString("Define how AI should enhance your transcriptions", comme
                                 .padding(.bottom, 4)
                             }
 
->>>>>>> upstream/main
                             TextEditor(text: $promptText)
                                 .font(.system(.body, design: .monospaced))
                                 .frame(minHeight: 200)
@@ -307,38 +215,6 @@ Text(NSLocalizedString("Define how AI should enhance your transcriptions", comme
                             .padding(.horizontal)
                         
                         if case .add = mode {
-<<<<<<< HEAD
-                            // Templates Section with modern styling
-                            VStack(alignment: .leading, spacing: 16) {
-Text(NSLocalizedString("Start with a Predefined Template", comment: "Start with a Predefined Template"))
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.primary)
-                                
-                                let columns = [
-                                    GridItem(.flexible(), spacing: 16),
-                                    GridItem(.flexible(), spacing: 16)
-                                ]
-                                
-                                LazyVGrid(columns: columns, spacing: 16) {
-                                    ForEach(PromptTemplates.all) { template in
-                                        CleanTemplateButton(prompt: template) {
-                                            title = template.title
-                                            promptText = template.promptText
-                                            selectedIcon = template.icon
-                                            description = template.description
-                                        }
-                                    }
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.vertical, 16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(.windowBackgroundColor).opacity(0.6))
-                            )
-                            .padding(.horizontal)
-=======
                             // Popover keeps templates accessible without taking space in the layout
                             Button("Start with a Predefined Template") {
                                 showingPredefinedPrompts.toggle()
@@ -365,7 +241,6 @@ Text(NSLocalizedString("Start with a Predefined Template", comment: "Start with 
                                     showingPredefinedPrompts = false
                                 }
                             }
->>>>>>> upstream/main
                         }
                     }
                 }
@@ -383,12 +258,8 @@ Text(NSLocalizedString("Start with a Predefined Template", comment: "Start with 
                 promptText: promptText,
                 icon: selectedIcon,
                 description: description.isEmpty ? nil : description,
-<<<<<<< HEAD
-                triggerWords: triggerWords
-=======
                 triggerWords: triggerWords,
                 useSystemInstructions: useSystemInstructions
->>>>>>> upstream/main
             )
         case .edit(let prompt):
             let updatedPrompt = CustomPrompt(
@@ -399,105 +270,14 @@ Text(NSLocalizedString("Start with a Predefined Template", comment: "Start with 
                 icon: prompt.isPredefined ? prompt.icon : selectedIcon,
                 description: prompt.isPredefined ? prompt.description : (description.isEmpty ? nil : description),
                 isPredefined: prompt.isPredefined,
-<<<<<<< HEAD
-                triggerWords: triggerWords
-=======
                 triggerWords: triggerWords,
                 useSystemInstructions: useSystemInstructions
->>>>>>> upstream/main
             )
             enhancementService.updatePrompt(updatedPrompt)
         }
     }
 }
 
-<<<<<<< HEAD
-// Clean template button with minimal styling
-struct CleanTemplateButton: View {
-    let prompt: TemplatePrompt
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(alignment: .top, spacing: 12) {
-                // Clean icon design
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.accentColor.opacity(0.15))
-                        .frame(width: 44, height: 44)
-                    
-                    Image(systemName: prompt.icon.rawValue)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.accentColor)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(prompt.title)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.primary)
-                        .lineLimit(1)
-                    
-                    Text(prompt.description)
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                }
-                
-                Spacer(minLength: 0)
-            }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.controlBackgroundColor))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.secondary.opacity(0.2), lineWidth: 1)
-            )
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-// Keep the old TemplateButton for backward compatibility if needed elsewhere
-struct TemplateButton: View {
-    let prompt: TemplatePrompt
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(alignment: .center, spacing: 12) {
-                Image(systemName: prompt.icon.rawValue)
-                    .font(.system(size: 20, weight: .medium))
-                    .foregroundColor(.accentColor)
-                    .frame(width: 28, height: 28)
-                    .background(Color.accentColor.opacity(0.12))
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(prompt.title)
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.primary)
-                        .lineLimit(1)
-                }
-                Spacer(minLength: 0)
-            }
-            .padding(12)
-            .frame(height: 60)
-            .background(Color(NSColor.controlBackgroundColor))
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.secondary.opacity(0.18), lineWidth: 1)
-            )
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-=======
->>>>>>> upstream/main
 // Reusable Trigger Words Editor Component
 struct TriggerWordsEditor: View {
     @Binding var triggerWords: [String]
@@ -505,19 +285,11 @@ struct TriggerWordsEditor: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Trigger Words", comment: "Trigger Words"))
-                .font(.headline)
-                .foregroundColor(.secondary)
-            
-Text(NSLocalizedString("Add multiple words that can activate this prompt", comment: "Add multiple words that can activate this prompt"))
-=======
             Text("Trigger Words")
                 .font(.headline)
                 .foregroundColor(.secondary)
             
             Text("Add multiple words that can activate this prompt")
->>>>>>> upstream/main
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
@@ -534,22 +306,14 @@ Text(NSLocalizedString("Add multiple words that can activate this prompt", comme
             
             // Input for new trigger word
             HStack {
-<<<<<<< HEAD
-TextField(NSLocalizedString("Add trigger word", comment: "Add trigger word"), text: $newTriggerWord)
-=======
                 TextField("Add trigger word", text: $newTriggerWord)
->>>>>>> upstream/main
                     .textFieldStyle(.roundedBorder)
                     .font(.body)
                     .onSubmit {
                         addTriggerWord()
                     }
                 
-<<<<<<< HEAD
-                Button(NSLocalizedString("Add", comment: "Add button")) {
-=======
                 Button("Add") {
->>>>>>> upstream/main
                     addTriggerWord()
                 }
                 .disabled(newTriggerWord.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -570,47 +334,6 @@ TextField(NSLocalizedString("Add trigger word", comment: "Add trigger word"), te
     }
 }
 
-<<<<<<< HEAD
-// Icon menu content for better organization
-struct IconMenuContent: View {
-    @Binding var selectedIcon: PromptIcon
-    
-    var body: some View {
-        Group {
-IconMenuSection(title: NSLocalizedString("Document & Text", comment: "Document & Text"), icons: [.documentFill, .textbox, .sealedFill], selectedIcon: $selectedIcon)
-IconMenuSection(title: NSLocalizedString("Communication", comment: "Communication"), icons: [.chatFill, .messageFill, .emailFill], selectedIcon: $selectedIcon)
-IconMenuSection(title: NSLocalizedString("Professional", comment: "Professional"), icons: [.meetingFill, .presentationFill, .briefcaseFill], selectedIcon: $selectedIcon)
-IconMenuSection(title: NSLocalizedString("Technical", comment: "Technical"), icons: [.codeFill, .terminalFill, .gearFill], selectedIcon: $selectedIcon)
-IconMenuSection(title: NSLocalizedString("Content", comment: "Content"), icons: [.blogFill, .notesFill, .bookFill, .bookmarkFill, .pencilFill], selectedIcon: $selectedIcon)
-IconMenuSection(title: NSLocalizedString("Media & Creative", comment: "Media & Creative"), icons: [.videoFill, .micFill, .musicFill, .photoFill, .brushFill], selectedIcon: $selectedIcon)
-        }
-    }
-}
-
-// Icon menu section for better organization
-struct IconMenuSection: View {
-    let title: String
-    let icons: [PromptIcon]
-    @Binding var selectedIcon: PromptIcon
-    
-    var body: some View {
-        Group {
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.secondary)
-            ForEach(icons, id: \.self) { icon in
-                Button(action: { selectedIcon = icon }) {
-                    Label(icon.title, systemImage: icon.rawValue)
-                }
-            }
-            if title != "Media & Creative" {
-                Divider()
-            }
-        }
-    }
-}
-=======
->>>>>>> upstream/main
 
 struct TriggerWordItemView: View {
     let word: String
@@ -633,11 +356,7 @@ struct TriggerWordItemView: View {
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.borderless)
-<<<<<<< HEAD
-.help(NSLocalizedString("Remove word", comment: "Remove word"))
-=======
             .help("Remove word")
->>>>>>> upstream/main
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isHovered = hover
@@ -655,9 +374,6 @@ struct TriggerWordItemView: View {
                 .stroke(Color.secondary.opacity(0.2), lineWidth: 1)
         }
     }
-<<<<<<< HEAD
-} 
-=======
 }
 
 // Icon Picker Popover - shows icons in a grid format without category labels
@@ -703,4 +419,3 @@ struct IconPickerPopover: View {
         .frame(width: 400, height: 400)
     }
 }
->>>>>>> upstream/main

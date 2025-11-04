@@ -18,11 +18,7 @@ struct TranscriptionFallbackView: View {
                 
                 Spacer()
                 
-<<<<<<< HEAD
-                Text(NSLocalizedString("VoiceInk", comment: "VoiceInk"))
-=======
                 Text("VoiceInk")
->>>>>>> upstream/main
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
                 
@@ -88,21 +84,13 @@ private struct TitleBarButtonStyle: ButtonStyle {
 #Preview {
     VStack {
         TranscriptionFallbackView(
-<<<<<<< HEAD
-            transcriptionText: NSLocalizedString("Short text.", comment: "Short text."),
-=======
             transcriptionText: "Short text.",
->>>>>>> upstream/main
             onCopy: {},
             onClose: {},
             onTextChange: nil
         )
         TranscriptionFallbackView(
-<<<<<<< HEAD
-            transcriptionText: NSLocalizedString("This is a much longer piece of transcription text to demonstrate how the view will adaptively resize to accommodate more content while still respecting the maximum constraints.", comment: "This is a much longer piece of transcription text to demonstrate how the view will adaptively resize to accommodate more content while still respecting the maximum constraints."),
-=======
             transcriptionText: "This is a much longer piece of transcription text to demonstrate how the view will adaptively resize to accommodate more content while still respecting the maximum constraints.",
->>>>>>> upstream/main
             onCopy: {},
             onClose: {},
             onTextChange: nil

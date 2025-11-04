@@ -42,22 +42,14 @@ struct CustomModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default", comment: "Default"))
-=======
                 Text("Default")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else {
-<<<<<<< HEAD
-Text(NSLocalizedString("Custom", comment: "Custom"))
-=======
                 Text("Custom")
->>>>>>> upstream/main
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -70,11 +62,7 @@ Text(NSLocalizedString("Custom", comment: "Custom"))
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Provider
-<<<<<<< HEAD
-            Label(NSLocalizedString("Custom Provider", comment: "Custom Provider"), systemImage: "cloud")
-=======
             Label("Custom Provider", systemImage: "cloud")
->>>>>>> upstream/main
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -106,20 +94,12 @@ Text(NSLocalizedString("Custom", comment: "Custom"))
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default Model", comment: "Default Model"))
-=======
                 Text("Default Model")
->>>>>>> upstream/main
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else {
                 Button(action: setDefaultAction) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
-=======
                     Text("Set as Default")
->>>>>>> upstream/main
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -130,21 +110,13 @@ Text(NSLocalizedString("Set as Default", comment: "Set as Default"))
                 Button {
                     editAction(model)
                 } label: {
-<<<<<<< HEAD
-Label(NSLocalizedString("Edit Model", comment: "Edit Model"), systemImage: "pencil")
-=======
                     Label("Edit Model", systemImage: "pencil")
->>>>>>> upstream/main
                 }
                 
                 Button(role: .destructive) {
                     deleteAction()
                 } label: {
-<<<<<<< HEAD
-                    Label(NSLocalizedString("Delete Model", comment: "Delete Model"), systemImage: "trash")
-=======
                     Label("Delete Model", systemImage: "trash")
->>>>>>> upstream/main
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")

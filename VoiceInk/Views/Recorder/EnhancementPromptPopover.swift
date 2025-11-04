@@ -9,11 +9,7 @@ struct EnhancementPromptPopover: View {
         VStack(alignment: .leading, spacing: 8) {
             // Enhancement Toggle at the top
             HStack(spacing: 8) {
-<<<<<<< HEAD
-Toggle(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"), isOn: $enhancementService.isEnhancementEnabled)
-=======
                 Toggle("Enhancement Prompt", isOn: $enhancementService.isEnhancementEnabled)
->>>>>>> upstream/main
                     .foregroundColor(.white.opacity(0.9))
                     .font(.headline)
                     .lineLimit(1)
@@ -35,13 +31,10 @@ Toggle(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"), i
                             isSelected: selectedPrompt?.id == prompt.id,
                             isDisabled: !enhancementService.isEnhancementEnabled,
                             action: {
-<<<<<<< HEAD
-=======
                                 // If enhancement is disabled, enable it first
                                 if !enhancementService.isEnhancementEnabled {
                                     enhancementService.isEnhancementEnabled = true
                                 }
->>>>>>> upstream/main
                                 enhancementService.setActivePrompt(prompt)
                                 selectedPrompt = prompt
                             }
@@ -52,11 +45,7 @@ Toggle(NSLocalizedString("Enhancement Prompt", comment: "Enhancement Prompt"), i
             }
         }
         .frame(width: 200)
-<<<<<<< HEAD
-        .frame(maxHeight: 300)
-=======
         .frame(maxHeight: 340)
->>>>>>> upstream/main
         .padding(.vertical, 8)
         .background(Color.black)
         .environment(\.colorScheme, .dark)
@@ -81,27 +70,6 @@ struct EnhancementPromptRow: View {
         Button(action: action) {
             HStack(spacing: 8) {
                 // Use the icon from the prompt
-<<<<<<< HEAD
-                Image(systemName: prompt.icon.rawValue)
-                    .font(.system(size: 14))
-                    .foregroundColor(isDisabled ? .white.opacity(0.2) : .white.opacity(0.7))
-                
-                Text(prompt.title)
-                    .foregroundColor(isDisabled ? .white.opacity(0.3) : .white.opacity(0.9))
-                    .font(.system(size: 13))
-                    .lineLimit(1)
-                
-                if isSelected {
-                    Spacer()
-                    Image(systemName: "checkmark")
-                        .foregroundColor(isDisabled ? .green.opacity(0.3) : .green)
-                        .font(.system(size: 10))
-                }
-            }
-            .contentShape(Rectangle())
-            .padding(.vertical, 4)
-            .padding(.horizontal, 8)
-=======
                 Image(systemName: prompt.icon)
                     .font(.system(size: 14))
                     .foregroundColor(isDisabled ? .white.opacity(0.4) : .white.opacity(0.7))
@@ -122,14 +90,9 @@ struct EnhancementPromptRow: View {
             .padding(.vertical, 4)
             .padding(.horizontal, 8)
             .contentShape(Rectangle())
->>>>>>> upstream/main
         }
         .buttonStyle(.plain)
         .background(isSelected ? Color.white.opacity(0.1) : Color.clear)
         .cornerRadius(4)
-<<<<<<< HEAD
-        .disabled(isDisabled)
-=======
->>>>>>> upstream/main
     }
 } 

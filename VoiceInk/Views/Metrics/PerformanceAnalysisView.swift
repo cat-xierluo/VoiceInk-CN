@@ -5,13 +5,10 @@ struct PerformanceAnalysisView: View {
     let transcriptions: [Transcription]
     private let analysis: AnalysisResult
 
-<<<<<<< HEAD
-=======
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 250), spacing: 16)
     ]
 
->>>>>>> upstream/main
     init(transcriptions: [Transcription]) {
         self.transcriptions = transcriptions
         self.analysis = Self.analyze(transcriptions: transcriptions)
@@ -47,11 +44,7 @@ struct PerformanceAnalysisView: View {
 
     private var header: some View {
         HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("Performance Analysis", comment: "Performance Analysis"))
-=======
             Text("Performance Analysis")
->>>>>>> upstream/main
                 .font(.title2)
                 .fontWeight(.bold)
             Spacer()
@@ -69,25 +62,12 @@ Text(NSLocalizedString("Performance Analysis", comment: "Performance Analysis"))
             SummaryCard(
                 icon: "doc.text.fill", 
                 value: "\(analysis.totalTranscripts)", 
-<<<<<<< HEAD
-                label: NSLocalizedString("Total Transcripts", comment: "Total Transcripts"),
-=======
                 label: "Total Transcripts",
->>>>>>> upstream/main
                 color: .indigo
             )
             SummaryCard(
                 icon: "waveform.path.ecg", 
                 value: "\(analysis.totalWithTranscriptionData)", 
-<<<<<<< HEAD
-                label: NSLocalizedString("Analyzable", comment: "Analyzable"),
-                color: .teal
-            )
-            SummaryCard(
-                icon: NSLocalizedString("sparkles", comment: "sparkles"), 
-                value: "\(analysis.totalEnhancedFiles)", 
-label: NSLocalizedString("Enhanced", comment: "Enhanced"),
-=======
                 label: "Analyzable",
                 color: .teal
             )
@@ -95,7 +75,6 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 icon: "sparkles", 
                 value: "\(analysis.totalEnhancedFiles)", 
                 label: "Enhanced",
->>>>>>> upstream/main
                 color: .mint
             )
         }
@@ -103,38 +82,20 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
 
     private var systemInfoSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-            Text(NSLocalizedString("System Information", comment: "System Information"))
-=======
             Text("System Information")
->>>>>>> upstream/main
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
             HStack(spacing: 12) {
-<<<<<<< HEAD
-                SystemInfoCard(label: NSLocalizedString("Device", comment: "Device"), value: getMacModel())
-                SystemInfoCard(label: NSLocalizedString("Processor", comment: "Processor"), value: getCPUInfo())
-                SystemInfoCard(label: NSLocalizedString("Memory", comment: "Memory"), value: getMemoryInfo())
-=======
                 SystemInfoCard(label: "Device", value: getMacModel())
                 SystemInfoCard(label: "Processor", value: getCPUInfo())
                 SystemInfoCard(label: "Memory", value: getMemoryInfo())
->>>>>>> upstream/main
             }
         }
     }
 
     private var transcriptionPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-            Text(NSLocalizedString("Transcription Models", comment: "Transcription Models"))
-                .font(.system(.title2, design: .default, weight: .bold))
-                .foregroundColor(.primary)
-
-            ForEach(analysis.transcriptionModels) { modelStat in
-                TranscriptionModelCard(modelStat: modelStat)
-=======
             Text("Transcription Models")
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
@@ -143,21 +104,12 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 ForEach(analysis.transcriptionModels) { modelStat in
                     TranscriptionModelCard(modelStat: modelStat)
                 }
->>>>>>> upstream/main
             }
         }
     }
 
     private var enhancementPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-<<<<<<< HEAD
-            Text(NSLocalizedString("Enhancement Models", comment: "Enhancement Models"))
-                .font(.system(.title2, design: .default, weight: .bold))
-                .foregroundColor(.primary)
-
-            ForEach(analysis.enhancementModels) { modelStat in
-                EnhancementModelCard(modelStat: modelStat)
-=======
             Text("Enhancement Models")
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
@@ -166,7 +118,6 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 ForEach(analysis.enhancementModels) { modelStat in
                     EnhancementModelCard(modelStat: modelStat)
                 }
->>>>>>> upstream/main
             }
         }
     }
@@ -262,11 +213,7 @@ label: NSLocalizedString("Enhanced", comment: "Enhanced"),
                 avgAudioDuration: avgAudioDuration,
                 speedFactor: speedFactor
             )
-<<<<<<< HEAD
-        }.sorted { $0.name < $1.name }
-=======
         }.sorted { $0.avgProcessingTime < $1.avgProcessingTime }
->>>>>>> upstream/main
     }
 }
 
@@ -303,11 +250,6 @@ struct SummaryCard: View {
     let color: Color
 
     var body: some View {
-<<<<<<< HEAD
-        VStack(spacing: 4) {
-            Text(value)
-                .font(.system(.title3, design: .rounded, weight: .bold))
-=======
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 20, weight: .medium))
@@ -315,21 +257,16 @@ struct SummaryCard: View {
             
             Text(value)
                 .font(.system(.title2, design: .rounded, weight: .bold))
->>>>>>> upstream/main
                 .foregroundColor(.primary)
             
             Text(label)
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
-<<<<<<< HEAD
-        .frame(maxWidth: .infinity)
-=======
         .padding(16)
         .frame(maxWidth: .infinity, minHeight: 100)
         .background(MetricCardBackground(color: color))
         .cornerRadius(12)
->>>>>>> upstream/main
     }
 }
 
@@ -369,13 +306,8 @@ struct SystemInfoCard: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity, minHeight: 60, alignment: .leading)
-<<<<<<< HEAD
-        .background(CardBackground(isSelected: false))
-        .cornerRadius(8)
-=======
         .background(MetricCardBackground(color: .secondary))
         .cornerRadius(12)
->>>>>>> upstream/main
     }
 }
 
@@ -389,13 +321,9 @@ struct TranscriptionModelCard: View {
                 Text(modelStat.name)
                     .font(.headline)
                     .fontWeight(.semibold)
-<<<<<<< HEAD
-                
-=======
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
 
->>>>>>> upstream/main
                 Spacer()
                 
                 Text("\(modelStat.fileCount) transcripts")
@@ -404,29 +332,6 @@ struct TranscriptionModelCard: View {
             }
             
             Divider()
-<<<<<<< HEAD
-            
-            VStack(spacing: 12) {
-                // First row of metrics
-                HStack(spacing: 24) {
-                    MetricDisplay(
-                        title: NSLocalizedString(NSLocalizedString("Avg. Transcript Duration", comment: "Avg. Transcript Duration"), comment: "Avg. Transcript Duration"), 
-                        value: formatDuration(modelStat.avgAudioDuration),
-                        color: .indigo
-                    )
-                    
-                    MetricDisplay(
-                        title: NSLocalizedString(NSLocalizedString("Avg. Transcription Time", comment: "Avg. Transcription Time"), comment: "Avg. Transcription Time"),
-                        value: String(format: "%.2f s", modelStat.avgProcessingTime),
-                        color: .teal
-                    )
-                    
-                    MetricDisplay(
-                        title: NSLocalizedString(NSLocalizedString("Speed Factor", comment: "Speed Factor"), comment: "Speed Factor"),
-                        value: String(format: "%.1fx faster", modelStat.speedFactor),
-                        color: .mint
-                    )
-=======
 
             VStack(spacing: 16) {
                 // Main metric: Speed Factor
@@ -455,18 +360,12 @@ struct TranscriptionModelCard: View {
                         value: String(format: "%.2f s", modelStat.avgProcessingTime),
                         color: .teal
                     )
->>>>>>> upstream/main
                 }
             }
         }
         .padding(16)
-<<<<<<< HEAD
-        .background(CardBackground(isSelected: false))
-        .cornerRadius(8)
-=======
         .background(MetricCardBackground(color: .mint))
         .cornerRadius(12)
->>>>>>> upstream/main
     }
     
     private func formatDuration(_ duration: TimeInterval) -> String {
@@ -487,13 +386,9 @@ struct EnhancementModelCard: View {
                 Text(modelStat.name)
                     .font(.headline)
                     .fontWeight(.semibold)
-<<<<<<< HEAD
-                
-=======
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
 
->>>>>>> upstream/main
                 Spacer()
                 
                 Text("\(modelStat.fileCount) transcripts")
@@ -503,21 +398,6 @@ struct EnhancementModelCard: View {
             
             Divider()
             
-<<<<<<< HEAD
-            VStack(spacing: 12) {
-                HStack(spacing: 24) {
-                    MetricDisplay(
-                        title: NSLocalizedString(NSLocalizedString("Avg. Enhancement Time", comment: "Avg. Enhancement Time"), comment: "Avg. Enhancement Time"),
-                        value: String(format: "%.2f s", modelStat.avgProcessingTime),
-                        color: .indigo
-                    )
-                }
-            }
-        }
-        .padding(16)
-        .background(CardBackground(isSelected: false))
-        .cornerRadius(8)
-=======
             VStack(alignment: .center) {
                 Text(String(format: "%.2f s", modelStat.avgProcessingTime))
                     .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -564,7 +444,6 @@ struct MetricCardBackground: View {
                     )
             )
             .shadow(color: Color.black.opacity(0.05), radius: 5, y: 3)
->>>>>>> upstream/main
     }
 }
 

@@ -1,27 +1,18 @@
 import SwiftUI
 import SwiftData
 
-<<<<<<< HEAD
-=======
 enum ContentTab: String, CaseIterable {
     case original = "Original"
     case enhanced = "Enhanced"
     case aiRequest = "AI Request"
 }
 
->>>>>>> upstream/main
 struct TranscriptionCard: View {
     let transcription: Transcription
     let isExpanded: Bool
     let isSelected: Bool
     let onDelete: () -> Void
     let onToggleSelection: () -> Void
-<<<<<<< HEAD
-    
-    var body: some View {
-        HStack(spacing: 12) {
-            // Selection checkbox in macOS style
-=======
 
     @State private var selectedTab: ContentTab = .original
 
@@ -139,7 +130,6 @@ struct TranscriptionCard: View {
 
     var body: some View {
         HStack(spacing: 12) {
->>>>>>> upstream/main
             Toggle("", isOn: Binding(
                 get: { isSelected },
                 set: { _ in onToggleSelection() }
@@ -147,22 +137,13 @@ struct TranscriptionCard: View {
             .toggleStyle(CircularCheckboxStyle())
             .labelsHidden()
             
-<<<<<<< HEAD
-            VStack(alignment: .leading, spacing: 8) {
-                // Header with date and duration
-=======
             VStack(alignment: .leading, spacing: 12) {
->>>>>>> upstream/main
                 HStack {
                     Text(transcription.timestamp, format: .dateTime.month(.abbreviated).day().year().hour().minute())
                         .font(.system(size: 14, weight: .medium, design: .default))
                         .foregroundColor(.secondary)
                     Spacer()
-<<<<<<< HEAD
-                    
-=======
 
->>>>>>> upstream/main
                     Text(formatTiming(transcription.duration))
                         .font(.system(size: 14, weight: .medium, design: .default))
                         .padding(.horizontal, 8)
@@ -171,80 +152,6 @@ struct TranscriptionCard: View {
                         .foregroundColor(.blue)
                         .cornerRadius(6)
                 }
-<<<<<<< HEAD
-                
-                // Original text section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(transcription.text)
-                        .font(.system(size: 15, weight: .regular, design: .default))
-                        .lineLimit(isExpanded ? nil : 2)
-                        .lineSpacing(2)
-                    
-                    if isExpanded {
-                        HStack {
-Text(NSLocalizedString("Original", comment: "Original"))
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.secondary)
-                            Spacer()
-                            AnimatedCopyButton(textToCopy: transcription.text)
-                        }
-                    }
-                }
-                
-                // Enhanced text section (only when expanded)
-                if isExpanded, let enhancedText = transcription.enhancedText {
-                    Divider()
-                        .padding(.vertical, 8)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(enhancedText)
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                            .lineSpacing(2)
-                        
-                        HStack {
-                            HStack(spacing: 4) {
-                                Image(systemName: "sparkles")
-                                    .foregroundColor(.blue)
-Text(NSLocalizedString("Enhanced", comment: "Enhanced"))
-                                    .font(.system(size: 14, weight: .medium))
-                                    .foregroundColor(.blue)
-                            }
-                            Spacer()
-                            AnimatedCopyButton(textToCopy: enhancedText)
-                        }
-                    }
-                }
-                
-                // Audio player (if available)
-                if isExpanded, let urlString = transcription.audioFileURL,
-                   let url = URL(string: urlString),
-                   FileManager.default.fileExists(atPath: url.path) {
-                    Divider()
-                        .padding(.vertical, 8)
-                    AudioPlayerView(url: url)
-                }
-                
-                // Metadata section (when expanded)
-                if isExpanded && hasMetadata {
-                    Divider()
-                        .padding(.vertical, 8)
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-metadataRow(icon: "hourglass", label: NSLocalizedString("Audio Duration", comment: "Audio Duration"), value: formatTiming(transcription.duration))
-                        if let modelName = transcription.transcriptionModelName {
-metadataRow(icon: "cpu.fill", label: NSLocalizedString("Transcription Model", comment: "Transcription Model"), value: modelName)
-                        }
-                        if let aiModel = transcription.aiEnhancementModelName {
-metadataRow(icon: "sparkles", label: NSLocalizedString("Enhancement Model", comment: "Enhancement Model"), value: aiModel)
-                        }
-                        if let duration = transcription.transcriptionDuration {
-metadataRow(icon: "clock.fill", label: NSLocalizedString("Transcription Time", comment: "Transcription Time"), value: formatTiming(duration))
-                        }
-                        if let duration = transcription.enhancementDuration {
-metadataRow(icon: "clock.fill", label: NSLocalizedString("Enhancement Time", comment: "Enhancement Time"), value: formatTiming(duration))
-                        }
-                    }
-=======
 
                 if isExpanded {
                     HStack(spacing: 4) {
@@ -326,7 +233,6 @@ metadataRow(icon: "clock.fill", label: NSLocalizedString("Enhancement Time", com
                         .font(.system(size: 15, weight: .regular, design: .default))
                         .lineLimit(2)
                         .lineSpacing(2)
->>>>>>> upstream/main
                 }
             }
         }
@@ -339,29 +245,6 @@ metadataRow(icon: "clock.fill", label: NSLocalizedString("Enhancement Time", com
                 Button {
                     let _ = ClipboardManager.copyToClipboard(enhancedText)
                 } label: {
-<<<<<<< HEAD
-Label(NSLocalizedString("Copy Enhanced", comment: "Copy Enhanced"), systemImage: "doc.on.doc")
-                }
-            }
-            
-            Button {
-                let _ = ClipboardManager.copyToClipboard(transcription.text)
-            } label: {
-Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage: "doc.on.doc")
-            }
-            
-            Button(role: .destructive) {
-                onDelete()
-            } label: {
-                Label(NSLocalizedString("Delete", comment: "Delete button"), systemImage: "trash")
-            }
-        }
-    }
-    
-    private var hasMetadata: Bool {
-        transcription.transcriptionModelName != nil ||
-        transcription.aiEnhancementModelName != nil ||
-=======
                     Label("Copy Enhanced", systemImage: "doc.on.doc")
                 }
             }
@@ -391,23 +274,12 @@ Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage:
         transcription.transcriptionModelName != nil ||
         transcription.aiEnhancementModelName != nil ||
         transcription.promptName != nil ||
->>>>>>> upstream/main
         transcription.transcriptionDuration != nil ||
         transcription.enhancementDuration != nil
     }
     
     private func formatTiming(_ duration: TimeInterval) -> String {
         if duration < 1 {
-<<<<<<< HEAD
-            return String(format: NSLocalizedString("%.0fms", comment: "%.0fms"), duration * 1000)
-        }
-        if duration < 60 {
-            return String(format: NSLocalizedString("%.1fs", comment: "%.1fs"), duration)
-        }
-        let minutes = Int(duration) / 60
-        let seconds = duration.truncatingRemainder(dividingBy: 60)
-        return String(format: NSLocalizedString("%dm %.0fs", comment: "%dm %.0fs"), minutes, seconds)
-=======
             return String(format: "%.0fms", duration * 1000)
         }
         if duration < 60 {
@@ -416,7 +288,6 @@ Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage:
         let minutes = Int(duration) / 60
         let seconds = duration.truncatingRemainder(dividingBy: 60)
         return String(format: "%dm %.0fs", minutes, seconds)
->>>>>>> upstream/main
     }
     
     private func metadataRow(icon: String, label: String, value: String) -> some View {
@@ -435,8 +306,6 @@ Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage:
                 .foregroundColor(.secondary)
         }
     }
-<<<<<<< HEAD
-=======
 
     private func powerModeDisplay(name: String?, emoji: String?) -> String? {
         guard name != nil || emoji != nil else { return nil }
@@ -452,5 +321,4 @@ Label(NSLocalizedString("Copy Original", comment: "Copy Original"), systemImage:
             return nil
         }
     }
->>>>>>> upstream/main
 }

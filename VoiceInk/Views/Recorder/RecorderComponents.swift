@@ -1,7 +1,5 @@
 import SwiftUI
 
-<<<<<<< HEAD
-=======
 // MARK: - Shared Popover State
 enum ActivePopoverState {
     case none
@@ -24,7 +22,6 @@ class HoverInteraction: ObservableObject {
     }
 }
 
->>>>>>> upstream/main
 // MARK: - Generic Toggle Button Component
 struct RecorderToggleButton: View {
     let isEnabled: Bool
@@ -50,17 +47,10 @@ struct RecorderToggleButton: View {
             Group {
                 if isEmoji {
                     Text(icon)
-<<<<<<< HEAD
-                        .font(.system(size: 12))
-                } else {
-                    Image(systemName: icon)
-                        .font(.system(size: 11))
-=======
                         .font(.system(size: 14))
                 } else {
                     Image(systemName: icon)
                         .font(.system(size: 13))
->>>>>>> upstream/main
                 }
             }
             .foregroundColor(disabled ? .white.opacity(0.3) : (isEnabled ? .white : .white.opacity(0.6)))
@@ -81,21 +71,6 @@ struct RecorderRecordButton: View {
             ZStack {
                 Circle()
                     .fill(buttonColor)
-<<<<<<< HEAD
-                    .frame(width: 22, height: 22)
-                
-                if isProcessing {
-                    ProcessingIndicator(color: .white)
-                        .frame(width: 14, height: 14)
-                } else if isRecording {
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(Color.white)
-                        .frame(width: 8, height: 8)
-                } else {
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: 8, height: 8)
-=======
                     .frame(width: 25, height: 25)
                 
                 if isProcessing {
@@ -109,7 +84,6 @@ struct RecorderRecordButton: View {
                     Circle()
                         .fill(Color.white)
                         .frame(width: 9, height: 9)
->>>>>>> upstream/main
                 }
             }
         }
@@ -136,13 +110,8 @@ struct ProcessingIndicator: View {
     var body: some View {
         Circle()
             .trim(from: 0.1, to: 0.9)
-<<<<<<< HEAD
-            .stroke(color, lineWidth: 1.5)
-            .frame(width: 12, height: 12)
-=======
             .stroke(color, lineWidth: 1.7)
             .frame(width: 14, height: 14)
->>>>>>> upstream/main
             .rotationEffect(.degrees(rotation))
             .onAppear {
                 withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
@@ -152,8 +121,6 @@ struct ProcessingIndicator: View {
     }
 }
 
-<<<<<<< HEAD
-=======
 // MARK: - Progress Animation Component
 struct ProgressAnimation: View {
     @State private var currentDot = 0
@@ -304,7 +271,6 @@ struct RecorderPowerModeButton: View {
     }
 }
 
->>>>>>> upstream/main
 // MARK: - Status Display Component
 struct RecorderStatusDisplay: View {
     let currentState: RecordingState
@@ -320,19 +286,6 @@ struct RecorderStatusDisplay: View {
     var body: some View {
         Group {
             if currentState == .enhancing {
-<<<<<<< HEAD
-                Text(NSLocalizedString("Enhancing", comment: "Enhancing"))
-                    .foregroundColor(.white)
-                    .font(.system(size: 10, weight: .medium, design: .default))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-            } else if currentState == .transcribing {
-                Text("Transcribing")
-                    .foregroundColor(.white)
-                    .font(.system(size: 10, weight: .medium, design: .default))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-=======
                 VStack(spacing: 2) {
                     Text("Enhancing")
                         .foregroundColor(.white)
@@ -352,7 +305,6 @@ struct RecorderStatusDisplay: View {
                     
                     ProgressAnimation(animationSpeed: 0.12)
                 }
->>>>>>> upstream/main
             } else if currentState == .recording {
                 AudioVisualizer(
                     audioMeter: audioMeter,
@@ -366,8 +318,4 @@ struct RecorderStatusDisplay: View {
             }
         }
     }
-<<<<<<< HEAD
-} 
-=======
 }
->>>>>>> upstream/main

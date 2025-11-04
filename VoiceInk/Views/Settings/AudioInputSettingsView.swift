@@ -39,15 +39,9 @@ struct AudioInputSettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-<<<<<<< HEAD
-                Text(NSLocalizedString("Audio Input", comment: "Audio Input"))
-                    .font(.system(size: 28, weight: .bold))
-Text(NSLocalizedString("Configure your microphone preferences", comment: "Configure your microphone preferences"))
-=======
                 Text("Audio Input")
                     .font(.system(size: 28, weight: .bold))
                 Text("Configure your microphone preferences")
->>>>>>> upstream/main
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
             }
@@ -58,11 +52,7 @@ Text(NSLocalizedString("Configure your microphone preferences", comment: "Config
     
     private var inputModeSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Input Mode", comment: "Input Mode"))
-=======
             Text("Input Mode")
->>>>>>> upstream/main
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -81,31 +71,19 @@ Text(NSLocalizedString("Input Mode", comment: "Input Mode"))
     private var customDeviceSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-<<<<<<< HEAD
-Text(NSLocalizedString("Available Devices", comment: "Available Devices"))
-=======
                 Text("Available Devices")
->>>>>>> upstream/main
                     .font(.title2)
                     .fontWeight(.semibold)
                 
                 Spacer()
                 
                 Button(action: { audioDeviceManager.loadAvailableDevices() }) {
-<<<<<<< HEAD
-Label(NSLocalizedString("Refresh", comment: "Refresh"), systemImage: "arrow.clockwise")
-=======
                     Label("Refresh", systemImage: "arrow.clockwise")
->>>>>>> upstream/main
                 }
                 .buttonStyle(.borderless)
             }
             
-<<<<<<< HEAD
-            Text(NSLocalizedString("Note: Selecting a device here will override your Mac\'s system-wide default microphone.", comment: "Note: Selecting a device here will override your Mac\'s system-wide default microphone."))
-=======
             Text("Note: Selecting a device here will override your Mac\'s system-wide default microphone.")
->>>>>>> upstream/main
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 8)
@@ -139,16 +117,6 @@ Label(NSLocalizedString("Refresh", comment: "Refresh"), systemImage: "arrow.cloc
     private var prioritizedDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Prioritized Devices", comment: "Prioritized Devices"))
-                    .font(.title2)
-                    .fontWeight(.semibold)
-Text(NSLocalizedString("Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used.", comment: "Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used."))
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text(NSLocalizedString("Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active.", comment: "Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active."))
-=======
                 Text("Prioritized Devices")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -157,18 +125,13 @@ Text(NSLocalizedString("Devices will be used in order of priority. If a device i
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
                 Text("Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active.")
->>>>>>> upstream/main
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(.top, 4)
             }
             
             if audioDeviceManager.prioritizedDevices.isEmpty {
-<<<<<<< HEAD
-Text(NSLocalizedString("No prioritized devices", comment: "No prioritized devices"))
-=======
                 Text("No prioritized devices")
->>>>>>> upstream/main
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -179,11 +142,7 @@ Text(NSLocalizedString("No prioritized devices", comment: "No prioritized device
     
     private var availableDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Available Devices", comment: "Available Devices"))
-=======
             Text("Available Devices")
->>>>>>> upstream/main
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -199,15 +158,9 @@ Text(NSLocalizedString("Available Devices", comment: "Available Devices"))
                 .foregroundStyle(.secondary)
             
             VStack(spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("No Audio Devices", comment: "No Audio Devices"))
-                    .font(.headline)
-Text(NSLocalizedString("Connect an audio input device to get started", comment: "Connect an audio input device to get started"))
-=======
                 Text("No Audio Devices")
                     .font(.headline)
                 Text("Connect an audio input device to get started")
->>>>>>> upstream/main
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -248,11 +201,7 @@ Text(NSLocalizedString("Connect an audio input device to get started", comment: 
         
         return Group {
             if unprioritizedDevices.isEmpty {
-<<<<<<< HEAD
-                Text(NSLocalizedString("No additional devices available", comment: "No additional devices available"))
-=======
                 Text("No additional devices available")
->>>>>>> upstream/main
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -317,15 +266,9 @@ struct InputModeCard: View {
     
     private var description: String {
         switch mode {
-<<<<<<< HEAD
-case .systemDefault: return NSLocalizedString("Use system's default input device", comment: "Use system's default input device")
-case .custom: return NSLocalizedString("Select a specific input device", comment: "Select a specific input device")
-case .prioritized: return NSLocalizedString("Set up device priority order", comment: "Set up device priority order")
-=======
         case .systemDefault: return "Use system's default input device"
         case .custom: return "Select a specific input device"
         case .prioritized: return "Set up device priority order"
->>>>>>> upstream/main
         }
     }
     
@@ -338,11 +281,7 @@ case .prioritized: return NSLocalizedString("Set up device priority order", comm
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-<<<<<<< HEAD
-                                            Text(mode.displayName)
-=======
                     Text(mode.rawValue)
->>>>>>> upstream/main
                         .font(.headline)
                     
                     Text(description)
@@ -379,11 +318,7 @@ struct DeviceSelectionCard: View {
                 Spacer()
                 
                 if isActive {
-<<<<<<< HEAD
-                    Label(NSLocalizedString("Active", comment: "Active status"), systemImage: "wave.3.right")
-=======
                     Label("Active", systemImage: "wave.3.right")
->>>>>>> upstream/main
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)
@@ -417,11 +352,7 @@ struct DevicePriorityCard: View {
         HStack {
             // Priority number or dash
             if let priority = priority {
-<<<<<<< HEAD
-                Text(NSLocalizedString("\(priority + 1)", comment: "\(priority + 1)"))
-=======
                 Text("\(priority + 1)")
->>>>>>> upstream/main
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(.secondary)
                     .frame(width: 24)
@@ -442,11 +373,7 @@ struct DevicePriorityCard: View {
             HStack(spacing: 12) {
                 // Active status
                 if isActive {
-<<<<<<< HEAD
-                    Label(NSLocalizedString("Active", comment: "Active status"), systemImage: "wave.3.right")
-=======
                     Label("Active", systemImage: "wave.3.right")
->>>>>>> upstream/main
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)
@@ -456,11 +383,7 @@ struct DevicePriorityCard: View {
                                 .fill(.green.opacity(0.1))
                         )
                 } else if !isAvailable && isPrioritized {
-<<<<<<< HEAD
-Label(NSLocalizedString("Unavailable", comment: "Unavailable"), systemImage: "exclamationmark.triangle")
-=======
                     Label("Unavailable", systemImage: "exclamationmark.triangle")
->>>>>>> upstream/main
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 10)

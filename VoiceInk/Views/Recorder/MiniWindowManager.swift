@@ -11,9 +11,6 @@ class MiniWindowManager: ObservableObject {
     init(whisperState: WhisperState, recorder: Recorder) {
         self.whisperState = whisperState
         self.recorder = recorder
-<<<<<<< HEAD
-        
-=======
         setupNotifications()
     }
     
@@ -22,7 +19,6 @@ class MiniWindowManager: ObservableObject {
     }
     
     private func setupNotifications() {
->>>>>>> upstream/main
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleHideNotification),
@@ -31,21 +27,6 @@ class MiniWindowManager: ObservableObject {
         )
     }
     
-<<<<<<< HEAD
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc private func handleHideNotification() {
-        hide()
-    }
-    
-    func show() {
-        if isVisible { return }
-        
-        let activeScreen = NSApp.keyWindow?.screen ?? NSScreen.main ?? NSScreen.screens[0]
-        
-=======
     @objc private func handleHideNotification() {
         hide()
     }
@@ -54,25 +35,15 @@ class MiniWindowManager: ObservableObject {
 
         let activeScreen = NSApp.keyWindow?.screen ?? NSScreen.main ?? NSScreen.screens[0]
 
->>>>>>> upstream/main
         initializeWindow(screen: activeScreen)
         self.isVisible = true
         miniPanel?.show()
     }
-<<<<<<< HEAD
-    
-    func hide() {
-        guard isVisible else { return }
-        
-        self.isVisible = false
-        
-=======
 
     func hide() {
         guard isVisible else { return }
 
         self.isVisible = false
->>>>>>> upstream/main
         self.miniPanel?.hide { [weak self] in
             guard let self = self else { return }
             self.deinitializeWindow()
@@ -99,10 +70,7 @@ class MiniWindowManager: ObservableObject {
     }
     
     private func deinitializeWindow() {
-<<<<<<< HEAD
-=======
         miniPanel?.orderOut(nil)
->>>>>>> upstream/main
         windowController?.close()
         windowController = nil
         miniPanel = nil

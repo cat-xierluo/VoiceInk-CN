@@ -11,20 +11,12 @@ struct AppPickerSheet: View {
         VStack(spacing: 16) {
             // Header
             HStack {
-<<<<<<< HEAD
-                Text(NSLocalizedString("Select Applications", comment: "Select Applications"))
-=======
                 Text("Select Applications")
->>>>>>> upstream/main
                     .font(.headline)
                 
                 Spacer()
                 
-<<<<<<< HEAD
-Button(NSLocalizedString("Done", comment: "Done")) {
-=======
                 Button("Done") {
->>>>>>> upstream/main
                     onDismiss()
                 }
                 .keyboardShortcut(.return, modifiers: [])
@@ -36,11 +28,7 @@ Button(NSLocalizedString("Done", comment: "Done")) {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-<<<<<<< HEAD
-                TextField(NSLocalizedString("Search applications...", comment: "Search applications..."), text: $searchText)
-=======
                 TextField("Search applications...", text: $searchText)
->>>>>>> upstream/main
                     .textFieldStyle(.roundedBorder)
                 if !searchText.isEmpty {
                     Button(action: { searchText = "" }) {

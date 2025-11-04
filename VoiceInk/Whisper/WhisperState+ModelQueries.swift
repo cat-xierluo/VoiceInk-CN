@@ -6,11 +6,8 @@ extension WhisperState {
             switch model.provider {
             case .local:
                 return availableModels.contains { $0.name == model.name }
-<<<<<<< HEAD
-=======
             case .parakeet:
                 return isParakeetModelDownloaded(named: model.name)
->>>>>>> upstream/main
             case .nativeApple:
                 if #available(macOS 26, *) {
                     return true
@@ -29,15 +26,12 @@ extension WhisperState {
             case .mistral:
                 let key = UserDefaults.standard.string(forKey: "MistralAPIKey")
                 return key != nil && !key!.isEmpty
-<<<<<<< HEAD
-=======
             case .gemini:
                 let key = UserDefaults.standard.string(forKey: "GeminiAPIKey")
                 return key != nil && !key!.isEmpty
             case .soniox:
                 let key = UserDefaults.standard.string(forKey: "SonioxAPIKey")
                 return key != nil && !key!.isEmpty
->>>>>>> upstream/main
             case .custom:
                 // Custom models are always usable since they contain their own API keys
                 return true

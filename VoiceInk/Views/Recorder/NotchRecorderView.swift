@@ -5,12 +5,7 @@ struct NotchRecorderView: View {
     @ObservedObject var recorder: Recorder
     @EnvironmentObject var windowManager: NotchWindowManager
     @State private var isHovering = false
-<<<<<<< HEAD
-    @State private var showPowerModePopover = false
-    @State private var showEnhancementPromptPopover = false
-=======
     @State private var activePopover: ActivePopoverState = .none
->>>>>>> upstream/main
     @ObservedObject private var powerModeManager = PowerModeManager.shared
     
     @EnvironmentObject private var enhancementService: AIEnhancementService
@@ -36,22 +31,6 @@ struct NotchRecorderView: View {
     }
     
     private var leftSection: some View {
-<<<<<<< HEAD
-        HStack(spacing: 8) {
-            let isRecording = whisperState.recordingState == .recording
-            let isProcessing = whisperState.recordingState == .transcribing || whisperState.recordingState == .enhancing
-            
-            RecorderRecordButton(
-                isRecording: isRecording,
-                isProcessing: isProcessing
-            ) {
-                Task { await whisperState.toggleRecord() }
-            }
-            .frame(width: 22)
-            
-            rightToggleButton
-            
-=======
         HStack(spacing: 12) {
             RecorderPromptButton(
                 activePopover: $activePopover,
@@ -65,53 +44,12 @@ struct NotchRecorderView: View {
                 padding: EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             )
 
->>>>>>> upstream/main
             Spacer()
         }
         .frame(width: 64)
         .padding(.leading, 16)
     }
     
-<<<<<<< HEAD
-    private var rightToggleButton: some View {
-        Group {
-            if powerModeManager.isPowerModeEnabled {
-                RecorderToggleButton(
-                    isEnabled: powerModeManager.isPowerModeEnabled,
-                    icon: powerModeManager.currentActiveConfiguration.emoji,
-                    color: .orange,
-                    disabled: false
-                ) {
-                    showPowerModePopover.toggle()
-                }
-                .frame(width: 22)
-                .popover(isPresented: $showPowerModePopover, arrowEdge: .bottom) {
-                    PowerModePopover()
-                }
-            } else {
-                RecorderToggleButton(
-                    isEnabled: enhancementService.isEnhancementEnabled,
-                    icon: enhancementService.activePrompt?.icon.rawValue ?? "brain",
-                    color: .blue,
-                    disabled: false
-                ) {
-                    if enhancementService.isEnhancementEnabled {
-                        showEnhancementPromptPopover.toggle()
-                    } else {
-                        enhancementService.isEnhancementEnabled = true
-                    }
-                }
-                .frame(width: 22)
-                .popover(isPresented: $showEnhancementPromptPopover, arrowEdge: .bottom) {
-                    EnhancementPromptPopover()
-                        .environmentObject(enhancementService)
-                }
-            }
-        }
-    }
-    
-=======
->>>>>>> upstream/main
     private var centerSection: some View {
         Rectangle()
             .fill(Color.clear)
@@ -120,19 +58,11 @@ struct NotchRecorderView: View {
     }
     
     private var rightSection: some View {
-<<<<<<< HEAD
-        HStack(spacing: 0) {
-            Spacer()
-            statusDisplay
-        }
-        .frame(width: 84)
-=======
         HStack(spacing: 8) {
             Spacer()
             statusDisplay
         }
         .frame(width: 64)
->>>>>>> upstream/main
         .padding(.trailing, 16)
     }
     
@@ -155,10 +85,6 @@ struct NotchRecorderView: View {
                     rightSection
                 }
                 .frame(height: menuBarHeight)
-<<<<<<< HEAD
-                .frame(maxWidth: windowManager.isVisible ? .infinity : 0)
-=======
->>>>>>> upstream/main
                 .background(Color.black)
                 .mask {
                     NotchShape(cornerRadius: 10)
@@ -172,10 +98,3 @@ struct NotchRecorderView: View {
         }
     }
 }
-<<<<<<< HEAD
-
-
-
- 
-=======
->>>>>>> upstream/main

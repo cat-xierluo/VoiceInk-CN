@@ -13,11 +13,7 @@ struct KeyboardShortcutView: View {
                 }
             }
         } else {
-<<<<<<< HEAD
-KeyCapView(text: NSLocalizedString("Not Set", comment: "Not Set"))
-=======
             KeyCapView(text: "Not Set")
->>>>>>> upstream/main
                 .foregroundColor(.secondary)
         }
     }
@@ -41,11 +37,7 @@ KeyCapView(text: NSLocalizedString("Not Set", comment: "Not Set"))
     
     private func keyToString(_ key: KeyboardShortcuts.Key) -> String {
         switch key {
-<<<<<<< HEAD
-case .space: return NSLocalizedString("Space", comment: "Space")
-=======
         case .space: return "Space"
->>>>>>> upstream/main
         case .return: return "↩"
         case .escape: return "⎋"
         case .tab: return "⇥"
@@ -63,11 +55,7 @@ case .space: return NSLocalizedString("Space", comment: "Space")
         case .semicolon: return ";"
         case .quote: return "'"
         case .slash: return "/"
-<<<<<<< HEAD
-        case .backslash: return NSLocalizedString(NSLocalizedString("\\", comment: "\\"), comment: "\\")
-=======
         case .backslash: return "\\"
->>>>>>> upstream/main
         case .minus: return "-"
         case .equal: return "="
         case .keypad0: return "0"

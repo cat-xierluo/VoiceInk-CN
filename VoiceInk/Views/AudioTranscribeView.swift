@@ -30,73 +30,7 @@ struct AudioTranscribeView: View {
                 
                 // Show current transcription result
                 if let transcription = transcriptionManager.currentTranscription {
-<<<<<<< HEAD
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 16) {
-Text(NSLocalizedString("Transcription Result", comment: "Transcription Result"))
-                                .font(.headline)
-                            
-                            if let enhancedText = transcription.enhancedText {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-Text(NSLocalizedString("Enhanced", comment: "Enhanced"))
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        Spacer()
-                                        HStack(spacing: 8) {
-                                            AnimatedCopyButton(textToCopy: enhancedText)
-                                            AnimatedSaveButton(textToSave: enhancedText)
-                                        }
-                                    }
-                                    Text(enhancedText)
-                                        .textSelection(.enabled)
-                                }
-                                
-                                Divider()
-                                
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-Text(NSLocalizedString("Original", comment: "Original"))
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        Spacer()
-                                        HStack(spacing: 8) {
-                                            AnimatedCopyButton(textToCopy: transcription.text)
-                                            AnimatedSaveButton(textToSave: transcription.text)
-                                        }
-                                    }
-                                    Text(transcription.text)
-                                        .textSelection(.enabled)
-                                }
-                            } else {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Text(NSLocalizedString("Transcription", comment: "Transcription"))
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        Spacer()
-                                        HStack(spacing: 8) {
-                                            AnimatedCopyButton(textToCopy: transcription.text)
-                                            AnimatedSaveButton(textToSave: transcription.text)
-                                        }
-                                    }
-                                    Text(transcription.text)
-                                        .textSelection(.enabled)
-                                }
-                            }
-                            
-                            HStack {
-                                Text("Duration: \(formatDuration(transcription.duration))")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                            }
-                        }
-                        .padding()
-                    }
-=======
                     TranscriptionResultView(transcription: transcription)
->>>>>>> upstream/main
                 }
             }
         }
@@ -107,13 +41,8 @@ Text(NSLocalizedString("Original", comment: "Original"))
             }
             return false
         }
-<<<<<<< HEAD
-.alert(NSLocalizedString("Error", comment: "Error"), isPresented: .constant(transcriptionManager.errorMessage != nil)) {
-            Button(NSLocalizedString("OK", comment: "OK"), role: .cancel) {
-=======
         .alert("Error", isPresented: .constant(transcriptionManager.errorMessage != nil)) {
             Button("OK", role: .cancel) {
->>>>>>> upstream/main
                 transcriptionManager.errorMessage = nil
             }
         } message: {
@@ -121,15 +50,12 @@ Text(NSLocalizedString("Original", comment: "Original"))
                 Text(errorMessage)
             }
         }
-<<<<<<< HEAD
-=======
         .onReceive(NotificationCenter.default.publisher(for: .openFileForTranscription)) { notification in
             if let url = notification.userInfo?["url"] as? URL {
                 // Do not auto-start; only select file for manual transcription
                 validateAndSetAudioFile(url)
             }
         }
->>>>>>> upstream/main
     }
     
     private var dropZoneView: some View {
@@ -144,11 +70,7 @@ Text(NSLocalizedString("Original", comment: "Original"))
                         VStack(spacing: 16) {
                             // AI Enhancement and Prompt in the same row
                             HStack(spacing: 16) {
-<<<<<<< HEAD
-Toggle(NSLocalizedString("AI Enhancement", comment: "AI Enhancement"), isOn: $isEnhancementEnabled)
-=======
                                 Toggle("AI Enhancement", isOn: $isEnhancementEnabled)
->>>>>>> upstream/main
                                     .toggleStyle(.switch)
                                     .onChange(of: isEnhancementEnabled) { oldValue, newValue in
                                         enhancementService.isEnhancementEnabled = newValue
@@ -160,44 +82,6 @@ Toggle(NSLocalizedString("AI Enhancement", comment: "AI Enhancement"), isOn: $is
                                     
                                     // Prompt Selection
                                     HStack(spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Prompt:", comment: "Prompt:"))
-                                            .font(.subheadline)
-                                        
-                                        Menu {
-                                            ForEach(enhancementService.allPrompts) { prompt in
-                                                Button {
-                                                    enhancementService.setActivePrompt(prompt)
-                                                    selectedPromptId = prompt.id
-                                                } label: {
-                                                    HStack {
-                                                        Image(systemName: prompt.icon.rawValue)
-                                                            .foregroundColor(.accentColor)
-                                                        Text(prompt.title)
-                                                        if selectedPromptId == prompt.id {
-                                                            Spacer()
-                                                            Image(systemName: "checkmark")
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        } label: {
-                                            HStack {
-                                                Text(enhancementService.allPrompts.first(where: { $0.id == selectedPromptId })?.title ?? "Select Prompt")
-                                                    .foregroundColor(.primary)
-                                                Image(systemName: "chevron.down")
-                                                    .font(.caption)
-                                            }
-                                            .padding(.horizontal, 8)
-                                            .padding(.vertical, 4)
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 6)
-                                                    .fill(Color(.controlBackgroundColor))
-                                            )
-                                        }
-                                        .fixedSize()
-                                        .disabled(!isEnhancementEnabled)
-=======
                                         Text("Prompt:")
                                             .font(.subheadline)
                                         
@@ -225,7 +109,6 @@ Text(NSLocalizedString("Prompt:", comment: "Prompt:"))
                                             .labelsHidden()
                                             .fixedSize()
                                         }
->>>>>>> upstream/main
                                     }
                                 }
                             }
@@ -243,11 +126,7 @@ Text(NSLocalizedString("Prompt:", comment: "Prompt:"))
                     
                     // Action Buttons in a row
                     HStack(spacing: 12) {
-<<<<<<< HEAD
-Button(NSLocalizedString("Start Transcription", comment: "Start Transcription")) {
-=======
                         Button("Start Transcription") {
->>>>>>> upstream/main
                             if let url = selectedAudioURL {
                                 transcriptionManager.startProcessing(
                                     url: url,
@@ -258,11 +137,7 @@ Button(NSLocalizedString("Start Transcription", comment: "Start Transcription"))
                         }
                         .buttonStyle(.borderedProminent)
                         
-<<<<<<< HEAD
-Button(NSLocalizedString("Choose Different File", comment: "Choose Different File")) {
-=======
                         Button("Choose Different File") {
->>>>>>> upstream/main
                             selectedAudioURL = nil
                             isAudioFileSelected = false
                         }
@@ -290,15 +165,6 @@ Button(NSLocalizedString("Choose Different File", comment: "Choose Different Fil
                             .font(.system(size: 32))
                             .foregroundColor(isDropTargeted ? .blue : .gray)
                         
-<<<<<<< HEAD
-Text(NSLocalizedString("Drop audio or video file here", comment: "Drop audio or video file here"))
-                            .font(.headline)
-                        
-Text(NSLocalizedString("or", comment: "or"))
-                            .foregroundColor(.secondary)
-                        
-Button(NSLocalizedString("Choose File", comment: "Choose File")) {
-=======
                         Text("Drop audio or video file here")
                             .font(.headline)
                         
@@ -306,7 +172,6 @@ Button(NSLocalizedString("Choose File", comment: "Choose File")) {
                             .foregroundColor(.secondary)
                         
                         Button("Choose File") {
->>>>>>> upstream/main
                             selectFile()
                         }
                         .buttonStyle(.bordered)
@@ -317,11 +182,7 @@ Button(NSLocalizedString("Choose File", comment: "Choose File")) {
                 .padding(.horizontal)
             }
             
-<<<<<<< HEAD
-Text(NSLocalizedString("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV", comment: "Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV"))
-=======
             Text("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV")
->>>>>>> upstream/main
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
@@ -421,34 +282,8 @@ Text(NSLocalizedString("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV", comme
             }
         }
         
-<<<<<<< HEAD
-        // Validate file type by extension
-        let supportedExtensions = ["wav", "mp3", "m4a", "aiff", "mp4", "mov", "aac", "flac", "caf"]
-        let fileExtension = url.pathExtension.lowercased()
-        
-        // Check file extension first
-        if !fileExtension.isEmpty && supportedExtensions.contains(fileExtension) {
-            print("File type validated by extension: \(fileExtension)")
-        } else {
-            print("Unsupported file extension: \(fileExtension)")
-            // Try to validate by UTType as well
-            if let resourceValues = try? url.resourceValues(forKeys: [.contentTypeKey]),
-               let contentType = resourceValues.contentType {
-                if contentType.conforms(to: .audio) || contentType.conforms(to: .movie) {
-                    print("File type validated by UTType: \(contentType.identifier)")
-                } else {
-                    print("File does not conform to audio or movie type: \(contentType.identifier)")
-                    return
-                }
-            } else {
-                print("Could not validate file type")
-                return
-            }
-        }
-=======
         // Validate file type
         guard SupportedMedia.isSupported(url: url) else { return }
->>>>>>> upstream/main
         
         print("File validated successfully: \(url.lastPathComponent)")
         selectedAudioURL = url
@@ -458,12 +293,6 @@ Text(NSLocalizedString("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV", comme
     private func formatDuration(_ duration: TimeInterval) -> String {
         let minutes = Int(duration) / 60
         let seconds = Int(duration) % 60
-<<<<<<< HEAD
-        return String(format: NSLocalizedString("%d:%02d", comment: "%d:%02d"), minutes, seconds)
-    }
-} 
-=======
         return String(format: "%d:%02d", minutes, seconds)
     }
 }
->>>>>>> upstream/main

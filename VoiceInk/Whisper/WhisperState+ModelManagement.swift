@@ -25,22 +25,6 @@ extension WhisperState {
         if model.provider != .local {
             self.isModelLoaded = true
         }
-<<<<<<< HEAD
-        
-        // Post notification about the model change
-        NotificationCenter.default.post(name: .didChangeModel, object: nil, userInfo: ["modelName": model.name])
-    }
-    
-    func refreshAllAvailableModels() {
-        let currentModelId = currentTranscriptionModel?.id
-        allAvailableModels = PredefinedModels.models
-        
-        // If there was a current default model, find its new version in the refreshed list and update it.
-        // This handles cases where the default model was edited.
-        if let currentId = currentModelId,
-           let updatedModel = allAvailableModels.first(where: { $0.id == currentId })
-        {
-=======
         // Post notification about the model change
         NotificationCenter.default.post(name: .didChangeModel, object: nil, userInfo: ["modelName": model.name])
         NotificationCenter.default.post(name: .AppSettingsDidChange, object: nil)
@@ -63,7 +47,6 @@ extension WhisperState {
         // Preserve current selection by name (IDs may change for dynamic models)
         if let currentName = currentModelName,
            let updatedModel = allAvailableModels.first(where: { $0.name == currentName }) {
->>>>>>> upstream/main
             setDefaultTranscriptionModel(updatedModel)
         }
     }

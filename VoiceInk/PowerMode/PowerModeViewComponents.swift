@@ -1,11 +1,5 @@
 import SwiftUI
-<<<<<<< HEAD
-// Supporting Views
 
-// VoiceInk's consistent button component
-=======
-
->>>>>>> upstream/main
 struct VoiceInkButton: View {
     let title: String
     let action: () -> Void
@@ -37,28 +31,16 @@ struct PowerModeEmptyStateView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.secondary)
             
-<<<<<<< HEAD
-Text(NSLocalizedString("No Power Modes", comment: "No Power Modes"))
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-Text(NSLocalizedString("Add customized power modes for different contexts", comment: "Add customized power modes for different contexts"))
-=======
             Text("No Power Modes")
                 .font(.title2)
                 .fontWeight(.semibold)
             
             Text("Add customized power modes for different contexts")
->>>>>>> upstream/main
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             
             VoiceInkButton(
-<<<<<<< HEAD
-title: NSLocalizedString("Add New Power Mode", comment: "Add New Power Mode"),
-=======
                 title: "Add New Power Mode",
->>>>>>> upstream/main
                 action: action
             )
             .frame(maxWidth: 250)
@@ -74,29 +56,6 @@ struct PowerModeConfigurationsGrid: View {
     
     var body: some View {
         LazyVStack(spacing: 12) {
-<<<<<<< HEAD
-            ForEach(powerModeManager.configurations) { config in
-                ConfigurationRow(
-                    config: config,
-                    isEditing: false,
-                    isDefault: false,
-                    action: { 
-                        onEditConfig(config)
-                    }
-                )
-                .contextMenu {
-                    Button(action: { 
-                        onEditConfig(config)
-                    }) {
-                        Label(NSLocalizedString("Edit", comment: "Edit button"), systemImage: "pencil")
-                    }
-                    Button(role: .destructive, action: {
-                        powerModeManager.removeConfiguration(with: config.id)
-                    }) {
-                        Label("Remove", systemImage: "trash")
-                    }
-                }
-=======
             ForEach($powerModeManager.configurations) { $config in
                 ConfigurationRow(
                     config: $config,
@@ -104,7 +63,6 @@ struct PowerModeConfigurationsGrid: View {
                     powerModeManager: powerModeManager,
                     onEditConfig: onEditConfig
                 )
->>>>>>> upstream/main
             }
         }
         .padding(.horizontal)
@@ -112,19 +70,6 @@ struct PowerModeConfigurationsGrid: View {
 }
 
 struct ConfigurationRow: View {
-<<<<<<< HEAD
-    let config: PowerModeConfig
-    let isEditing: Bool
-    let isDefault: Bool
-    let action: () -> Void
-    @EnvironmentObject var enhancementService: AIEnhancementService
-    @EnvironmentObject var whisperState: WhisperState
-    
-    // How many app icons to show at maximum
-    private let maxAppIconsToShow = 5
-    
-    // Data properties
-=======
     @Binding var config: PowerModeConfig
     let isEditing: Bool
     let powerModeManager: PowerModeManager
@@ -135,7 +80,6 @@ struct ConfigurationRow: View {
     
     private let maxAppIconsToShow = 5
     
->>>>>>> upstream/main
     private var selectedPrompt: CustomPrompt? {
         guard let promptId = config.selectedPrompt,
               let uuid = UUID(uuidString: promptId) else { return nil }
@@ -152,11 +96,7 @@ struct ConfigurationRow: View {
     
     private var selectedLanguage: String? {
         if let langCode = config.selectedLanguage {
-<<<<<<< HEAD
-            if langCode == "auto" { return NSLocalizedString("Auto", comment: "Auto") }
-=======
             if langCode == "auto" { return "Auto" }
->>>>>>> upstream/main
             if langCode == "en" { return "English" }
             
             if let modelName = config.selectedTranscriptionModelName,
@@ -174,20 +114,12 @@ struct ConfigurationRow: View {
     
     private var websiteText: String {
         if websiteCount == 0 { return "" }
-<<<<<<< HEAD
-        return websiteCount == 1 ? NSLocalizedString("1 Website", comment: "1 Website") : "\(websiteCount) Websites"
-=======
         return websiteCount == 1 ? "1 Website" : "\(websiteCount) Websites"
->>>>>>> upstream/main
     }
     
     private var appText: String {
         if appCount == 0 { return "" }
-<<<<<<< HEAD
-        return appCount == 1 ? NSLocalizedString("1 App", comment: "1 App") : "\(appCount) Apps"
-=======
         return appCount == 1 ? "1 App" : "\(appCount) Apps"
->>>>>>> upstream/main
     }
     
     private var extraAppsCount: Int {
@@ -199,191 +131,6 @@ struct ConfigurationRow: View {
     }
     
     var body: some View {
-<<<<<<< HEAD
-        Button(action: action) {
-            VStack(spacing: 0) {
-                // Top row: Emoji, Name, and App/Website counts
-                HStack(spacing: 12) {
-                    // Left: Emoji/Icon
-                    ZStack {
-                        Circle()
-                            .fill(isDefault ? Color.accentColor.opacity(0.15) : Color(.controlBackgroundColor))
-                            .frame(width: 40, height: 40)
-                        
-                        if isDefault {
-                            Image(systemName: "gearshape.fill")
-                                .font(.system(size: 18))
-                                .foregroundColor(.accentColor)
-                        } else {
-                            Text(config.emoji)
-                                .font(.system(size: 20))
-                        }
-                    }
-                    
-                    // Middle: Name and badge
-                    VStack(alignment: .leading, spacing: 3) {
-                        HStack(spacing: 6) {
-                            Text(config.name)
-                                .font(.system(size: 15, weight: .semibold))
-                            
-                            if isDefault {
-Text(NSLocalizedString("Default", comment: "Default"))
-                                    .font(.system(size: 10, weight: .medium))
-                                    .padding(.horizontal, 5)
-                                    .padding(.vertical, 2)
-                                    .background(Capsule().fill(Color.accentColor.opacity(0.15)))
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
-                        
-                        if isDefault {
-Text(NSLocalizedString("Fallback power mode", comment: "Fallback power mode"))
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    // Right: App Icons and Website Count
-                    if !isDefault {
-                        HStack(alignment: .center, spacing: 6) {
-                            // App Count
-                            if appCount > 0 {
-                                HStack(spacing: 3) {
-                                    Text(appText)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    
-                                    Image(systemName: "app.fill")
-                                        .font(.system(size: 9))
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                            
-                            // Website Count
-                            if websiteCount > 0 {
-                                HStack(spacing: 3) {
-                                    Text(websiteText)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    
-                                    Image(systemName: "globe")
-                                        .font(.system(size: 9))
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                        }
-                    }
-                }
-                .padding(.vertical, 12)
-                .padding(.horizontal, 14)
-                
-                // Only add divider and settings row if we have settings
-                if selectedModel != nil || selectedLanguage != nil || config.isAIEnhancementEnabled {
-                    Divider()
-                        .padding(.horizontal, 16)
-                    
-                    // Settings badges in specified order
-                    HStack(spacing: 8) {
-                        // 1. Voice Model badge
-                        if let model = selectedModel, model != "Default" {
-                            HStack(spacing: 4) {
-                                Image(systemName: "waveform")
-                                    .font(.system(size: 10))
-                                Text(model)
-                                    .font(.caption)
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Capsule()
-                                .fill(Color(.controlBackgroundColor)))
-                            .overlay(
-                                Capsule()
-                                    .stroke(Color(.separatorColor), lineWidth: 0.5)
-                            )
-                        }
-                        
-                        // 2. Language badge
-                        if let language = selectedLanguage, language != "Default" {
-                            HStack(spacing: 4) {
-                                Image(systemName: "globe")
-                                    .font(.system(size: 10))
-                                Text(language)
-                                    .font(.caption)
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Capsule()
-                                .fill(Color(.controlBackgroundColor)))
-                            .overlay(
-                                Capsule()
-                                    .stroke(Color(.separatorColor), lineWidth: 0.5)
-                            )
-                        }
-                        
-                        // 3. AI Model badge if specified (moved before AI Enhancement)
-                        if config.isAIEnhancementEnabled, let modelName = config.selectedAIModel, !modelName.isEmpty {
-                            HStack(spacing: 4) {
-                                Image(systemName: "cpu")
-                                    .font(.system(size: 10))
-                                // Display a shortened version of the model name if it's too long (increased limit)
-                                Text(modelName.count > 20 ? String(modelName.prefix(18)) + "..." : modelName)
-                                    .font(.caption)
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Capsule()
-                                .fill(Color(.controlBackgroundColor)))
-                            .overlay(
-                                Capsule()
-                                    .stroke(Color(.separatorColor), lineWidth: 0.5)
-                            )
-                        }
-                        
-                        // 4. AI Enhancement badge
-                        if config.isAIEnhancementEnabled {
-                            // Context Awareness badge (moved before AI Enhancement)
-                            if config.useScreenCapture {
-                                HStack(spacing: 4) {
-                                    Image(systemName: "camera.viewfinder")
-                                        .font(.system(size: 10))
-Text(NSLocalizedString("Context Awareness", comment: "Context Awareness"))
-                                        .font(.caption)
-                                }
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(Capsule()
-                                    .fill(Color(.controlBackgroundColor)))
-                                .overlay(
-                                    Capsule()
-                                        .stroke(Color(.separatorColor), lineWidth: 0.5)
-                                )
-                            }
-                            
-                            HStack(spacing: 4) {
-                                Image(systemName: "sparkles")
-                                    .font(.system(size: 10))
-                                Text(selectedPrompt?.title ?? "AI")
-                                    .font(.caption)
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Capsule()
-                                .fill(Color.accentColor.opacity(0.1)))
-                            .foregroundColor(.accentColor)
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 16)
-                }
-            }
-            .background(CardBackground(isSelected: isEditing))
-        }
-        .buttonStyle(.plain)
-=======
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 ZStack {
@@ -586,7 +333,6 @@ Text(NSLocalizedString("Context Awareness", comment: "Context Awareness"))
             Label("Delete", systemImage: "trash")
         }
     }
->>>>>>> upstream/main
     }
     
     private var isSelected: Bool {
@@ -594,10 +340,6 @@ Text(NSLocalizedString("Context Awareness", comment: "Context Awareness"))
     }
 }
 
-<<<<<<< HEAD
-// App Icon View Component
-=======
->>>>>>> upstream/main
 struct PowerModeAppIcon: View {
     let bundleId: String
     
@@ -648,8 +390,4 @@ struct AppGridItem: View {
         }
         .buttonStyle(.plain)
     }
-<<<<<<< HEAD
-} 
-=======
 }
->>>>>>> upstream/main

@@ -1,35 +1,14 @@
 import SwiftUI
 import SwiftData
-<<<<<<< HEAD
-=======
 import AppKit
 import UniformTypeIdentifiers
->>>>>>> upstream/main
 
 enum ModelFilter: String, CaseIterable, Identifiable {
     case recommended = "Recommended"
     case local = "Local"
     case cloud = "Cloud"
     case custom = "Custom"
-<<<<<<< HEAD
-    
     var id: String { self.rawValue }
-    
-    var displayName: String {
-        switch self {
-        case .recommended:
-            return NSLocalizedString("Recommended", comment: "Recommended")
-        case .local:
-            return NSLocalizedString("Local", comment: "Local")
-        case .cloud:
-            return NSLocalizedString("Cloud", comment: "Cloud")
-        case .custom:
-            return NSLocalizedString("Custom", comment: "Custom")
-        }
-    }
-=======
-    var id: String { self.rawValue }
->>>>>>> upstream/main
 }
 
 struct ModelManagementView: View {
@@ -40,10 +19,7 @@ struct ModelManagementView: View {
     @EnvironmentObject private var enhancementService: AIEnhancementService
     @Environment(\.modelContext) private var modelContext
     @StateObject private var whisperPrompt = WhisperPrompt()
-<<<<<<< HEAD
-=======
     @ObservedObject private var warmupCoordinator = WhisperModelWarmupCoordinator.shared
->>>>>>> upstream/main
 
     @State private var selectedFilter: ModelFilter = .recommended
     @State private var isShowingSettings = false
@@ -69,11 +45,7 @@ struct ModelManagementView: View {
             Alert(
                 title: Text(alertTitle),
                 message: Text(alertMessage),
-<<<<<<< HEAD
-                primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "Delete button")), action: deleteActionClosure),
-=======
                 primaryButton: .destructive(Text("Delete"), action: deleteActionClosure),
->>>>>>> upstream/main
                 secondaryButton: .cancel()
             )
         }
@@ -81,11 +53,7 @@ struct ModelManagementView: View {
     
     private var defaultModelSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-<<<<<<< HEAD
-Text(NSLocalizedString("Default Model", comment: "Default Model"))
-=======
             Text("Default Model")
->>>>>>> upstream/main
                 .font(.headline)
                 .foregroundColor(.secondary)
             Text(whisperState.currentTranscriptionModel?.displayName ?? "No model selected")
@@ -114,11 +82,7 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                                 isShowingSettings = false
                             }
                         }) {
-<<<<<<< HEAD
-                            Text(filter.displayName)
-=======
                             Text(filter.rawValue)
->>>>>>> upstream/main
                                 .font(.system(size: 14, weight: selectedFilter == filter ? .semibold : .medium))
                                 .foregroundColor(selectedFilter == filter ? .primary : .primary.opacity(0.7))
                                 .padding(.horizontal, 16)
@@ -155,10 +119,6 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
             } else {
                 VStack(spacing: 12) {
                     ForEach(filteredModels, id: \.id) { model in
-<<<<<<< HEAD
-                        ModelCardRowView(
-                            model: model,
-=======
                         let isWarming = (model as? LocalModel).map { localModel in
                             warmupCoordinator.isWarming(modelNamed: localModel.name)
                         } ?? false
@@ -166,15 +126,11 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                         ModelCardRowView(
                             model: model,
                             whisperState: whisperState, 
->>>>>>> upstream/main
                             isDownloaded: whisperState.availableModels.contains { $0.name == model.name },
                             isCurrent: whisperState.currentTranscriptionModel?.name == model.name,
                             downloadProgress: whisperState.downloadProgress,
                             modelURL: whisperState.availableModels.first { $0.name == model.name }?.url,
-<<<<<<< HEAD
-=======
                             isWarming: isWarming,
->>>>>>> upstream/main
                             deleteAction: {
                                 if let customModel = model as? CustomCloudModel {
                                     alertTitle = "Delete Custom Model"
@@ -202,13 +158,7 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                             },
                             downloadAction: {
                                 if let localModel = model as? LocalModel {
-<<<<<<< HEAD
-                                    Task {
-                                        await whisperState.downloadModel(localModel)
-                                    }
-=======
                                     Task { await whisperState.downloadModel(localModel) }
->>>>>>> upstream/main
                                 }
                             },
                             editAction: model.provider == .custom ? { customModel in
@@ -217,8 +167,6 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                         )
                     }
                     
-<<<<<<< HEAD
-=======
                     // Import button as a card at the end of the Local list
                     if selectedFilter == .local {
                         HStack(spacing: 8) {
@@ -244,7 +192,6 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                         }
                     }
                     
->>>>>>> upstream/main
                     if selectedFilter == .custom {
                         // Add Custom Model Card at the bottom
                         AddCustomModelCardView(
@@ -275,22 +222,14 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
                 return index1 < index2
             }
         case .local:
-<<<<<<< HEAD
-            return whisperState.allAvailableModels.filter { $0.provider == .local || $0.provider == .nativeApple }
-        case .cloud:
-            let cloudProviders: [ModelProvider] = [.groq, .elevenLabs, .deepgram, .mistral]
-=======
             return whisperState.allAvailableModels.filter { $0.provider == .local || $0.provider == .nativeApple || $0.provider == .parakeet }
         case .cloud:
             let cloudProviders: [ModelProvider] = [.groq, .elevenLabs, .deepgram, .mistral, .gemini, .soniox]
->>>>>>> upstream/main
             return whisperState.allAvailableModels.filter { cloudProviders.contains($0.provider) }
         case .custom:
             return whisperState.allAvailableModels.filter { $0.provider == .custom }
         }
     }
-<<<<<<< HEAD
-=======
 
     // MARK: - Import Panel
     private func presentImportPanel() {
@@ -306,5 +245,4 @@ Text(NSLocalizedString("Default Model", comment: "Default Model"))
             }
         }
     }
->>>>>>> upstream/main
 }
