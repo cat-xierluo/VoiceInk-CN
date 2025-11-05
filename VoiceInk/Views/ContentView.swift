@@ -4,18 +4,34 @@ import KeyboardShortcuts
 
 // ViewType enum with all cases
 enum ViewType: String, CaseIterable {
-    case metrics = "Dashboard"
-    case transcribeAudio = "Transcribe Audio"
-    case history = "History"
-    case models = "AI Models"
-    case enhancement = "Enhancement"
-    case powerMode = "Power Mode"
-    case permissions = "Permissions"
-    case audioInput = "Audio Input"
-    case dictionary = "Dictionary"
-    case settings = "Settings"
-    case license = "VoiceInk Pro"
-    
+    case metrics
+    case transcribeAudio
+    case history
+    case models
+    case enhancement
+    case powerMode
+    case permissions
+    case audioInput
+    case dictionary
+    case settings
+    case license
+
+    var displayName: String {
+        switch self {
+        case .metrics: return L10n.Sidebar.dashboard.string
+        case .transcribeAudio: return L10n.Sidebar.transcribeAudio.string
+        case .history: return L10n.Sidebar.history.string
+        case .models: return L10n.Sidebar.models.string
+        case .enhancement: return L10n.Sidebar.enhancement.string
+        case .powerMode: return L10n.Sidebar.powerMode.string
+        case .permissions: return L10n.Sidebar.permissions.string
+        case .audioInput: return L10n.Sidebar.audioInput.string
+        case .dictionary: return L10n.Sidebar.dictionary.string
+        case .settings: return L10n.Sidebar.settings.string
+        case .license: return L10n.Sidebar.license.string
+        }
+    }
+
     var icon: String {
         switch self {
         case .metrics: return "gauge.medium"
@@ -101,7 +117,7 @@ struct DynamicSidebar: View {
             // Navigation Items
             ForEach(visibleViewTypes, id: \.self) { viewType in
                 DynamicSidebarButton(
-                    title: viewType.rawValue,
+                    title: viewType.displayName,
                     systemImage: viewType.icon,
                     isSelected: selectedView == viewType,
                     isHovered: hoveredView == viewType,

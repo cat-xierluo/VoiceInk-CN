@@ -58,7 +58,7 @@ enum L10n {
         static let audioInput = L10nItem("Audio Input", comment: "Sidebar item: Audio Input")
         static let dictionary = L10nItem("Dictionary", comment: "Sidebar item: Dictionary")
         static let settings = L10nItem("Settings", comment: "Sidebar item: Settings")
-        static let voiceInkPro = L10nItem("VoiceInk Pro", comment: "Sidebar item: VoiceInk Pro subscription")
+        static let license = L10nItem("VoiceInk Pro", comment: "Sidebar item: VoiceInk Pro subscription")
     }
 
     enum License {

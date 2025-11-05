@@ -46,6 +46,12 @@
 	<string>com.prakashjoshipax.VoiceInk</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>zh_CN</string>
+		<string>zh-Hans</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>VoiceInk</string>
 	<key>CFBundlePackageType</key>
