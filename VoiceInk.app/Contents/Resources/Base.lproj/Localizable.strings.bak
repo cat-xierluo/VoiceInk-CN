@@ -1,0 +1,54 @@
+/* Window titles */
+"VoiceInk" = "VoiceInk";
+"VoiceInk Onboarding" = "VoiceInk Onboarding";
+
+/* Debug menu */
+"Debug" = "Debug";
+"Toggle Menu Bar Only" = "Toggle Menu Bar Only";
+
+/* Sidebar header */
+"PRO" = "PRO";
+
+/* Sidebar items */
+"Dashboard" = "Dashboard";
+"Transcribe Audio" = "Transcribe Audio";
+"History" = "History";
+"AI Models" = "AI Models";
+"Enhancement" = "Enhancement";
+"Power Mode" = "Power Mode";
+"Permissions" = "Permissions";
+"Audio Input" = "Audio Input";
+"Dictionary" = "Dictionary";
+"Settings" = "Settings";
+"VoiceInk Pro" = "VoiceInk Pro";
+
+/* License & purchasing */
+"Upgrade to Pro" = "Upgrade to Pro";
+"v%@" = "v%@";
+"Thank you for supporting VoiceInk" = "Thank you for supporting VoiceInk";
+"Transcribe what you say to text instantly with AI" = "Transcribe what you say to text instantly with AI";
+
+"Changelog" = "Changelog";
+"Discord" = "Discord";
+"Email Support" = "Email Support";
+"Docs" = "Docs";
+"Roadmap" = "Roadmap";
+
+"Buy Once, Own Forever" = "Buy Once, Own Forever";
+"Upgrade to VoiceInk Pro" = "Upgrade to VoiceInk Pro";
+"Priority Support" = "Priority Support";
+"Lifetime Access" = "Lifetime Access";
+"Free Updates" = "Free Updates";
+"Multiple Devices" = "Multiple Devices";
+
+"Already have a license?" = "Already have a license?";
+"Enter your license key" = "Enter your license key";
+"Activate" = "Activate";
+
+"License Active" = "License Active";
+"Active" = "Active";
+"This license can be activated on up to %d devices" = "This license can be activated on up to %d devices";
+"You can use VoiceInk Pro on all your personal devices" = "You can use VoiceInk Pro on all your personal devices";
+
+"License Management" = "License Management";
+"Deactivate License" = "Deactivate License";
