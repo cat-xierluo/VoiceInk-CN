@@ -59,21 +59,22 @@
 		E1A0BD052EB1E7B800266859 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "build-apple/whisper.xcframework"; sourceTree = "<group>"; };
 		E1B2DCAA2E3DE70A008DFD68 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "../whisper.cpp/build-apple/whisper.xcframework"; sourceTree = "<group>"; };
 		E1CE28772E4336150082B758 /* whisper.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = whisper.xcframework; path = "build-apple/whisper.xcframework"; sourceTree = "<group>"; };
+		E13456782F51345600000001 /* LocalizationOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalizationOverride.swift; path = ../VoiceInk/LocalizationOverride.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E11473B22CBE0F0A00318EE4 /* VoiceInk */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
+			isa = PBXGroup;
 			path = VoiceInk;
 			sourceTree = "<group>";
 		};
 		E11473C62CBE0F0B00318EE4 /* VoiceInkTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
+			isa = PBXGroup;
 			path = VoiceInkTests;
 			sourceTree = "<group>";
 		};
 		E11473D02CBE0F0B00318EE4 /* VoiceInkUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
+			isa = PBXGroup;
 			path = VoiceInkUITests;
 			sourceTree = "<group>";
 		};
@@ -307,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13456792F51345600000001 /* LocalizationOverride.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +345,7 @@
 		E11473D52CBE0F0B00318EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -462,6 +465,7 @@
 		E11473D82CBE0F0B00318EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -496,6 +500,7 @@
 		E11473D92CBE0F0B00318EE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -28,6 +28,11 @@ struct VoiceInkApp: App {
     private let transcriptionAutoCleanupService = TranscriptionAutoCleanupService.shared
     
     init() {
+        // Force zh-Hans localization regardless of system language
+        if let zhBundlePath = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj"),
+           let zhBundle = Bundle(path: zhBundlePath) {
+            object_setClass(Bundle.main, type(of: zhBundle))
+        }
         // Configure FluidAudio logging subsystem
         AppLogger.defaultSubsystem = "com.prakashjoshipax.voiceink.parakeet"
 
@@ -187,8 +192,8 @@ struct VoiceInkApp: App {
         .menuBarExtraStyle(.menu)
         
         #if DEBUG
-        WindowGroup("Debug") {
-            Button("Toggle Menu Bar Only") {
+        WindowGroup(L10n.Debug.windowTitle.text) {
+            Button(L10n.Debug.toggleMenuBarOnly.text) {
                 menuBarManager.isMenuBarOnly.toggle()
             }
         }
@@ -233,7 +238,7 @@ struct CheckForUpdatesView: View {
     @ObservedObject var updaterViewModel: UpdaterViewModel
     
     var body: some View {
-        Button("Check for Updates…", action: updaterViewModel.checkForUpdates)
+        Button(L10n.MenuBar.checkForUpdates.text, action: updaterViewModel.checkForUpdates)
             .disabled(!updaterViewModel.canCheckForUpdates)
     }
 }

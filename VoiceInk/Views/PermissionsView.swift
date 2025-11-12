@@ -212,9 +212,9 @@ struct PermissionsView: View {
                             .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
                     
                     VStack(spacing: 8) {
-                        Text("App Permissions")
+                        Text(L10n.Permissions.appPermissions.text)
                             .font(.system(size: 28, weight: .bold))
-                        Text("VoiceInk requires the following permissions to function properly")
+                        Text(L10n.Permissions.required.text)
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
@@ -227,10 +227,10 @@ struct PermissionsView: View {
                     // Keyboard Shortcut Permission
                     PermissionCard(
                         icon: "keyboard",
-                        title: "Keyboard Shortcut",
-                        description: "Set up a keyboard shortcut to use VoiceInk anywhere",
+                        title: L10n.Permissions.keyboardShortcut.string,
+                        description: L10n.Permissions.shortcutDescription.string,
                         isGranted: hotkeyManager.selectedHotkey1 != .none,
-                        buttonTitle: "Configure Shortcut",
+                        buttonTitle: L10n.Permissions.configureShortcut.string,
                         buttonAction: {
                             NotificationCenter.default.post(
                                 name: .navigateToDestination,
@@ -244,10 +244,10 @@ struct PermissionsView: View {
                     // Audio Permission
                     PermissionCard(
                         icon: "mic",
-                        title: "Microphone Access",
-                        description: "Allow VoiceInk to record your voice for transcription",
+                        title: L10n.Permissions.microphoneAccess.string,
+                        description: L10n.Permissions.microphoneDescription.string,
                         isGranted: permissionManager.audioPermissionStatus == .authorized,
-                        buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? "Request Permission" : "Open System Settings",
+                        buttonTitle: permissionManager.audioPermissionStatus == .notDetermined ? L10n.Permissions.requestPermission.string : L10n.Permissions.openSystemSettings.string,
                         buttonAction: {
                             if permissionManager.audioPermissionStatus == .notDetermined {
                                 permissionManager.requestAudioPermission()
@@ -263,27 +263,27 @@ struct PermissionsView: View {
                     // Accessibility Permission
                     PermissionCard(
                         icon: "hand.raised",
-                        title: "Accessibility Access",
-                        description: "Allow VoiceInk to paste transcribed text directly at your cursor position",
+                        title: L10n.Permissions.accessibilityAccess.string,
+                        description: L10n.Permissions.accessibilityDescription.string,
                         isGranted: permissionManager.isAccessibilityEnabled,
-                        buttonTitle: "Open System Settings",
+                        buttonTitle: L10n.Permissions.openSystemSettings.string,
                         buttonAction: {
                             if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
                                 NSWorkspace.shared.open(url)
                             }
                         },
                         checkPermission: { permissionManager.checkAccessibilityPermissions() },
-                        infoTipTitle: "Accessibility Access",
-                        infoTipMessage: "VoiceInk uses Accessibility permissions to paste the transcribed text directly into other applications at your cursor's position. This allows for a seamless dictation experience across your Mac."
+                        infoTipTitle: L10n.Permissions.accessibilityAccess.string,
+                        infoTipMessage: L10n.Permissions.accessibilityInfo.string
                     )
                     
                     // Screen Recording Permission
                     PermissionCard(
                         icon: "rectangle.on.rectangle",
-                        title: "Screen Recording Access",
-                        description: "Allow VoiceInk to understand context from your screen for transcript Enhancement",
+                        title: L10n.Permissions.screenRecordingAccess.string,
+                        description: L10n.Permissions.screenRecordingDescription.string,
                         isGranted: permissionManager.isScreenRecordingEnabled,
-                        buttonTitle: "Request Permission",
+                        buttonTitle: L10n.Permissions.requestPermission.string,
                         buttonAction: {
                             permissionManager.requestScreenRecordingPermission()
                             // After requesting, open system preferences as fallback
@@ -292,8 +292,8 @@ struct PermissionsView: View {
                             }
                         },
                         checkPermission: { permissionManager.checkScreenRecordingPermission() },
-                        infoTipTitle: "Screen Recording Access",
-                        infoTipMessage: "VoiceInk captures on-screen text to understand the context of your voice input, which significantly improves transcription accuracy. Your privacy is important: this data is processed locally and is not stored.",
+                        infoTipTitle: L10n.Permissions.screenRecordingAccess.string,
+                        infoTipMessage: L10n.Permissions.screenRecordingInfo.string,
                         infoTipLink: "https://tryvoiceink.com/docs/contextual-awareness"
                     )
                 }
