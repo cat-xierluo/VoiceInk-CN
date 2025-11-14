@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VoiceInkButton: View {
-    let title: String
+    let title: LocalizedStringKey
     let action: () -> Void
     var isDisabled: Bool = false
     
@@ -31,16 +31,16 @@ struct PowerModeEmptyStateView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.secondary)
             
-            Text("No Power Modes")
+            Text(L10n.PowerMode.noPowerModes.text)
                 .font(.title2)
                 .fontWeight(.semibold)
             
-            Text("Add customized power modes for different contexts")
+            Text(L10n.PowerMode.addPowerModesDescription.text)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             
             VoiceInkButton(
-                title: "Add New Power Mode",
+                title: L10n.PowerMode.Configuration.addNew.text,
                 action: action
             )
             .frame(maxWidth: 250)
@@ -86,18 +86,18 @@ struct ConfigurationRow: View {
         return enhancementService.allPrompts.first { $0.id == uuid }
     }
     
-    private var selectedModel: String? {
+    private var selectedModelLabel: String? {
         if let modelName = config.selectedTranscriptionModelName,
            let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }) {
             return model.displayName
         }
-        return "Default"
+        return nil
     }
     
-    private var selectedLanguage: String? {
+    private var selectedLanguageLabel: String? {
         if let langCode = config.selectedLanguage {
-            if langCode == "auto" { return "Auto" }
-            if langCode == "en" { return "English" }
+            if langCode == "auto" { return L10n.PowerMode.autodetected.string }
+            if langCode == "en" { return Locale.current.localizedString(forLanguageCode: "en") ?? "English" }
             
             if let modelName = config.selectedTranscriptionModelName,
                let model = whisperState.allAvailableModels.first(where: { $0.name == modelName }),
@@ -106,20 +106,32 @@ struct ConfigurationRow: View {
             }
             return langCode.uppercased()
         }
-        return "Default"
+        return nil
     }
     
     private var appCount: Int { return config.appConfigs?.count ?? 0 }
     private var websiteCount: Int { return config.urlConfigs?.count ?? 0 }
     
-    private var websiteText: String {
-        if websiteCount == 0 { return "" }
-        return websiteCount == 1 ? "1 Website" : "\(websiteCount) Websites"
+    private var websiteText: String? {
+        switch websiteCount {
+        case 0:
+            return nil
+        case 1:
+            return L10n.PowerMode.Configuration.singleWebsite.string
+        default:
+            return L10n.PowerMode.Configuration.multipleWebsites.format(websiteCount)
+        }
     }
     
-    private var appText: String {
-        if appCount == 0 { return "" }
-        return appCount == 1 ? "1 App" : "\(appCount) Apps"
+    private var appText: String? {
+        switch appCount {
+        case 0:
+            return nil
+        case 1:
+            return L10n.PowerMode.Configuration.singleApp.string
+        default:
+            return L10n.PowerMode.Configuration.multipleApps.format(appCount)
+        }
     }
     
     private var extraAppsCount: Int {
@@ -148,7 +160,7 @@ struct ConfigurationRow: View {
                             .font(.system(size: 15, weight: .semibold))
                         
                         if config.isDefault {
-                            Text("Default")
+                            Text(L10n.PowerMode.`default`.text)
                                 .font(.system(size: 11, weight: .medium))
                                 .padding(.horizontal, 6)
                                 .padding(.vertical, 2)
@@ -158,7 +170,7 @@ struct ConfigurationRow: View {
                     }
                     
                     HStack(spacing: 12) {
-                        if appCount > 0 {
+                        if let appText {
                             HStack(spacing: 4) {
                                 Image(systemName: "app.fill")
                                     .font(.system(size: 10))
@@ -167,7 +179,7 @@ struct ConfigurationRow: View {
                             }
                         }
                         
-                        if websiteCount > 0 {
+                        if let websiteText {
                             HStack(spacing: 4) {
                                 Image(systemName: "globe")
                                     .font(.system(size: 10))
@@ -191,12 +203,12 @@ struct ConfigurationRow: View {
             .padding(.vertical, 12)
             .padding(.horizontal, 14)
             
-            if selectedModel != nil || selectedLanguage != nil || config.isAIEnhancementEnabled || config.isAutoSendEnabled {
+            if selectedModelLabel != nil || selectedLanguageLabel != nil || config.isAIEnhancementEnabled || config.isAutoSendEnabled {
                 Divider()
                     .padding(.horizontal, 16)
                 
                 HStack(spacing: 8) {
-                    if let model = selectedModel, model != "Default" {
+                    if let model = selectedModelLabel {
                         HStack(spacing: 4) {
                             Image(systemName: "waveform")
                                 .font(.system(size: 10))
@@ -213,7 +225,7 @@ struct ConfigurationRow: View {
                         )
                     }
                     
-                    if let language = selectedLanguage, language != "Default" {
+                    if let language = selectedLanguageLabel {
                         HStack(spacing: 4) {
                             Image(systemName: "globe")
                                 .font(.system(size: 10))
@@ -251,7 +263,7 @@ struct ConfigurationRow: View {
                         HStack(spacing: 4) {
                             Image(systemName: "keyboard")
                                 .font(.system(size: 10))
-                            Text("Auto Send")
+                            Text(L10n.PowerMode.autoSend.text)
                                 .font(.caption)
                         }
                         .padding(.horizontal, 8)
@@ -268,7 +280,7 @@ struct ConfigurationRow: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "camera.viewfinder")
                                     .font(.system(size: 10))
-                                Text("Context Awareness")
+                                Text(L10n.PowerMode.contextAwareness.text)
                                     .font(.caption)
                             }
                             .padding(.horizontal, 8)
@@ -284,7 +296,7 @@ struct ConfigurationRow: View {
                         HStack(spacing: 4) {
                             Image(systemName: "sparkles")
                                 .font(.system(size: 10))
-                            Text(selectedPrompt?.title ?? "AI")
+                            Text(selectedPrompt?.title ?? L10n.PowerMode.aiLabel.string)
                                 .font(.caption)
                         }
                         .padding(.horizontal, 8)
@@ -315,22 +327,22 @@ struct ConfigurationRow: View {
         Button(action: {
             onEditConfig(config)
         }) {
-            Label("Edit", systemImage: "pencil")
+            Label(L10n.Common.edit.text, systemImage: "pencil")
         }
         Button(role: .destructive, action: {
             let alert = NSAlert()
-            alert.messageText = "Delete Power Mode?"
-            alert.informativeText = "Are you sure you want to delete the '\(config.name)' power mode? This action cannot be undone."
+            alert.messageText = L10n.PowerMode.Configuration.deleteTitle.string
+            alert.informativeText = L10n.PowerMode.Configuration.deleteMessage.format(config.name)
             alert.alertStyle = .warning
-            alert.addButton(withTitle: "Delete")
-            alert.addButton(withTitle: "Cancel")
+            alert.addButton(withTitle: L10n.Common.delete.string)
+            alert.addButton(withTitle: L10n.Common.cancel.string)
             alert.buttons[0].hasDestructiveAction = true
             
             if alert.runModal() == .alertFirstButtonReturn {
                 powerModeManager.removeConfiguration(with: config.id)
             }
         }) {
-            Label("Delete", systemImage: "trash")
+            Label(L10n.Common.delete.text, systemImage: "trash")
         }
     }
     }

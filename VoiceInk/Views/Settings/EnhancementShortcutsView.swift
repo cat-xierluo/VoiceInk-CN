@@ -3,18 +3,18 @@ import KeyboardShortcuts
 
 struct EnhancementShortcutsView: View {
     @ObservedObject private var shortcutSettings = EnhancementShortcutSettings.shared
-    
+
     var body: some View {
         VStack(spacing: 12) {
             ShortcutRow(
-                title: "Toggle AI Enhancement",
-                description: "Quickly enable or disable enhancement while recording.",
+                title: L10n.SettingsExtended.EnhancementShortcuts.toggleTitle.string,
+                description: L10n.SettingsExtended.EnhancementShortcuts.toggleDescription.string,
                 keyDisplay: ["⌘", "E"],
                 isOn: $shortcutSettings.isToggleEnhancementShortcutEnabled
             )
             ShortcutRow(
-                title: "Switch Enhancement Prompt",
-                description: "Switch between your saved prompts without touching the UI. Use ⌘1–⌘0 to activate the corresponding prompt in the order they are saved.",
+                title: L10n.SettingsExtended.EnhancementShortcuts.switchTitle.string,
+                description: L10n.SettingsExtended.EnhancementShortcuts.switchDescription.string,
                 keyDisplay: ["⌘", "1 – 0"]
             )
         }
@@ -39,10 +39,10 @@ struct EnhancementShortcutsSection: View {
                         .frame(width: 24, height: 24)
                     
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Enhancement Shortcuts")
+                        Text(L10n.SettingsExtended.EnhancementShortcuts.title.text)
                             .font(.headline)
                             .foregroundColor(.primary)
-                        Text("Keep enhancement prompts handy")
+                        Text(L10n.SettingsExtended.EnhancementShortcuts.description.text)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -66,8 +66,8 @@ struct EnhancementShortcutsSection: View {
                 
                 VStack(alignment: .leading, spacing: 16) {
                     EnhancementShortcutsView()
-                    
-                    Text("Enhancement shortcuts are available only when the recorder is visible and VoiceInk is running.")
+
+                    Text(L10n.SettingsExtended.EnhancementShortcuts.availabilityNote.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

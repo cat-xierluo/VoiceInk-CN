@@ -7,7 +7,8 @@ struct EmojiPickerView: View {
     @State private var newEmojiText: String = ""
     @State private var isAddingCustomEmoji: Bool = false
     @FocusState private var isEmojiTextFieldFocused: Bool
-    @State private var inputFeedbackMessage: String = ""
+    @State private var inputFeedbackMessage: LocalizedStringKey?
+    @State private var isFeedbackError: Bool = false
     @State private var showingEmojiInUseAlert = false
     @State private var emojiForAlert: String? = nil
     private let columns: [GridItem] = [GridItem(.adaptive(minimum: 44), spacing: 10)]
@@ -26,7 +27,7 @@ struct EmojiPickerView: View {
                             }
                         ) {
                             selectedEmoji = emoji
-                            inputFeedbackMessage = ""
+                            inputFeedbackMessage = nil
                             isPresented = false
                         }
                     }
@@ -34,7 +35,7 @@ struct EmojiPickerView: View {
                     AddEmojiButton {
                         isAddingCustomEmoji.toggle()
                         newEmojiText = ""
-                        inputFeedbackMessage = ""
+                        inputFeedbackMessage = nil
                         if isAddingCustomEmoji {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                 isEmojiTextFieldFocused = true
@@ -55,41 +56,46 @@ struct EmojiPickerView: View {
                             .frame(maxWidth: 70)
                             .focused($isEmojiTextFieldFocused)
                             .onChange(of: newEmojiText) { _, newValue in
-                                inputFeedbackMessage = ""
+                                inputFeedbackMessage = nil
+                                isFeedbackError = false
                                 let cleaned = newValue.firstValidEmojiCharacter()
                                 if newEmojiText != cleaned {
                                     newEmojiText = cleaned
                                 }
                                 if !newEmojiText.isEmpty && emojiManager.allEmojis.contains(newEmojiText) {
-                                    inputFeedbackMessage = "Emoji already exists!"
+                                    inputFeedbackMessage = L10n.PowerMode.emojiExists.text
+                                    isFeedbackError = true
                                 } else if !newEmojiText.isEmpty && !newEmojiText.isValidEmoji {
-                                    inputFeedbackMessage = "Invalid emoji."
+                                    inputFeedbackMessage = L10n.PowerMode.emojiInvalid.text
+                                    isFeedbackError = true
                                 } else {
-                                    inputFeedbackMessage = ""
+                                    inputFeedbackMessage = nil
+                                    isFeedbackError = false
                                 }
                             }
                             .onSubmit(attemptAddCustomEmoji)
 
-                        Button("Add") {
+                        Button(L10n.Common.add.text) {
                             attemptAddCustomEmoji()
                         }
                         .buttonStyle(.borderedProminent)
                         .disabled(newEmojiText.isEmpty || !newEmojiText.isValidEmoji || emojiManager.allEmojis.contains(newEmojiText))
 
-                        Button("Cancel") {
+                        Button(L10n.Common.cancel.text) {
                             isAddingCustomEmoji = false
                             newEmojiText = ""
-                            inputFeedbackMessage = ""
+                            inputFeedbackMessage = nil
+                            isFeedbackError = false
                         }
                         .buttonStyle(.bordered)
                     }
-                    if !inputFeedbackMessage.isEmpty {
-                        Text(inputFeedbackMessage)
+                    if let feedback = inputFeedbackMessage {
+                        Text(feedback)
                             .font(.caption)
-                            .foregroundColor(inputFeedbackMessage == "Emoji already exists!" || inputFeedbackMessage == "Invalid emoji." ? .red : .secondary)
+                            .foregroundColor(isFeedbackError ? .red : .secondary)
                             .transition(.opacity)
                     }
-                    Text("Tip: Use ⌃⌘Space for emoji picker.")
+                    Text(L10n.PowerMode.emojiPickerTip.text)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                         .padding(.top, 2)
@@ -101,35 +107,40 @@ struct EmojiPickerView: View {
         .padding()
         .background(.regularMaterial)
         .frame(minWidth: 260, idealWidth: 300, maxWidth: 320, minHeight: 150, idealHeight: 280, maxHeight: 350)
-        .alert("Emoji in Use", isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
-            Button("OK", role: .cancel) { }
+        .alert(L10n.PowerMode.emojiInUseTitle.text, isPresented: $showingEmojiInUseAlert, presenting: emojiForAlert) { emojiStr in
+            Button(L10n.Common.ok.text, role: .cancel) { }
         } message: { emojiStr in
-            Text("The emoji \"\(emojiStr)\" is currently used by one or more Power Modes and cannot be removed.")
+            Text(L10n.PowerMode.emojiInUseMessage.format(emojiStr))
         }
     }
 
     private func attemptAddCustomEmoji() {
         let trimmedEmoji = newEmojiText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedEmoji.isEmpty else {
-            inputFeedbackMessage = "Emoji cannot be empty."
+            inputFeedbackMessage = L10n.PowerMode.emojiEmpty.text
+            isFeedbackError = true
             return
         }
         guard trimmedEmoji.isValidEmoji else {
-            inputFeedbackMessage = "Invalid emoji character."
+            inputFeedbackMessage = L10n.PowerMode.emojiInvalidCharacter.text
+            isFeedbackError = true
             return
         }
         guard !emojiManager.allEmojis.contains(trimmedEmoji) else {
-            inputFeedbackMessage = "Emoji already exists!"
+            inputFeedbackMessage = L10n.PowerMode.emojiExists.text
+            isFeedbackError = true
             return
         }
 
         if emojiManager.addCustomEmoji(trimmedEmoji) {
             selectedEmoji = trimmedEmoji
-            inputFeedbackMessage = ""
+            inputFeedbackMessage = nil
+            isFeedbackError = false
             isAddingCustomEmoji = false
             newEmojiText = ""
         } else {
-            inputFeedbackMessage = "Could not add emoji."
+            inputFeedbackMessage = L10n.PowerMode.emojiAddFailed.text
+            isFeedbackError = true
         }
     }
 
@@ -192,7 +203,7 @@ private struct AddEmojiButton: View {
 
     var body: some View {
         Button(action: action) {
-            Label("Add Emoji", systemImage: "plus.circle.fill")
+            Label(L10n.PowerMode.addEmoji.text, systemImage: "plus.circle.fill")
                 .font(.title2)
                 .labelStyle(.iconOnly)
                 .foregroundColor(.accentColor)
@@ -207,7 +218,7 @@ private struct AddEmojiButton: View {
                 )
         }
         .buttonStyle(.plain)
-        .help("Add custom emoji")
+        .help(L10n.PowerMode.addCustomEmoji.text)
     }
 }
 

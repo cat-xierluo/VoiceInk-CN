@@ -5,6 +5,14 @@ enum ContentTab: String, CaseIterable {
     case original = "Original"
     case enhanced = "Enhanced"
     case aiRequest = "AI Request"
+
+    var displayName: String {
+        switch self {
+        case .original: return L10n.Transcription.original.string
+        case .enhanced: return L10n.Transcription.enhanced.string
+        case .aiRequest: return L10n.Transcription.aiRequest.string
+        }
+    }
 }
 
 struct TranscriptionCard: View {
@@ -77,7 +85,7 @@ struct TranscriptionCard: View {
 
             if let systemMsg = transcription.aiRequestSystemMessage, !systemMsg.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("System Prompt")
+                    Text(L10n.Transcription.systemPrompt.text)
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(.secondary)
                     Text(systemMsg)
@@ -89,7 +97,7 @@ struct TranscriptionCard: View {
 
             if let userMsg = transcription.aiRequestUserMessage, !userMsg.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("User Message")
+                    Text(L10n.Transcription.userMessage.text)
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(.secondary)
                     Text(userMsg)
@@ -206,25 +214,25 @@ struct TranscriptionCard: View {
                             ) {
                                 metadataRow(
                                     icon: "bolt.fill",
-                                    label: "Power Mode",
+                                    label: L10n.Transcription.powerMode.text,
                                     value: powerModeValue
                                 )
                             }
-                            metadataRow(icon: "hourglass", label: "Audio Duration", value: formatTiming(transcription.duration))
+                            metadataRow(icon: "hourglass", label: L10n.Transcription.audioDuration.text, value: formatTiming(transcription.duration))
                             if let modelName = transcription.transcriptionModelName {
-                                metadataRow(icon: "cpu.fill", label: "Transcription Model", value: modelName)
+                                metadataRow(icon: "cpu.fill", label: L10n.Transcription.transcriptionModel.text, value: modelName)
                             }
                             if let aiModel = transcription.aiEnhancementModelName {
-                                metadataRow(icon: "sparkles", label: "Enhancement Model", value: aiModel)
+                                metadataRow(icon: "sparkles", label: L10n.Transcription.enhancementModel.text, value: aiModel)
                             }
                             if let promptName = transcription.promptName {
-                                metadataRow(icon: "text.bubble.fill", label: "Prompt Used", value: promptName)
+                                metadataRow(icon: "text.bubble.fill", label: L10n.Transcription.promptUsed.text, value: promptName)
                             }
                             if let duration = transcription.transcriptionDuration {
-                                metadataRow(icon: "clock.fill", label: "Transcription Time", value: formatTiming(duration))
+                                metadataRow(icon: "clock.fill", label: L10n.Transcription.transcriptionTime.text, value: formatTiming(duration))
                             }
                             if let duration = transcription.enhancementDuration {
-                                metadataRow(icon: "clock.fill", label: "Enhancement Time", value: formatTiming(duration))
+                                metadataRow(icon: "clock.fill", label: L10n.Transcription.enhancementTime.text, value: formatTiming(duration))
                             }
                         }
                     }
@@ -245,20 +253,20 @@ struct TranscriptionCard: View {
                 Button {
                     let _ = ClipboardManager.copyToClipboard(enhancedText)
                 } label: {
-                    Label("Copy Enhanced", systemImage: "doc.on.doc")
+                    Label(L10n.Transcription.copyEnhanced.text, systemImage: "doc.on.doc")
                 }
             }
 
             Button {
                 let _ = ClipboardManager.copyToClipboard(transcription.text)
             } label: {
-                Label("Copy Original", systemImage: "doc.on.doc")
+                Label(L10n.Transcription.copyOriginal.text, systemImage: "doc.on.doc")
             }
 
             Button(role: .destructive) {
                 onDelete()
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label(L10n.Common.delete.text, systemImage: "trash")
             }
         }
         .onChange(of: isExpanded) { oldValue, newValue in
@@ -290,7 +298,7 @@ struct TranscriptionCard: View {
         return String(format: "%dm %.0fs", minutes, seconds)
     }
     
-    private func metadataRow(icon: String, label: String, value: String) -> some View {
+    private func metadataRow(icon: String, label: LocalizedStringKey, value: String) -> some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 13, weight: .medium))

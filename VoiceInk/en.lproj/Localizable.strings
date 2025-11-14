@@ -1395,7 +1395,7 @@
 /* Metrics */
 "No Transcriptions Yet" = "No Transcriptions Yet";
 "Start your first recording to unlock value insights." = "Start your first recording to unlock value insights.";
-"You have saved %@ with VoiceInk" = "You have saved ";
+"You have saved" = "You have saved ";
 " with VoiceInk" = " with VoiceInk";
 "Welcome to VoiceInk" = "Welcome to VoiceInk";
 "Complete the setup to get started" = "Complete the setup to get started";

@@ -40,7 +40,7 @@ struct ParakeetModelCardRowView: View {
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(Color(.labelColor))
             
-            Text("Experimental")
+            Text(L10n.AIModels.experimental.text)
                 .font(.system(size: 11, weight: .medium))
                 .padding(.horizontal, 6)
                 .padding(.vertical, 2)
@@ -55,14 +55,14 @@ struct ParakeetModelCardRowView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isDownloaded {
-                Text("Downloaded")
+                Text(L10n.AIModels.downloaded.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -74,15 +74,15 @@ struct ParakeetModelCardRowView: View {
 
     private var metadataSection: some View {
         HStack(spacing: 12) {
-            Label(model.language, systemImage: "globe")
+            Label(localizedLanguageLabel, systemImage: "globe")
             Label(model.size, systemImage: "internaldrive")
             HStack(spacing: 3) {
-                Text("Speed")
+                Text(L10n.AIModels.speed.text)
                 progressDotsWithNumber(value: model.speed * 10)
             }
             .fixedSize(horizontal: true, vertical: false)
             HStack(spacing: 3) {
-                Text("Accuracy")
+                Text(L10n.AIModels.accuracy.text)
                 progressDotsWithNumber(value: model.accuracy * 10)
             }
             .fixedSize(horizontal: true, vertical: false)
@@ -116,7 +116,7 @@ struct ParakeetModelCardRowView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isDownloaded {
@@ -125,7 +125,7 @@ struct ParakeetModelCardRowView: View {
                         await whisperState.setDefaultTranscriptionModel(model)
                     }
                 }) {
-                    Text("Set as Default")
+                    Text(L10n.AIModels.setAsDefault.text)
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -137,7 +137,7 @@ struct ParakeetModelCardRowView: View {
                     }
                 }) {
                     HStack(spacing: 4) {
-                        Text(isDownloading ? "Downloading..." : "Download")
+                        Text(isDownloading ? L10n.AIModels.downloading.text : L10n.AIModels.download.text)
                         Image(systemName: "arrow.down.circle")
                     }
                     .font(.system(size: 12, weight: .medium))
@@ -155,13 +155,13 @@ struct ParakeetModelCardRowView: View {
                     Button(action: {
                          whisperState.deleteParakeetModel(model)
                     }) {
-                        Label("Delete Model", systemImage: "trash")
+                        Label(L10n.AIModels.deleteModel.text, systemImage: "trash")
                     }
                     
                     Button {
                         whisperState.showParakeetModelInFinder(model)
                     } label: {
-                        Label("Show in Finder", systemImage: "folder")
+                        Label(L10n.AIModels.showInFinder.text, systemImage: "folder")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -172,5 +172,9 @@ struct ParakeetModelCardRowView: View {
                 .frame(width: 20, height: 20)
             }
         }
+    }
+    
+    private var localizedLanguageLabel: LocalizedStringKey {
+        model.isMultilingualModel ? L10n.AIModels.languageMultilingualShort.text : L10n.AIModels.languageEnglishOnlyShort.text
     }
 }

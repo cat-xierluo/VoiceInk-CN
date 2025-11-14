@@ -1,7 +1,7 @@
 /* VoiceInk 中文本地化字符串 */
 
 /* 主界面导航 */
-"Dashboard" = "仪表板";
+"Dashboard" = "仪表盘";
 "Transcribe Audio" = "转录音频";
 "History" = "历史记录";
 "AI Models" = "AI 模型";
@@ -1629,7 +1629,7 @@
 /* Metrics */
 "No Transcriptions Yet" = "尚无转录";
 "Start your first recording to unlock value insights." = "开始您的第一次录音以解锁价值洞察。";
-"You have saved %@ with VoiceInk" = "您使用 VoiceInk 已节省 ";
+"You have saved" = "您使用 VoiceInk 已节省 ";
 " with VoiceInk" = " 的时间";
 "Welcome to VoiceInk" = "欢迎使用 VoiceInk";
 "Complete the setup to get started" = "完成设置即可开始使用";

@@ -42,32 +42,32 @@ struct OnboardingPermissionsView: View {
     
     private let permissions: [OnboardingPermission] = [
         OnboardingPermission(
-            title: "Microphone Access",
-            description: "Enable your microphone to start speaking and converting your voice to text instantly.",
+            title: L10n.Onboarding.Permissions.Microphone.title.string,
+            description: L10n.Onboarding.Permissions.Microphone.description.string,
             icon: "waveform",
             type: .microphone
         ),
         OnboardingPermission(
-            title: "Microphone Selection",
-            description: "Select the audio input device you want to use with VoiceInk.",
+            title: L10n.Onboarding.Permissions.MicrophoneSelection.title.string,
+            description: L10n.Onboarding.Permissions.MicrophoneSelection.description.string,
             icon: "headphones",
             type: .audioDeviceSelection
         ),
         OnboardingPermission(
-            title: "Accessibility Access",
-            description: "Allow VoiceInk to help you type anywhere in your Mac.",
+            title: L10n.Onboarding.Permissions.Accessibility.title.string,
+            description: L10n.Onboarding.Permissions.Accessibility.description.string,
             icon: "accessibility",
             type: .accessibility
         ),
         OnboardingPermission(
-            title: "Screen Recording",
-            description: "This helps to improve the accuracy of transcription.",
+            title: L10n.Onboarding.Permissions.ScreenRecording.title.string,
+            description: L10n.Onboarding.Permissions.ScreenRecording.description.string,
             icon: "rectangle.inset.filled.and.person.filled",
             type: .screenRecording
         ),
         OnboardingPermission(
-            title: "Keyboard Shortcut",
-            description: "Set up a keyboard shortcut to quickly access VoiceInk from anywhere.",
+            title: L10n.Onboarding.Permissions.KeyboardShortcut.title.string,
+            description: L10n.Onboarding.Permissions.KeyboardShortcut.description.string,
             icon: "keyboard",
             type: .keyboardShortcut
         )
@@ -125,8 +125,8 @@ struct OnboardingPermissionsView: View {
                                     
                                     if permissions[currentPermissionIndex].type == .screenRecording {
                                         InfoTip(
-                                            title: "Screen Recording Access",
-                                            message: "VoiceInk captures on-screen text to understand the context of your voice input, which significantly improves transcription accuracy. Your privacy is important: this data is processed locally and is not stored.",
+                                            title: L10n.Onboarding.Permissions.ScreenRecording.infoTipTitle.string,
+                                            message: L10n.Onboarding.Permissions.ScreenRecording.infoTipMessage.string,
                                             learnMoreURL: "https://tryvoiceink.com/docs/contextual-awareness"
                                         )
                                     }
@@ -150,17 +150,17 @@ struct OnboardingPermissionsView: View {
                                                 .font(.system(size: 36))
                                                 .symbolRenderingMode(.hierarchical)
                                                 .foregroundStyle(.secondary)
-                                            
-                                            Text("No microphones found")
+
+                                            Text(L10n.Onboarding.Permissions.MicrophoneSelection.noMicrophonesFound.string)
                                                 .font(.subheadline)
                                                 .foregroundStyle(.secondary)
                                         }
                                         .padding()
                                     } else {
                                         styledPicker(
-                                            label: "Microphone:",
+                                            label: L10n.Onboarding.Permissions.MicrophoneSelection.microphoneLabel.string,
                                             selectedValue: audioDeviceManager.selectedDeviceID ?? 0,
-                                            displayValue: audioDeviceManager.availableDevices.first { $0.id == audioDeviceManager.selectedDeviceID }?.name ?? "Select Device",
+                                            displayValue: audioDeviceManager.availableDevices.first { $0.id == audioDeviceManager.selectedDeviceID }?.name ?? L10n.Onboarding.Permissions.MicrophoneSelection.selectDevice.string,
                                             options: audioDeviceManager.availableDevices.map { $0.id },
                                             optionDisplayName: { deviceId in
                                                 audioDeviceManager.availableDevices.first { $0.id == deviceId }?.name ?? "Unknown Device"
@@ -194,7 +194,7 @@ struct OnboardingPermissionsView: View {
                                         }
                                     }
                                     
-                                    Text("For best results, using your Mac's built-in microphone is recommended.")
+                                    Text(L10n.Onboarding.Permissions.MicrophoneSelection.recommendedTip.string)
                                         .font(.caption)
                                         .foregroundColor(.white.opacity(0.7))
                                         .multilineTextAlignment(.center)
@@ -234,10 +234,10 @@ struct OnboardingPermissionsView: View {
                             }
                             .buttonStyle(ScaleButtonStyle())
                             
-                            if !permissionStates[currentPermissionIndex] && 
+                            if !permissionStates[currentPermissionIndex] &&
                                permissions[currentPermissionIndex].type != .keyboardShortcut &&
                                permissions[currentPermissionIndex].type != .audioDeviceSelection {
-                                SkipButton(text: "Skip for now") {
+                                SkipButton(text: L10n.Onboarding.Permissions.Buttons.skipForNow.string) {
                                     moveToNext()
                                 }
                             }
@@ -401,11 +401,15 @@ struct OnboardingPermissionsView: View {
     private func getButtonTitle() -> String {
         switch permissions[currentPermissionIndex].type {
         case .keyboardShortcut:
-            return permissionStates[currentPermissionIndex] ? "Continue" : "Set Shortcut"
+            return permissionStates[currentPermissionIndex] ?
+                L10n.Onboarding.Permissions.Buttons.continue.string :
+                L10n.Onboarding.Permissions.Buttons.setShortcut.string
         case .audioDeviceSelection:
-            return "Continue"
+            return L10n.Onboarding.Permissions.Buttons.continue.string
         default:
-            return permissionStates[currentPermissionIndex] ? "Continue" : "Enable Access"
+            return permissionStates[currentPermissionIndex] ?
+                L10n.Onboarding.Permissions.Buttons.continue.string :
+                L10n.Onboarding.Permissions.Buttons.enableAccess.string
         }
     }
 
@@ -476,7 +480,7 @@ struct OnboardingPermissionsView: View {
     ) -> some View {
         VStack(spacing: 16) {
             styledPicker(
-                label: "Shortcut:",
+                label: L10n.Onboarding.Permissions.KeyboardShortcut.shortcutLabel.string,
                 selectedValue: binding.wrappedValue,
                 displayValue: binding.wrappedValue.displayName,
                 options: HotkeyManager.HotkeyOption.allCases.filter { $0 != .none && $0 != .custom },

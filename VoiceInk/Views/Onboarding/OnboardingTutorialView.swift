@@ -23,11 +23,11 @@ struct OnboardingTutorialView: View {
                     VStack(alignment: .leading, spacing: 40) {
                         // Title and description
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Try It Out!")
+                            Text(L10n.Onboarding.Tutorial.tryItOut.text)
                                 .font(.system(size: 44, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
-                            
-                            Text("Let's test your VoiceInk setup.")
+
+                            Text(L10n.Onboarding.Tutorial.testSetup.text)
                                 .font(.system(size: 24, weight: .medium, design: .rounded))
                                 .foregroundColor(.white.opacity(0.7))
                                 .lineSpacing(4)
@@ -36,11 +36,11 @@ struct OnboardingTutorialView: View {
                         // Keyboard shortcut display
                         VStack(alignment: .leading, spacing: 20) {
                             HStack {
-                                Text("Your Shortcut")
+                                Text(L10n.Onboarding.Tutorial.yourShortcut.text)
                                     .font(.system(size: 28, weight: .semibold, design: .rounded))
                                     .foregroundColor(.white)
-                                
-                                
+
+
                             }
                             
                             if hotkeyManager.selectedHotkey1 == .custom,
@@ -71,7 +71,7 @@ struct OnboardingTutorialView: View {
                         Button(action: {
                             hasCompletedOnboarding = true
                         }) {
-                            Text("Complete Setup")
+                            Text(L10n.Onboarding.Tutorial.completeSetup.text)
                                 .font(.system(size: 18, weight: .semibold, design: .rounded))
                                 .foregroundColor(.white)
                                 .frame(width: 200, height: 50)
@@ -81,8 +81,8 @@ struct OnboardingTutorialView: View {
                         .buttonStyle(ScaleButtonStyle())
                         .opacity(transcribedText.isEmpty ? 0.5 : 1)
                         .disabled(transcribedText.isEmpty)
-                        
-                        SkipButton(text: "Skip for now") {
+
+                        SkipButton(text: L10n.Onboarding.Tutorial.skipForNow.string) {
                             hasCompletedOnboarding = true
                         }
                     }
@@ -128,8 +128,8 @@ struct OnboardingTutorialView: View {
                                     Image(systemName: "wand.and.stars")
                                         .font(.system(size: 36))
                                         .foregroundColor(.white.opacity(0.3))
-                                    
-                                    Text("Click here and start speaking...")
+
+                                    Text(L10n.Onboarding.Tutorial.clickToSpeak.text)
                                         .font(.system(size: 28, weight: .semibold, design: .rounded))
                                         .foregroundColor(.white.opacity(0.5))
                                         .multilineTextAlignment(.center)
@@ -166,17 +166,17 @@ struct OnboardingTutorialView: View {
         }
     }
     
-    private func getInstructionText(for step: Int) -> String {
+    private func getInstructionText(for step: Int) -> LocalizedStringKey {
         switch step {
-        case 1: return "Click the text area on the right"
-        case 2: return "Press your shortcut key"
-        case 3: return "Speak something"
-        case 4: return "Press your shortcut key again"
-        default: return ""
+        case 1: return L10n.Onboarding.Tutorial.Instructions.step1.text
+        case 2: return L10n.Onboarding.Tutorial.Instructions.step2.text
+        case 3: return L10n.Onboarding.Tutorial.Instructions.step3.text
+        case 4: return L10n.Onboarding.Tutorial.Instructions.step4.text
+        default: return LocalizedStringKey("")
         }
     }
     
-    private func instructionStep(number: Int, text: String) -> some View {
+    private func instructionStep(number: Int, text: LocalizedStringKey) -> some View {
         HStack(spacing: 20) {
             Text("\(number)")
                 .font(.system(size: 20, weight: .bold, design: .rounded))

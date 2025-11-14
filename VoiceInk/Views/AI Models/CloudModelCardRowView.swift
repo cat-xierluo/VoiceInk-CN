@@ -91,21 +91,21 @@ struct CloudModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isConfiguredState {
-                Text("Configured")
+                Text(L10n.AIModels.configured.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color(.systemGreen).opacity(0.2)))
                     .foregroundColor(Color(.systemGreen))
             } else {
-                Text("Setup Required")
+                Text(L10n.AIModels.setupRequired.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -118,25 +118,25 @@ struct CloudModelCardView: View {
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Provider
-            Label(model.provider.rawValue, systemImage: "cloud")
+            Label(model.provider.localizedName, systemImage: "cloud")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Language
-            Label(model.language, systemImage: "globe")
+            Label(localizedLanguageLabel, systemImage: "globe")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
-            Label("Cloud Model", systemImage: "icloud")
+            Label(L10n.AIModels.cloudModel.text, systemImage: "icloud")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Accuracy
             HStack(spacing: 3) {
-                Text("Accuracy")
+                Text(L10n.AIModels.accuracy.text)
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -145,6 +145,10 @@ struct CloudModelCardView: View {
             .fixedSize(horizontal: true, vertical: false)
         }
         .lineLimit(1)
+    }
+    
+    private var localizedLanguageLabel: LocalizedStringKey {
+        model.isMultilingualModel ? L10n.AIModels.languageMultilingualShort.text : L10n.AIModels.languageEnglishOnlyShort.text
     }
     
     private var descriptionSection: some View {
@@ -159,12 +163,12 @@ struct CloudModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isConfiguredState {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+                    Text(L10n.AIModels.setAsDefault.text)
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -176,7 +180,7 @@ struct CloudModelCardView: View {
                     }
                 }) {
                     HStack(spacing: 4) {
-                        Text("Configure")
+                        Text(L10n.AIModels.configure.text)
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "gear")
                             .font(.system(size: 12, weight: .medium))
@@ -198,7 +202,7 @@ struct CloudModelCardView: View {
                     Button {
                         clearAPIKey()
                     } label: {
-                        Label("Remove API Key", systemImage: "trash")
+                        Label(L10n.AIModels.removeApiKey.text, systemImage: "trash")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -213,12 +217,15 @@ struct CloudModelCardView: View {
     
     private var configurationSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("API Key Configuration")
+            Text(L10n.AIModels.apiKeyConfig.text)
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(Color(.labelColor))
             
             HStack(spacing: 8) {
-                SecureField("Enter your \(model.provider.rawValue) API key", text: $apiKey)
+                SecureField(
+                    L10n.AIModels.enterProviderApiKey.format(model.provider.localizedName),
+                    text: $apiKey
+                )
                     .textFieldStyle(.roundedBorder)
                     .disabled(isVerifying)
                 
@@ -232,7 +239,7 @@ struct CloudModelCardView: View {
                             Image(systemName: verificationStatus == .success ? "checkmark" : "checkmark.shield")
                                 .font(.system(size: 12, weight: .medium))
                         }
-                        Text(isVerifying ? "Verifying..." : "Verify")
+                        Text(isVerifying ? L10n.AIModels.verifying.text : L10n.AIModels.verify.text)
                             .font(.system(size: 12, weight: .medium))
                     }
                     .foregroundColor(.white)
@@ -248,11 +255,11 @@ struct CloudModelCardView: View {
             }
             
             if verificationStatus == .failure {
-                Text("Invalid API key. Please check your key and try again.")
+                Text(L10n.AIModels.invalidAPIKey.text)
                     .font(.caption)
                     .foregroundColor(Color(.systemRed))
             } else if verificationStatus == .success {
-                Text("API key verified successfully!")
+                Text(L10n.AIModels.apiKeyVerified.text)
                     .font(.caption)
                     .foregroundColor(Color(.systemGreen))
             }

@@ -101,7 +101,7 @@ struct WordReplacementView: View {
             GroupBox {
                 HStack {
                     Label {
-                        Text("Define word replacements to automatically replace specific words or phrases")
+                        Text(L10n.DictionaryExtended.WordReplacement.title.text)
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -112,11 +112,11 @@ struct WordReplacementView: View {
                     }
                     
                     Spacer()
-                    
-                    Toggle("Enable", isOn: $manager.isEnabled)
+
+                    Toggle(L10n.DictionaryExtended.WordReplacement.enable.text, isOn: $manager.isEnabled)
                         .toggleStyle(.switch)
                         .labelsHidden()
-                        .help("Enable automatic word replacement after transcription")
+                        .help(L10n.DictionaryExtended.WordReplacement.enableDescription.text)
                 }
             }
             
@@ -124,7 +124,7 @@ struct WordReplacementView: View {
                 HStack(spacing: 16) {
                     Button(action: { toggleSort(for: .original) }) {
                         HStack(spacing: 4) {
-                            Text("Original")
+                            Text(L10n.DictionaryExtended.WordReplacement.original.text)
                                 .font(.headline)
                             
                             if sortMode == .originalAsc || sortMode == .originalDesc {
@@ -145,7 +145,7 @@ struct WordReplacementView: View {
                     
                     Button(action: { toggleSort(for: .replacement) }) {
                         HStack(spacing: 4) {
-                            Text("Replacement")
+                            Text(L10n.DictionaryExtended.WordReplacement.replacement.text)
                                 .font(.headline)
                             
                             if sortMode == .replacementAsc || sortMode == .replacementDesc {
@@ -218,17 +218,17 @@ struct EmptyStateView: View {
             Image(systemName: "text.word.spacing")
                 .font(.system(size: 32))
                 .foregroundColor(.secondary)
-            
-            Text("No Replacements")
+
+            Text(L10n.DictionaryExtended.WordReplacement.noReplacements.text)
                 .font(.headline)
-            
-            Text("Add word replacements to automatically replace text.")
+
+            Text(L10n.DictionaryExtended.WordReplacement.addDescription.text)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 250)
-            
-            Button("Add Replacement") {
+
+            Button(L10n.DictionaryExtended.WordReplacement.add.text) {
                 showAddModal = true
             }
             .buttonStyle(.borderedProminent)
@@ -250,20 +250,20 @@ struct AddReplacementSheet: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Button("Cancel", role: .cancel) {
+                Button(L10n.Common.cancel.text, role: .cancel) {
                     dismiss()
                 }
                 .buttonStyle(.borderless)
                 .keyboardShortcut(.escape, modifiers: [])
-                
+
                 Spacer()
-                
-                Text("Add Word Replacement")
+
+                Text(L10n.DictionaryExtended.WordReplacement.add.text)
                     .font(.headline)
-                
+
                 Spacer()
-                
-                Button("Add") {
+
+                Button(L10n.Common.add.text) {
                     addReplacement()
                 }
                 .buttonStyle(.borderedProminent)
@@ -280,7 +280,7 @@ struct AddReplacementSheet: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Description
-                    Text("Define a word or phrase to be automatically replaced.")
+                    Text(L10n.DictionaryExtended.WordReplacement.defineOriginal.text)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -292,19 +292,19 @@ struct AddReplacementSheet: View {
                         // Original Text Section
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
-                                Text("Original Text")
+                                Text(L10n.DictionaryExtended.WordReplacement.originalText.text)
                                     .font(.headline)
                                     .foregroundColor(.primary)
-                                
-                                Text("Required")
+
+                                Text(L10n.DictionaryExtended.WordReplacement.required.text)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            
-                            TextField("Enter word or phrase to replace (use commas for multiple)", text: $originalWord)
+
+                            TextField(L10n.DictionaryExtended.WordReplacement.enterPlaceholder.text, text: $originalWord)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.body)
-                            Text("Separate multiple originals with commas, e.g. Voicing, Voice ink, Voiceing")
+                            Text(L10n.DictionaryExtended.WordReplacement.separateExamples.text)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -313,11 +313,11 @@ struct AddReplacementSheet: View {
                         // Replacement Text Section
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
-                                Text("Replacement Text")
+                                Text(L10n.DictionaryExtended.WordReplacement.replacementText.text)
                                     .font(.headline)
                                     .foregroundColor(.primary)
-                                
-                                Text("Required")
+
+                                Text(L10n.DictionaryExtended.WordReplacement.required.text)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -338,29 +338,29 @@ struct AddReplacementSheet: View {
                     
                     // Example Section
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Examples")
+                        Text(L10n.DictionaryExtended.WordReplacement.examples.text)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
                         // Single original -> replacement
                         HStack(spacing: 12) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Original:")
+                                Text(L10n.DictionaryExtended.WordReplacement.original.text) + Text(":")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("my website link")
+                                Text(L10n.DictionaryExtended.WordReplacement.websiteLinkExample.text)
                                     .font(.callout)
                             }
-                            
+
                             Image(systemName: "arrow.right")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Replacement:")
+                                Text(L10n.Dictionary.replacement.text) + Text(":")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("https://tryvoiceink.com")
+                                Text(L10n.DictionaryExtended.WordReplacement.exampleLinkValue.text)
                                     .font(.callout)
                             }
                         }
@@ -372,22 +372,22 @@ struct AddReplacementSheet: View {
                         // Comma-separated originals -> single replacement
                         HStack(spacing: 12) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Original:")
+                                Text(L10n.DictionaryExtended.WordReplacement.original.text) + Text(":")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("Voicing, Voice ink, Voiceing")
+                                Text(L10n.DictionaryExtended.WordReplacement.exampleOriginalsValue.text)
                                     .font(.callout)
                             }
-                            
+
                             Image(systemName: "arrow.right")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Replacement:")
+                                Text(L10n.Dictionary.replacement.text) + Text(":")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
-                                Text("VoiceInk")
+                                Text(L10n.DictionaryExtended.WordReplacement.exampleReplacementValue.text)
                                     .font(.callout)
                             }
                         }
@@ -468,8 +468,8 @@ struct ReplacementRow: View {
                     .font(.system(size: 16))
             }
             .buttonStyle(.borderless)
-            .help("Edit replacement")
-            
+            .help(L10n.DictionaryExtended.WordReplacement.editReplacement.text)
+
             // Delete Button
             Button(action: onDelete) {
                 Image(systemName: "xmark.circle.fill")
@@ -478,7 +478,7 @@ struct ReplacementRow: View {
                     .font(.system(size: 16))
             }
             .buttonStyle(.borderless)
-            .help("Remove replacement")
+            .help(L10n.DictionaryExtended.WordReplacement.removeReplacement.text)
         }
         .padding(.horizontal)
         .padding(.vertical, 8)

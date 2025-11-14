@@ -26,12 +26,12 @@ struct SettingsView: View {
             VStack(spacing: 24) {
                 SettingsSection(
                     icon: "command.circle",
-                    title: "VoiceInk Shortcuts",
-                    subtitle: "Choose how you want to trigger VoiceInk"
+                    title: L10n.Settings.Sections.hotkeysTitle.string,
+                    subtitle: L10n.Settings.Sections.hotkeysSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 18) {
                         hotkeyView(
-                            title: "Hotkey 1",
+                            title: L10n.Settings.Hotkeys.primary.text,
                             binding: $hotkeyManager.selectedHotkey1,
                             shortcutName: .toggleMiniRecorder
                         )
@@ -39,7 +39,7 @@ struct SettingsView: View {
                         if hotkeyManager.selectedHotkey2 != .none {
                             Divider()
                             hotkeyView(
-                                title: "Hotkey 2",
+                                title: L10n.Settings.Hotkeys.secondary.text,
                                 binding: $hotkeyManager.selectedHotkey2,
                                 shortcutName: .toggleMiniRecorder2,
                                 isRemovable: true,
@@ -55,14 +55,14 @@ struct SettingsView: View {
                                 Button(action: {
                                     withAnimation { hotkeyManager.selectedHotkey2 = .rightOption }
                                 }) {
-                                    Label("Add another hotkey", systemImage: "plus.circle.fill")
+                                    Label(L10n.Settings.Hotkeys.addAnother.text, systemImage: "plus.circle.fill")
                                 }
                                 .buttonStyle(.plain)
                                 .foregroundColor(.accentColor)
                             }
                         }
 
-                        Text("Quick tap to start hands-free recording (tap again to stop). Press and hold for push-to-talk (release to stop recording).")
+                        Text(L10n.Settings.Hotkeys.quickTapDescription.text)
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -71,13 +71,13 @@ struct SettingsView: View {
 
                 SettingsSection(
                     icon: "keyboard.badge.ellipsis",
-                    title: "Other App Shortcuts",
-                    subtitle: "Additional shortcuts for VoiceInk"
+                    title: L10n.Settings.Sections.otherShortcutsTitle.string,
+                    subtitle: L10n.Settings.Sections.otherShortcutsSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 18) {
                         // Paste Last Transcript (Original)
                         HStack(spacing: 12) {
-                            Text("Paste Last Transcript(Original)")
+                            Text(L10n.Settings.Shortcuts.pasteOriginalTitle.text)
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
                             
@@ -85,8 +85,8 @@ struct SettingsView: View {
                                 .controlSize(.small)
                             
                             InfoTip(
-                                title: "Paste Last Transcript(Original)",
-                                message: "Shortcut for pasting the most recent transcription."
+                                title: L10n.Settings.Shortcuts.pasteOriginalTitle.string,
+                                message: L10n.Settings.Shortcuts.pasteOriginalMessage.string
                             )
                             
                             Spacer()
@@ -94,7 +94,7 @@ struct SettingsView: View {
 
                         // Paste Last Transcript (Enhanced)
                         HStack(spacing: 12) {
-                            Text("Paste Last Transcript(Enhanced)")
+                            Text(L10n.Settings.Shortcuts.pasteEnhancedTitle.text)
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
                             
@@ -102,8 +102,8 @@ struct SettingsView: View {
                                 .controlSize(.small)
                             
                             InfoTip(
-                                title: "Paste Last Transcript(Enhanced)",
-                                message: "Pastes the enhanced transcript if available, otherwise falls back to the original."
+                                title: L10n.Settings.Shortcuts.pasteEnhancedTitle.string,
+                                message: L10n.Settings.Shortcuts.pasteEnhancedMessage.string
                             )
                             
                             Spacer()
@@ -113,7 +113,7 @@ struct SettingsView: View {
 
                         // Retry Last Transcription
                         HStack(spacing: 12) {
-                            Text("Retry Last Transcription")
+                            Text(L10n.MenuBar.retryLast.text)
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
 
@@ -121,8 +121,8 @@ struct SettingsView: View {
                                 .controlSize(.small)
 
                             InfoTip(
-                                title: "Retry Last Transcription",
-                                message: "Re-transcribe the last recorded audio using the current model and copy the result."
+                                title: L10n.MenuBar.retryLast.string,
+                                message: L10n.Settings.Shortcuts.retryMessage.string
                             )
 
                             Spacer()
@@ -136,7 +136,7 @@ struct SettingsView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             HStack(spacing: 8) {
                                 Toggle(isOn: $isCustomCancelEnabled.animation()) {
-                                    Text("Custom Cancel Shortcut")
+                                    Text(L10n.Settings.CancelShortcut.toggleTitle.text)
                                 }
                                 .toggleStyle(.switch)
                                 .onChange(of: isCustomCancelEnabled) { _, newValue in
@@ -146,14 +146,14 @@ struct SettingsView: View {
                                 }
                                 
                                 InfoTip(
-                                    title: "Dismiss Recording",
-                                    message: "Shortcut for cancelling the current recording session. Default: double-tap Escape."
+                                    title: L10n.Settings.CancelShortcut.infoTitle.string,
+                                    message: L10n.Settings.CancelShortcut.infoMessage.string
                                 )
                             }
                             
                             if isCustomCancelEnabled {
                                 HStack(spacing: 12) {
-                                    Text("Cancel Shortcut")
+                                    Text(L10n.Settings.CancelShortcut.fieldLabel.text)
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundColor(.secondary)
                                     
@@ -168,22 +168,22 @@ struct SettingsView: View {
                         }
 
                         Divider()
-
+                        
                         // Middle-Click Toggle
                         VStack(alignment: .leading, spacing: 12) {
                             HStack(spacing: 8) {
-                                Toggle("Enable Middle-Click Toggle", isOn: $hotkeyManager.isMiddleClickToggleEnabled.animation())
+                                Toggle(L10n.Settings.MiddleClick.toggleTitle.text, isOn: $hotkeyManager.isMiddleClickToggleEnabled.animation())
                                     .toggleStyle(.switch)
                                 
                                 InfoTip(
-                                    title: "Middle-Click Toggle",
-                                    message: "Use middle mouse button to toggle VoiceInk recording."
+                                    title: L10n.Settings.MiddleClick.infoTitle.string,
+                                    message: L10n.Settings.MiddleClick.infoMessage.string
                                 )
                             }
 
                             if hotkeyManager.isMiddleClickToggleEnabled {
                                 HStack(spacing: 8) {
-                                    Text("Activation Delay")
+                                    Text(L10n.Settings.MiddleClick.activationDelay.text)
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundColor(.secondary)
                                     
@@ -199,7 +199,7 @@ struct SettingsView: View {
                                     .cornerRadius(5)
                                     .frame(width: 70)
                                     
-                                    Text("ms")
+                                    Text(L10n.Settings.MiddleClick.millisecondsSuffix.text)
                                         .foregroundColor(.secondary)
                                     
                                     Spacer()
@@ -213,32 +213,32 @@ struct SettingsView: View {
 
                 SettingsSection(
                     icon: "speaker.wave.2.bubble.left.fill",
-                    title: "Recording Feedback",
-                    subtitle: "Customize app & system feedback"
+                    title: L10n.Settings.Sections.recordingFeedbackTitle.string,
+                    subtitle: L10n.Settings.Sections.recordingFeedbackSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
                         Toggle(isOn: .init(
                             get: { SoundManager.shared.isEnabled },
                             set: { SoundManager.shared.isEnabled = $0 }
                         )) {
-                            Text("Sound feedback")
+                            Text(L10n.Settings.RecordingFeedback.sound.text)
                         }
                         .toggleStyle(.switch)
 
                         Toggle(isOn: $mediaController.isSystemMuteEnabled) {
-                            Text("Mute system audio during recording")
+                            Text(L10n.Settings.RecordingFeedback.muteSystemAudio.text)
                         }
                         .toggleStyle(.switch)
-                        .help("Automatically mute system audio when recording starts and restore when recording stops")
+                        .help(L10n.Settings.RecordingFeedback.muteSystemAudioHelp.string)
 
                         Toggle(isOn: Binding(
                             get: { UserDefaults.standard.bool(forKey: "preserveTranscriptInClipboard") },
                             set: { UserDefaults.standard.set($0, forKey: "preserveTranscriptInClipboard") }
                         )) {
-                            Text("Preserve transcript in clipboard")
+                            Text(L10n.Settings.RecordingFeedback.preserveClipboard.text)
                         }
                         .toggleStyle(.switch)
-                        .help("Keep the transcribed text in clipboard instead of restoring the original clipboard content")
+                        .help(L10n.Settings.RecordingFeedback.preserveClipboardHelp.string)
 
                     }
                 }
@@ -249,16 +249,16 @@ struct SettingsView: View {
 
                 SettingsSection(
                     icon: "rectangle.on.rectangle",
-                    title: "Recorder Style",
-                    subtitle: "Choose your preferred recorder interface"
+                    title: L10n.Settings.Sections.recorderTitle.string,
+                    subtitle: L10n.Settings.Sections.recorderSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Select how you want the recorder to appear on your screen.")
+                        Text(L10n.Settings.Recorder.description.text)
                             .settingsDescription()
                         
-                        Picker("Recorder Style", selection: $whisperState.recorderType) {
-                            Text("Notch Recorder").tag("notch")
-                            Text("Mini Recorder").tag("mini")
+                        Picker(L10n.Settings.Sections.recorderTitle.text, selection: $whisperState.recorderType) {
+                            Text(L10n.Settings.Recorder.notch.text).tag("notch")
+                            Text(L10n.Settings.Recorder.mini.text).tag("mini")
                         }
                         .pickerStyle(.radioGroup)
                         .padding(.vertical, 4)
@@ -267,14 +267,14 @@ struct SettingsView: View {
 
                 SettingsSection(
                     icon: "doc.on.clipboard",
-                    title: "Paste Method",
-                    subtitle: "Choose how text is pasted"
+                    title: L10n.Settings.Sections.pasteMethodTitle.string,
+                    subtitle: L10n.Settings.Sections.pasteMethodSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Select the method used to paste text. Use AppleScript if you have a non-standard keyboard layout.")
+                        Text(L10n.Settings.PasteMethod.description.text)
                             .settingsDescription()
                         
-                        Toggle("Use AppleScript Paste Method", isOn: Binding(
+                        Toggle(L10n.Settings.PasteMethod.useAppleScript.text, isOn: Binding(
                             get: { UserDefaults.standard.bool(forKey: "UseAppleScriptPaste") },
                             set: { UserDefaults.standard.set($0, forKey: "UseAppleScriptPaste") }
                         ))
@@ -284,23 +284,23 @@ struct SettingsView: View {
 
                 SettingsSection(
                     icon: "gear",
-                    title: "General",
-                    subtitle: "Appearance, startup, and updates"
+                    title: L10n.Settings.Sections.generalTitle.string,
+                    subtitle: L10n.Settings.Sections.generalSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Toggle("Hide Dock Icon (Menu Bar Only)", isOn: $menuBarManager.isMenuBarOnly)
+                        Toggle(L10n.Settings.General.hideDockIcon.text, isOn: $menuBarManager.isMenuBarOnly)
                             .toggleStyle(.switch)
                         
-                        LaunchAtLogin.Toggle()
+                        LaunchAtLogin.Toggle(L10n.MenuBar.launchAtLogin.text)
                             .toggleStyle(.switch)
 
-                        Toggle("Enable automatic update checks", isOn: $autoUpdateCheck)
+                        Toggle(L10n.Settings.General.enableAutoUpdateChecks.text, isOn: $autoUpdateCheck)
                             .toggleStyle(.switch)
                             .onChange(of: autoUpdateCheck) { _, newValue in
                                 updaterViewModel.toggleAutoUpdates(newValue)
                             }
                         
-                        Toggle("Show app announcements", isOn: $enableAnnouncements)
+                        Toggle(L10n.Settings.General.showAnnouncements.text, isOn: $enableAnnouncements)
                             .toggleStyle(.switch)
                             .onChange(of: enableAnnouncements) { _, newValue in
                                 if newValue {
@@ -310,7 +310,7 @@ struct SettingsView: View {
                                 }
                             }
                         
-                        Button("Check for Updates Now") {
+                        Button(L10n.Settings.General.checkForUpdatesNow.text) {
                             updaterViewModel.checkForUpdates()
                         }
                         .buttonStyle(.bordered)
@@ -319,7 +319,7 @@ struct SettingsView: View {
                         
                         Divider()
 
-                        Button("Reset Onboarding") {
+                        Button(L10n.Settings.General.resetOnboarding.text) {
                             showResetOnboardingAlert = true
                         }
                         .buttonStyle(.bordered)
@@ -329,19 +329,19 @@ struct SettingsView: View {
                 
                 SettingsSection(
                     icon: "lock.shield",
-                    title: "Data & Privacy",
-                    subtitle: "Control transcript history and storage"
+                    title: L10n.Settings.Sections.dataPrivacyTitle.string,
+                    subtitle: L10n.Settings.Sections.dataPrivacySubtitle.string
                 ) {
                     AudioCleanupSettingsView()
                 }
                 
                 SettingsSection(
                     icon: "arrow.up.arrow.down.circle",
-                    title: "Data Management",
-                    subtitle: "Import or export your settings"
+                    title: L10n.Settings.Sections.dataManagementTitle.string,
+                    subtitle: L10n.Settings.Sections.dataManagementSubtitle.string
                 ) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Export your custom prompts, power modes, word replacements, keyboard shortcuts, and app preferences to a backup file. API keys are not included in the export.")
+                        Text(L10n.Settings.Data.exportDescription.text)
                             .settingsDescription()
 
                         HStack(spacing: 12) {
@@ -357,7 +357,7 @@ struct SettingsView: View {
                                     whisperState: whisperState
                                 )
                             } label: {
-                                Label("Import Settings...", systemImage: "arrow.down.doc")
+                                Label(L10n.Settings.Data.importSettings.text, systemImage: "arrow.down.doc")
                                     .frame(maxWidth: .infinity)
                             }
                             .controlSize(.large)
@@ -374,7 +374,7 @@ struct SettingsView: View {
                                     whisperState: whisperState
                                 )
                             } label: {
-                                Label("Export Settings...", systemImage: "arrow.up.doc")
+                                Label(L10n.Settings.Data.exportSettings.text, systemImage: "arrow.up.doc")
                                     .frame(maxWidth: .infinity)
                             }
                             .controlSize(.large)
@@ -389,22 +389,22 @@ struct SettingsView: View {
         .onAppear {
             isCustomCancelEnabled = KeyboardShortcuts.getShortcut(for: .cancelRecorder) != nil
         }
-        .alert("Reset Onboarding", isPresented: $showResetOnboardingAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Reset", role: .destructive) {
+        .alert(L10n.Settings.Alerts.resetTitle.text, isPresented: $showResetOnboardingAlert) {
+            Button(L10n.Common.cancel.text, role: .cancel) { }
+            Button(L10n.Common.reset.text, role: .destructive) {
                 // Defer state change to avoid layout issues while alert dismisses
                 DispatchQueue.main.async {
                     hasCompletedOnboarding = false
                 }
             }
         } message: {
-            Text("Are you sure you want to reset the onboarding? You'll see the introduction screens again the next time you launch the app.")
+            Text(L10n.Settings.Alerts.resetMessage.text)
         }
     }
     
     @ViewBuilder
     private func hotkeyView(
-        title: String,
+        title: LocalizedStringKey,
         binding: Binding<HotkeyManager.HotkeyOption>,
         shortcutName: KeyboardShortcuts.Name,
         isRemovable: Bool = false,
@@ -503,7 +503,7 @@ struct SettingsSection<Content: View>: View {
                     Spacer()
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.red)
-                        .help("Permission required for VoiceInk to function properly")
+                        .help(L10n.Settings.Sections.permissionRequired.string)
                 }
             }
             

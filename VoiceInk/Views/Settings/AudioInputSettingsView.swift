@@ -39,9 +39,9 @@ struct AudioInputSettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-                Text("Audio Input")
+                Text(L10n.SettingsExtended.AudioInput.title.text)
                     .font(.system(size: 28, weight: .bold))
-                Text("Configure your microphone preferences")
+                Text(L10n.SettingsExtended.AudioInput.description.text)
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
             }
@@ -52,7 +52,7 @@ struct AudioInputSettingsView: View {
     
     private var inputModeSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Input Mode")
+            Text(L10n.SettingsExtended.AudioInput.inputMode.text)
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -71,19 +71,19 @@ struct AudioInputSettingsView: View {
     private var customDeviceSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("Available Devices")
+                Text(L10n.SettingsExtended.AudioInput.availableDevices.text)
                     .font(.title2)
                     .fontWeight(.semibold)
-                
+
                 Spacer()
-                
+
                 Button(action: { audioDeviceManager.loadAvailableDevices() }) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
+                    Label(L10n.SettingsExtended.AudioInput.refresh.text, systemImage: "arrow.clockwise")
                 }
                 .buttonStyle(.borderless)
             }
-            
-            Text("Note: Selecting a device here will override your Mac\'s system-wide default microphone.")
+
+            Text(L10n.SettingsExtended.AudioInput.deviceOverrideWarning.text)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 8)
@@ -117,21 +117,21 @@ struct AudioInputSettingsView: View {
     private var prioritizedDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Prioritized Devices")
+                Text(L10n.SettingsExtended.AudioInput.prioritizedDevices.text)
                     .font(.title2)
                     .fontWeight(.semibold)
-                Text("Devices will be used in order of priority. If a device is unavailable, the next one will be tried. If no prioritized device is available, the system default microphone will be used.")
+                Text(L10n.SettingsExtended.AudioInput.prioritizedDevicesDescription.text)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                Text("Warning: Using a prioritized device will override your Mac\'s system-wide default microphone if it becomes active.")
+                Text(L10n.SettingsExtended.AudioInput.prioritizedDevicesWarning.text)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(.top, 4)
             }
-            
+
             if audioDeviceManager.prioritizedDevices.isEmpty {
-                Text("No prioritized devices")
+                Text(L10n.SettingsExtended.AudioInput.noPrioritizedDevices.text)
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -142,25 +142,25 @@ struct AudioInputSettingsView: View {
     
     private var availableDevicesContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Available Devices")
+            Text(L10n.SettingsExtended.AudioInput.availableDevices.text)
                 .font(.title2)
                 .fontWeight(.semibold)
-            
+
             availableDevicesList
         }
     }
-    
+
     private var emptyDevicesState: some View {
         VStack(spacing: 16) {
             Image(systemName: "mic.slash.circle.fill")
                 .font(.system(size: 48))
                 .symbolRenderingMode(.hierarchical)
                 .foregroundStyle(.secondary)
-            
+
             VStack(spacing: 8) {
-                Text("No Audio Devices")
+                Text(L10n.SettingsExtended.AudioInput.noAudioDevices.text)
                     .font(.headline)
-                Text("Connect an audio input device to get started")
+                Text(L10n.SettingsExtended.AudioInput.connectDeviceToGetStarted.text)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -201,7 +201,7 @@ struct AudioInputSettingsView: View {
         
         return Group {
             if unprioritizedDevices.isEmpty {
-                Text("No additional devices available")
+                Text(L10n.SettingsExtended.AudioInput.noAdditionalDevicesAvailable.text)
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 8)
             } else {
@@ -264,14 +264,6 @@ struct InputModeCard: View {
         }
     }
     
-    private var description: String {
-        switch mode {
-        case .systemDefault: return "Use system's default input device"
-        case .custom: return "Select a specific input device"
-        case .prioritized: return "Set up device priority order"
-        }
-    }
-    
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 12) {
@@ -281,10 +273,10 @@ struct InputModeCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(mode.rawValue)
+                    Text(mode.localizedTitle)
                         .font(.headline)
                     
-                    Text(description)
+                    Text(mode.localizedDescription)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -318,7 +310,7 @@ struct DeviceSelectionCard: View {
                 Spacer()
                 
                 if isActive {
-                    Label("Active", systemImage: "wave.3.right")
+                    Label(L10n.SettingsExtended.AudioInput.active.text, systemImage: "wave.3.right")
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)
@@ -373,7 +365,7 @@ struct DevicePriorityCard: View {
             HStack(spacing: 12) {
                 // Active status
                 if isActive {
-                    Label("Active", systemImage: "wave.3.right")
+                    Label(L10n.SettingsExtended.AudioInput.active.text, systemImage: "wave.3.right")
                         .font(.caption)
                         .foregroundStyle(.green)
                         .padding(.horizontal, 10)
@@ -383,7 +375,7 @@ struct DevicePriorityCard: View {
                                 .fill(.green.opacity(0.1))
                         )
                 } else if !isAvailable && isPrioritized {
-                    Label("Unavailable", systemImage: "exclamationmark.triangle")
+                    Label(L10n.SettingsExtended.AudioInput.unavailable.text, systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 10)
@@ -423,4 +415,28 @@ struct DevicePriorityCard: View {
         .padding()
         .background(CardBackground(isSelected: false))
     }
-} 
+}
+
+private extension AudioInputMode {
+    var localizedTitle: LocalizedStringKey {
+        switch self {
+        case .systemDefault:
+            return L10n.SettingsExtended.AudioInput.Mode.systemDefault.text
+        case .custom:
+            return L10n.SettingsExtended.AudioInput.Mode.custom.text
+        case .prioritized:
+            return L10n.SettingsExtended.AudioInput.Mode.prioritized.text
+        }
+    }
+    
+    var localizedDescription: LocalizedStringKey {
+        switch self {
+        case .systemDefault:
+            return L10n.SettingsExtended.AudioInput.Mode.systemDefaultDescription.text
+        case .custom:
+            return L10n.SettingsExtended.AudioInput.Mode.customDescription.text
+        case .prioritized:
+            return L10n.SettingsExtended.AudioInput.Mode.prioritizedDescription.text
+        }
+    }
+}

@@ -118,4 +118,9 @@ docs/
 status/
 AGENTS.md
 CODE_OF_CONDUCT.md
-CONTRIBUTING.md 
+CONTRIBUTING.md
+
+# Build artifacts
+*.app
+VoiceInk.app/
+build-apple/*.xcframework/ 

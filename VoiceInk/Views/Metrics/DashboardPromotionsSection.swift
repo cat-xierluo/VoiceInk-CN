@@ -31,12 +31,12 @@ struct DashboardPromotionsSection: View {
             HStack(alignment: .top, spacing: 18) {
                 if shouldShowUpgradePromotion {
                     DashboardPromotionCard(
-                        badge: "30% OFF",
-                        title: "Unlock VoiceInk Pro For Less",
-                        message: "Share VoiceInk on your socials, and instantly unlock a 30% discount on VoiceInk Pro.",
+                        badge: L10n.Metrics.Promotions.upgradeBadge.string,
+                        title: L10n.Metrics.Promotions.upgradeTitle.string,
+                        message: L10n.Metrics.Promotions.upgradeMessage.string,
                         accentSymbol: "megaphone.fill",
                         glowColor: Color(red: 0.08, green: 0.48, blue: 0.85),
-                        actionTitle: "Share & Unlock",
+                        actionTitle: L10n.Metrics.Promotions.upgradeAction.string,
                         actionIcon: "arrow.up.right",
                         action: openSocialShare
                     )
@@ -45,12 +45,12 @@ struct DashboardPromotionsSection: View {
                 
                 if shouldShowAffiliatePromotion {
                     DashboardPromotionCard(
-                        badge: "AFFILIATE 30%",
-                        title: "Earn With The VoiceInk Affiliate Program",
-                        message: "Share VoiceInk with friends or your audience and receive 30% on every referral that upgrades.",
+                        badge: L10n.Metrics.Promotions.affiliateBadge.string,
+                        title: L10n.Metrics.Promotions.affiliateTitle.string,
+                        message: L10n.Metrics.Promotions.affiliateMessage.string,
                         accentSymbol: "link.badge.plus",
                         glowColor: Color(red: 0.08, green: 0.48, blue: 0.85),
-                        actionTitle: "Explore Affiliate",
+                        actionTitle: L10n.Metrics.Promotions.affiliateAction.string,
                         actionIcon: "arrow.up.right",
                         action: openAffiliateProgram
                     )

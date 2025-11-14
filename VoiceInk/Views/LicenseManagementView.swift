@@ -38,10 +38,10 @@ struct LicenseManagementView: View {
                         .foregroundStyle(.blue)
                     
                     HStack(alignment: .lastTextBaseline, spacing: 8) { 
-                        Text(licenseViewModel.licenseState == .licensed ? "VoiceInk Pro" : "Upgrade to Pro")
+                        Text(licenseViewModel.licenseState == .licensed ? L10n.Common.pro.text : L10n.License.upgradeToVoiceInkPro.text)
                             .font(.system(size: 32, weight: .bold))
                         
-                        Text("v\(appVersion)")
+                        Text(String(format: L10n.License.versionFormat.string, appVersion))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .padding(.bottom, 4)
@@ -49,8 +49,8 @@ struct LicenseManagementView: View {
                 }
                 
                 Text(licenseViewModel.licenseState == .licensed ?
-                     "Thank you for supporting VoiceInk" :
-                     "Transcribe what you say to text instantly with AI")
+                     L10n.License.supportMessage.text :
+                     L10n.License.heroSubtitle.text)
                     .font(.title3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -62,7 +62,7 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "list.bullet.clipboard.fill", title: "Changelog", color: .blue)
+                            featureItem(icon: "list.bullet.clipboard.fill", title: L10n.License.changelog.string, color: .blue)
                         }
                         .buttonStyle(.plain)
                         
@@ -71,14 +71,14 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Discord", color: .purple)
+                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: L10n.License.discord.string, color: .purple)
                         }
                         .buttonStyle(.plain)
                         
                         Button {
                             EmailSupport.openSupportEmail()
                         } label: {
-                            featureItem(icon: "envelope.fill", title: "Email Support", color: .orange)
+                            featureItem(icon: "envelope.fill", title: L10n.License.emailSupport.string, color: .orange)
                         }
                         .buttonStyle(.plain)
                         
@@ -87,7 +87,7 @@ struct LicenseManagementView: View {
                                 NSWorkspace.shared.open(url)
                             }
                         } label: {
-                            featureItem(icon: "book.fill", title: "Docs", color: .indigo)
+                            featureItem(icon: "book.fill", title: L10n.License.docs.string, color: .indigo)
                         }
                         .buttonStyle(.plain)
                         
@@ -116,7 +116,7 @@ struct LicenseManagementView: View {
                     Image(systemName: "infinity.circle.fill")
                         .font(.system(size: 20))
                         .foregroundStyle(.blue)
-                    Text("Buy Once, Own Forever")
+                    Text(L10n.License.buyOnceOwnForever.text)
                         .font(.headline)
                 }
                 .padding(.vertical, 8)
@@ -130,7 +130,7 @@ struct LicenseManagementView: View {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text("Upgrade to VoiceInk Pro")
+                    Text(L10n.License.upgradeToVoiceInkPro.text)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -139,10 +139,10 @@ struct LicenseManagementView: View {
                 
                 // Features Grid
                 HStack(spacing: 40) {
-                    featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Priority Support", color: .purple)
-                    featureItem(icon: "infinity.circle.fill", title: "Lifetime Access", color: .blue)
-                    featureItem(icon: "arrow.up.circle.fill", title: "Free Updates", color: .green)
-                    featureItem(icon: "macbook.and.iphone", title: "Multiple Devices", color: .orange)
+                    featureItem(icon: "bubble.left.and.bubble.right.fill", title: L10n.License.prioritySupport.string, color: .purple)
+                    featureItem(icon: "infinity.circle.fill", title: L10n.License.lifetimeAccess.string, color: .blue)
+                    featureItem(icon: "arrow.up.circle.fill", title: L10n.License.freeUpdates.string, color: .green)
+                    featureItem(icon: "macbook.and.iphone", title: L10n.License.multipleDevices.string, color: .orange)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
@@ -152,11 +152,11 @@ struct LicenseManagementView: View {
 
             // License Activation
             VStack(spacing: 20) {
-                Text("Already have a license?")
+                Text(L10n.License.alreadyHaveLicense.text)
                     .font(.headline)
                 
                 HStack(spacing: 12) {
-                    TextField("Enter your license key", text: $licenseViewModel.licenseKey)
+                    TextField(L10n.License.enterLicenseKey.text, text: $licenseViewModel.licenseKey)
                         .textFieldStyle(.roundedBorder)
                         .font(.system(.body, design: .monospaced))
                         .textCase(.uppercase)
@@ -168,7 +168,7 @@ struct LicenseManagementView: View {
                             ProgressView()
                                 .controlSize(.small)
                         } else {
-                            Text("Activate")
+                            Text(L10n.License.activate.text)
                                 .frame(width: 80)
                         }
                     }
@@ -188,11 +188,11 @@ struct LicenseManagementView: View {
             
             // Already Purchased Section
             VStack(spacing: 20) {
-                Text("Already purchased?")
+                Text(L10n.License.alreadyHaveLicense.text)
                     .font(.headline)
 
                 HStack(spacing: 12) {
-                    Text("Manage your license and device activations")
+                    Text(L10n.License.activationLimitMessage.format(licenseViewModel.activationsLimit))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -202,7 +202,7 @@ struct LicenseManagementView: View {
                             NSWorkspace.shared.open(url)
                         }
                     }) {
-                        Text("License Management Portal")
+                        Text(L10n.License.licenseManagement.text)
                             .frame(width: 180)
                     }
                     .buttonStyle(.borderedProminent)
@@ -222,10 +222,10 @@ struct LicenseManagementView: View {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 24))
                         .foregroundStyle(.green)
-                    Text("License Active")
+                    Text(L10n.License.licenseActive.text)
                         .font(.headline)
                     Spacer()
-                    Text("Active")
+                    Text(L10n.License.activeStatus.text)
                         .font(.caption)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
@@ -236,11 +236,11 @@ struct LicenseManagementView: View {
                 Divider()
                 
                 if licenseViewModel.activationsLimit > 0 {
-                    Text("This license can be activated on up to \(licenseViewModel.activationsLimit) devices")
+                    Text(L10n.License.activationLimitMessage.format(licenseViewModel.activationsLimit))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 } else {
-                    Text("You can use VoiceInk Pro on all your personal devices")
+                    Text(L10n.License.allDevicesMessage.text)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -251,13 +251,13 @@ struct LicenseManagementView: View {
             
             // Deactivation Card
             VStack(alignment: .leading, spacing: 16) {
-                Text("License Management")
+                Text(L10n.License.licenseManagement.text)
                     .font(.headline)
 
                 Button(role: .destructive, action: {
                     licenseViewModel.removeLicense()
                 }) {
-                    Label("Deactivate License", systemImage: "xmark.circle.fill")
+                    Label(L10n.License.deactivateLicense.text, systemImage: "xmark.circle.fill")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
                 }
@@ -298,11 +298,9 @@ struct LicenseManagementView: View {
                     heartPulse = true
                 }
             
-            Text("Tip Jar")
+            Text(L10n.License.tipJar.text)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(.primary)
         }
     }
 }
-
-

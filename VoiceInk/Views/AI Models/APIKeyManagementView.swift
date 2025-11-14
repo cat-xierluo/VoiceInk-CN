@@ -16,9 +16,9 @@ struct APIKeyManagementView: View {
         VStack(alignment: .leading, spacing: 16) {
             // Provider Selection
             HStack {
-                Picker("AI Provider", selection: $aiService.selectedProvider) {
+                Picker(L10n.AIModels.aiProvider.text, selection: $aiService.selectedProvider) {
                     ForEach(AIProvider.allCases.filter { $0 != .elevenLabs && $0 != .deepgram && $0 != .soniox }, id: \.self) { provider in
-                        Text(provider.rawValue).tag(provider)
+                        Text(provider.localizedName).tag(provider)
                     }
                 }
                 
@@ -29,9 +29,9 @@ struct APIKeyManagementView: View {
                         Circle()
                             .fill(Color.green)
                             .frame(width: 8, height: 8)
-                        Text("Connected to")
+                        Text(L10n.AIModels.connectedTo.text)
                             .font(.caption)
-                        Text(aiService.selectedProvider.rawValue)
+                        Text(aiService.selectedProvider.localizedName)
                             .font(.caption.bold())
                     }
                     .padding(.horizontal, 8)
@@ -52,10 +52,10 @@ struct APIKeyManagementView: View {
             if aiService.selectedProvider == .openRouter {
                 HStack {
                     if aiService.availableModels.isEmpty {
-                        Text("No models loaded")
+                        Text(L10n.AIModels.noModelsLoaded.text)
                             .foregroundColor(.secondary)
                     } else {
-                        Picker("Model", selection: Binding(
+                        Picker(L10n.AIModels.model.text, selection: Binding(
                             get: { aiService.currentModel },
                             set: { aiService.selectModel($0) }
                         )) {
@@ -75,13 +75,13 @@ struct APIKeyManagementView: View {
                         Image(systemName: "arrow.clockwise")
                     }
                     .buttonStyle(.borderless)
-                    .help("Refresh models")
+                    .help(L10n.AIModels.refreshModels.text)
                 }
             } else if !aiService.availableModels.isEmpty && 
                         aiService.selectedProvider != .ollama && 
                         aiService.selectedProvider != .custom {
                 HStack {
-                    Picker("Model", selection: Binding(
+                    Picker(L10n.AIModels.model.text, selection: Binding(
                         get: { aiService.currentModel },
                         set: { aiService.selectModel($0) }
                     )) {
@@ -96,16 +96,16 @@ struct APIKeyManagementView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     // Header with status
                     HStack {
-                        Label("Ollama Configuration", systemImage: "server.rack")
+                        Label(L10n.AIModels.ollamaConfiguration.text, systemImage: "server.rack")
                             .font(.headline)
-                        
+
                         Spacer()
-                        
+
                         HStack(spacing: 6) {
                             Circle()
                                 .fill(isCheckingOllama ? Color.orange : (ollamaModels.isEmpty ? Color.red : Color.green))
                                 .frame(width: 8, height: 8)
-                            Text(isCheckingOllama ? "Checking..." : (ollamaModels.isEmpty ? "Disconnected" : "Connected"))
+                            Text(isCheckingOllama ? L10n.AIModels.checking.text : (ollamaModels.isEmpty ? L10n.AIModels.disconnected.text : L10n.AIModels.connected.text))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -117,18 +117,18 @@ struct APIKeyManagementView: View {
                     
                     // Server URL
                     HStack {
-                        Label("Server URL", systemImage: "link")
+                        Label(L10n.AIModels.serverURL.text, systemImage: "link")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        
+
                         Spacer()
-                        
+
                         if isEditingURL {
-                            TextField("Base URL", text: $ollamaBaseURL)
+                            TextField(L10n.AIModels.baseURL.text, text: $ollamaBaseURL)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .frame(maxWidth: 200)
-                            
-                            Button("Save") {
+                            .frame(maxWidth: 200)
+
+                            Button(L10n.AIModels.save.text) {
                                 aiService.updateOllamaBaseURL(ollamaBaseURL)
                                 checkOllamaConnection()
                                 isEditingURL = false
@@ -161,17 +161,17 @@ struct APIKeyManagementView: View {
                     
                     // Model selection and refresh
                     HStack {
-                        Label("Model", systemImage: "cpu")
+                        Label(L10n.AIModels.model.text, systemImage: "cpu")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        
+
                         Spacer()
-                        
+
                         if ollamaModels.isEmpty {
                             HStack(spacing: 8) {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundColor(.orange)
-                                Text("No models available")
+                                Text(L10n.AIModels.noModelsAvailable.text)
                                     .foregroundColor(.secondary)
                                     .italic()
                             }
@@ -187,9 +187,9 @@ struct APIKeyManagementView: View {
                             .labelsHidden()
                             .frame(maxWidth: 150)
                         }
-                        
+
                         Button(action: { checkOllamaConnection() }) {
-                            Label(isCheckingOllama ? "Refreshing..." : "Refresh", systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
+                            Label(isCheckingOllama ? L10n.AIModels.refreshing.text : L10n.AIModels.refresh.text, systemImage: isCheckingOllama ? "arrow.triangle.2.circlepath" : "arrow.clockwise")
                                 .font(.caption)
                         }
                         .disabled(isCheckingOllama)
@@ -200,17 +200,17 @@ struct APIKeyManagementView: View {
                     // Help text for troubleshooting
                     if ollamaModels.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Troubleshooting")
+                            Text(L10n.AIModels.troubleshooting.text)
                                 .font(.subheadline)
                                 .bold()
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                bulletPoint("Ensure Ollama is installed and running")
-                                bulletPoint("Check if the server URL is correct")
-                                bulletPoint("Verify you have at least one model pulled")
+                                bulletPoint(L10n.AIModels.ollamaInstalled.text)
+                                bulletPoint(L10n.AIModels.correctServerURL.text)
+                                bulletPoint(L10n.AIModels.modelsPulled.text)
                             }
                             
-                            Button("Learn More") {
+                            Button(L10n.AIModels.learnMore.text) {
                                 NSWorkspace.shared.open(URL(string: "https://ollama.ai/download")!)
                             }
                             .font(.caption)
@@ -228,13 +228,13 @@ struct APIKeyManagementView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     // Header
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Custom Provider Configuration")
+                        Text(L10n.AIModels.customProviderConfig.text)
                             .font(.headline)
                         HStack(spacing: 4) {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .foregroundColor(.orange)
                                 .font(.caption)
-                            Text("Requires OpenAI-compatible API endpoint")
+                            Text(L10n.AIModels.openAICompatibleRequired.text)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -243,20 +243,20 @@ struct APIKeyManagementView: View {
                     // Configuration Fields
                     VStack(alignment: .leading, spacing: 8) {
                         if !aiService.isAPIKeyValid {
-                            TextField("API Endpoint URL (e.g., https://api.example.com/v1/chat/completions)", text: $aiService.customBaseURL)
+                            TextField(L10n.AIModels.apiEndpointExample.text, text: $aiService.customBaseURL)
                                 .textFieldStyle(.roundedBorder)
                             
-                            TextField("Model Name (e.g., gpt-4o-mini, claude-3-5-sonnet-20240620)", text: $aiService.customModel)
+                            TextField(L10n.AIModels.modelNameExample.text, text: $aiService.customModel)
                                 .textFieldStyle(.roundedBorder)
                         } else {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("API Endpoint URL")
+                                Text(L10n.AIModels.apiEndpointURL.text)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customBaseURL)
                                     .font(.system(.body, design: .monospaced))
                                 
-                                Text("Model")
+                                Text(L10n.AIModels.model.text)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 Text(aiService.customModel)
@@ -265,40 +265,40 @@ struct APIKeyManagementView: View {
                         }
                         
                         if aiService.isAPIKeyValid {
-                            Text("API Key")
+                            Text(L10n.AIModels.apiKey.text)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
                             HStack {
                                 Text(String(repeating: "•", count: 40))
                                     .font(.system(.body, design: .monospaced))
-                                
+
                                 Spacer()
-                                
+
                                 Button(action: {
                                     aiService.clearAPIKey()
                                 }) {
-                                    Label("Remove Key", systemImage: "trash")
+                                    Label(L10n.AIModels.removeKey.text, systemImage: "trash")
                                         .foregroundColor(.red)
                                 }
                                 .buttonStyle(.borderless)
                             }
                         } else {
-                            Text("Enter your API Key")
+                            Text(L10n.AIModels.enterAPIKey.text)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
-                            SecureField("API Key", text: $apiKey)
+
+                            SecureField(L10n.AIModels.apiKey.text, text: $apiKey)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.system(.body, design: .monospaced))
-                            
+
                             HStack {
                                 Button(action: {
                                     isVerifying = true
                                     aiService.saveAPIKey(apiKey) { success in
                                         isVerifying = false
                                         if !success {
-                                            alertMessage = "Invalid API key. Please check and try again."
+                                            alertMessage = L10n.AIModels.invalidAPIKeyMessage.string
                                             showAlert = true
                                         }
                                         apiKey = ""
@@ -312,7 +312,7 @@ struct APIKeyManagementView: View {
                                         } else {
                                             Image(systemName: "checkmark.circle.fill")
                                         }
-                                        Text("Verify and Save")
+                                        Text(L10n.AIModels.verifyAndSave.text)
                                     }
                                 }
                                 .disabled(aiService.customBaseURL.isEmpty || aiService.customModel.isEmpty || apiKey.isEmpty)
@@ -329,48 +329,48 @@ struct APIKeyManagementView: View {
                 // API Key Display for other providers if valid
                 if aiService.isAPIKeyValid {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("API Key")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        HStack {
-                            Text(String(repeating: "•", count: 40))
-                                .font(.system(.body, design: .monospaced))
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                aiService.clearAPIKey()
-                            }) {
-                                Label("Remove Key", systemImage: "trash")
-                                    .foregroundColor(.red)
-                            }
-                            .buttonStyle(.borderless)
-                        }
-                    }
-                } else {
-                    // API Key Input for other providers
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Enter your API Key")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        SecureField("API Key", text: $apiKey)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .font(.system(.body, design: .monospaced))
-                        
-                        HStack {
-                            Button(action: {
-                                isVerifying = true
-                                aiService.saveAPIKey(apiKey) { success in
-                                    isVerifying = false
-                                    if !success {
-                                        alertMessage = "Invalid API key. Please check and try again."
-                                        showAlert = true
-                                    }
-                                    apiKey = ""
+                            Text(L10n.AIModels.apiKey.text)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+
+                            HStack {
+                                Text(String(repeating: "•", count: 40))
+                                    .font(.system(.body, design: .monospaced))
+
+                                Spacer()
+
+                                Button(action: {
+                                    aiService.clearAPIKey()
+                                }) {
+                                    Label(L10n.AIModels.removeKey.text, systemImage: "trash")
+                                        .foregroundColor(.red)
                                 }
-                            }) {
+                                .buttonStyle(.borderless)
+                            }
+                        }
+                    } else {
+                        // API Key Input for other providers
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(L10n.AIModels.enterAPIKey.text)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+
+                            SecureField(L10n.AIModels.apiKey.text, text: $apiKey)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .font(.system(.body, design: .monospaced))
+
+                            HStack {
+                                Button(action: {
+                                isVerifying = true
+                                    aiService.saveAPIKey(apiKey) { success in
+                                        isVerifying = false
+                                        if !success {
+                                            alertMessage = L10n.AIModels.invalidAPIKeyMessage.string
+                                            showAlert = true
+                                        }
+                                        apiKey = ""
+                                    }
+                                }) {
                                 HStack {
                                     if isVerifying {
                                         ProgressView()
@@ -379,14 +379,14 @@ struct APIKeyManagementView: View {
                                     } else {
                                         Image(systemName: "checkmark.circle.fill")
                                     }
-                                    Text("Verify and Save")
+                                    Text(L10n.AIModels.verifyAndSave.text)
                                 }
                             }
                             
                             Spacer()
                             
                             HStack(spacing: 8) {
-                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? "Free" : "Paid")
+                                Text((aiService.selectedProvider == .groq || aiService.selectedProvider == .gemini || aiService.selectedProvider == .cerebras) ? L10n.AIModels.free.text : L10n.AIModels.paid.text)
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
                                     .padding(.horizontal, 6)
@@ -423,7 +423,7 @@ struct APIKeyManagementView: View {
                                         NSWorkspace.shared.open(url)
                                     } label: {
                                         HStack(spacing: 4) {
-                                            Text("Get API Key")
+                                            Text(L10n.AIModels.getAPIKey.text)
                                                 .foregroundColor(.accentColor)
                                             Image(systemName: "arrow.up.right")
                                                 .font(.caption)
@@ -438,8 +438,8 @@ struct APIKeyManagementView: View {
                 }
             }
         }
-        .alert("Error", isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
+        .alert(L10n.Common.error.text, isPresented: $showAlert) {
+            Button(L10n.Common.ok.text, role: .cancel) { }
         } message: {
             Text(alertMessage)
         }
@@ -461,13 +461,13 @@ struct APIKeyManagementView: View {
             } else {
                 ollamaModels = []
                 isCheckingOllama = false
-                alertMessage = "Could not connect to Ollama. Please check if Ollama is running and the base URL is correct."
+                alertMessage = L10n.AIModels.ollamaConnectionFailed.string
                 showAlert = true
             }
         }
     }
     
-    private func bulletPoint(_ text: String) -> some View {
+    private func bulletPoint(_ text: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 4) {
             Text("•")
             Text(text)

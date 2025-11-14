@@ -42,12 +42,12 @@ struct OnboardingModelDownloadView: View {
                         
                         // Title and description
                         VStack(spacing: 12) {
-                            Text("Download AI Model")
+                            Text(L10n.Onboarding.ModelDownload.title.string)
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                            
-                            Text("We'll download the optimized model to get you started.")
+
+                            Text(L10n.Onboarding.ModelDownload.description.string)
                                 .font(.body)
                                 .foregroundColor(.white.opacity(0.7))
                                 .multilineTextAlignment(.center)
@@ -75,8 +75,8 @@ struct OnboardingModelDownloadView: View {
                         
                         // Performance indicators in a more compact layout
                         HStack(spacing: 20) {
-                            performanceIndicator(label: "Speed", value: turboModel.speed)
-                            performanceIndicator(label: "Accuracy", value: turboModel.accuracy)
+                            performanceIndicator(label: L10n.Onboarding.ModelDownload.speed.string, value: turboModel.speed)
+                            performanceIndicator(label: L10n.Onboarding.ModelDownload.accuracy.string, value: turboModel.accuracy)
                             ramUsageLabel(gb: turboModel.ramUsage)
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -115,7 +115,7 @@ struct OnboardingModelDownloadView: View {
                         .disabled(isDownloading)
                         
                         if !isModelSet {
-                            SkipButton(text: "Skip for now") {
+                            SkipButton(text: L10n.Onboarding.ModelDownload.skipForNow.string) {
                                 withAnimation {
                                     showTutorial = true
                                 }
@@ -187,13 +187,13 @@ struct OnboardingModelDownloadView: View {
     
     private func getButtonTitle() -> String {
         if isModelSet {
-            return "Continue"
+            return L10n.Onboarding.ModelDownload.continue.string
         } else if isDownloading {
-            return "Downloading..."
+            return L10n.Onboarding.ModelDownload.downloading.string
         } else if whisperState.availableModels.contains(where: { $0.name == turboModel.name }) {
-            return "Set as Default"
+            return L10n.Onboarding.ModelDownload.setAsDefault.string
         } else {
-            return "Download Model"
+            return L10n.Onboarding.ModelDownload.downloadModel.string
         }
     }
     
@@ -215,10 +215,10 @@ struct OnboardingModelDownloadView: View {
     
     private func ramUsageLabel(gb: Double) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("RAM")
+            Text(L10n.Onboarding.ModelDownload.ram.string)
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.7))
-            
+
             Text(String(format: "%.1f GB", gb))
                 .font(.system(size: 12, weight: .bold))
                 .foregroundColor(.white)

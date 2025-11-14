@@ -31,7 +31,7 @@ struct TrialMessageView: View {
                 Button(action: {
                     onAddLicenseKey?()
                 }) {
-                    Text("Enter License")
+                    Text(L10n.License.enterLicenseKey.text)
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.bordered)
@@ -41,7 +41,7 @@ struct TrialMessageView: View {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text("Buy License")
+                    Text(L10n.Common.buyLicense.text)
                         .font(.system(size: 13, weight: .medium))
                 }
                 .buttonStyle(.borderedProminent)
@@ -70,9 +70,9 @@ struct TrialMessageView: View {
     
     private var title: String {
         switch type {
-        case .warning: return "Trial Ending Soon"
-        case .expired: return "Trial Expired"
-        case .info: return "Trial Active"
+        case .warning: return L10n.License.trialEndingSoon.string
+        case .expired: return L10n.License.trialExpired.string
+        case .info: return L10n.License.trialActive.string
         }
     }
     

@@ -3,6 +3,13 @@ import SwiftUI
 enum TranscriptionTab: String, CaseIterable {
     case original = "Original"
     case enhanced = "Enhanced"
+
+    var displayName: String {
+        switch self {
+        case .original: return L10n.Transcription.original.string
+        case .enhanced: return L10n.Transcription.enhanced.string
+        }
+    }
 }
 
 struct TranscriptionResultView: View {
@@ -29,7 +36,7 @@ struct TranscriptionResultView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Transcription Result")
+            Text(L10n.Transcription.result.text)
                 .font(.headline)
             
             if availableTabs.count > 1 {
@@ -62,7 +69,7 @@ struct TranscriptionResultView: View {
             }
             
             HStack {
-                Text("Duration: \(formatDuration(transcription.duration))")
+                Text("\(L10n.Transcription.duration.string) \(formatDuration(transcription.duration))")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()

@@ -19,13 +19,13 @@ enum PowerModeValidationError: Error, Identifiable {
     var localizedDescription: String {
         switch self {
         case .emptyName:
-            return "Power mode name cannot be empty."
+            return L10n.PowerMode.Validation.nameEmpty.string
         case .duplicateName(let name):
-            return "A power mode with the name '\(name)' already exists."
+            return L10n.PowerMode.Validation.duplicateName.format(name)
         case .duplicateAppTrigger(let appName, let powerModeName):
-            return "The app '\(appName)' is already configured in the '\(powerModeName)' power mode."
+            return L10n.PowerMode.Validation.duplicateApp.format(appName, powerModeName)
         case .duplicateWebsiteTrigger(let website, let powerModeName):
-            return "The website '\(website)' is already configured in the '\(powerModeName)' power mode."
+            return L10n.PowerMode.Validation.duplicateWebsite.format(website, powerModeName)
         }
     }
 }
@@ -97,16 +97,16 @@ extension View {
         isPresented: Binding<Bool>
     ) -> some View {
         self.alert(
-            "Cannot Save Power Mode", 
+            L10n.PowerMode.Validation.cannotSaveTitle.text,
             isPresented: isPresented,
             actions: {
-                Button("OK", role: .cancel) {}
+                Button(L10n.Common.ok.text, role: .cancel) {}
             },
             message: {
                 if let firstError = errors.first {
                     Text(firstError.localizedDescription)
                 } else {
-                    Text("Please fix the validation errors before saving.")
+                    Text(L10n.PowerMode.fixValidationErrors.text)
                 }
             }
         )

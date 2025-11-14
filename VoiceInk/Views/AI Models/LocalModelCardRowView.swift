@@ -51,14 +51,14 @@ struct LocalModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else if isDownloaded {
-                Text("Downloaded")
+                Text(L10n.AIModels.downloaded.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -71,7 +71,7 @@ struct LocalModelCardView: View {
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Language
-            Label(model.language, systemImage: "globe")
+            Label(localizedLanguageLabel, systemImage: "globe")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -84,7 +84,7 @@ struct LocalModelCardView: View {
             
             // Speed
             HStack(spacing: 3) {
-                Text("Speed")
+                Text(L10n.AIModels.speed.text)
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.speed * 10)
@@ -94,7 +94,7 @@ struct LocalModelCardView: View {
             
             // Accuracy
             HStack(spacing: 3) {
-                Text("Accuracy")
+                Text(L10n.AIModels.accuracy.text)
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(Color(.secondaryLabelColor))
                 progressDotsWithNumber(value: model.accuracy * 10)
@@ -103,6 +103,10 @@ struct LocalModelCardView: View {
             .fixedSize(horizontal: true, vertical: false)
         }
         .lineLimit(1)
+    }
+
+    private var localizedLanguageLabel: LocalizedStringKey {
+        model.isMultilingualModel ? L10n.AIModels.languageMultilingualShort.text : L10n.AIModels.languageEnglishOnlyShort.text
     }
     
     private var descriptionSection: some View {
@@ -130,7 +134,7 @@ struct LocalModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else if isDownloaded {
@@ -138,13 +142,13 @@ struct LocalModelCardView: View {
                     HStack(spacing: 6) {
                         ProgressView()
                             .controlSize(.small)
-                        Text("Optimizing model for your device...")
+                        Text(L10n.AIModels.optimizingModel.text)
                             .font(.system(size: 12))
                             .foregroundColor(Color(.secondaryLabelColor))
                     }
                 } else {
                     Button(action: setDefaultAction) {
-                        Text("Set as Default")
+                        Text(L10n.AIModels.setAsDefault.text)
                             .font(.system(size: 12))
                     }
                     .buttonStyle(.bordered)
@@ -153,7 +157,7 @@ struct LocalModelCardView: View {
             } else {
                 Button(action: downloadAction) {
                     HStack(spacing: 4) {
-                        Text(isDownloading ? "Downloading..." : "Download")
+                        Text(isDownloading ? L10n.AIModels.downloading.text : L10n.AIModels.download.text)
                             .font(.system(size: 12, weight: .medium))
                         Image(systemName: "arrow.down.circle")
                             .font(.system(size: 12, weight: .medium))
@@ -174,7 +178,7 @@ struct LocalModelCardView: View {
             if isDownloaded {
                 Menu {
                     Button(action: deleteAction) {
-                        Label("Delete Model", systemImage: "trash")
+                        Label(L10n.AIModels.deleteModel.text, systemImage: "trash")
                     }
                     
                     Button {
@@ -182,7 +186,7 @@ struct LocalModelCardView: View {
                             NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
                         }
                     } label: {
-                        Label("Show in Finder", systemImage: "folder")
+                        Label(L10n.AIModels.showInFinder.text, systemImage: "folder")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -214,14 +218,14 @@ struct ImportedLocalModelCardView: View {
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(Color(.labelColor))
                     if isCurrent {
-                        Text("Default")
+                        Text(L10n.AIModels.defaultModel.text)
                             .font(.system(size: 11, weight: .medium))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
                             .background(Capsule().fill(Color.accentColor))
                             .foregroundColor(.white)
                     } else if isDownloaded {
-                        Text("Imported")
+                        Text(L10n.AIModels.imported.text)
                             .font(.system(size: 11, weight: .medium))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
@@ -231,7 +235,7 @@ struct ImportedLocalModelCardView: View {
                     Spacer()
                 }
 
-                Text("Imported local model")
+                Text(L10n.AIModels.importedLocalModel.text)
                     .font(.system(size: 11))
                     .foregroundColor(Color(.secondaryLabelColor))
                     .lineLimit(2)
@@ -242,12 +246,12 @@ struct ImportedLocalModelCardView: View {
 
             HStack(spacing: 8) {
                 if isCurrent {
-                    Text("Default Model")
+                    Text(L10n.AIModels.defaultModel.text)
                         .font(.system(size: 12))
                         .foregroundColor(Color(.secondaryLabelColor))
                 } else if isDownloaded {
                     Button(action: setDefaultAction) {
-                        Text("Set as Default")
+                        Text(L10n.AIModels.setAsDefault.text)
                             .font(.system(size: 12))
                     }
                     .buttonStyle(.bordered)
@@ -257,16 +261,16 @@ struct ImportedLocalModelCardView: View {
                 if isDownloaded {
                     Menu {
                         Button(action: deleteAction) {
-                            Label("Delete Model", systemImage: "trash")
+                            Label(L10n.AIModels.deleteModel.text, systemImage: "trash")
                         }
-                        Button {
-                            if let modelURL = modelURL {
-                                NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
-                            }
-                        } label: {
-                            Label("Show in Finder", systemImage: "folder")
+                    Button {
+                        if let modelURL = modelURL {
+                            NSWorkspace.shared.selectFile(modelURL.path, inFileViewerRootedAtPath: "")
                         }
                     } label: {
+                        Label(L10n.AIModels.showInFinder.text, systemImage: "folder")
+                    }
+                } label: {
                         Image(systemName: "ellipsis.circle")
                             .font(.system(size: 14))
                     }

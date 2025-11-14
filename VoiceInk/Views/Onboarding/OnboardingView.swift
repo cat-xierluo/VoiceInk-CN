@@ -27,14 +27,14 @@ struct OnboardingView: View {
                                 
                                 // Title and subtitle
                                 VStack(spacing: 16) {
-                                    Text("Welcome to the Future of Typing")
+                                    Text(L10n.Onboarding.welcomeTitle.text)
                                         .font(.system(size: min(geometry.size.width * 0.055, 42), weight: .bold, design: .rounded))
                                         .foregroundColor(.white)
                                         .opacity(textOpacity)
                                         .multilineTextAlignment(.center)
                                         .padding(.horizontal)
-                                    
-                                    Text("A New Way to Type")
+
+                                    Text(L10n.Onboarding.welcomeSubtitle.text)
                                         .font(.system(size: min(geometry.size.width * 0.032, 24), weight: .medium, design: .rounded))
                                         .foregroundColor(.white.opacity(0.7))
                                         .opacity(textOpacity)
@@ -61,7 +61,7 @@ struct OnboardingView: View {
                                             showPermissions = true
                                         }
                                     }) {
-                                        Text("Get Started")
+                                        Text(L10n.Onboarding.getStarted.text)
                                             .font(.system(size: 18, weight: .semibold))
                                             .foregroundColor(.black)
                                             .frame(width: min(geometry.size.width * 0.3, 200), height: 50)
@@ -69,8 +69,8 @@ struct OnboardingView: View {
                                             .cornerRadius(25)
                                     }
                                     .buttonStyle(ScaleButtonStyle())
-                                    
-                                    SkipButton(text: "Skip Tour") {
+
+                                    SkipButton(text: L10n.Onboarding.skipTour.string) {
                                         hasCompletedOnboarding = true
                                     }
                                 }
@@ -110,11 +110,10 @@ struct OnboardingView: View {
 // MARK: - Supporting Views
 struct TypewriterRoles: View {
     private let roles = [
-        "Your Writing Assistant",
-        "Your Vibe-Coding Assistant",
-        "Works Everywhere on Mac with a click",
-        "100% offline & private",
-       
+        L10n.Onboarding.Typewriter.role1.string,
+        L10n.Onboarding.Typewriter.role2.string,
+        L10n.Onboarding.Typewriter.role3.string,
+        L10n.Onboarding.Typewriter.role4.string,
     ]
     
     @State private var displayedText = ""
@@ -370,4 +369,3 @@ struct ScaleButtonStyle: ButtonStyle {
 #Preview {
     OnboardingView(hasCompletedOnboarding: .constant(false))
 } 
-

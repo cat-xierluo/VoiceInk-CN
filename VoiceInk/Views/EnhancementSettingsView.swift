@@ -17,17 +17,17 @@ struct EnhancementSettingsView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
-                                    Text("Enable Enhancement")
+                                    Text(L10n.Enhancement.enableEnhancement.text)
                                         .font(.headline)
-                                    
+
                                     InfoTip(
-                                        title: "AI Enhancement",
-                                        message: "AI enhancement lets you pass the transcribed audio through LLMS to post-process using different prompts suitable for different use cases like e-mails, summary, writing, etc.",
+                                        title: L10n.Enhancement.aiEnhancement.string,
+                                        message: L10n.Enhancement.aiEnhancementHelp.string,
                                         learnMoreURL: "https://www.youtube.com/@tryvoiceink/videos"
                                     )
                                 }
-                                
-                                Text("Turn on AI-powered enhancement features")
+
+                                Text(L10n.Enhancement.turnOn.text)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -42,19 +42,19 @@ struct EnhancementSettingsView: View {
                         
                         HStack(spacing: 20) {
                             VStack(alignment: .leading, spacing: 4) {
-                                Toggle("Clipboard Context", isOn: $enhancementService.useClipboardContext)
+                                Toggle(L10n.Enhancement.clipboardContext.text, isOn: $enhancementService.useClipboardContext)
                                     .toggleStyle(.switch)
                                     .disabled(!enhancementService.isEnhancementEnabled)
-                                Text("Use text from clipboard to understand the context")
+                                Text(L10n.Enhancement.clipboardContextHelp.text)
                                     .font(.caption)
                                     .foregroundColor(enhancementService.isEnhancementEnabled ? .secondary : .secondary.opacity(0.5))
                             }
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
-                                Toggle("Context Awareness", isOn: $enhancementService.useScreenCaptureContext)
+                                Toggle(L10n.Enhancement.contextAwareness.text, isOn: $enhancementService.useScreenCaptureContext)
                                     .toggleStyle(.switch)
                                     .disabled(!enhancementService.isEnhancementEnabled)
-                                Text("Learn what is on the screen to understand the context")
+                                Text(L10n.Enhancement.contextAwarenessHelp.text)
                                     .font(.caption)
                                     .foregroundColor(enhancementService.isEnhancementEnabled ? .secondary : .secondary.opacity(0.5))
                             }
@@ -65,17 +65,17 @@ struct EnhancementSettingsView: View {
                     
                     // 1. AI Provider Integration Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("AI Provider Integration")
+                        Text(L10n.Enhancement.aiProviderIntegration.text)
                             .font(.headline)
-                        
+
                         APIKeyManagementView()
                     }
                     .padding()
                     .background(CardBackground(isSelected: false))
-                    
+
                     // 3. Enhancement Modes & Assistant Section
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Enhancement Prompt")
+                        Text(L10n.Enhancement.enhancementPrompt.text)
                             .font(.headline)
                         
                         // Reorderable prompts grid with drag-and-drop
@@ -129,7 +129,7 @@ private struct ReorderablePromptGrid: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if enhancementService.customPrompts.isEmpty {
-                Text("No prompts available")
+                Text(L10n.Components.noPromptsAvailable.text)
                     .foregroundColor(.secondary)
                     .font(.caption)
             } else {
@@ -179,7 +179,7 @@ private struct ReorderablePromptGrid: View {
                         CustomPrompt.addNewButton {
                             onAddNewPrompt()
                         }
-                        .help("Add new prompt")
+                        .help(L10n.PromptEditor.newPrompt.string)
                         .onDrop(
                             of: [UTType.text],
                             delegate: PromptEndDropDelegate(
@@ -196,8 +196,8 @@ private struct ReorderablePromptGrid: View {
                     Image(systemName: "info.circle")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    
-                    Text("Double-click to edit • Right-click for more options")
+
+                    Text(L10n.Components.editHint.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

@@ -42,14 +42,14 @@ struct CustomModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else {
-                Text("Custom")
+                Text(L10n.AIModels.Filter.custom.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -62,19 +62,19 @@ struct CustomModelCardView: View {
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Provider
-            Label("Custom Provider", systemImage: "cloud")
+            Label(L10n.AIModels.customProvider.text, systemImage: "cloud")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Language
-            Label(model.language, systemImage: "globe")
+            Label(localizedLanguageLabel, systemImage: "globe")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // OpenAI Compatible
-            Label("OpenAI Compatible", systemImage: "checkmark.seal")
+            Label(L10n.AIModels.openAICompatible.text, systemImage: "checkmark.seal")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -94,12 +94,12 @@ struct CustomModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+                    Text(L10n.AIModels.setAsDefault.text)
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -110,13 +110,13 @@ struct CustomModelCardView: View {
                 Button {
                     editAction(model)
                 } label: {
-                    Label("Edit Model", systemImage: "pencil")
+                    Label(L10n.AIModels.editModel.text, systemImage: "pencil")
                 }
                 
                 Button(role: .destructive) {
                     deleteAction()
                 } label: {
-                    Label("Delete Model", systemImage: "trash")
+                    Label(L10n.AIModels.deleteModel.text, systemImage: "trash")
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")
@@ -126,5 +126,9 @@ struct CustomModelCardView: View {
             .menuIndicator(.hidden)
             .frame(width: 20, height: 20)
         }
+    }
+
+    private var localizedLanguageLabel: LocalizedStringKey {
+        model.isMultilingualModel ? L10n.AIModels.languageMultilingualShort.text : L10n.AIModels.languageEnglishOnlyShort.text
     }
 }

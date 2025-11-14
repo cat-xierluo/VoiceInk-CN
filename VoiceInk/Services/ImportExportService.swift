@@ -277,13 +277,20 @@ class ImportExportService {
                         }
                     }
 
-                    self.showRestartAlert(message: "Settings imported successfully from \(url.lastPathComponent). All settings (including general app settings) have been applied.")
+                    let successMessage = L10n.Settings.DataImport.successMessage.format(url.lastPathComponent)
+                    self.showRestartAlert(message: successMessage)
 
                 } catch {
-                    self.showAlert(title: "Import Error", message: "Error importing settings: \(error.localizedDescription). The file might be corrupted or not in the correct format.")
+                    self.showAlert(
+                        title: L10n.Settings.DataImport.errorTitle.string,
+                        message: L10n.Settings.DataImport.errorMessage.format(error.localizedDescription)
+                    )
                 }
             } else {
-                self.showAlert(title: "Import Canceled", message: "The settings import operation was canceled.")
+                self.showAlert(
+                    title: L10n.Settings.DataImport.canceledTitle.string,
+                    message: L10n.Settings.DataImport.canceledMessage.string
+                )
             }
         }
     }
@@ -294,7 +301,7 @@ class ImportExportService {
             alert.messageText = title
             alert.informativeText = message
             alert.alertStyle = .informational
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: L10n.Common.ok.string)
             alert.runModal()
         }
     }
@@ -302,11 +309,11 @@ class ImportExportService {
     private func showRestartAlert(message: String) {
         DispatchQueue.main.async {
             let alert = NSAlert()
-            alert.messageText = "Import Successful"
-            alert.informativeText = message + "\n\nIMPORTANT: If you were using AI enhancement features, please make sure to reconfigure your API keys in the Enhancement section.\n\nIt is recommended to restart VoiceInk for all changes to take full effect."
+            alert.messageText = L10n.Settings.DataImport.successTitle.string
+            alert.informativeText = message + "\n\n" + L10n.Settings.DataImport.restartInfo.string
             alert.alertStyle = .informational
-            alert.addButton(withTitle: "OK")
-            alert.addButton(withTitle: "Configure API Keys")
+            alert.addButton(withTitle: L10n.Common.ok.string)
+            alert.addButton(withTitle: L10n.Settings.Data.configureApiKeys.string)
             
             let response = alert.runModal()
             if response == .alertSecondButtonReturn {

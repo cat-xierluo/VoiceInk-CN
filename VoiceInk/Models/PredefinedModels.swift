@@ -2,21 +2,48 @@ import Foundation
  
  enum PredefinedModels {
     static func getLanguageDictionary(isMultilingual: Bool, provider: ModelProvider = .local) -> [String: String] {
+        if provider == .nativeApple {
+            return appleNativeLanguages
+        }
+        
         if !isMultilingual {
-            return ["en": "English"]
-        } else {
-            // For Apple Native models, return only supported languages in simple format
-            if provider == .nativeApple {
-                let appleSupportedCodes = ["ar", "de", "en", "es", "fr", "it", "ja", "ko", "pt", "yue", "zh"]
-                return allLanguages.filter { appleSupportedCodes.contains($0.key) }
-            }
-            return allLanguages
+            return ["en": localizedLanguageName("English")]
+        }
+        
+        return localizedAllLanguages
+    }
+    
+    private static func localizedString(_ key: String, comment: String) -> String {
+        NSLocalizedString(
+            key,
+            tableName: nil,
+            bundle: .main,
+            value: key,
+            comment: comment
+        )
+    }
+    
+    private static func localizedModelName(_ key: String) -> String {
+        localizedString(key, comment: "AI model display name")
+    }
+    
+    private static func localizedModelDescription(_ key: String) -> String {
+        localizedString(key, comment: "AI model description")
+    }
+    
+    private static func localizedLanguageName(_ key: String) -> String {
+        localizedString(key, comment: "Language display name")
+    }
+    
+    private static func localizedLanguageDictionary(_ dictionary: [String: String]) -> [String: String] {
+        dictionary.reduce(into: [String: String]()) { result, entry in
+            result[entry.key] = localizedLanguageName(entry.value)
         }
     }
     
     // Apple Native Speech specific languages with proper BCP-47 format
     // Based on actual supported locales from SpeechTranscriber.supportedLocales
-    static let appleNativeLanguages = [
+    private static let appleNativeLanguageSource = [
         // English variants
         "en-US": "English (United States)",
         "en-GB": "English (United Kingdom)",
@@ -73,6 +100,8 @@ import Foundation
         "ar-SA": "Arabic (Saudi Arabia)"
     ]
     
+    static let appleNativeLanguages = localizedLanguageDictionary(appleNativeLanguageSource)
+    
     static var models: [any TranscriptionModel] {
         return predefinedModels + CustomModelManager.shared.customModels
     }
@@ -81,8 +110,8 @@ import Foundation
         // Native Apple Model
         NativeAppleModel(
             name: "apple-speech",
-            displayName: "Apple Speech",
-            description: "Uses the native Apple Speech framework for transcription. Requires macOS 26.",
+            displayName: localizedModelName("Apple Speech"),
+            description: localizedModelDescription("Uses the native Apple Speech framework for transcription. Requires macOS 26."),
             isMultilingualModel: true,
             supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .nativeApple)
         ),
@@ -90,8 +119,8 @@ import Foundation
         // Parakeet Models
         ParakeetModel(
             name: "parakeet-tdt-0.6b-v2",
-            displayName: "Parakeet V2",
-            description: "NVIDIA's Parakeet V2 model optimized for lightning-fast English-only transcription.",
+            displayName: localizedModelName("Parakeet V2"),
+            description: localizedModelDescription("NVIDIA's Parakeet V2 model optimized for lightning-fast English-only transcription."),
             size: "474 MB",
             speed: 0.99,
             accuracy: 0.94,
@@ -100,8 +129,8 @@ import Foundation
         ),
         ParakeetModel(
             name: "parakeet-tdt-0.6b-v3",
-            displayName: "Parakeet V3",
-            description: "NVIDIA's Parakeet V3 model with multilingual support across English and 25 European languages.",
+            displayName: localizedModelName("Parakeet V3"),
+            description: localizedModelDescription("NVIDIA's Parakeet V3 model with multilingual support across English and 25 European languages."),
             size: "494 MB",
             speed: 0.99,
             accuracy: 0.94,
@@ -112,81 +141,81 @@ import Foundation
          // Local Models
          LocalModel(
              name: "ggml-tiny",
-             displayName: "Tiny",
+             displayName: localizedModelName("Tiny"),
              size: "75 MB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
-             description: "Tiny model, fastest, least accurate",
+             description: localizedModelDescription("Tiny model, fastest, least accurate"),
              speed: 0.95,
              accuracy: 0.6,
              ramUsage: 0.3
          ),
          LocalModel(
              name: "ggml-tiny.en",
-             displayName: "Tiny (English)",
+             displayName: localizedModelName("Tiny (English)"),
              size: "75 MB",
              supportedLanguages: getLanguageDictionary(isMultilingual: false, provider: .local),
-             description: "Tiny model optimized for English, fastest, least accurate",
+             description: localizedModelDescription("Tiny model optimized for English, fastest, least accurate"),
              speed: 0.95,
              accuracy: 0.65,
              ramUsage: 0.3
          ),
          LocalModel(
              name: "ggml-base",
-             displayName: "Base",
+             displayName: localizedModelName("Base"),
              size: "142 MB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
-             description: "Base model, good balance between speed and accuracy, supports multiple languages",
+             description: localizedModelDescription("Base model, good balance between speed and accuracy, supports multiple languages"),
              speed: 0.85,
              accuracy: 0.72,
              ramUsage: 0.5
          ),
          LocalModel(
              name: "ggml-base.en",
-             displayName: "Base (English)",
+             displayName: localizedModelName("Base (English)"),
              size: "142 MB",
              supportedLanguages: getLanguageDictionary(isMultilingual: false, provider: .local),
-             description: "Base model optimized for English, good balance between speed and accuracy",
+             description: localizedModelDescription("Base model optimized for English, good balance between speed and accuracy"),
              speed: 0.85,
              accuracy: 0.75,
              ramUsage: 0.5
          ),
          LocalModel(
              name: "ggml-large-v2",
-             displayName: "Large v2",
+             displayName: localizedModelName("Large v2"),
              size: "2.9 GB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
-             description: "Large model v2, slower than Medium but more accurate",
+             description: localizedModelDescription("Large model v2, slower than Medium but more accurate"),
              speed: 0.3,
              accuracy: 0.96,
              ramUsage: 3.8
          ),
          LocalModel(
              name: "ggml-large-v3",
-             displayName: "Large v3",
+             displayName: localizedModelName("Large v3"),
              size: "2.9 GB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
-             description: "Large model v3, very slow but most accurate",
+             description: localizedModelDescription("Large model v3, very slow but most accurate"),
              speed: 0.3,
              accuracy: 0.98,
              ramUsage: 3.9
          ),
          LocalModel(
              name: "ggml-large-v3-turbo",
-             displayName: "Large v3 Turbo",
+             displayName: localizedModelName("Large v3 Turbo"),
              size: "1.5 GB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
              description:
-             "Large model v3 Turbo, faster than v3 with similar accuracy",
+             localizedModelDescription("Large model v3 Turbo, faster than v3 with similar accuracy"),
              speed: 0.75,
              accuracy: 0.97,
              ramUsage: 1.8
          ),
          LocalModel(
              name: "ggml-large-v3-turbo-q5_0",
-             displayName: "Large v3 Turbo (Quantized)",
+             displayName: localizedModelName("Large v3 Turbo (Quantized)"),
              size: "547 MB",
              supportedLanguages: getLanguageDictionary(isMultilingual: true, provider: .local),
-             description: "Quantized version of Large v3 Turbo, faster with slightly lower accuracy",
+             description: localizedModelDescription("Quantized version of Large v3 Turbo, faster with slightly lower accuracy"),
              speed: 0.75,
              accuracy: 0.95,
              ramUsage: 1.0
@@ -195,8 +224,8 @@ import Foundation
                  // Cloud Models
         CloudModel(
             name: "whisper-large-v3-turbo",
-            displayName: "Whisper Large v3 Turbo (Groq)",
-            description: "Whisper Large v3 Turbo model with Groq's lightning-speed inference",
+            displayName: localizedModelName("Whisper Large v3 Turbo (Groq)"),
+            description: localizedModelDescription("Whisper Large v3 Turbo model with Groq's lightning-speed inference"),
             provider: .groq,
             speed: 0.65,
             accuracy: 0.96,
@@ -205,8 +234,8 @@ import Foundation
         ),
         CloudModel(
            name: "scribe_v1",
-           displayName: "Scribe v1 (ElevenLabs)",
-           description: "ElevenLabs' Scribe model for fast and accurate transcription.",
+           displayName: localizedModelName("Scribe v1 (ElevenLabs)"),
+           description: localizedModelDescription("ElevenLabs' Scribe model for fast and accurate transcription."),
            provider: .elevenLabs,
            speed: 0.7,
            accuracy: 0.98,
@@ -215,8 +244,8 @@ import Foundation
        ),
        CloudModel(
            name: "nova-2",
-           displayName: "Nova (Deepgram)",
-           description: "Deepgram's Nova model for fast, accurate, and cost-effective transcription.",
+           displayName: localizedModelName("Nova (Deepgram)"),
+           description: localizedModelDescription("Deepgram's Nova model for fast, accurate, and cost-effective transcription."),
            provider: .deepgram,
            speed: 0.9,
            accuracy: 0.95,
@@ -225,8 +254,8 @@ import Foundation
        ),
        CloudModel(
            name: "nova-3-medical",
-           displayName: "Nova-3 Medical (Deepgram)",
-           description: "Specialized medical transcription model optimized for clinical environments.",
+           displayName: localizedModelName("Nova-3 Medical (Deepgram)"),
+           description: localizedModelDescription("Specialized medical transcription model optimized for clinical environments."),
            provider: .deepgram,
            speed: 0.9,
            accuracy: 0.96,
@@ -235,8 +264,8 @@ import Foundation
        ),
         CloudModel(
             name: "voxtral-mini-latest",
-            displayName: "Voxtral Mini (Mistral)",
-            description: "Mistral's latest SOTA transcription model.",
+            displayName: localizedModelName("Voxtral Mini (Mistral)"),
+            description: localizedModelDescription("Mistral's latest SOTA transcription model."),
             provider: .mistral,
             speed: 0.8,
             accuracy: 0.97,
@@ -247,8 +276,8 @@ import Foundation
         // Gemini Models
         CloudModel(
             name: "gemini-2.5-pro",
-            displayName: "Gemini 2.5 Pro",
-            description: "Google's advanced multimodal model with high-quality transcription capabilities.",
+            displayName: localizedModelName("Gemini 2.5 Pro"),
+            description: localizedModelDescription("Google's advanced multimodal model with high-quality transcription capabilities."),
             provider: .gemini,
             speed: 0.7,
             accuracy: 0.96,
@@ -257,8 +286,8 @@ import Foundation
         ),
         CloudModel(
             name: "gemini-2.5-flash",
-            displayName: "Gemini 2.5 Flash",
-            description: "Google's optimized model for low-latency transcription with multimodal support.",
+            displayName: localizedModelName("Gemini 2.5 Flash"),
+            description: localizedModelDescription("Google's optimized model for low-latency transcription with multimodal support."),
             provider: .gemini,
             speed: 0.9,
             accuracy: 0.94,
@@ -268,8 +297,8 @@ import Foundation
         ,
         CloudModel(
             name: "stt-async-v3",
-            displayName: "Soniox (stt-async-v3)",
-            description: "Soniox asynchronous transcription model v3.",
+            displayName: localizedModelName("Soniox (stt-async-v3)"),
+            description: localizedModelDescription("Soniox asynchronous transcription model v3."),
             provider: .soniox,
             speed: 0.8,
             accuracy: 0.96,
@@ -278,7 +307,7 @@ import Foundation
         )
      ]
  
-     static let allLanguages = [
+     private static let languageSource = [
          "auto": "Auto-detect",
          "af": "Afrikaans",
          "am": "Amharic",
@@ -381,4 +410,6 @@ import Foundation
          "yue": "Cantonese",
          "zh": "Chinese",
      ]
+    
+    private static let localizedAllLanguages = localizedLanguageDictionary(languageSource)
  }

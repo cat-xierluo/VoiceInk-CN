@@ -8,11 +8,11 @@ struct AnimatedSaveButton: View {
     
     var body: some View {
         Menu {
-            Button("Save as TXT") {
+            Button(L10n.Components.saveAsTXT.text) {
                 saveFile(as: .plainText, extension: "txt")
             }
-            
-            Button("Save as MD") {
+
+            Button(L10n.Components.saveAsMD.text) {
                 saveFile(as: .text, extension: "md")
             }
         } label: {
@@ -20,7 +20,7 @@ struct AnimatedSaveButton: View {
                 Image(systemName: isSaved ? "checkmark" : "square.and.arrow.down")
                     .font(.system(size: 12, weight: isSaved ? .bold : .regular))
                     .foregroundColor(.white)
-                Text(isSaved ? "Saved" : "Save")
+                Text(isSaved ? L10n.Components.saved.text : L10n.Components.save.text)
                     .font(.system(size: 12, weight: isSaved ? .medium : .regular))
                     .foregroundColor(.white)
             }
@@ -40,7 +40,7 @@ struct AnimatedSaveButton: View {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [contentType]
         panel.nameFieldStringValue = "\(generateFileName()).\(fileExtension)"
-        panel.title = "Save Transcription"
+        panel.title = L10n.Components.saveTranscription.string
         
         if panel.runModal() == .OK {
             guard let url = panel.url else { return }
@@ -112,7 +112,7 @@ struct AnimatedSaveButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             AnimatedSaveButton(textToSave: "Hello world this is a sample transcription text")
-            Text("Save Button Preview")
+            Text(L10n.Components.saveButtonPreview.text)
                 .padding()
         }
         .padding()

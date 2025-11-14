@@ -39,14 +39,14 @@ struct NativeAppleModelCardView: View {
     private var statusBadge: some View {
         Group {
             if isCurrent {
-                Text("Default")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
                     .background(Capsule().fill(Color.accentColor))
                     .foregroundColor(.white)
             } else {
-                Text("Built-in")
+                Text(L10n.AIModels.builtIn.text)
                     .font(.system(size: 11, weight: .medium))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -59,25 +59,25 @@ struct NativeAppleModelCardView: View {
     private var metadataSection: some View {
         HStack(spacing: 12) {
             // Native Apple
-            Label("Native Apple", systemImage: "apple.logo")
+            Label(L10n.AIModels.nativeApple.text, systemImage: "apple.logo")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Language
-            Label(model.language, systemImage: "globe")
+            Label(localizedLanguageLabel, systemImage: "globe")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // On-Device
-            Label("On-Device", systemImage: "checkmark.shield")
+            Label(L10n.AIModels.onDevice.text, systemImage: "checkmark.shield")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
             
             // Requires macOS 26+
-            Label("macOS 26+", systemImage: "macbook")
+            Label(L10n.AIModels.macOSRequirement.format(26), systemImage: "macbook")
                 .font(.system(size: 11))
                 .foregroundColor(Color(.secondaryLabelColor))
                 .lineLimit(1)
@@ -97,12 +97,12 @@ struct NativeAppleModelCardView: View {
     private var actionSection: some View {
         HStack(spacing: 8) {
             if isCurrent {
-                Text("Default Model")
+                Text(L10n.AIModels.defaultModel.text)
                     .font(.system(size: 12))
                     .foregroundColor(Color(.secondaryLabelColor))
             } else {
                 Button(action: setDefaultAction) {
-                    Text("Set as Default")
+                    Text(L10n.AIModels.setAsDefault.text)
                         .font(.system(size: 12))
                 }
                 .buttonStyle(.bordered)
@@ -110,4 +110,8 @@ struct NativeAppleModelCardView: View {
             }
         }
     }
-} 
+    
+    private var localizedLanguageLabel: LocalizedStringKey {
+        model.isMultilingualModel ? L10n.AIModels.languageMultilingualShort.text : L10n.AIModels.languageEnglishOnlyShort.text
+    }
+}

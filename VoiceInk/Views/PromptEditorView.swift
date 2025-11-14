@@ -60,22 +60,24 @@ struct PromptEditorView: View {
         VStack(spacing: 0) {
             // Header with modern styling
             HStack {
-                Text(isEditingPredefinedPrompt ? "Edit Trigger Words" : (mode == .add ? "New Prompt" : "Edit Prompt"))
+                Text(isEditingPredefinedPrompt ?
+                     L10n.PromptEditor.editTriggerWords.text :
+                     (mode == .add ? L10n.PromptEditor.newPrompt.text : L10n.PromptEditor.editPrompt.text))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
                 HStack(spacing: 12) {
-                    Button("Cancel") {
+                    Button(L10n.PromptEditor.cancel.text) {
                         dismiss()
                     }
                     .buttonStyle(.plain)
                     .foregroundColor(.secondary)
-                    
+
                     Button {
                         save()
                         dismiss()
                     } label: {
-                        Text("Save")
+                        Text(L10n.PromptEditor.save.text)
                             .fontWeight(.medium)
                     }
                     .buttonStyle(.borderedProminent)
@@ -94,14 +96,14 @@ struct PromptEditorView: View {
                     if isEditingPredefinedPrompt {
                         // Simplified view for predefined prompts - only trigger word editing
                         VStack(alignment: .leading, spacing: 16) {
-                            Text("Editing: \(title)")
+                            Text(L10n.PromptEditor.editing.format(title))
                                 .font(.title2)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
                                 .padding(.horizontal)
                                 .padding(.top, 8)
                             
-                            Text("You can only customize the trigger words for system prompts.")
+                            Text(L10n.PromptEditor.systemPromptRestriction.text)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .padding(.horizontal)
@@ -118,10 +120,10 @@ struct PromptEditorView: View {
                         HStack(spacing: 20) {
                             // Title Field
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Title")
+                                Text(L10n.PromptEditor.title.text)
                                     .font(.headline)
                                     .foregroundColor(.secondary)
-                                TextField("Enter a short, descriptive title", text: $title)
+                                TextField(L10n.PromptEditor.titlePlaceholder.text, text: $title)
                                     .textFieldStyle(.roundedBorder)
                                     .font(.body)
                             }
@@ -129,7 +131,7 @@ struct PromptEditorView: View {
                             
                             // Icon Selector with preview
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Icon")
+                                Text(L10n.PromptEditor.icon.text)
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 
@@ -159,15 +161,15 @@ struct PromptEditorView: View {
                         
                         // Description Field
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
+                            Text(L10n.PromptEditor.description.text)
                                 .font(.headline)
                                 .foregroundColor(.secondary)
-                            
-                            Text("Add a brief description of what this prompt does")
+
+                            Text(L10n.PromptEditor.descriptionHelp.text)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
-                            TextField("Enter a description", text: $description)
+
+                            TextField(L10n.PromptEditor.descriptionPlaceholder.text, text: $description)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.body)
                         }
@@ -175,21 +177,21 @@ struct PromptEditorView: View {
                         
                         // Prompt Text Section with improved styling
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Prompt Instructions")
+                            Text(L10n.PromptEditor.promptInstructions.text)
                                 .font(.headline)
                                 .foregroundColor(.secondary)
-                            
-                            Text("Define how AI should enhance your transcriptions")
+
+                            Text(L10n.PromptEditor.promptInstructionsHelp.text)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
+
                             if !isEditingPredefinedPrompt {
                                 HStack(spacing: 8) {
-                                    Toggle("Use System Instructions", isOn: $useSystemInstructions)
-                                    
+                                    Toggle(L10n.PromptEditor.useSystemInstructions.text, isOn: $useSystemInstructions)
+
                                     InfoTip(
-                                        title: "System Instructions",
-                                        message: "If enabled, your instructions are combined with a general-purpose template to improve transcription quality.\n\nDisable for full control over the AI's system prompt (for advanced users)."
+                                        title: L10n.PromptEditor.systemInstructions.string,
+                                        message: L10n.PromptEditor.systemInstructionsHelp.string
                                     )
                                 }
                                 .padding(.bottom, 4)
@@ -216,7 +218,7 @@ struct PromptEditorView: View {
                         
                         if case .add = mode {
                             // Popover keeps templates accessible without taking space in the layout
-                            Button("Start with a Predefined Template") {
+                            Button(L10n.PromptEditor.predefinedTemplate.text) {
                                 showingPredefinedPrompts.toggle()
                             }
                             .font(.headline)
@@ -285,11 +287,11 @@ struct TriggerWordsEditor: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Trigger Words")
+            Text(L10n.PromptEditor.triggerWords.text)
                 .font(.headline)
                 .foregroundColor(.secondary)
-            
-            Text("Add multiple words that can activate this prompt")
+
+            Text(L10n.PromptEditor.triggerWordsHelp.text)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
@@ -306,14 +308,14 @@ struct TriggerWordsEditor: View {
             
             // Input for new trigger word
             HStack {
-                TextField("Add trigger word", text: $newTriggerWord)
+                TextField(L10n.PromptEditor.addTriggerPlaceholder.text, text: $newTriggerWord)
                     .textFieldStyle(.roundedBorder)
                     .font(.body)
                     .onSubmit {
                         addTriggerWord()
                     }
                 
-                Button("Add") {
+                Button(L10n.Common.add.text) {
                     addTriggerWord()
                 }
                 .disabled(newTriggerWord.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -356,7 +358,7 @@ struct TriggerWordItemView: View {
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.borderless)
-            .help("Remove word")
+            .help(L10n.PromptEditor.removeTriggerHelp.text)
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isHovered = hover

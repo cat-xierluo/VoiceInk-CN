@@ -121,7 +121,7 @@ struct WaveformView: View {
                     VStack {
                         ProgressView()
                             .controlSize(.small)
-                        Text("Generating waveform...")
+                        Text(L10n.AudioPlayer.generatingWaveform.text)
                             .font(.system(size: 12))
                             .foregroundColor(.secondary)
                     }
@@ -252,7 +252,7 @@ struct AudioPlayerView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "waveform")
                         .foregroundStyle(Color.accentColor)
-                    Text("Recording")
+                    Text(L10n.AudioPlayer.recording.text)
                         .font(.system(size: 14, weight: .medium))
                 }
                 .foregroundColor(.secondary)
@@ -336,7 +336,7 @@ struct AudioPlayerView: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(isRetranscribing)
-                    .help("Retranscribe this audio")
+                    .help(L10n.AudioPlayer.retranscribeHint.text)
                     
                     Text(formatTime(playerManager.currentTime))
                         .font(.system(size: 14, weight: .medium))
@@ -356,7 +356,7 @@ struct AudioPlayerView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
-                        Text("Retranscription successful")
+                        Text(L10n.AudioPlayer.retranscriptionSuccessful.text)
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)
@@ -373,7 +373,7 @@ struct AudioPlayerView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "exclamationmark.circle.fill")
                             .foregroundColor(.red)
-                        Text(errorMessage.isEmpty ? "Retranscription failed" : errorMessage)
+                        Text(errorMessage.isEmpty ? L10n.AudioPlayer.retranscriptionFailed.string : errorMessage)
                             .font(.system(size: 14, weight: .medium))
                     }
                     .padding(.horizontal, 16)
@@ -406,7 +406,7 @@ struct AudioPlayerView: View {
     
     private func retranscribeAudio() {
         guard let currentTranscriptionModel = whisperState.currentTranscriptionModel else {
-            errorMessage = "No transcription model selected"
+            errorMessage = L10n.AudioPlayer.noModelSelected.string
             showRetranscribeError = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation { showRetranscribeError = false }

@@ -43,14 +43,28 @@ struct LanguageSelectionView: View {
     // Function to get current model's supported languages
     private func getCurrentModelLanguages() -> [String: String] {
         guard let currentModel = whisperState.currentTranscriptionModel else {
-            return ["en": "English"] // Default to English if no model found
+            let english = NSLocalizedString(
+                "English",
+                tableName: nil,
+                bundle: .main,
+                value: "English",
+                comment: "Default language name when no model is selected"
+            )
+            return ["en": english] // Default to English if no model found
         }
         return currentModel.supportedLanguages
     }
 
     // Get the display name of the current language
     private func currentLanguageDisplayName() -> String {
-        return getCurrentModelLanguages()[selectedLanguage] ?? "Unknown"
+        let fallback = NSLocalizedString(
+            "Unknown",
+            tableName: nil,
+            bundle: .main,
+            value: "Unknown",
+            comment: "Fallback label for unknown language"
+        )
+        return getCurrentModelLanguages()[selectedLanguage] ?? fallback
     }
 
     var body: some View {
@@ -71,29 +85,29 @@ struct LanguageSelectionView: View {
     
     private var languageSelectionSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Transcription Language")
+            Text(L10n.AIModels.transcriptionLanguage.text)
                 .font(.headline)
 
             if let currentModel = whisperState.currentTranscriptionModel
             {
                 if languageSelectionDisabled() {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Language: Autodetected")
+                        Text(L10n.AIModels.languageAutodetected.text)
                             .font(.subheadline)
                             .foregroundColor(.primary)
 
-                        Text("Current model: \(currentModel.displayName)")
+                        Text(String(format: L10n.AIModels.currentModel.string, currentModel.displayName))
                             .font(.caption)
                             .foregroundColor(.secondary)
 
-                        Text("The transcription language is automatically detected by the model.")
+                        Text(L10n.AIModels.languageAutodetectHelp.text)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                     .disabled(true)
                 } else if isMultilingualModel() {
                     VStack(alignment: .leading, spacing: 8) {
-                        Picker("Select Language", selection: $selectedLanguage) {
+                        Picker(L10n.AIModels.selectLanguage.text, selection: $selectedLanguage) {
                             ForEach(
                                 currentModel.supportedLanguages.sorted(by: {
                                     if $0.key == "auto" { return true }
@@ -109,30 +123,26 @@ struct LanguageSelectionView: View {
                             updateLanguage(newValue)
                         }
 
-                        Text("Current model: \(currentModel.displayName)")
+                        Text(String(format: L10n.AIModels.currentModel.string, currentModel.displayName))
                             .font(.caption)
                             .foregroundColor(.secondary)
 
-                        Text(
-                            "This model supports multiple languages. Select a specific language or auto-detect(if available)"
-                        )
+                        Text(L10n.AIModels.multilingualModelSupport.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     }
                 } else {
                     // For English-only models, force set language to English
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Language: English")
+                        Text(L10n.AIModels.languageEnglish.text)
                             .font(.subheadline)
                             .foregroundColor(.primary)
 
-                        Text("Current model: \(currentModel.displayName)")
+                        Text(String(format: L10n.AIModels.currentModel.string, currentModel.displayName))
                             .font(.caption)
                             .foregroundColor(.secondary)
 
-                        Text(
-                            "This is an English-optimized model and only supports English transcription."
-                        )
+                        Text(L10n.AIModels.englishOnlyModelSupport.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                     }
@@ -142,7 +152,7 @@ struct LanguageSelectionView: View {
                     }
                 }
             } else {
-                Text("No model selected")
+                Text(L10n.AIModels.noModelSelected.text)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -160,7 +170,7 @@ struct LanguageSelectionView: View {
                 Button {
                     // Do nothing, just showing info
                 } label: {
-                    Text("Language: Autodetected")
+                    Text(L10n.AIModels.languageAutodetected.text)
                         .foregroundColor(.secondary)
                 }
                 .disabled(true)
@@ -186,7 +196,7 @@ struct LanguageSelectionView: View {
                     }
                 } label: {
                     HStack {
-                        Text("Language: \(currentLanguageDisplayName())")
+                        Text(String(format: L10n.AIModels.languageMenuLabel.string, currentLanguageDisplayName()))
                         Image(systemName: "chevron.up.chevron.down")
                             .font(.system(size: 10))
                     }
@@ -196,7 +206,7 @@ struct LanguageSelectionView: View {
                 Button {
                     // Do nothing, just showing info
                 } label: {
-                    Text("Language: English (only)")
+                    Text(L10n.AIModels.languageEnglishOnly.text)
                         .foregroundColor(.secondary)
                 }
                 .disabled(true)

@@ -41,8 +41,8 @@ struct AudioTranscribeView: View {
             }
             return false
         }
-        .alert("Error", isPresented: .constant(transcriptionManager.errorMessage != nil)) {
-            Button("OK", role: .cancel) {
+        .alert(L10n.TranscribeAudio.error.string, isPresented: .constant(transcriptionManager.errorMessage != nil)) {
+            Button(L10n.Common.ok.string, role: .cancel) {
                 transcriptionManager.errorMessage = nil
             }
         } message: {
@@ -62,7 +62,7 @@ struct AudioTranscribeView: View {
         VStack(spacing: 16) {
             if isAudioFileSelected {
                 VStack(spacing: 16) {
-                    Text("Audio file selected: \(selectedAudioURL?.lastPathComponent ?? "")")
+                    Text(L10n.TranscribeAudio.audioFileSelected.format(selectedAudioURL?.lastPathComponent ?? ""))
                         .font(.headline)
                     
                     // AI Enhancement Settings
@@ -70,7 +70,7 @@ struct AudioTranscribeView: View {
                         VStack(spacing: 16) {
                             // AI Enhancement and Prompt in the same row
                             HStack(spacing: 16) {
-                                Toggle("AI Enhancement", isOn: $isEnhancementEnabled)
+                                Toggle(L10n.Enhancement.aiEnhancement.text, isOn: $isEnhancementEnabled)
                                     .toggleStyle(.switch)
                                     .onChange(of: isEnhancementEnabled) { oldValue, newValue in
                                         enhancementService.isEnhancementEnabled = newValue
@@ -82,11 +82,11 @@ struct AudioTranscribeView: View {
                                     
                                     // Prompt Selection
                                     HStack(spacing: 8) {
-                                        Text("Prompt:")
+                                        Text(L10n.TranscribeAudio.promptLabel.text)
                                             .font(.subheadline)
-                                        
+
                                         if enhancementService.allPrompts.isEmpty {
-                                            Text("No prompts available")
+                                            Text(L10n.Components.noPromptsAvailable.text)
                                                 .foregroundColor(.secondary)
                                                 .italic()
                                                 .font(.caption)
@@ -126,7 +126,7 @@ struct AudioTranscribeView: View {
                     
                     // Action Buttons in a row
                     HStack(spacing: 12) {
-                        Button("Start Transcription") {
+                        Button(L10n.TranscribeAudio.startTranscription.text) {
                             if let url = selectedAudioURL {
                                 transcriptionManager.startProcessing(
                                     url: url,
@@ -136,8 +136,8 @@ struct AudioTranscribeView: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
-                        
-                        Button("Choose Different File") {
+
+                        Button(L10n.TranscribeAudio.chooseDifferentFile.text) {
                             selectedAudioURL = nil
                             isAudioFileSelected = false
                         }
@@ -164,14 +164,14 @@ struct AudioTranscribeView: View {
                         Image(systemName: "arrow.down.doc")
                             .font(.system(size: 32))
                             .foregroundColor(isDropTargeted ? .blue : .gray)
-                        
-                        Text("Drop audio or video file here")
+
+                        Text(L10n.TranscribeAudio.dropAudioOrVideo.text)
                             .font(.headline)
-                        
-                        Text("or")
+
+                        Text(L10n.TranscribeAudio.or.text)
                             .foregroundColor(.secondary)
-                        
-                        Button("Choose File") {
+
+                        Button(L10n.TranscribeAudio.chooseFile.text) {
                             selectFile()
                         }
                         .buttonStyle(.bordered)
@@ -181,8 +181,8 @@ struct AudioTranscribeView: View {
                 .frame(height: 200)
                 .padding(.horizontal)
             }
-            
-            Text("Supported formats: WAV, MP3, M4A, AIFF, MP4, MOV")
+
+            Text(L10n.TranscribeAudio.supportedFormats.text)
                 .font(.caption)
                 .foregroundColor(.secondary)
         }

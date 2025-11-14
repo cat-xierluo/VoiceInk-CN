@@ -791,7 +791,7 @@ enum L10n {
     enum Metrics {
         static let noTranscriptionsYet = L10nItem("No Transcriptions Yet", comment: "No transcriptions yet message")
         static let startFirstRecording = L10nItem("Start your first recording to unlock value insights.", comment: "Start first recording message")
-        static let savedWithVoiceInk = L10nItem("You have saved %@ with VoiceInk", comment: "Saved time prefix")
+        static let savedWithVoiceInk = L10nItem("You have saved", comment: "Saved time prefix")
         static let withVoiceInk = L10nItem(" with VoiceInk", comment: "With VoiceInk suffix")
         static let welcomeToVoiceInk = L10nItem("Welcome to VoiceInk", comment: "Welcome message")
         static let completeSetup = L10nItem("Complete the setup to get started", comment: "Complete setup message")

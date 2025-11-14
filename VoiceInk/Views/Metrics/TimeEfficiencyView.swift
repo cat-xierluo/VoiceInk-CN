@@ -18,7 +18,7 @@ struct TimeEfficiencyView: View {
     }
     
     private var efficiencyMultiplierFormatted: String {
-        String(format: NSLocalizedString("%.1fx", comment: "%.1fx"), efficiencyMultiplier)
+        String(format: L10n.Metrics.Performance.speedFactorFormat.string, efficiencyMultiplier)
     }
     
     // MARK: - Initializer
@@ -55,14 +55,14 @@ struct TimeEfficiencyView: View {
     private var headerSection: some View {
         VStack(alignment: .center, spacing: 8) {
             HStack(spacing: 8) {
-                Text(NSLocalizedString("You are", comment: "You are"))
+                Text(L10n.Metrics.TimeEfficiency.youAre.text)
                     .font(.system(size: 32, weight: .bold))
                 
-                Text(NSLocalizedString("\(efficiencyMultiplierFormatted) Faster", comment: "\(efficiencyMultiplierFormatted) Faster"))
+                Text(String(format: L10n.Metrics.TimeEfficiency.fasterFormat.string, efficiencyMultiplierFormatted))
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(efficiencyGradient)
                 
-                Text(NSLocalizedString("with VoiceInk", comment: "with VoiceInk"))
+                Text(L10n.Metrics.TimeEfficiency.withVoiceInk.text)
                     .font(.system(size: 32, weight: .bold))
             }
             .lineLimit(1)
@@ -75,14 +75,14 @@ struct TimeEfficiencyView: View {
         HStack(spacing: 16) {
             TimeBlockView(
                 duration: totalRecordedTime,
-                label: NSLocalizedString("SPEAKING TIME", comment: "SPEAKING TIME"),
+                label: L10n.Metrics.TimeEfficiency.speakingTime.text,
                 icon: "mic.circle.fill",
                 color: .green
             )
             
             TimeBlockView(
                 duration: estimatedTypingTime,
-                label: NSLocalizedString("TYPING TIME", comment: "TYPING TIME"),
+                label: L10n.Metrics.TimeEfficiency.typingTime.text,
                 icon: "keyboard.fill",
                 color: .orange
             )
@@ -101,7 +101,7 @@ struct TimeEfficiencyView: View {
     
     private var timeSavedView: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(NSLocalizedString("TIME SAVED", comment: "TIME SAVED"))
+            Text(L10n.Metrics.TimeEfficiency.timeSaved.text)
                 .font(.system(size: 13, weight: .heavy))
                 .tracking(4)
                 .foregroundColor(.secondary)
@@ -123,14 +123,14 @@ struct TimeEfficiencyView: View {
                     .foregroundStyle(.white)
                 
                 // Center text
-                Text(NSLocalizedString("Feedback or Issues?", comment: "Feedback or Issues?"))
+                Text(L10n.Metrics.feedbackOrIssues.text)
                     .font(.system(size: 13, weight: .medium))
                     .foregroundStyle(.white)
                 
                 Spacer(minLength: 8)
                 
                 // Right button
-                Text(NSLocalizedString("Report", comment: "Report"))
+                Text(L10n.Metrics.TimeEfficiency.report.text)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(Color.accentColor)
                     .padding(.horizontal, 12)
@@ -183,7 +183,7 @@ struct TimeEfficiencyView: View {
 
 struct TimeBlockView: View {
     let duration: TimeInterval
-    let label: String
+    let label: LocalizedStringKey
     let icon: String
     let color: Color
     

@@ -67,30 +67,30 @@ class CustomModelManager: ObservableObject {
         var errors: [String] = []
         
         if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyName.string)
         }
         
         if displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Display name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyDisplayName.string)
         }
         
         if apiEndpoint.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("API endpoint cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyEndpoint.string)
         } else if !isValidURL(apiEndpoint) {
-            errors.append("API endpoint must be a valid URL")
+            errors.append(L10n.AIModels.CustomModel.Validation.invalidEndpoint.string)
         }
         
         if apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("API key cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyKey.string)
         }
         
         if modelName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Model name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyModelName.string)
         }
         
         // Check for duplicate names
         if customModels.contains(where: { $0.name == name }) {
-            errors.append("A model with this name already exists")
+            errors.append(L10n.AIModels.CustomModel.Validation.duplicateName.string)
         }
         
         return errors
@@ -100,30 +100,30 @@ class CustomModelManager: ObservableObject {
         var errors: [String] = []
         
         if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyName.string)
         }
         
         if displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Display name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyDisplayName.string)
         }
         
         if apiEndpoint.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("API endpoint cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyEndpoint.string)
         } else if !isValidURL(apiEndpoint) {
-            errors.append("API endpoint must be a valid URL")
+            errors.append(L10n.AIModels.CustomModel.Validation.invalidEndpoint.string)
         }
         
         if apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("API key cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyKey.string)
         }
         
         if modelName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            errors.append("Model name cannot be empty")
+            errors.append(L10n.AIModels.CustomModel.Validation.emptyModelName.string)
         }
         
         // Check for duplicate names, excluding the specified ID
         if customModels.contains(where: { $0.name == name && $0.id != excludingId }) {
-            errors.append("A model with this name already exists")
+            errors.append(L10n.AIModels.CustomModel.Validation.duplicateName.string)
         }
         
         return errors

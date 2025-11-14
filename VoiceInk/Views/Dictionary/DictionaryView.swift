@@ -96,7 +96,7 @@ struct DictionaryView: View {
             // Information Section
             GroupBox {
                 Label {
-                    Text("Add words to help VoiceInk recognize them properly. (Requires AI enhancement)")
+                    Text(L10n.Dictionary.title.text)
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -108,11 +108,11 @@ struct DictionaryView: View {
             
             // Input Section
             HStack(spacing: 8) {
-                TextField("Add word to dictionary", text: $newWord)
+                TextField(L10n.Dictionary.addWordPlaceholder.text, text: $newWord)
                     .textFieldStyle(.roundedBorder)
                     .font(.system(size: 13))
                     .onSubmit { addWords() }
-                
+
                 Button(action: addWords) {
                     Image(systemName: "plus.circle.fill")
                         .symbolRenderingMode(.hierarchical)
@@ -121,13 +121,13 @@ struct DictionaryView: View {
                 }
                 .buttonStyle(.borderless)
                 .disabled(newWord.isEmpty)
-                .help("Add word")
+                .help(L10n.Dictionary.addWordHelp.string)
             }
             
             // Words List
             if !dictionaryManager.items.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Dictionary Items (\(dictionaryManager.items.count))")
+                    Text(String(format: L10n.Dictionary.itemsCount.string, dictionaryManager.items.count))
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.secondary)
                     
@@ -151,8 +151,8 @@ struct DictionaryView: View {
             }
         }
         .padding()
-        .alert("Dictionary", isPresented: $showAlert) {
-            Button("OK", role: .cancel) {}
+        .alert(L10n.Dictionary.alertTitle.text, isPresented: $showAlert) {
+            Button(L10n.Dictionary.ok.text, role: .cancel) {}
         } message: {
             Text(alertMessage)
         }
@@ -171,7 +171,7 @@ struct DictionaryView: View {
         
         if parts.count == 1, let word = parts.first {
             if dictionaryManager.items.contains(where: { $0.word.lowercased() == word.lowercased() }) {
-                alertMessage = "'\(word)' is already in the dictionary"
+                alertMessage = L10n.Dictionary.alreadyExists.format(word)
                 showAlert = true
                 return
             }
@@ -211,7 +211,7 @@ struct DictionaryItemView: View {
                     .contentTransition(.symbolEffect(.replace))
             }
             .buttonStyle(.borderless)
-            .help("Remove word")
+            .help(L10n.DictionaryExtended.WordReplacement.removeWord.text)
             .onHover { hover in
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isHovered = hover

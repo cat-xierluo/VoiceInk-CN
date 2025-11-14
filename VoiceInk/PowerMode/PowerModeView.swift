@@ -73,7 +73,7 @@ struct PowerModeView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             HStack(spacing: 8) {
-                                Text("Power Modes")
+                                Text(L10n.PowerMode.powerModes.text)
                                     .font(.system(size: 28, weight: .bold, design: .default))
                                     .foregroundColor(.primary)
                                 
@@ -84,7 +84,7 @@ struct PowerModeView: View {
                                  )
                             }
                             
-                            Text("Automate your workflows with context-aware configurations.")
+                            Text(L10n.PowerMode.automateWorkflows.text)
                                 .font(.system(size: 14))
                                 .foregroundColor(.secondary)
                         }
@@ -100,7 +100,7 @@ struct PowerModeView: View {
                                     HStack(spacing: 6) {
                                         Image(systemName: "plus")
                                             .font(.system(size: 12, weight: .medium))
-                                        Text("Add Power Mode")
+                                        Text(L10n.PowerMode.addPowerMode.text)
                                             .font(.system(size: 13, weight: .medium))
                                     }
                                     .foregroundColor(.white)
@@ -161,7 +161,7 @@ struct PowerModeView: View {
 
                                     HStack(spacing: 6) {
                                         if config.isDefault {
-                                            Text("Default")
+                                            Text(L10n.PowerMode.`default`.text)
                                                 .font(.system(size: 11, weight: .medium))
                                                 .padding(.horizontal, 6)
                                                 .padding(.vertical, 2)
@@ -169,7 +169,7 @@ struct PowerModeView: View {
                                                 .foregroundColor(.white)
                                         }
                                         if !config.isEnabled {
-                                            Text("Disabled")
+                                            Text(L10n.PowerMode.disabled.text)
                                                 .font(.system(size: 11, weight: .medium))
                                                 .padding(.horizontal, 8)
                                                 .padding(.vertical, 4)
@@ -213,11 +213,11 @@ struct PowerModeView: View {
                                                 .foregroundColor(.secondary.opacity(0.6))
                                             
                                             VStack(spacing: 8) {
-                                                Text("No Power Modes Yet")
+                                                Text(L10n.PowerMode.noPowerModesYet.text)
                                                     .font(.system(size: 20, weight: .medium))
                                                     .foregroundColor(.primary)
                                                 
-                                                Text("Create first power mode to automate your VoiceInk workflow based on apps/website you are using")
+                                                Text(L10n.PowerMode.createFirstPowerMode.text)
                                                     .font(.system(size: 14))
                                                     .foregroundColor(.secondary)
                                                     .multilineTextAlignment(.center)

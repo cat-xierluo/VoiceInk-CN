@@ -32,12 +32,16 @@ struct MenuBarView: View {
                 
                 Divider()
                 
-                Button("Manage Models") {
+                Button(L10n.MenuBar.manageModels.text) {
                     menuBarManager.openMainWindowAndNavigate(to: "AI Models")
                 }
             } label: {
                 HStack {
-                    Text("Transcription Model: \(whisperState.currentTranscriptionModel?.displayName ?? "None")")
+                    Text(
+                        L10n.MenuBar.transcriptionModel.format(
+                            whisperState.currentTranscriptionModel?.displayName ?? L10n.Common.none.string
+                        )
+                    )
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -45,7 +49,7 @@ struct MenuBarView: View {
             
             Divider()
             
-            Toggle("AI Enhancement", isOn: $enhancementService.isEnhancementEnabled)
+            Toggle(L10n.MenuBar.aiEnhancement.text, isOn: $enhancementService.isEnhancementEnabled)
             
             Menu {
                 ForEach(enhancementService.allPrompts) { prompt in
@@ -65,7 +69,11 @@ struct MenuBarView: View {
                 }
             } label: {
                 HStack {
-                    Text("Prompt: \(enhancementService.activePrompt?.title ?? "None")")
+                    Text(
+                        L10n.MenuBar.prompt.format(
+                            enhancementService.activePrompt?.title ?? L10n.Common.none.string
+                        )
+                    )
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -78,7 +86,7 @@ struct MenuBarView: View {
                         aiService.selectedProvider = provider
                     } label: {
                         HStack {
-                            Text(provider.rawValue)
+                            Text(provider.localizedName)
                             if aiService.selectedProvider == provider {
                                 Image(systemName: "checkmark")
                             }
@@ -87,18 +95,18 @@ struct MenuBarView: View {
                 }
                 
                 if aiService.connectedProviders.isEmpty {
-                    Text("No providers connected")
+                    Text(L10n.MenuBar.noProviders.text)
                         .foregroundColor(.secondary)
                 }
                 
                 Divider()
                 
-                Button("Manage AI Providers") {
+                Button(L10n.MenuBar.manageAIProviders.text) {
                     menuBarManager.openMainWindowAndNavigate(to: "Enhancement")
                 }
             } label: {
                 HStack {
-                    Text("AI Provider: \(aiService.selectedProvider.rawValue)")
+                    Text(L10n.MenuBar.aiProvider.format(aiService.selectedProvider.localizedName))
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -120,18 +128,18 @@ struct MenuBarView: View {
                 }
                 
                 if aiService.availableModels.isEmpty {
-                    Text("No models available")
+                    Text(L10n.MenuBar.noModels.text)
                         .foregroundColor(.secondary)
                 }
                 
                 Divider()
                 
-                Button("Manage AI Models") {
+                Button(L10n.MenuBar.manageAIModels.text) {
                     menuBarManager.openMainWindowAndNavigate(to: "Enhancement")
                 }
             } label: {
                 HStack {
-                    Text("AI Model: \(aiService.currentModel)")
+                    Text(L10n.MenuBar.aiModel.format(aiService.currentModel))
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.system(size: 10))
                 }
@@ -140,13 +148,13 @@ struct MenuBarView: View {
             
             LanguageSelectionView(whisperState: whisperState, displayMode: .menuItem, whisperPrompt: whisperState.whisperPrompt)
             
-            Menu("Additional") {
+            Menu(L10n.MenuBar.additional.text) {
                 Button {
                     enhancementService.useClipboardContext.toggle()
                     menuRefreshTrigger.toggle()
                 } label: {
                     HStack {
-                        Text("Clipboard Context")
+                        Text(L10n.MenuBar.clipboardContext.text)
                         Spacer()
                         if enhancementService.useClipboardContext {
                             Image(systemName: "checkmark")
@@ -160,7 +168,7 @@ struct MenuBarView: View {
                     menuRefreshTrigger.toggle()
                 } label: {
                     HStack {
-                        Text("Context Awareness")
+                        Text(L10n.MenuBar.contextAwareness.text)
                         Spacer()
                         if enhancementService.useScreenCaptureContext {
                             Image(systemName: "checkmark")
@@ -173,49 +181,49 @@ struct MenuBarView: View {
             
             Divider()
             
-            Button("Retry Last Transcription") {
+            Button(L10n.MenuBar.retryLast.text) {
                 LastTranscriptionService.retryLastTranscription(from: whisperState.modelContext, whisperState: whisperState)
             }
             
-            Button("Copy Last Transcription") {
+            Button(L10n.MenuBar.copyLast.text) {
                 LastTranscriptionService.copyLastTranscription(from: whisperState.modelContext)
             }
             .keyboardShortcut("c", modifiers: [.command, .shift])
             
-            Button("History") {
+            Button(L10n.Sidebar.history.text) {
                 menuBarManager.openMainWindowAndNavigate(to: "History")
             }
             .keyboardShortcut("h", modifiers: [.command, .shift])
             
-            Button("Settings") {
+            Button(L10n.Sidebar.settings.text) {
                 menuBarManager.openMainWindowAndNavigate(to: "Settings")
             }
             .keyboardShortcut(",", modifiers: .command)
             
-            Button(menuBarManager.isMenuBarOnly ? "Show Dock Icon" : "Hide Dock Icon") {
+            Button(menuBarManager.isMenuBarOnly ? L10n.MenuBar.showDockIcon.text : L10n.MenuBar.hideDockIcon.text) {
                 menuBarManager.toggleMenuBarOnly()
             }
             .keyboardShortcut("d", modifiers: [.command, .shift])
             
-            Toggle("Launch at Login", isOn: $launchAtLoginEnabled)
+            Toggle(L10n.MenuBar.launchAtLogin.text, isOn: $launchAtLoginEnabled)
                 .onChange(of: launchAtLoginEnabled) { oldValue, newValue in
                     LaunchAtLogin.isEnabled = newValue
                 }
             
             Divider()
             
-            Button("Check for Updates") {
+            Button(L10n.MenuBar.checkForUpdates.text) {
                 updaterViewModel.checkForUpdates()
             }
             .disabled(!updaterViewModel.canCheckForUpdates)
             
-            Button("Help and Support") {
+            Button(L10n.MenuBar.helpAndSupport.text) {
                 EmailSupport.openSupportEmail()
             }
             
             Divider()
             
-            Button("Quit VoiceInk") {
+            Button(L10n.MenuBar.quit.text) {
                 NSApplication.shared.terminate(nil)
             }
         }

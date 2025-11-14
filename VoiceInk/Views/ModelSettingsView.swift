@@ -12,12 +12,12 @@ struct ModelSettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Output Format")
+                Text(L10n.SettingsExtended.ModelSettings.outputFormat.text)
                     .font(.headline)
                 
                 InfoTip(
-                    title: "Output Format Guide",
-                    message: "Unlike GPT, Voice Models(whisper) follows the style of your prompt rather than instructions. Use examples of your desired output format instead of commands.",
+                    title: L10n.SettingsExtended.ModelSettings.outputFormatGuideTitle.string,
+                    message: L10n.SettingsExtended.ModelSettings.outputFormatGuideMessage.string,
                     learnMoreURL: "https://cookbook.openai.com/examples/whisper_prompting_guide#comparison-with-gpt-prompting"
                 )
                 
@@ -34,7 +34,7 @@ struct ModelSettingsView: View {
                         isEditing = true
                     }
                 }) {
-                    Text(isEditing ? "Save" : "Edit")
+                    Text(isEditing ? L10n.Common.save.text : L10n.Common.edit.text)
                         .font(.caption)
                 }
             }
@@ -69,37 +69,37 @@ struct ModelSettingsView: View {
 
             HStack {
                 Toggle(isOn: $appendTrailingSpace) {
-                    Text("Add space after paste")
+                    Text(L10n.SettingsExtended.ModelSettings.addSpaceAfterPaste.text)
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Trailing Space",
-                    message: "Automatically add a space after pasted text. Useful for space-delimited languages."
+                    title: L10n.SettingsExtended.ModelSettings.trailingSpaceTitle.string,
+                    message: L10n.SettingsExtended.ModelSettings.trailingSpaceMessage.string
                 )
             }
 
             HStack {
                 Toggle(isOn: $isTextFormattingEnabled) {
-                    Text("Automatic text formatting")
+                    Text(L10n.SettingsExtended.ModelSettings.automaticTextFormatting.text)
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Automatic Text Formatting",
-                    message: "Apply intelligent text formatting to break large block of text into paragraphs."
+                    title: L10n.SettingsExtended.ModelSettings.textFormattingTitle.string,
+                    message: L10n.SettingsExtended.ModelSettings.textFormattingMessage.string
                 )
             }
 
             HStack {
                 Toggle(isOn: $isVADEnabled) {
-                    Text("Voice Activity Detection (VAD)")
+                    Text(L10n.SettingsExtended.ModelSettings.voiceActivityDetection.text)
                 }
                 .toggleStyle(.switch)
                 
                 InfoTip(
-                    title: "Voice Activity Detection",
-                    message: "Detect speech segments and filter out silence to improve accuracy of local models."
+                    title: L10n.SettingsExtended.ModelSettings.vadTitle.string,
+                    message: L10n.SettingsExtended.ModelSettings.vadMessage.string
                 )
             }
 

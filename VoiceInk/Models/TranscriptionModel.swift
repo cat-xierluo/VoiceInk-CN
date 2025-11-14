@@ -34,7 +34,14 @@ extension TranscriptionModel {
     }
     
     var language: String {
-        isMultilingualModel ? "Multilingual" : "English-only"
+        let key = isMultilingualModel ? "Multilingual" : "English-only"
+        return NSLocalizedString(
+            key,
+            tableName: nil,
+            bundle: .main,
+            value: key,
+            comment: "Transcription model language capability"
+        )
     }
 }
 
@@ -155,8 +162,26 @@ struct ImportedLocalModel: TranscriptionModel {
     init(fileBaseName: String) {
         self.name = fileBaseName
         self.displayName = fileBaseName
-        self.description = "Imported local model"
+        self.description = NSLocalizedString(
+            "Imported local model",
+            tableName: nil,
+            bundle: .main,
+            value: "Imported local model",
+            comment: "Description for a user-imported local model"
+        )
         self.isMultilingualModel = true
         self.supportedLanguages = PredefinedModels.getLanguageDictionary(isMultilingual: true, provider: .local)
+    }
+}
+
+extension ModelProvider {
+    var localizedName: String {
+        NSLocalizedString(
+            rawValue,
+            tableName: nil,
+            bundle: .main,
+            value: rawValue,
+            comment: "AI transcription model provider name"
+        )
     }
 }

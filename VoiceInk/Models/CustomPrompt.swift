@@ -278,25 +278,25 @@ extension CustomPrompt {
                     Button {
                         onEdit(self)
                     } label: {
-                        Label("Edit", systemImage: "pencil")
+                        Label(L10n.Common.edit.text, systemImage: "pencil")
                     }
                 }
                 
                 if let onDelete = onDelete, !isPredefined {
                     Button(role: .destructive) {
                         let alert = NSAlert()
-                        alert.messageText = "Delete Prompt?"
-                        alert.informativeText = "Are you sure you want to delete '\(self.title)' prompt? This action cannot be undone."
+                        alert.messageText = L10n.PromptEditor.deletePromptTitle.string
+                        alert.informativeText = L10n.PromptEditor.deletePromptMessage.format(self.title)
                         alert.alertStyle = .warning
-                        alert.addButton(withTitle: "Delete")
-                        alert.addButton(withTitle: "Cancel")
+                        alert.addButton(withTitle: L10n.Common.delete.string)
+                        alert.addButton(withTitle: L10n.Common.cancel.string)
                         
                         let response = alert.runModal()
                         if response == .alertFirstButtonReturn {
                             onDelete(self)
                         }
                     } label: {
-                        Label("Delete", systemImage: "trash")
+                        Label(L10n.Common.delete.text, systemImage: "trash")
                     }
                 }
             }
@@ -372,7 +372,7 @@ extension CustomPrompt {
             
             // Text label with matching styling
             VStack(spacing: 2) {
-                Text("Add New")
+                Text(L10n.Common.add.text)
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(.secondary)
                     .lineLimit(1)

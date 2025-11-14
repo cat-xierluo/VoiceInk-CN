@@ -104,7 +104,7 @@ struct TranscriptionHistoryView: View {
                                                 ProgressView()
                                                     .controlSize(.small)
                                             }
-                                            Text(isLoading ? "Loading..." : "Load More")
+                                            Text(isLoading ? L10n.History.loading.text : L10n.History.loadMore.text)
                                                 .font(.system(size: 14, weight: .medium))
                                         }
                                         .frame(maxWidth: .infinity)
@@ -139,13 +139,14 @@ struct TranscriptionHistoryView: View {
                     .animation(.easeInOut(duration: 0.3), value: !selectedTranscriptions.isEmpty)
             }
         }
-        .alert("Delete Selected Items?", isPresented: $showDeleteConfirmation) {
-            Button("Delete", role: .destructive) {
+        .alert(L10n.History.deleteSelectedItems.string, isPresented: $showDeleteConfirmation) {
+            Button(L10n.Common.delete.string, role: .destructive) {
                 deleteSelectedTranscriptions()
             }
-            Button("Cancel", role: .cancel) {}
+            Button(L10n.Common.cancel.string, role: .cancel) {}
         } message: {
-            Text("This action cannot be undone. Are you sure you want to delete \(selectedTranscriptions.count) item\(selectedTranscriptions.count == 1 ? "" : "s")?")
+            let itemText = selectedTranscriptions.count == 1 ? "" : "s"
+            Text(L10n.History.deleteConfirmationMessage.format(selectedTranscriptions.count, itemText))
         }
         .sheet(isPresented: $showAnalysisView) {
             if !selectedTranscriptions.isEmpty {
@@ -195,7 +196,7 @@ struct TranscriptionHistoryView: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
-            TextField("Search transcriptions", text: $searchText)
+            TextField(L10n.History.searchTranscriptions.text, text: $searchText)
                 .font(.system(size: 16, weight: .regular, design: .default))
                 .textFieldStyle(PlainTextFieldStyle())
         }
@@ -210,9 +211,9 @@ struct TranscriptionHistoryView: View {
             Image(systemName: "doc.text.magnifyingglass")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            Text("No transcriptions found")
+            Text(L10n.History.noTranscriptionsFound.text)
                 .font(.system(size: 24, weight: .semibold, design: .default))
-            Text("Your history will appear here")
+            Text(L10n.History.yourHistoryWillAppearHere.text)
                 .font(.system(size: 18, weight: .regular, design: .default))
                 .foregroundColor(.secondary)
         }
@@ -223,7 +224,7 @@ struct TranscriptionHistoryView: View {
     
     private var selectionToolbar: some View {
         HStack(spacing: 12) {
-            Text("\(selectedTranscriptions.count) selected")
+            Text(L10n.History.selectedCount.format(selectedTranscriptions.count))
                 .foregroundColor(.secondary)
                 .font(.system(size: 14))
             
@@ -234,40 +235,40 @@ struct TranscriptionHistoryView: View {
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "chart.bar.xaxis")
-                    Text("Analyze")
+                    Text(L10n.Common.analyze.text)
                 }
             }
             .buttonStyle(.borderless)
-            
+
             Button(action: {
                 exportService.exportTranscriptionsToCSV(transcriptions: Array(selectedTranscriptions))
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "square.and.arrow.up")
-                    Text("Export")
+                    Text(L10n.Common.export.text)
                 }
             }
             .buttonStyle(.borderless)
-            
+
             Button(action: {
                 showDeleteConfirmation = true
             }) {
                 HStack(spacing: 4) {
                     Image(systemName: "trash")
-                    Text("Delete")
+                    Text(L10n.Common.delete.text)
                 }
             }
             .buttonStyle(.borderless)
             
             if selectedTranscriptions.count < displayedTranscriptions.count {
-                Button("Select All") {
+                Button(L10n.History.selectAll.text) {
                     Task {
                         await selectAllTranscriptions()
                     }
                 }
                 .buttonStyle(.borderless)
             } else {
-                Button("Deselect All") {
+                Button(L10n.History.deselectAll.text) {
                     selectedTranscriptions.removeAll()
                 }
                 .buttonStyle(.borderless)

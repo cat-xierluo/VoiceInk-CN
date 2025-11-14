@@ -3,12 +3,29 @@ import SwiftData
 import AppKit
 import UniformTypeIdentifiers
 
-enum ModelFilter: String, CaseIterable, Identifiable {
-    case recommended = "Recommended"
-    case local = "Local"
-    case cloud = "Cloud"
-    case custom = "Custom"
-    var id: String { self.rawValue }
+enum ModelFilter: CaseIterable, Identifiable {
+    case recommended
+    case local
+    case cloud
+    case custom
+
+    var id: String {
+        switch self {
+        case .recommended: return "recommended"
+        case .local: return "local"
+        case .cloud: return "cloud"
+        case .custom: return "custom"
+        }
+    }
+
+    var label: L10nItem {
+        switch self {
+        case .recommended: return L10n.AIModels.Filter.recommended
+        case .local: return L10n.AIModels.Filter.local
+        case .cloud: return L10n.AIModels.Filter.cloud
+        case .custom: return L10n.AIModels.Filter.custom
+        }
+    }
 }
 
 struct ModelManagementView: View {
@@ -45,7 +62,7 @@ struct ModelManagementView: View {
             Alert(
                 title: Text(alertTitle),
                 message: Text(alertMessage),
-                primaryButton: .destructive(Text("Delete"), action: deleteActionClosure),
+                primaryButton: .destructive(Text(L10n.AIModels.delete.text), action: deleteActionClosure),
                 secondaryButton: .cancel()
             )
         }
@@ -53,10 +70,10 @@ struct ModelManagementView: View {
     
     private var defaultModelSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Default Model")
+            Text(L10n.AIModels.defaultModel.string)
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Text(whisperState.currentTranscriptionModel?.displayName ?? "No model selected")
+            Text(whisperState.currentTranscriptionModel?.displayName ?? L10n.AIModels.noModelSelected.string)
                 .font(.title2)
                 .fontWeight(.bold)
         }
@@ -82,7 +99,7 @@ struct ModelManagementView: View {
                                 isShowingSettings = false
                             }
                         }) {
-                            Text(filter.rawValue)
+                            Text(filter.label.text)
                                 .font(.system(size: 14, weight: selectedFilter == filter ? .semibold : .medium))
                                 .foregroundColor(selectedFilter == filter ? .primary : .primary.opacity(0.7))
                                 .padding(.horizontal, 16)
@@ -133,16 +150,16 @@ struct ModelManagementView: View {
                             isWarming: isWarming,
                             deleteAction: {
                                 if let customModel = model as? CustomCloudModel {
-                                    alertTitle = "Delete Custom Model"
-                                    alertMessage = "Are you sure you want to delete the custom model '\(customModel.displayName)'?"
+                                    alertTitle = L10n.AIModels.Alerts.deleteCustomModelTitle.string
+                                    alertMessage = L10n.AIModels.Alerts.deleteCustomModelMessage.format(customModel.displayName)
                                     deleteActionClosure = {
                                         customModelManager.removeCustomModel(withId: customModel.id)
                                         whisperState.refreshAllAvailableModels()
                                     }
                                     isShowingDeleteAlert = true
                                 } else if let downloadedModel = whisperState.availableModels.first(where: { $0.name == model.name }) {
-                                    alertTitle = "Delete Model"
-                                    alertMessage = "Are you sure you want to delete the model '\(downloadedModel.name)'?"
+                                    alertTitle = L10n.AIModels.Alerts.deleteModelTitle.string
+                                    alertMessage = L10n.AIModels.Alerts.deleteModelMessage.format(downloadedModel.name)
                                     deleteActionClosure = {
                                         Task {
                                             await whisperState.deleteModel(downloadedModel)
@@ -173,7 +190,7 @@ struct ModelManagementView: View {
                             Button(action: { presentImportPanel() }) {
                                 HStack(spacing: 8) {
                                     Image(systemName: "square.and.arrow.down")
-                                    Text("Import Local Model…")
+                                    Text(L10n.AIModels.importLocalModel.text)
                                         .font(.system(size: 12, weight: .semibold))
                                 }
                                 .frame(maxWidth: .infinity)
@@ -184,11 +201,11 @@ struct ModelManagementView: View {
                             .buttonStyle(.plain)
 
                             InfoTip(
-                                title: "Import local Whisper models",
-                                message: "Add a custom fine-tuned whisper model to use with VoiceInk. Select the downloaded .bin file.",
+                                title: L10n.AIModels.CustomModel.importTipTitle.string,
+                                message: L10n.AIModels.CustomModel.importTipMessage.string,
                                 learnMoreURL: "https://tryvoiceink.com/docs/custom-local-whisper-models"
                             )
-                            .help("Read more about custom local models")
+                            .help(L10n.AIModels.CustomModel.importTipHelp.string)
                         }
                     }
                     
@@ -238,7 +255,7 @@ struct ModelManagementView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.resolvesAliases = true
-        panel.title = "Select a Whisper ggml .bin model"
+        panel.title = L10n.AIModels.CustomModel.importPanelTitle.string
         if panel.runModal() == .OK, let url = panel.url {
             Task { @MainActor in
                 await whisperState.importLocalModel(from: url)

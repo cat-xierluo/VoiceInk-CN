@@ -11,12 +11,12 @@ struct AppPickerSheet: View {
         VStack(spacing: 16) {
             // Header
             HStack {
-                Text("Select Applications")
+                Text(L10n.PowerMode.selectApplications.text)
                     .font(.headline)
                 
                 Spacer()
                 
-                Button("Done") {
+                Button(L10n.Common.done.text) {
                     onDismiss()
                 }
                 .keyboardShortcut(.return, modifiers: [])
@@ -28,7 +28,7 @@ struct AppPickerSheet: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-                TextField("Search applications...", text: $searchText)
+                TextField(L10n.PowerMode.Configuration.searchApplications.text, text: $searchText)
                     .textFieldStyle(.roundedBorder)
                 if !searchText.isEmpty {
                     Button(action: { searchText = "" }) {

@@ -96,11 +96,11 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
-                Text("VoiceInk")
+                Text(L10n.App.name.text)
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
-                    Text("PRO")
+                    Text(L10n.App.proBadge.text)
                         .font(.system(size: 9, weight: .heavy))
                         .foregroundStyle(.white)
                         .padding(.horizontal, 4)

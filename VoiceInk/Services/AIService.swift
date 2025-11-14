@@ -148,6 +148,18 @@ enum AIProvider: String, CaseIterable {
     }
 }
 
+extension AIProvider {
+    var localizedName: String {
+        NSLocalizedString(
+            rawValue,
+            tableName: nil,
+            bundle: .main,
+            value: rawValue,
+            comment: "AI provider display name"
+        )
+    }
+}
+
 class AIService: ObservableObject {
     private let logger = Logger(subsystem: "com.prakashjoshipax.voiceink", category: "AIService")
     
@@ -594,5 +606,4 @@ class AIService: ObservableObject {
 
     }
 }
-
 

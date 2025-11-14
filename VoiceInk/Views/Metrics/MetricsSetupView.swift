@@ -17,11 +17,11 @@ struct MetricsSetupView: View {
                         .padding(.bottom, 20)
                        
                     VStack(spacing: 4) {
-                        Text("Welcome to VoiceInk")
+                        Text(L10n.Metrics.welcomeToVoiceInk.string)
                             .font(.system(size: 28, weight: .bold, design: .rounded))
                             .multilineTextAlignment(.center)
                         
-                        Text("Complete the setup to get started")
+                        Text(L10n.Metrics.completeSetup.string)
                             .font(.system(size: 16))
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -63,39 +63,7 @@ struct MetricsSetupView: View {
     }
     
     private func setupStep(for index: Int) -> some View {
-        let stepInfo: (isCompleted: Bool, icon: String, title: String, description: String)
-        
-        switch index {
-        case 0:
-            stepInfo = (
-                isCompleted: hotkeyManager.selectedHotkey1 != .none,
-                icon: "command",
-                title: "Set Keyboard Shortcut",
-                description: "Use VoiceInk anywhere with a shortcut."
-            )
-        case 1:
-            stepInfo = (
-                isCompleted: isAccessibilityEnabled,
-                icon: "hand.raised.fill",
-                title: "Enable Accessibility",
-                description: "Paste transcribed text at your cursor."
-            )
-        case 2:
-            stepInfo = (
-                isCompleted: isScreenRecordingEnabled,
-                icon: "video.fill",
-                title: "Enable Screen Recording",
-                description: "Get better transcriptions with screen context."
-            )
-        default:
-            stepInfo = (
-                isCompleted: whisperState.currentTranscriptionModel != nil,
-                icon: "arrow.down.to.line",
-                title: "Download Model",
-                description: "Choose an AI model to start transcribing."
-            )
-        }
-        
+        let stepInfo = stepDetails(for: index)
         return HStack(spacing: 16) {
             Image(systemName: stepInfo.icon)
                 .font(.system(size: 18))
@@ -168,19 +136,19 @@ struct MetricsSetupView: View {
     
     private func getActionButtonTitle() -> String {
         if hotkeyManager.selectedHotkey1 == .none {
-            return "Configure Shortcut"
+            return L10n.Metrics.Setup.configureShortcut.string
         } else if !AXIsProcessTrusted() {
-            return "Enable Accessibility"
+            return L10n.Metrics.Setup.enableAccessibilityAction.string
         } else if !CGPreflightScreenCaptureAccess() {
-            return "Enable Screen Recording"
+            return L10n.Metrics.Setup.enableScreenRecordingAction.string
         } else if whisperState.currentTranscriptionModel == nil {
-            return "Download Model"
+            return L10n.Metrics.Setup.downloadModelAction.string
         }
-        return "Get Started"
+        return L10n.Metrics.Setup.getStarted.string
     }
     
     private var helpText: some View {
-        Text("Need help? Check the Help menu for support options")
+        Text(L10n.Metrics.needHelp.string)
             .font(.caption)
             .foregroundColor(.secondary)
     }
@@ -208,3 +176,37 @@ struct MetricsSetupView: View {
     }
 }
 
+extension MetricsSetupView {
+    private func stepDetails(for index: Int) -> (isCompleted: Bool, icon: String, title: LocalizedStringKey, description: LocalizedStringKey) {
+        switch index {
+        case 0:
+            return (
+                hotkeyManager.selectedHotkey1 != .none,
+                "command",
+                L10n.Metrics.Setup.setShortcutTitle.text,
+                L10n.Metrics.Setup.setShortcutDescription.text
+            )
+        case 1:
+            return (
+                isAccessibilityEnabled,
+                "hand.raised.fill",
+                L10n.Metrics.Setup.accessibilityTitle.text,
+                L10n.Metrics.Setup.accessibilityDescription.text
+            )
+        case 2:
+            return (
+                isScreenRecordingEnabled,
+                "video.fill",
+                L10n.Metrics.Setup.screenRecordingTitle.text,
+                L10n.Metrics.Setup.screenRecordingDescription.text
+            )
+        default:
+            return (
+                whisperState.currentTranscriptionModel != nil,
+                "arrow.down.to.line",
+                L10n.Metrics.Setup.downloadModelTitle.text,
+                L10n.Metrics.Setup.downloadModelDescription.text
+            )
+        }
+    }
+}

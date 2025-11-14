@@ -24,27 +24,13 @@ struct AddCustomModelCardView: View {
                     withAnimation(.interpolatingSpring(stiffness: 170, damping: 20)) {
                         isExpanded = true
                         // Pre-fill values - either from editing model or defaults
-                        if let editing = editingModel {
-                            displayName = editing.displayName
-                            apiEndpoint = editing.apiEndpoint
-                            apiKey = editing.apiKey
-                            modelName = editing.modelName
-                            isMultilingual = editing.isMultilingualModel
-                        } else {
-                            // Pre-fill some default values when adding new
-                            if apiEndpoint.isEmpty {
-                                apiEndpoint = "https://api.example.com/v1/audio/transcriptions"
-                            }
-                            if modelName.isEmpty {
-                                modelName = "large-v3-turbo"
-                            }
-                        }
+                        populateDefaults()
                     }
                 }) {
                     HStack(spacing: 8) {
                         Image(systemName: "plus")
                             .font(.system(size: 14, weight: .medium))
-                        Text(editingModel != nil ? "Edit Model" : "Add Model")
+                        Text(editingModel != nil ? L10n.AIModels.editModel.text : L10n.AIModels.addModel.text)
                             .font(.system(size: 14, weight: .semibold))
                     }
                     .foregroundColor(.white)
@@ -62,7 +48,7 @@ struct AddCustomModelCardView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Header
                     HStack {
-                        Text(editingModel != nil ? "Edit Custom Model" : "Add Custom Model")
+                        Text(editingModel != nil ? L10n.AIModels.editCustomModel.text : L10n.AIModels.addCustomModel.text)
                             .font(.headline)
                             .foregroundColor(.primary)
                         
@@ -86,7 +72,7 @@ struct AddCustomModelCardView: View {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .foregroundColor(.orange)
                             .font(.caption)
-                        Text("Only OpenAI-compatible transcription APIs are supported")
+                        Text(L10n.AIModels.openAISupportedOnly.text)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -97,12 +83,29 @@ struct AddCustomModelCardView: View {
                     
                     // Form fields
                     VStack(alignment: .leading, spacing: 16) {
-                        FormField(title: "Display Name", text: $displayName, placeholder: "My Custom Model")
-                        FormField(title: "API Endpoint", text: $apiEndpoint, placeholder: "https://api.example.com/v1/audio/transcriptions")
-                        FormField(title: "API Key", text: $apiKey, placeholder: "your-api-key", isSecure: true)
-                        FormField(title: "Model Name", text: $modelName, placeholder: "whisper-1")
+                        FormField(
+                            title: L10n.AIModels.CustomModel.displayName.text,
+                            text: $displayName,
+                            placeholder: L10n.AIModels.CustomModel.displayNamePlaceholder.text
+                        )
+                        FormField(
+                            title: L10n.AIModels.CustomModel.apiEndpoint.text,
+                            text: $apiEndpoint,
+                            placeholder: L10n.AIModels.CustomModel.apiEndpointPlaceholder.text
+                        )
+                        FormField(
+                            title: L10n.AIModels.CustomModel.apiKey.text,
+                            text: $apiKey,
+                            placeholder: L10n.AIModels.CustomModel.apiKeyPlaceholder.text,
+                            isSecure: true
+                        )
+                        FormField(
+                            title: L10n.AIModels.CustomModel.modelName.text,
+                            text: $modelName,
+                            placeholder: L10n.AIModels.CustomModel.modelNamePlaceholder.text
+                        )
                         
-                        Toggle("Multilingual Model", isOn: $isMultilingual)
+                        Toggle(L10n.AIModels.CustomModel.multilingual.text, isOn: $isMultilingual)
                     }
                     
                     // Action buttons
@@ -113,7 +116,7 @@ struct AddCustomModelCardView: View {
                                 clearForm()
                             }
                         }) {
-                            Text("Cancel")
+                            Text(L10n.Common.cancel.text)
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.secondary)
                                 .frame(maxWidth: .infinity)
@@ -135,7 +138,7 @@ struct AddCustomModelCardView: View {
                                     Image(systemName: editingModel != nil ? "checkmark.circle.fill" : "plus.circle.fill")
                                         .font(.system(size: 14))
                                 }
-                                Text(editingModel != nil ? "Update Model" : "Add Model")
+                                Text(editingModel != nil ? L10n.AIModels.CustomModel.updateModel.text : L10n.AIModels.addModel.text)
                                     .font(.system(size: 13, weight: .medium))
                             }
                             .foregroundColor(.white)
@@ -162,8 +165,8 @@ struct AddCustomModelCardView: View {
                 )
             }
         }
-        .alert("Validation Errors", isPresented: $showingAlert) {
-            Button("OK") { }
+        .alert(L10n.AIModels.CustomModel.validationErrors.text, isPresented: $showingAlert) {
+            Button(L10n.Common.ok.text) { }
         } message: {
             Text(validationErrors.joined(separator: "\n"))
         }
@@ -232,7 +235,7 @@ struct AddCustomModelCardView: View {
                     id: editing.id,
                     name: generatedName,
                     displayName: trimmedDisplayName,
-                    description: "Custom transcription model",
+                    description: L10n.AIModels.CustomModel.modelDescription.string,
                     apiEndpoint: trimmedApiEndpoint,
                     apiKey: trimmedApiKey,
                     modelName: trimmedModelName,
@@ -244,7 +247,7 @@ struct AddCustomModelCardView: View {
                 let customModel = CustomCloudModel(
                     name: generatedName,
                     displayName: trimmedDisplayName,
-                    description: "Custom transcription model",
+                    description: L10n.AIModels.CustomModel.modelDescription.string,
                     apiEndpoint: trimmedApiEndpoint,
                     apiKey: trimmedApiKey,
                     modelName: trimmedModelName,
@@ -266,9 +269,9 @@ struct AddCustomModelCardView: View {
 }
 
 struct FormField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     var isSecure: Bool = false
     
     var body: some View {
@@ -277,7 +280,7 @@ struct FormField: View {
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundColor(.primary)
-            
+    
             if isSecure {
                 SecureField(placeholder, text: $text)
                     .textFieldStyle(.roundedBorder)
@@ -287,4 +290,23 @@ struct FormField: View {
             }
         }
     }
-} 
+}
+
+private extension AddCustomModelCardView {
+    func populateDefaults() {
+        if let editing = editingModel {
+            displayName = editing.displayName
+            apiEndpoint = editing.apiEndpoint
+            apiKey = editing.apiKey
+            modelName = editing.modelName
+            isMultilingual = editing.isMultilingualModel
+        } else {
+            if apiEndpoint.isEmpty {
+                apiEndpoint = L10n.AIModels.CustomModel.apiEndpointPlaceholder.string
+            }
+            if modelName.isEmpty {
+                modelName = "large-v3-turbo"
+            }
+        }
+    }
+}

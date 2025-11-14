@@ -15,16 +15,16 @@ struct PowerModeSettingsSection: View {
                     .frame(width: 24, height: 24)
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Power Mode")
+                    Text(L10n.PowerMode.title.text)
                         .font(.headline)
-                    Text("Enable to automatically apply custom configurations based on the app or website you are using.")
+                    Text(L10n.PowerMode.description.text)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-                
+
                 Spacer()
-                
-                Toggle("Enable Power Mode", isOn: toggleBinding)
+
+                Toggle(L10n.PowerMode.enable.text, isOn: toggleBinding)
                     .labelsHidden()
                     .toggleStyle(.switch)
             }
@@ -36,13 +36,13 @@ struct PowerModeSettingsSection: View {
                 
                 HStack(spacing: 8) {
                     Toggle(isOn: $powerModeAutoRestoreEnabled) {
-                        Text("Auto-Restore Preferences")
+                        Text(L10n.PowerMode.autoRestore.text)
                     }
                     .toggleStyle(.switch)
-                    
+
                     InfoTip(
-                        title: "Auto-Restore Preferences",
-                        message: "After each recording session, revert enhancement and transcription preferences to whatever was configured before Power Mode was activated."
+                        title: L10n.PowerMode.autoRestore.string,
+                        message: L10n.PowerMode.autoRestoreHelp.string
                     )
                 }
                 .transition(.opacity.combined(with: .move(edge: .top)))
@@ -52,10 +52,10 @@ struct PowerModeSettingsSection: View {
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(CardBackground(isSelected: false, useAccentGradientWhenSelected: true))
-        .alert("Power Mode Still Active", isPresented: $showDisableAlert) {
-            Button("Got it", role: .cancel) { }
+        .alert(L10n.PowerMode.stillActive.text, isPresented: $showDisableAlert) {
+            Button(L10n.PowerMode.gotIt.text, role: .cancel) { }
         } message: {
-            Text("Power Mode can't be disabled while any configuration is still enabled. Disable or remove your Power Modes first.")
+            Text(L10n.PowerMode.cantDisable.text)
         }
     }
     

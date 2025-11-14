@@ -13,16 +13,16 @@ struct ExperimentalFeaturesSection: View {
                     .frame(width: 24, height: 24)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Experimental Features")
+                    Text(L10n.SettingsExtended.ExperimentalFeatures.title.text)
                         .font(.headline)
-                    Text("Experimental features that might be unstable & bit buggy.")
+                    Text(L10n.SettingsExtended.ExperimentalFeatures.description.text)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
 
                 Spacer()
 
-                Toggle("Experimental Features", isOn: $isExperimentalFeaturesEnabled)
+                Toggle(L10n.SettingsExtended.ExperimentalFeatures.toggleLabel.text, isOn: $isExperimentalFeaturesEnabled)
                     .labelsHidden()
                     .toggleStyle(.switch)
                     .onChange(of: isExperimentalFeaturesEnabled) { _, newValue in
@@ -38,10 +38,10 @@ struct ExperimentalFeaturesSection: View {
                     .transition(.opacity.combined(with: .move(edge: .top)))
                 
                 Toggle(isOn: $playbackController.isPauseMediaEnabled) {
-                    Text("Pause Media during recording")
+                    Text(L10n.SettingsExtended.ExperimentalFeatures.pauseMedia.text)
                 }
                 .toggleStyle(.switch)
-                .help("Automatically pause active media playback during recordings and resume afterward.")
+                .help(L10n.SettingsExtended.ExperimentalFeatures.pauseMediaHelp.text)
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }

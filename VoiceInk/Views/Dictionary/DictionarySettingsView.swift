@@ -4,16 +4,25 @@ struct DictionarySettingsView: View {
     @State private var selectedSection: DictionarySection = .replacements
     let whisperPrompt: WhisperPrompt
     
-    enum DictionarySection: String, CaseIterable {
-        case replacements = "Word Replacements"
-        case spellings = "Correct Spellings"
+    enum DictionarySection: CaseIterable {
+        case replacements
+        case spellings
         
-        var description: String {
+        var title: LocalizedStringKey {
+            switch self {
+            case .replacements:
+                return L10n.Dictionary.wordReplacements.text
+            case .spellings:
+                return L10n.Dictionary.correctSpellings.text
+            }
+        }
+        
+        var description: LocalizedStringKey {
             switch self {
             case .spellings:
-                return "Add words to help VoiceInk recognize them properly"
+                return L10n.Dictionary.correctSpellingsDescription.text
             case .replacements:
-                return "Automatically replace specific words/phrases with custom formatted text "
+                return L10n.Dictionary.wordReplacementsDescription.text
             }
         }
         
@@ -49,9 +58,9 @@ struct DictionarySettingsView: View {
                     .shadow(color: .black.opacity(0.1), radius: 10, y: 5))
             
             VStack(spacing: 8) {
-                Text("Dictionary Settings")
+                Text(L10n.Dictionary.title.text)
                     .font(.system(size: 28, weight: .bold))
-                Text("Enhance VoiceInk's transcription accuracy by teaching it your vocabulary")
+                Text(L10n.Dictionary.description.text)
                     .font(.system(size: 15))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -74,7 +83,7 @@ struct DictionarySettingsView: View {
     
     private var sectionSelector: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Select Section")
+            Text(L10n.Common.selectSection.text)
                 .font(.title2)
                 .fontWeight(.semibold)
             
@@ -118,7 +127,7 @@ struct SectionCard: View {
                     .foregroundStyle(isSelected ? .blue : .secondary)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(section.rawValue)
+                    Text(section.title)
                         .font(.headline)
                     
                     Text(section.description)

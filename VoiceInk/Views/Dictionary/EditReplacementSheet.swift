@@ -29,18 +29,18 @@ struct EditReplacementSheet: View {
     // MARK: – Subviews
     private var header: some View {
         HStack {
-            Button("Cancel", role: .cancel) { dismiss() }
+            Button(L10n.Common.cancel.text, role: .cancel) { dismiss() }
                 .buttonStyle(.borderless)
                 .keyboardShortcut(.escape, modifiers: [])
 
             Spacer()
 
-            Text("Edit Word Replacement")
+            Text(L10n.DictionaryExtended.WordReplacement.edit.text)
                 .font(.headline)
 
             Spacer()
 
-            Button("Save") { saveChanges() }
+            Button(L10n.Common.save.text) { saveChanges() }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.small)
                 .disabled(originalWord.isEmpty || replacementWord.isEmpty)
@@ -62,7 +62,7 @@ struct EditReplacementSheet: View {
     }
 
     private var descriptionSection: some View {
-        Text("Update the word or phrase that should be automatically replaced.")
+        Text(L10n.DictionaryExtended.WordReplacement.updateDescription.text)
             .font(.subheadline)
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,24 +75,24 @@ struct EditReplacementSheet: View {
             // Original Text Field
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("Original Text")
+                    Text(L10n.DictionaryExtended.WordReplacement.originalText.text)
                         .font(.headline)
-                    Text("Required")
+                    Text(L10n.DictionaryExtended.WordReplacement.required.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                TextField("Enter word or phrase to replace (use commas for multiple)", text: $originalWord)
+                TextField(L10n.DictionaryExtended.WordReplacement.enterPlaceholder.text, text: $originalWord)
                     .textFieldStyle(.roundedBorder)
-                
+
             }
             .padding(.horizontal)
 
             // Replacement Text Field
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("Replacement Text")
+                    Text(L10n.DictionaryExtended.WordReplacement.replacementText.text)
                         .font(.headline)
-                    Text("Required")
+                    Text(L10n.DictionaryExtended.WordReplacement.required.text)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

@@ -4,9 +4,16 @@
 构建一个与上游 VoiceInk 持续同步、体验完全中文化且易于维护的 macOS 语音转写应用。通过规范化的本地化流程、自动化工具和测试保障，缩短上游发布到中文版更新的周期。
 
 ## 里程碑一：国际化基础（进行中）
-- 将 SwiftUI/Swift 硬编码文案封装为 `LocalizedStringKey` 或 `NSLocalizedString`，补充 `L10n` 工具类。
-- 启用 Xcode Base Internationalization，并生成 `Base.lproj` 字符串资源。
-- 整理历史中文翻译至术语库，建立中英文键值对映射。
+- [x] 将侧边栏、菜单栏与设置页的硬编码文案替换为 `L10n` 常量，并补齐中英文 `.strings`。
+- [ ] 完成剩余 SwiftUI 视图的文案封装：
+  - [ ] Onboarding 流程（`OnboardingView`, `OnboardingTutorialView`, `OnboardingPermissionsView` 等）
+  - [ ] 字典/提示词管理（`Dictionary*`, `PromptEditorView`, `PowerModeView`）
+  - [ ] 录音与转写结果组件（`Recorder`, `TranscriptionCard`, `TranscriptionHistoryView`）
+  - [ ] 权限与增强设置（`PermissionsView`, `EnhancementSettingsView`, `AIService` 相关提示）
+- [ ] 启用 Xcode Base Internationalization，并固定 `Base.lproj`/`zh-Hans.lproj` 同步流程。
+- [ ] 整理历史中文翻译至术语库，建立中英文键值对映射。
+
+> 建议顺序：先处理用户可见频率最高的 Onboarding/Permissions → 字典与提示词 → 剩余结果视图。每完成一个区域，即可复用 `status/TASKS.md` 子项做勾选，并在 `L10n` 中补齐键值。
 
 ## 里程碑二：本地化自动化工具（计划中）
 - 扩展 `localization-tools/localize.py`，集成 `xcrun extractLocStrings` 或 `genstrings`。

@@ -18,7 +18,7 @@ struct TranscriptionFallbackView: View {
                 
                 Spacer()
                 
-                Text("VoiceInk")
+                Text(L10n.App.name.text)
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
                 

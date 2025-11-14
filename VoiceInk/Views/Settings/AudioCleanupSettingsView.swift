@@ -18,27 +18,27 @@ struct AudioCleanupSettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Control how VoiceInk handles your transcription data and audio recordings for privacy and storage management.")
+            Text(L10n.SettingsExtended.AudioCleanup.title.text)
                 .font(.system(size: 13))
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
-            
-            Toggle("Automatically delete transcript history", isOn: $isTranscriptionCleanupEnabled)
+
+            Toggle(L10n.SettingsExtended.AudioCleanup.transcriptCleanupToggle.text, isOn: $isTranscriptionCleanupEnabled)
                 .toggleStyle(.switch)
                 .padding(.vertical, 4)
-            
+
             if isTranscriptionCleanupEnabled {
                 VStack(alignment: .leading, spacing: 8) {
-                    Picker("Delete transcripts older than", selection: $transcriptionRetentionMinutes) {
-                        Text("Immediately").tag(0)
-                        Text("1 hour").tag(60)
-                        Text("1 day").tag(24 * 60)
-                        Text("3 days").tag(3 * 24 * 60)
-                        Text("7 days").tag(7 * 24 * 60)
+                    Picker(L10n.SettingsExtended.AudioCleanup.deleteTranscriptsOlderThan.text, selection: $transcriptionRetentionMinutes) {
+                        Text(L10n.SettingsExtended.AudioCleanup.immediate.text).tag(0)
+                        Text(L10n.SettingsExtended.AudioCleanup.oneHour.text).tag(60)
+                        Text(L10n.SettingsExtended.AudioCleanup.oneDay.text).tag(24 * 60)
+                        Text(L10n.SettingsExtended.AudioCleanup.threeDays.text).tag(3 * 24 * 60)
+                        Text(L10n.SettingsExtended.AudioCleanup.sevenDays.text).tag(7 * 24 * 60)
                     }
                     .pickerStyle(.menu)
 
-                    Text("Older transcripts will be deleted automatically based on your selection.")
+                    Text(L10n.SettingsExtended.AudioCleanup.retentionDescription.text)
                         .font(.system(size: 13))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -54,38 +54,38 @@ struct AudioCleanupSettingsView: View {
                     }) {
                         HStack {
                             Image(systemName: "trash.circle")
-                            Text("Run Transcript Cleanup Now")
+                            Text(L10n.SettingsExtended.AudioCleanup.runCleanupNow.text)
                         }
                     }
                     .buttonStyle(.bordered)
                     .controlSize(.large)
-                    .alert("Transcript Cleanup", isPresented: $showTranscriptCleanupResult) {
-                        Button("OK", role: .cancel) { }
+                    .alert(L10n.SettingsExtended.AudioCleanup.transcriptCleanupAlertTitle.text, isPresented: $showTranscriptCleanupResult) {
+                        Button(L10n.Common.ok.text, role: .cancel) { }
                     } message: {
-                        Text("Cleanup triggered. Old transcripts are cleaned up according to your retention setting.")
+                        Text(L10n.SettingsExtended.AudioCleanup.cleanupTriggered.text)
                     }
                 }
                 .padding(.vertical, 4)
             }
 
             if !isTranscriptionCleanupEnabled {
-                Toggle("Enable automatic audio cleanup", isOn: $isAudioCleanupEnabled)
+                Toggle(L10n.SettingsExtended.AudioCleanup.enableAudioCleanup.text, isOn: $isAudioCleanupEnabled)
                     .toggleStyle(.switch)
                     .padding(.vertical, 4)
             }
 
             if isAudioCleanupEnabled && !isTranscriptionCleanupEnabled {
                 VStack(alignment: .leading, spacing: 8) {
-                    Picker("Keep audio files for", selection: $audioRetentionPeriod) {
-                        Text("1 day").tag(1)
-                        Text("3 days").tag(3)
-                        Text("7 days").tag(7)
-                        Text("14 days").tag(14)
-                        Text("30 days").tag(30)
+                    Picker(L10n.SettingsExtended.AudioCleanup.keepAudioFilesFor.text, selection: $audioRetentionPeriod) {
+                        Text(L10n.SettingsExtended.AudioCleanup.oneDay.text).tag(1)
+                        Text(L10n.SettingsExtended.AudioCleanup.threeDays.text).tag(3)
+                        Text(L10n.SettingsExtended.AudioCleanup.sevenDays.text).tag(7)
+                        Text(L10n.SettingsExtended.AudioCleanup.fourteenDays.text).tag(14)
+                        Text(L10n.SettingsExtended.AudioCleanup.thirtyDays.text).tag(30)
                     }
                     .pickerStyle(.menu)
-                    
-                    Text("Audio files older than the selected period will be automatically deleted, while keeping the text transcripts intact.")
+
+                    Text(L10n.SettingsExtended.AudioCleanup.audioCleanupDescription.text)
                         .font(.system(size: 13))
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -120,17 +120,17 @@ struct AudioCleanupSettingsView: View {
                         } else {
                             Image(systemName: "arrow.clockwise")
                         }
-                        Text(isPerformingCleanup ? "Analyzing..." : "Run Cleanup Now")
+                        Text(isPerformingCleanup ? L10n.SettingsExtended.AudioCleanup.analyzing.text : L10n.SettingsExtended.AudioCleanup.runCleanupNow.text)
                     }
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
                 .disabled(isPerformingCleanup)
-                .alert("Audio Cleanup", isPresented: $isShowingConfirmation) {
-                    Button("Cancel", role: .cancel) { }
-                    
+                .alert(L10n.SettingsExtended.AudioCleanup.audioCleanupAlertTitle.text, isPresented: $isShowingConfirmation) {
+                    Button(L10n.Common.cancel.text, role: .cancel) { }
+
                     if cleanupInfo.fileCount > 0 {
-                        Button("Delete \(cleanupInfo.fileCount) Files", role: .destructive) {
+                        Button(String(format: L10n.SettingsExtended.AudioCleanup.deleteFiles.string, cleanupInfo.fileCount), role: .destructive) {
                             Task {
                                 // Update UI state
                                 await MainActor.run {
@@ -155,21 +155,23 @@ struct AudioCleanupSettingsView: View {
                 } message: {
                     VStack(alignment: .leading, spacing: 8) {
                         if cleanupInfo.fileCount > 0 {
-                            Text("This will delete \(cleanupInfo.fileCount) audio files older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
-                            Text("Total size to be freed: \(AudioCleanupManager.shared.formatFileSize(cleanupInfo.totalSize))")
-                            Text("The text transcripts will be preserved.")
+                            let retentionLabel = retentionDescription(for: audioRetentionPeriod)
+                            Text(String(format: L10n.SettingsExtended.AudioCleanup.confirmCleanup.string, cleanupInfo.fileCount, retentionLabel))
+                            Text(String(format: L10n.SettingsExtended.AudioCleanup.totalSizeToFree.string, AudioCleanupManager.shared.formatFileSize(cleanupInfo.totalSize)))
+                            Text(L10n.SettingsExtended.AudioCleanup.transcriptsPreserved.text)
                         } else {
-                            Text("No audio files found that are older than \(audioRetentionPeriod) day\(audioRetentionPeriod > 1 ? "s" : "").")
+                            let retentionLabel = retentionDescription(for: audioRetentionPeriod)
+                            Text(String(format: L10n.SettingsExtended.AudioCleanup.noFilesToDelete.string, retentionLabel))
                         }
                     }
                 }
-                .alert("Cleanup Complete", isPresented: $showResultAlert) {
-                    Button("OK", role: .cancel) { }
+                .alert(L10n.SettingsExtended.AudioCleanup.cleanupCompleteTitle.text, isPresented: $showResultAlert) {
+                    Button(L10n.Common.ok.text, role: .cancel) { }
                 } message: {
                     if cleanupResult.errorCount > 0 {
-                        Text("Successfully deleted \(cleanupResult.deletedCount) audio files. Failed to delete \(cleanupResult.errorCount) files.")
+                        Text(String(format: L10n.SettingsExtended.AudioCleanup.cleanupSuccess.string, cleanupResult.deletedCount, cleanupResult.errorCount))
                     } else {
-                        Text("Successfully deleted \(cleanupResult.deletedCount) audio files.")
+                        Text(String(format: L10n.SettingsExtended.AudioCleanup.cleanupSuccessSimple.string, cleanupResult.deletedCount))
                     }
                 }
             }
@@ -181,5 +183,9 @@ struct AudioCleanupSettingsView: View {
                 AudioCleanupManager.shared.startAutomaticCleanup(modelContext: whisperState.modelContext)
             }
         }
+    }
+    
+    private func retentionDescription(for days: Int) -> String {
+        String(format: L10n.SettingsExtended.AudioCleanup.dayCount.string, days)
     }
 } 

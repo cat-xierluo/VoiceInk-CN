@@ -12,7 +12,7 @@ struct AnimatedCopyButton: View {
                 Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
                     .font(.system(size: 12, weight: isCopied ? .bold : .regular))
                     .foregroundColor(.white)
-                Text(isCopied ? "Copied" : "Copy")
+                Text(isCopied ? L10n.Components.copied.text : L10n.Components.copy.text)
                     .font(.system(size: 12, weight: isCopied ? .medium : .regular))
                     .foregroundColor(.white)
             }
@@ -46,7 +46,7 @@ struct AnimatedCopyButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             AnimatedCopyButton(textToCopy: "Sample text")
-            Text("Before Copy")
+            Text(L10n.Components.beforeCopy.text)
                 .padding()
         }
         .padding()

@@ -3,26 +3,26 @@ import SwiftUI
 struct HelpAndResourcesSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Help & Resources")
+            Text(L10n.Metrics.helpAndResources.string)
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundColor(.primary.opacity(0.8))
 
             VStack(alignment: .leading, spacing: 10) {
                 resourceLink(
                     icon: "sparkles",
-                    title: "Recommended Models",
+                    title: L10n.Metrics.Help.recommendedModels.string,
                     url: "https://tryvoiceink.com/recommended-models"
                 )
 
                 resourceLink(
                     icon: "video.fill",
-                    title: "YouTube Videos & Guides",
+                    title: L10n.Metrics.Help.youtubeGuides.string,
                     url: "https://www.youtube.com/@tryvoiceink/videos"
                 )
 
                 resourceLink(
                     icon: "book.fill",
-                    title: "Documentation",
+                    title: L10n.Metrics.Help.documentation.string,
                     url: "https://tryvoiceink.com/docs"
                 )
             }

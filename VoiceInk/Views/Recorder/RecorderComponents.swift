@@ -287,17 +287,17 @@ struct RecorderStatusDisplay: View {
         Group {
             if currentState == .enhancing {
                 VStack(spacing: 2) {
-                    Text("Enhancing")
+                    Text(L10n.TranscribeAudio.enhancing.text)
                         .foregroundColor(.white)
                         .font(.system(size: 11, weight: .medium, design: .default))
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
-                    
+
                     ProgressAnimation(animationSpeed: 0.15)
                 }
             } else if currentState == .transcribing {
                 VStack(spacing: 2) {
-                    Text("Transcribing")
+                    Text(L10n.TranscribeAudio.transcribing.text)
                         .foregroundColor(.white)
                         .font(.system(size: 11, weight: .medium, design: .default))
                         .lineLimit(1)

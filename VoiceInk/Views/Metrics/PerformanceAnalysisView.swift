@@ -44,7 +44,7 @@ struct PerformanceAnalysisView: View {
 
     private var header: some View {
         HStack {
-            Text("Performance Analysis")
+            Text(L10n.Metrics.performanceAnalysis.string)
                 .font(.title2)
                 .fontWeight(.bold)
             Spacer()
@@ -62,19 +62,19 @@ struct PerformanceAnalysisView: View {
             SummaryCard(
                 icon: "doc.text.fill", 
                 value: "\(analysis.totalTranscripts)", 
-                label: "Total Transcripts",
+                label: L10n.Metrics.Performance.totalTranscripts.string,
                 color: .indigo
             )
             SummaryCard(
                 icon: "waveform.path.ecg", 
                 value: "\(analysis.totalWithTranscriptionData)", 
-                label: "Analyzable",
+                label: L10n.Metrics.Performance.analyzable.string,
                 color: .teal
             )
             SummaryCard(
                 icon: "sparkles", 
                 value: "\(analysis.totalEnhancedFiles)", 
-                label: "Enhanced",
+                label: L10n.Metrics.Performance.enhanced.string,
                 color: .mint
             )
         }
@@ -82,21 +82,21 @@ struct PerformanceAnalysisView: View {
 
     private var systemInfoSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("System Information")
+            Text(L10n.Metrics.systemInformation.string)
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
             HStack(spacing: 12) {
-                SystemInfoCard(label: "Device", value: getMacModel())
-                SystemInfoCard(label: "Processor", value: getCPUInfo())
-                SystemInfoCard(label: "Memory", value: getMemoryInfo())
+                SystemInfoCard(label: L10n.Metrics.Performance.device.string, value: getMacModel())
+                SystemInfoCard(label: L10n.Metrics.Performance.processor.string, value: getCPUInfo())
+                SystemInfoCard(label: L10n.Metrics.Performance.memory.string, value: getMemoryInfo())
             }
         }
     }
 
     private var transcriptionPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Transcription Models")
+            Text(L10n.Metrics.transcriptionModels.string)
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
@@ -110,7 +110,7 @@ struct PerformanceAnalysisView: View {
 
     private var enhancementPerformanceSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Enhancement Models")
+            Text(L10n.Metrics.enhancementModels.string)
                 .font(.system(.title2, design: .default, weight: .bold))
                 .foregroundColor(.primary)
 
@@ -126,7 +126,7 @@ struct PerformanceAnalysisView: View {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.unitsStyle = .abbreviated
-        return formatter.string(from: duration) ?? "0s"
+        return formatter.string(from: duration) ?? L10n.Metrics.Performance.zeroSeconds.string
     }
 
     // MARK: - Analysis Logic
@@ -189,7 +189,7 @@ struct PerformanceAnalysisView: View {
         }
         
         let groupedByModel = Dictionary(grouping: relevantTranscriptions) {
-            $0[keyPath: modelNameKeyPath] ?? "Unknown"
+            $0[keyPath: modelNameKeyPath] ?? L10n.Common.unknown.string
         }
         
         return groupedByModel.map { modelName, items in
@@ -326,7 +326,7 @@ struct TranscriptionModelCard: View {
 
                 Spacer()
                 
-                Text("\(modelStat.fileCount) transcripts")
+                Text(String(format: L10n.Metrics.transcripts.string, modelStat.fileCount))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -336,10 +336,10 @@ struct TranscriptionModelCard: View {
             VStack(spacing: 16) {
                 // Main metric: Speed Factor
                 VStack {
-                    Text(String(format: "%.1fx", modelStat.speedFactor))
+                    Text(String(format: L10n.Metrics.Performance.speedFactorFormat.string, modelStat.speedFactor))
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                         .foregroundColor(.mint)
-                    Text("Faster than Real-time")
+                    Text(L10n.Metrics.fasterThanRealTime.string)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -350,14 +350,14 @@ struct TranscriptionModelCard: View {
                 // Secondary metrics
                 HStack {
                     MetricDisplay(
-                        title: "Avg. Audio",
+                        title: L10n.Metrics.Performance.avgAudio.string,
                         value: formatDuration(modelStat.avgAudioDuration),
                         color: .indigo
                     )
                     Spacer()
                     MetricDisplay(
-                        title: "Avg. Process Time",
-                        value: String(format: "%.2f s", modelStat.avgProcessingTime),
+                        title: L10n.Metrics.Performance.avgProcessTime.string,
+                        value: String(format: L10n.Metrics.Performance.secondsFormat.string, modelStat.avgProcessingTime),
                         color: .teal
                     )
                 }
@@ -372,7 +372,7 @@ struct TranscriptionModelCard: View {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.unitsStyle = .abbreviated
-        return formatter.string(from: duration) ?? "0s"
+        return formatter.string(from: duration) ?? L10n.Metrics.Performance.zeroSeconds.string
     }
 }
 
@@ -391,7 +391,7 @@ struct EnhancementModelCard: View {
 
                 Spacer()
                 
-                Text("\(modelStat.fileCount) transcripts")
+                Text(String(format: L10n.Metrics.transcripts.string, modelStat.fileCount))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -399,10 +399,11 @@ struct EnhancementModelCard: View {
             Divider()
             
             VStack(alignment: .center) {
-                Text(String(format: "%.2f s", modelStat.avgProcessingTime))
+                Text(String(format: L10n.Metrics.Performance.secondsFormat.string, modelStat.avgProcessingTime))
+                Text(String(format: L10n.Metrics.Performance.secondsFormat.string, modelStat.avgProcessingTime))
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                     .foregroundColor(.indigo)
-                Text("Avg. Enhancement Time")
+                Text(L10n.Metrics.avgEnhancementTime.string)
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
