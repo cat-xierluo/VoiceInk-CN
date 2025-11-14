@@ -14,10 +14,7 @@ struct MetricsContent: View {
                         VStack(spacing: 24) {
                             heroSection
                             metricsSection
-                            HStack(alignment: .top, spacing: 18) {
-                                HelpAndResourcesSection()
-                                DashboardPromotionsSection(licenseState: licenseState)
-                            }
+                            HelpAndResourcesSection()
 
                             Spacer(minLength: 20)
 
@@ -41,9 +38,9 @@ struct MetricsContent: View {
             Image(systemName: "waveform")
                 .font(.system(size: 56, weight: .semibold))
                 .foregroundColor(.secondary)
-            Text("No Transcriptions Yet")
+            Text(L10n.Metrics.noTranscriptionsYet.string)
                 .font(.title3.weight(.semibold))
-            Text("Start your first recording to unlock value insights.")
+            Text(L10n.Metrics.startFirstRecording.string)
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,21 +54,9 @@ struct MetricsContent: View {
             HStack {
                 Spacer(minLength: 0)
                 
-                (Text("You have saved ")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white.opacity(0.85))
-                 +
-                 Text(formattedTimeSaved)
-                    .fontWeight(.black)
-                    .font(.system(size: 36, design: .rounded))
-                    .foregroundStyle(.white)
-                 +
-                 Text(" with VoiceInk")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white.opacity(0.85))
-                )
-                .font(.system(size: 30))
-                .multilineTextAlignment(.center)
+                heroTitle
+                    .font(.system(size: 30))
+                    .multilineTextAlignment(.center)
                 
                 Spacer(minLength: 0)
             }
@@ -102,35 +87,35 @@ struct MetricsContent: View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 240), spacing: 16)], spacing: 16) {
             MetricCard(
                 icon: "mic.fill",
-                title: "Sessions Recorded",
+                title: L10n.Metrics.sessionsRecorded.string,
                 value: "\(transcriptions.count)",
-                detail: "VoiceInk sessions completed",
+                detail: L10n.Metrics.sessionsCompleted.string,
                 color: .purple
             )
-            
+
             MetricCard(
                 icon: "text.alignleft",
-                title: "Words Dictated",
+                title: L10n.Metrics.wordsDictated.string,
                 value: Formatters.formattedNumber(totalWordsTranscribed),
-                detail: "words generated",
+                detail: L10n.Metrics.wordsGenerated.string,
                 color: Color(nsColor: .controlAccentColor)
             )
-            
+
             MetricCard(
                 icon: "speedometer",
-                title: "Words Per Minute",
+                title: L10n.Metrics.wordsPerMinute.string,
                 value: averageWordsPerMinute > 0
                     ? String(format: "%.1f", averageWordsPerMinute)
                     : "–",
-                detail: "VoiceInk vs. typing by hand",
+                detail: L10n.Metrics.vsTyping.string,
                 color: .yellow
             )
-            
+
             MetricCard(
                 icon: "keyboard.fill",
-                title: "Keystrokes Saved",
+                title: L10n.Metrics.keystrokesSaved.string,
                 value: Formatters.formattedNumber(totalKeystrokesSaved),
-                detail: "fewer keystrokes",
+                detail: L10n.Metrics.fewerKeystrokes.string,
                 color: .orange
             )
         }
@@ -143,21 +128,47 @@ struct MetricsContent: View {
         }
     }
     
-    private var formattedTimeSaved: String {
-        let formatted = Formatters.formattedDuration(timeSaved, style: .full, fallback: "Time savings coming soon")
-        return formatted
+    @ViewBuilder
+    private var heroTitle: some View {
+        if transcriptions.isEmpty {
+            Text(L10n.Metrics.timeSavingsComing.text)
+                .fontWeight(.bold)
+                .foregroundColor(.white.opacity(0.9))
+        } else {
+            (Text(L10n.Metrics.savedWithVoiceInk.text)
+                .fontWeight(.bold)
+                .foregroundColor(.white.opacity(0.85))
+             +
+             Text(formattedTimeSaved)
+                .fontWeight(.black)
+                .font(.system(size: 36, design: .rounded))
+                .foregroundStyle(.white)
+             +
+             Text(L10n.Metrics.withVoiceInk.text)
+                .fontWeight(.bold)
+                .foregroundColor(.white.opacity(0.85))
+            )
+        }
     }
-    
+
+    private var formattedTimeSaved: String {
+        Formatters.formattedDuration(
+            timeSaved,
+            style: .full,
+            fallback: L10n.Metrics.Performance.zeroSeconds.string
+        )
+    }
+
     private var heroSubtitle: String {
         guard !transcriptions.isEmpty else {
-            return "Your VoiceInk journey starts with your first recording."
+            return L10n.Metrics.journeyStarts.string
         }
-        
+
         let wordsText = Formatters.formattedNumber(totalWordsTranscribed)
         let sessionCount = transcriptions.count
-        let sessionText = sessionCount == 1 ? "session" : "sessions"
-        
-        return "Dictated \(wordsText) words across \(sessionCount) \(sessionText)."
+        let sessionText = sessionCount == 1 ? L10n.Metrics.sessionSingular.string : L10n.Metrics.sessionPlural.string
+
+        return L10n.Metrics.dictatedFormat.format(wordsText, sessionCount, sessionText)
     }
     
     private var heroGradient: LinearGradient {
@@ -175,27 +186,47 @@ struct MetricsContent: View {
     // MARK: - Computed Metrics
     
     private var totalWordsTranscribed: Int {
-        transcriptions.reduce(0) { $0 + $1.text.split(separator: " ").count }
-    }
-    
-    private var totalRecordedTime: TimeInterval {
-        transcriptions.reduce(0) { $0 + $1.duration }
-    }
-    
-    private var estimatedTypingTime: TimeInterval {
-        let averageTypingSpeed: Double = 35 // words per minute
-        let totalWords = Double(totalWordsTranscribed)
-        let estimatedTypingTimeInMinutes = totalWords / averageTypingSpeed
-        return estimatedTypingTimeInMinutes * 60
+        transcriptions.reduce(0) { $0 + wordCount(for: $1) }
     }
     
     private var timeSaved: TimeInterval {
-        max(estimatedTypingTime - totalRecordedTime, 0)
+        max(totalTypingTime - totalSpokenTime, 0)
     }
     
     private var averageWordsPerMinute: Double {
-        guard totalRecordedTime > 0 else { return 0 }
-        return Double(totalWordsTranscribed) / (totalRecordedTime / 60.0)
+        guard totalSpokenTime > 0 else { return 0 }
+        return Double(totalWordsTranscribed) / (totalSpokenTime / 60.0)
+    }
+    
+    private var totalTypingTime: TimeInterval {
+        transcriptions.reduce(0) { $0 + typingTime(forWordCount: wordCount(for: $1)) }
+    }
+    
+    private var totalSpokenTime: TimeInterval {
+        transcriptions.reduce(0) { $0 + spokenTime(for: $1, fallbackWords: wordCount(for: $1)) }
+    }
+    
+    private func wordCount(for transcription: Transcription) -> Int {
+        transcription.text.split { $0.isWhitespace }.count
+    }
+    
+    private func typingTime(forWordCount count: Int) -> TimeInterval {
+        let averageTypingSpeed: Double = 35 // words per minute
+        let minutes = Double(count) / averageTypingSpeed
+        return minutes * 60
+    }
+    
+    private func spokenTime(for transcription: Transcription, fallbackWords count: Int) -> TimeInterval {
+        let estimatedSpeech = estimatedSpeechTime(forWordCount: count)
+        let recorded = transcription.duration
+        guard recorded > 0 else { return estimatedSpeech }
+        return min(recorded, estimatedSpeech)
+    }
+    
+    private func estimatedSpeechTime(forWordCount count: Int) -> TimeInterval {
+        let averageSpeakingSpeed: Double = 120 // words per minute
+        let minutes = Double(count) / averageSpeakingSpeed
+        return minutes * 60
     }
     
     private var totalKeystrokesSaved: Int {
@@ -252,7 +283,7 @@ private struct FeedbackButton: View {
                     .rotationEffect(.degrees(isClicked ? 360 : 0))
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isClicked)
 
-                Text(isClicked ? "Sending" : "Feedback or Issues?")
+                Text(isClicked ? L10n.Metrics.sending.string : L10n.Metrics.feedbackOrIssues.string)
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isClicked)
             }
             .font(.system(size: 13, weight: .medium))
@@ -292,7 +323,7 @@ private struct CopySystemInfoButton: View {
                     .rotationEffect(.degrees(isCopied ? 360 : 0))
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isCopied)
 
-                Text(isCopied ? "Copied!" : "Copy System Info")
+                Text(isCopied ? L10n.Metrics.copied.string : L10n.Metrics.copySystemInfo.string)
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isCopied)
             }
             .font(.system(size: 13, weight: .medium))
